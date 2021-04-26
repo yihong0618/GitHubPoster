@@ -9,17 +9,25 @@ from datetime import datetime
 
 from github_poster import poster, drawer
 from github_poster.utils import parse_years
-from loader import DuolingoLoader, ShanBayLoader, StravaLoader, CiChangLoader
+from loader import DuolingoLoader, ShanBayLoader, StravaLoader, CiChangLoader, NSLoader
 
 LOADER_DICT = {
     "duolingo": DuolingoLoader,
     "shanbay": ShanBayLoader,
     "strava": StravaLoader,
     "cichang": CiChangLoader,
+    "ns": NSLoader,
 }
 
-# TODO refactor 
-UNIT_DICT = {"duolingo": "XP", "shanbay": "day", "strava": "km", "gpx": "km", "cichang": "words"}
+# TODO refactor
+UNIT_DICT = {
+    "duolingo": "XP",
+    "shanbay": "day",
+    "strava": "km",
+    "gpx": "km",
+    "cichang": "words",
+    "ns": "mins",
+}
 
 TYPES = '", "'.join(LOADER_DICT.keys())
 
@@ -114,16 +122,16 @@ def main():
     )
     args_parser.add_argument(
         "--special-number1",
-        dest="special_numbner1",
+        dest="special_number1",
         type=float,
-        default=10.0,
+        default=0,
         help="Special number 1",
     )
     args_parser.add_argument(
         "--special-number2",
         dest="special_number2",
         type=float,
-        default=20.0,
+        default=0,
         help="Special number 2",
     )
 
@@ -182,13 +190,36 @@ def main():
         help="",
     )
 
+    # nintendo setting
+    args_parser.add_argument(
+        "--ns_device_id",
+        dest="ns_device_id",
+        type=str,
+        default="",
+        help="",
+    )
+    args_parser.add_argument(
+        "--ns_smart_device_id",
+        dest="ns_smart_device_id",
+        type=str,
+        default="",
+        help="",
+    )
+    args_parser.add_argument(
+        "--ns_session_token",
+        dest="ns_session_token",
+        type=str,
+        default="",
+        help="",
+    )
+
     args = args_parser.parse_args()
 
     p.athlete = args.me
     if args.title:
         p.title = args.title
     else:
-        p.title = str(args.type).upper()
+        p.title = "Yihong0618 " + str(args.type).upper()
 
     p.colors = {
         "background": args.background_color,
@@ -200,12 +231,19 @@ def main():
     }
     p.units = UNIT_DICT.get(args.type, "times")
     from_year, to_year = parse_years(args.year)
-    d = LOADER_DICT.get(args.type, "duolingo")(from_year, to_year, **dict(args._get_kwargs()))
+    d = LOADER_DICT.get(args.type, "duolingo")(
+        from_year, to_year, **dict(args._get_kwargs())
+    )
     tracks, years = d.get_all_track_data()
     p.special_number = {
         "special_number1": d.special_number1,
         "special_number2": d.special_number2,
     }
+
+    if args.special_number1:
+        p.special_number["special_number1"] = args.special_number1
+    if args.special_number2:
+        p.special_number["special_number2"] = args.special_number2
     p.set_tracks(tracks, years)
     p.height = 55 + len(p.years) * 43
     p.draw(drawer.Drawer(p), str(args.type) + ".svg")

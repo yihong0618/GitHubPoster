@@ -58,5 +58,4 @@ class StravaLoader(BaseLoader):
         self.make_track_dict()
         self._make_years_list()
         self.make_special_number()
-        print(self.special_number1, self.special_number2)
         return self.number_by_date_dict, self.year_list

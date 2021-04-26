@@ -35,7 +35,6 @@ class DuolingoLoader(BaseLoader):
                 pass
         return data_list
 
-
     def make_track_dict(self):
         data_list = self.get_api_data()
         for d in data_list:

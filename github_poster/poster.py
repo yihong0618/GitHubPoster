@@ -8,7 +8,6 @@ import svgwrite
 
 
 class ValueRange:
-
     def __init__(self):
         self._lower = None
         self._upper = None
@@ -50,6 +49,7 @@ class XY:
     """
     Represent x,y coords with properly overloaded operations.
     """
+
     def __init__(self, x=0, y=0):
         self.x = x
         self.y = y
