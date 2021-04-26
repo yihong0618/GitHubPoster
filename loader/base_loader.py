@@ -22,27 +22,28 @@ class BaseLoader(ABC):
         end = pendulum.datetime(self.to_year, 12, 31)
         period = pendulum.period(start, end)
         month_list = list(period.range("months"))
+        # filter
+        month_list = [m for m in month_list if m < pendulum.now()]
         return month_list
 
     def make_special_number(self):
         """
         This func is to make special color number for poster
-        special_number1 top 10%
-        special_number2  top 10 % - 25%
+        special_number1 top 20%
+        special_number2  top 20 % - 50%
         """
         # before python below 3.5 maybe need to sort
         number_list_set = sorted(list(set(self.number_list)))
         number_list_set_len = len(number_list_set)
-        if number_list_set_len < 5:
+        if number_list_set_len < 3:
+            self.special_number1 = self.special_number2 = 1
             return
         elif len(self.number_list) < 10:
             self.special_number1 = number_list_set[-1]
             self.special_number2 = number_list_set[-2]
         else:
             self.special_number1 = number_list_set[-1 * int(number_list_set_len * 0.2)]
-            self.special_number2 = number_list_set[
-                -1 * int(number_list_set_len * 0.50)
-            ]
+            self.special_number2 = number_list_set[-1 * int(number_list_set_len * 0.50)]
 
     @abstractclassmethod
     def make_track_dict(self):

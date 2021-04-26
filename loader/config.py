@@ -14,3 +14,8 @@ CICHANG_COVERT_URL = "https://pass-cdn.hjapi.com/v1.1/access_token/convert"
 CICHANG_CLAENDAR_URL = "https://cichang.hjapi.com/v3/user/center/?userId={user_id}&startDate={start_date}&endDate={end_date}"
 
 # switch -- need to packet sniffer (to get device id and token)
+TOKEN_API_URL = "https://accounts.nintendo.com/connect/1.0.0/api/token"
+NS_CLIENT_ID = "54789befb391a838"
+NS_GRANT_TYPE = "urn:ietf:params:oauth:grant-type:jwt-bearer-session-token"
+NS_TOKEN_URL = "https://accounts.nintendo.com/connect/1.0.0/api/token"
+NS_CLAENDAR_URL = "https://api-lp1.pctl.srv.nintendo.net/moon/v1/devices/{device_id}/monthly_summaries/{month}"

@@ -23,7 +23,7 @@ class Drawer:
         diff = length_range.diameter()
         if diff == 0:
             return color1
-        
+
         return interpolate_color(color1, color2, (length - length_range.lower()) / diff)
 
     def draw(self, dr, size, offset):
@@ -44,7 +44,7 @@ class Drawer:
                 -start_date_weekday
             )
             year_length = total_sum_year_dict.get(year, 0)
-            year_length = str(year_length) + " XP"
+            year_length = str(year_length) + f" {self.poster.units}"
             month_names = [
                 "Jan",
                 "Feb",
