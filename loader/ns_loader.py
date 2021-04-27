@@ -58,7 +58,6 @@ class NSLoader(BaseLoader):
         month_list = self.make_month_list()
         data_list = []
         for m in month_list:
-            print(m.to_date_string()[:7])
             r = self.s.get(
                 NS_CLAENDAR_URL.format(
                     device_id=self.device_id,

@@ -30,7 +30,7 @@ LOADER_DICT = {
 # TODO refactor
 UNIT_DICT = {
     "duolingo": "XP",
-    "shanbay": "day",
+    "shanbay": "days",
     "strava": "km",
     "gpx": "km",
     "cichang": "words",
@@ -60,21 +60,11 @@ def main():
         help="Directory containing GPX files (default: current directory).",
     )
     args_parser.add_argument(
-        "--output",
-        metavar="FILE",
-        type=str,
-        default="poster.svg",
-        help='Name of generated SVG image file (default: "poster.svg").',
-    )
-    args_parser.add_argument(
         "--year",
         metavar="YEAR",
         type=str,
         default=str(datetime.now().year),
         help='Filter tracks by year; "NUM", "NUM-NUM", "all" (default: all years)',
-    )
-    args_parser.add_argument(
-        "--title", metavar="TITLE", type=str, help="Title to display."
     )
     args_parser.add_argument(
         "--me",
@@ -100,13 +90,6 @@ def main():
         help='Color of tracks (default: "#4DD2FF").',
     )
     args_parser.add_argument(
-        "--track-color2",
-        dest="track_color2",
-        metavar="COLOR",
-        type=str,
-        help="Secondary color of tracks (default: none).",
-    )
-    args_parser.add_argument(
         "--text-color",
         dest="text_color",
         metavar="COLOR",
@@ -115,8 +98,8 @@ def main():
         help='Color of text (default: "#FFFFFF").',
     )
     args_parser.add_argument(
-        "--special-color",
-        dest="special_color",
+        "--special-color1",
+        dest="special_color1",
         metavar="COLOR",
         default="yellow",
         help='Special track color (default: "yellow").',
@@ -223,17 +206,12 @@ def main():
 
     args = args_parser.parse_args()
 
-    p.athlete = args.me
-    if args.title:
-        p.title = args.title
-    else:
-        p.title = "Yihong0618 " + str(args.type).upper()
+    p.title = f"{args.me} " + str(args.type).upper()
 
     p.colors = {
         "background": args.background_color,
         "track": args.track_color,
-        "track2": args.track_color2 or args.track_color,
-        "special": args.special_color,
+        "special": args.special_color1,
         "special2": args.special_color2 or args.special_color,
         "text": args.text_color,
     }
@@ -252,7 +230,7 @@ def main():
     if args.special_number2:
         p.special_number["special_number2"] = args.special_number2
     p.set_tracks(tracks, years)
-    p.height = 55 + len(p.years) * 43
+    p.height = 35 + len(p.years) * 43
     p.draw(drawer.Drawer(p), str(args.type) + ".svg")
 
 
