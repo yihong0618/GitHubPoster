@@ -79,7 +79,6 @@ class XY:
 
 class Poster:
     def __init__(self):
-        self.athlete = None
         self.title = None
         self.tracks = {}
         self.length_range = ValueRange()
@@ -113,6 +112,7 @@ class Poster:
         d.viewbox(0, 0, self.width, height)
         d.add(d.rect((0, 0), (width, height), fill=self.colors["background"]))
         self.__draw_header(d)
+        # self.__draw_footer(d)
         self.__draw_tracks(d, XY(width - 20, height - 30 - 30), XY(10, 30))
         d.save()
 
@@ -133,9 +133,3 @@ class Poster:
             total_sum_year_dict[int(date[:4])] += num
             length_range.extend(num)
         self.total_sum_year_dict = total_sum_year_dict
-        return (
-            total_sum,
-            total_sum / len(self.tracks) if self.tracks else 0,
-            length_range.lower(),
-            length_range.upper(),
-        )

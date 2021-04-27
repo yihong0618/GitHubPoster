@@ -14,11 +14,7 @@ class Drawer:
         color1 = (
             self.poster.colors["special"] if is_special else self.poster.colors["track"]
         )
-        color2 = (
-            self.poster.colors["special2"]
-            if is_special
-            else self.poster.colors["track2"]
-        )
+        color2 = self.poster.colors["special2"]
 
         diff = length_range.diameter()
         if diff == 0:
@@ -72,7 +68,7 @@ class Drawer:
             dr.add(
                 dr.text(
                     f"{year_length}",
-                    insert=(offset.tuple()[0] + 165, offset.tuple()[1] + 2),
+                    insert=(offset.tuple()[0] + 165, offset.tuple()[1] + 5),
                     fill=self.poster.colors["text"],
                     alignment_baseline="hanging",
                     style=year_length_style,
