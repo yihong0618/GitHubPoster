@@ -1,0 +1,5 @@
+gpxpy
+stravalib
+svgwrite
+pendulum
+colour

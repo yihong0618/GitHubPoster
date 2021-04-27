@@ -2,7 +2,6 @@
 from datetime import datetime
 import pytz
 from collections import defaultdict
-import gettext
 import locale
 import svgwrite
 
