@@ -44,7 +44,7 @@ class Drawer:
                 -start_date_weekday
             )
             year_length = total_sum_year_dict.get(year, 0)
-            year_length = str(year_length) + f" {self.poster.units}"
+            year_length = str(int(year_length)) + f" {self.poster.units}"
             month_names = [
                 "Jan",
                 "Feb",
