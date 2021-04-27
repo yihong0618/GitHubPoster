@@ -9,7 +9,14 @@ from datetime import datetime
 
 from github_poster import poster, drawer
 from github_poster.utils import parse_years
-from loader import DuolingoLoader, ShanBayLoader, StravaLoader, CiChangLoader, NSLoader
+from loader import (
+    DuolingoLoader,
+    ShanBayLoader,
+    StravaLoader,
+    CiChangLoader,
+    NSLoader,
+    GPXLoader,
+)
 
 LOADER_DICT = {
     "duolingo": DuolingoLoader,
@@ -17,6 +24,7 @@ LOADER_DICT = {
     "strava": StravaLoader,
     "cichang": CiChangLoader,
     "ns": NSLoader,
+    "gpx": GPXLoader,
 }
 
 # TODO refactor
@@ -48,7 +56,7 @@ def main():
         dest="gpx_dir",
         metavar="DIR",
         type=str,
-        default=".",
+        default="GPX_FOLDER",
         help="Directory containing GPX files (default: current directory).",
     )
     args_parser.add_argument(
@@ -239,7 +247,6 @@ def main():
         "special_number1": d.special_number1,
         "special_number2": d.special_number2,
     }
-
     if args.special_number1:
         p.special_number["special_number1"] = args.special_number1
     if args.special_number2:

@@ -1,5 +1,6 @@
 import requests
 import datetime
+from collections import defaultdict
 
 import stravalib
 
@@ -14,6 +15,7 @@ class StravaLoader(BaseLoader):
         self.to_year = to_year
         self.before = None
         self.after = None
+        self.number_by_date_dict = defaultdict(float)
         self.client = stravalib.Client()
         self.client_id = kwargs.get("strava_client_id", "")
         self.client_secret = kwargs.get("strava_client_secret", "")
@@ -49,8 +51,8 @@ class StravaLoader(BaseLoader):
     def make_track_dict(self):
         tracks = list(self.get_api_data())
         for t in tracks:
-            num = int(round(float(t.distance) / 1000))
-            self.number_by_date_dict[str(t.start_date_local.date())] = num
+            num = round(float(t.distance) / 1000, 2)
+            self.number_by_date_dict[str(t.start_date_local.date())] += num
             self.number_list.append(num)
         return tracks
 

@@ -1,3 +1,5 @@
+from collections import namedtuple
+
 # China timezone if you are from others please change this
 TIME_ZONE = "Asia/Shanghai"
 
@@ -19,3 +21,6 @@ NS_CLIENT_ID = "54789befb391a838"
 NS_GRANT_TYPE = "urn:ietf:params:oauth:grant-type:jwt-bearer-session-token"
 NS_TOKEN_URL = "https://accounts.nintendo.com/connect/1.0.0/api/token"
 NS_CLAENDAR_URL = "https://api-lp1.pctl.srv.nintendo.net/moon/v1/devices/{device_id}/monthly_summaries/{month}"
+
+# gpx need a gix folder
+GPX_ACTIVITY_NAME_TUPLE = namedtuple("activity", "date distance")

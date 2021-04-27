@@ -1,4 +1,6 @@
 from collections import defaultdict
+from datetime import datetime
+import pytz
 from abc import ABC, abstractclassmethod
 from .config import TIME_ZONE
 import pendulum
@@ -44,6 +46,10 @@ class BaseLoader(ABC):
         else:
             self.special_number1 = number_list_set[-1 * int(number_list_set_len * 0.2)]
             self.special_number2 = number_list_set[-1 * int(number_list_set_len * 0.50)]
+
+    def adjust_time(self, time):
+        tc_offset = datetime.now(pytz.timezone(self.time_zone)).utcoffset()
+        return time + tc_offset
 
     @abstractclassmethod
     def make_track_dict(self):
