@@ -11,7 +11,8 @@ on:
 env:
   # please change to your own config.
   # this actions generate only this year
-  TYPE: 'ns, duolingo, pass' # support strava/gpx/ns/cichang/shanbay/duolingo, Please change the 'pass' it to your own separated by commas
+  # If you fork this please change the type to yours below
+  TYPE: 'ns, duolingo, shanbay, pass' # support strava/gpx/ns/cichang/shanbay/duolingo, Please change the 'pass' it to your own separated by commas
   ME: Yihong0618
   GITHUB_NAME: yihong0618
   GITHUB_EMAIL: zouzou0208@gmail.com
@@ -46,22 +47,22 @@ jobs:
       - name: Run sync ns script
         if: contains(env.TYPE, 'ns')
         run: |
-          python cli.py --type ns --ns_session_token ${{ secrets.NS_SESSION_TOKEN }} --ns_device_id ${{ secrets.NS_DEVICE_ID }}
+          python cli.py --type ns --ns_session_token ${{ secrets.NS_SESSION_TOKEN }} --ns_device_id ${{ secrets.NS_DEVICE_ID }} --me ${{ env.ME }}
 
       - name: Run sync strava script
         if: contains(env.TYPE, 'strava')
         run: |
-          python cli.py --type strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} 
+          python cli.py --type strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --me ${{ env.ME }}
   
       - name: Run sync shanbay script
         if: contains(env.TYPE, 'shanbay')
         run: |
-          python cli.py --type shanbay -shanbay_user_name ${{ secrets.SHANBAY_USER_NAME }}   --special-color1 '#33C6A4' --special-color2  '#33C6A4'
+          python cli.py --type shanbay -shanbay_user_name ${{ secrets.SHANBAY_USER_NAME }}  --special-color1 '#33C6A4' --special-color2  '#33C6A4' --me ${{ env.ME }}
 
       - name: Run sync duolingo script
         if: contains(env.TYPE, 'duolingo')
         run: |
-          python cli.py --type duolingo --duolingo_user_name ${{ secrets.DUOLINGO_USER_NAME }}
+          python cli.py --type duolingo --duolingo_user_name ${{ secrets.DUOLINGO_USER_NAME }} --me ${{ env.ME }}
 
       - name: Run sync cichang script
         if: contains(env.TYPE, 'cichang')
@@ -78,7 +79,7 @@ jobs:
         with:
           github-token: ${{ secrets.G_T }}
           commit-message: "Make new poster"
-          files: examples
+          files: examples OUT_FOLDER
           rebase: 'true'
           name: ${{ env.GITHUB_NAME }}
           email: ${{ env.GITHUB_EMAIL }}
