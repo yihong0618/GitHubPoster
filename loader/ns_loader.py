@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 import hashlib
 import json
 
@@ -58,6 +59,9 @@ class NSLoader(BaseLoader):
         month_list = self.make_month_list()
         data_list = []
         for m in month_list:
+            # no data for this month for ns
+            if m.month == datetime.now().month:
+                continue
             r = self.s.get(
                 NS_CLAENDAR_URL.format(
                     device_id=self.device_id,

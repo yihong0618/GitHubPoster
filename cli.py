@@ -41,6 +41,7 @@ TYPES = '", "'.join(LOADER_DICT.keys())
 
 OUT_FOLDER = os.path.join(os.getcwd(), "OUT_FOLDER")
 
+
 def main():
     """Handle command line arguments and call other modules as needed."""
     p = poster.Poster()
@@ -232,6 +233,8 @@ def main():
         p.special_number["special_number2"] = args.special_number2
     p.set_tracks(tracks, years)
     p.height = 35 + len(p.years) * 43
+    if not os.path.exists(OUT_FOLDER):
+        os.mkdir(OUT_FOLDER)
     p.draw(drawer.Drawer(p), os.path.join(OUT_FOLDER, str(args.type) + ".svg"))
 
 

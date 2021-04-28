@@ -1,6 +1,8 @@
 # GitHubPoster
 Make everything a GitHub svg poster
 
+![image](https://user-images.githubusercontent.com/15976103/116332512-7f0fa780-a804-11eb-9e69-313f369e72d8.png)
+
 ## 支持
 - **[Strava](#strava)**
 - **[开心词场](#cichang)**
@@ -18,6 +20,15 @@ git clone https://github.com/yihong0618/GitHubPoster.git
 ```
 pip3 install -r requirements.txt
 ```
+
+## 使用
+
+- 不同类型按下方指定的使用方式
+- 可以指定年份如 --year 2021, (default) 或年份区间 2012-2021
+- 生成的 svg 在 OUT_FOLDER 内, 用 type 命名（暂时）
+- 默认自动生成不同颜色需要的 number（特殊颜色）, 也可以指定如： --special-number1 10 -- special_number2 20
+- 其它参数可以见 cli.py
+
 ### GPX
 
 <details>
@@ -83,3 +94,87 @@ curl -X POST https://www.strava.com/oauth/token \
 ```python
 python3 cli.py --type strava --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${client_secret} --year 2012-2021}
 ```
+</details>
+### NS
+
+<details>
+<summary>Make your <code>Nintendo Switch</code> GitHub poster</summary>
+<br>
+
+需要下载 `家长控制那个 APP(Nintendo Switch Parent Controls)` 进行抓包（可以使用 mitmproxy 等抓包软件）
+
+```python
+python3 cli.py --type ns --ns_session_token ${session_token} --ns_device_id ${device_id} --year 2020-2021
+```
+</details>
+
+### 开心词场
+
+<details>
+<summary>Make your <code>开心词场</code> GitHub poster</summary>
+<br>
+
+需要下载开心词场的账号和密码
+
+```python
+python3 cli.py --type cichang --cichang_user_name ${user_name} --cichang_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618
+```
+</details>
+
+### 多领国
+
+<details>
+<summary>Make your <code>多邻国（duolingo）</code> GitHub poster</summary>
+<br>
+
+需要找到你的多邻国 id, 从网页抓 xhr 就可以获得如下图
+![image](https://user-images.githubusercontent.com/15976103/116336188-baad7000-a80a-11eb-80d7-033d4bf0f260.png)
+
+
+```python
+python3 cli.py --type duolingo --duolingo_user_name ${user_id} --year 2015-2021
+```
+</details>
+
+### 扇贝
+
+<details>
+<summary>Make your <code>扇贝（shanbay）</code> GitHub poster</summary>
+<br>
+
+需要找到你的扇贝 user_id, 从网页抓 xhr 就可以获得如下图
+![image](https://user-images.githubusercontent.com/15976103/116340351-a02ac500-a811-11eb-938f-72ff141e4942.png)
+
+
+```python
+python3 cli.py --type shanbay --shanbay_user_name ${user_name} --year 2012-2021 --special-color1 '#33C6A4' --special-color2 '#33C6A4'
+```
+</details>
+
+
+# 参与项目
+
+- 任何 Issues PR 均欢迎。
+- 可以提交新的 loader
+
+提交PR前:
+- 使用 black 对 Python 代码进行格式化。
+
+# TODO
+
+- [ ] twitter
+- [ ] gitlab
+- [ ] GitHub
+- [ ] LeetCode
+- [ ] GitHub from issues
+- [ ] Sream
+- [ ] PS
+- [ ] Podcast
+- [ ] 如何写 loader
+- [ ] pypi
+- [ ] GitHub Actions
+# 特别感谢
+- @[flopp](https://github.com/flopp) 特别棒的项目 [GpxTrackPoster](https://github.com/flopp/GpxTrackPoster)
+
+# 赞赏
+谢谢就够了
