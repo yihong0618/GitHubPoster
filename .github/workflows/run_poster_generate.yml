@@ -68,10 +68,10 @@ jobs:
         run: |
           python cli.py --type cichang --cichang_user_name ${{ secrets.CICHANG_USER_NAME }} --cichang_password ${{ secrets.CICHANG_PASSWORD }} --me ${{ env.ME }}
 
-     - name: Mv svg files to examples
-       # only for me to show
-       if: github.repository_owner == 'yihong0618'
-       run: mv OUT_FOLDER/*.svg examples/
+      - name: Mv svg files to examples
+        # only for me to show
+        if: github.repository_owner == 'yihong0618'
+        run: mv OUT_FOLDER/*.svg examples/
 
       - name: Push new svg posters
         uses: github-actions-x/commit@v2.6
