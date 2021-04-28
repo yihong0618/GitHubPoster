@@ -11,7 +11,7 @@ on:
 env:
   # please change to your own config.
   # this actions generate only this year
-  TYPE: 'ns, pass' # support strava/gpx/ns/cichang/shanbay/duolingo, Please change the 'pass' it to your own separated by commas
+  TYPE: 'ns, duolingo, pass' # support strava/gpx/ns/cichang/shanbay/duolingo, Please change the 'pass' it to your own separated by commas
   ME: Yihong0618
   GITHUB_NAME: yihong0618
   GITHUB_EMAIL: zouzou0208@gmail.com
