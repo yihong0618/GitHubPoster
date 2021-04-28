@@ -95,6 +95,7 @@ curl -X POST https://www.strava.com/oauth/token \
 python3 cli.py --type strava --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${client_secret} --year 2012-2021}
 ```
 </details>
+
 ### NS
 
 <details>
@@ -170,7 +171,7 @@ python3 cli.py --type shanbay --shanbay_user_name ${user_name} --year 2012-2021 
 - [ ] Sream
 - [ ] PS
 - [ ] Podcast
-- [ ] 如何写 loader
+- [ ] 如何写 loader 的 doc
 - [ ] pypi
 - [ ] GitHub Actions
 # 特别感谢
