@@ -57,7 +57,7 @@ jobs:
       - name: Run sync shanbay script
         if: contains(env.TYPE, 'shanbay')
         run: |
-          python cli.py --type shanbay -shanbay_user_name ${{ secrets.SHANBAY_USER_NAME }}  --special-color1 '#33C6A4' --special-color2  '#33C6A4' --me ${{ env.ME }}
+          python cli.py --type shanbay --shanbay_user_name ${{ secrets.SHANBAY_USER_NAME }}  --special-color1 '#33C6A4' --special-color2  '#33C6A4' --me ${{ env.ME }}
 
       - name: Run sync duolingo script
         if: contains(env.TYPE, 'duolingo')
