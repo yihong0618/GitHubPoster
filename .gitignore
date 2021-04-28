@@ -128,9 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-
-# svg
-*.svg
-
 # test_files
 test.py
