@@ -44,14 +44,14 @@ jobs:
         if: steps.pip-cache.outputs.cache-hit != 'true'
 
       - name: Run sync ns script
-        if: contains(${{ env.TYPE }}, 'ns')
+        if: contains(env.TYPE, 'ns')
         run: |
           python cli.py --type ns --ns_session_token ${{ secrets.NS_SESSION_TOKEN }} --ns_device_id ${{ secrets.NS_DEVICE_ID }}
 
       - name: Run sync strava script
-        if: contains(${{ env.TYPE }}, 'strava')
+        if: contains(env.TYPE, 'strava')
         run: |
-          python cli.py --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} 
+          python cli.py --type strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} 
   
       - name: Push new svg posters
         uses: github-actions-x/commit@v2.6
