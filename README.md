@@ -122,7 +122,7 @@ python3 cli.py --type cichang --cichang_user_name ${user_name} --cichang_passwor
 ```
 </details>
 
-### 多领国
+### 多邻国
 
 <details>
 <summary>Make your <code>多邻国（duolingo）</code> GitHub poster</summary>
@@ -173,7 +173,7 @@ python3 cli.py --type shanbay --shanbay_user_name ${user_name} --year 2012-2021 
 - [ ] Podcast
 - [ ] 如何写 loader 的 doc
 - [ ] pypi
-- [ ] GitHub Actions
+- [x] GitHub Actions
 # 特别感谢
 - @[flopp](https://github.com/flopp) 特别棒的项目 [GpxTrackPoster](https://github.com/flopp/GpxTrackPoster)
 
