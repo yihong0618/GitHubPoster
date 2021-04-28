@@ -168,7 +168,7 @@ python3 cli.py --type shanbay --shanbay_user_name ${user_name} --year 2012-2021 
 - [ ] GitHub
 - [ ] LeetCode
 - [ ] GitHub from issues
-- [ ] Sream
+- [ ] Steam
 - [ ] PS
 - [ ] Podcast
 - [ ] 如何写 loader 的 doc
