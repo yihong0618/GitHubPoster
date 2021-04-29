@@ -24,3 +24,6 @@ NS_CLAENDAR_URL = "https://api-lp1.pctl.srv.nintendo.net/moon/v1/devices/{device
 
 # gpx need a gix folder
 GPX_ACTIVITY_NAME_TUPLE = namedtuple("activity", "date distance")
+
+# GitHub for furture use
+GITHUB_BASE_URL = "https://github.com"

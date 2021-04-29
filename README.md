@@ -10,6 +10,7 @@ Make everything a GitHub svg poster
 - **[Nintendo Switch](#ns)**
 - **[GPX](#GPX)**
 - **[多邻国](#duolingo)**
+- **[Issue](#Issue)**
 
 
 ## 下载
@@ -153,6 +154,19 @@ python3 cli.py --type shanbay --shanbay_user_name ${user_name} --year 2012-2021 
 ```
 </details>
 
+### Issue
+
+<details>
+<summary>Make your <code>Issue</code> GitHub poster</summary>
+<br>
+
+可以参考我的 [issue](https://github.com/yihong0618/2021/issues/5) 
+
+```python
+python3 cli.py --type issue --github_issue_number ${issue_number} --github_repo_name ${repo_name} --github_token ${github_token}
+```
+</details>
+
 
 # 参与项目
 
@@ -168,7 +182,7 @@ python3 cli.py --type shanbay --shanbay_user_name ${user_name} --year 2012-2021 
 - [ ] gitlab
 - [ ] GitHub
 - [ ] LeetCode
-- [ ] GitHub from issues
+- [x] GitHub from issues
 - [ ] Steam
 - [ ] PS
 - [ ] Podcast
@@ -176,6 +190,16 @@ python3 cli.py --type shanbay --shanbay_user_name ${user_name} --year 2012-2021 
 - [ ] pypi
 - [x] GitHub Actions
 - [ ] English README
+
+# GitHub Actions
+
+1. fork or clone this repo
+2. 更改需要的 secrets
+3. 更改需要的 type, 多个 type 用逗号分隔
+
+![image](https://user-images.githubusercontent.com/15976103/116517569-be6fee00-a901-11eb-9178-55df0c3301e3.png)
+![image](https://user-images.githubusercontent.com/15976103/116517636-d21b5480-a901-11eb-90e7-8314404f5f59.png)
+
 # 特别感谢
 - @[flopp](https://github.com/flopp) 特别棒的项目 [GpxTrackPoster](https://github.com/flopp/GpxTrackPoster)
 

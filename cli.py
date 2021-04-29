@@ -16,6 +16,7 @@ from loader import (
     CiChangLoader,
     NSLoader,
     GPXLoader,
+    GitHubIssuesLoader,
 )
 
 LOADER_DICT = {
@@ -25,6 +26,7 @@ LOADER_DICT = {
     "cichang": CiChangLoader,
     "ns": NSLoader,
     "gpx": GPXLoader,
+    "issue": GitHubIssuesLoader,
 }
 
 # TODO refactor
@@ -35,6 +37,7 @@ UNIT_DICT = {
     "gpx": "km",
     "cichang": "words",
     "ns": "mins",
+    "issue": "times"
 }
 
 TYPES = '", "'.join(LOADER_DICT.keys())
@@ -206,9 +209,33 @@ def main():
         help="",
     )
 
+    # GitHub issue args
+    args_parser.add_argument(
+        "--github_issue_number",
+        dest="github_issue_number",
+        type=int,
+        default="",
+        help="",
+    )
+    args_parser.add_argument(
+        "--github_repo_name",
+        dest="github_repo_name",
+        type=str,
+        default="",
+        help="",
+    )
+    args_parser.add_argument(
+        "--github_token",
+        dest="github_token",
+        type=str,
+        default="",
+        help="",
+    )
+
     args = args_parser.parse_args()
 
-    p.title = f"{args.me} " + str(args.type).upper()
+    # we don't know issue content so use name
+    p.title = f"{args.me} " + str(args.type).upper() if args.type != "issue" else args.me
 
     p.colors = {
         "background": args.background_color,
