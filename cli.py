@@ -213,7 +213,7 @@ def main():
     args_parser.add_argument(
         "--github_issue_number",
         dest="github_issue_number",
-        type=int,
+        type=str,
         default="",
         help="",
     )
