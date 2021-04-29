@@ -13,7 +13,7 @@ class GitHubIssuesLoader(BaseLoader):
         super().__init__()
         self.from_year = from_year
         self.to_year = to_year
-        self.issue_number = kwargs.get("github_issue_number", "1")
+        self.issue_number = int(kwargs.get("github_issue_number", "1"))
         self.repo_name = kwargs.get("github_repo_name", "")
         # for private repo
         self.github_token = kwargs.get("github_token", "")
