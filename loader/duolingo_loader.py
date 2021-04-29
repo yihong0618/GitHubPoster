@@ -4,7 +4,7 @@ import pendulum
 import requests
 
 from .base_loader import BaseLoader
-from .config import TIME_ZONE, DUOLINGO_CALENDAR_API
+from .config import DUOLINGO_CALENDAR_API
 
 
 class DuolingoLoader(BaseLoader):
@@ -16,7 +16,6 @@ class DuolingoLoader(BaseLoader):
 
     def get_api_data(self):
         month_list = self.make_month_list()
-        # my id 30327161
         data_list = []
         for m in month_list:
             r = requests.get(

@@ -1,3 +1,4 @@
+PyGithub
 gpxpy
 stravalib
 svgwrite
