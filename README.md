@@ -167,6 +167,24 @@ python3 cli.py --type issue --github_issue_number ${issue_number} --github_repo_
 ```
 </details>
 
+### LeetCode
+
+<details>
+<summary>Make your <code>LeetCode </code> GitHub poster</summary>
+<br>
+
+需要找到你 LeetCode 的 cookie
+
+```python
+python3 cli.py --type leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
+```
+如果使用的是 leetcode-cn（leetcode 中国需要加上参数）--is-cn
+
+```python
+python3 cli.py --type leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021 --is-cn
+```
+</details>
+
 
 # 参与项目
 
@@ -181,7 +199,7 @@ python3 cli.py --type issue --github_issue_number ${issue_number} --github_repo_
 - [ ] twitter
 - [ ] gitlab
 - [ ] GitHub
-- [ ] LeetCode
+- [x] LeetCode
 - [x] GitHub from issues
 - [ ] Steam
 - [ ] PS

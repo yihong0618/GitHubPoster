@@ -22,8 +22,17 @@ NS_GRANT_TYPE = "urn:ietf:params:oauth:grant-type:jwt-bearer-session-token"
 NS_TOKEN_URL = "https://accounts.nintendo.com/connect/1.0.0/api/token"
 NS_CLAENDAR_URL = "https://api-lp1.pctl.srv.nintendo.net/moon/v1/devices/{device_id}/monthly_summaries/{month}"
 
-# gpx need a gix folder
+# gpx need a gpx folder
 GPX_ACTIVITY_NAME_TUPLE = namedtuple("activity", "date distance")
 
 # GitHub for furture use
 GITHUB_BASE_URL = "https://github.com"
+
+# LeetCode
+LEETCODE_SUBMISSIONS_URL = (
+    "https://leetcode.com/api/submissions/?offset={offset}&limit=20&lastkey={last_key}"
+
+)
+LEETCODE_CN_SUBMISSIONS_URL= (
+        "https://leetcode-cn.com/api/submissions/?offset={offset}&limit=20&lastkey={last_key}"
+)
