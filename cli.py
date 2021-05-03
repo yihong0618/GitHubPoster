@@ -17,6 +17,7 @@ from loader import (
     NSLoader,
     GPXLoader,
     GitHubIssuesLoader,
+    LeetcodeLoader,
 )
 
 LOADER_DICT = {
@@ -27,6 +28,7 @@ LOADER_DICT = {
     "ns": NSLoader,
     "gpx": GPXLoader,
     "issue": GitHubIssuesLoader,
+    "leetcode": LeetcodeLoader,
 }
 
 # TODO refactor
@@ -37,7 +39,8 @@ UNIT_DICT = {
     "gpx": "km",
     "cichang": "words",
     "ns": "mins",
-    "issue": "times"
+    "issue": "times",
+    "leetcode": "subs",
 }
 
 TYPES = '", "'.join(LOADER_DICT.keys())
@@ -231,11 +234,27 @@ def main():
         default="",
         help="",
     )
+    # LeetCode
+    args_parser.add_argument(
+        "--leetcode_cookie",
+        dest="leetcode_cookie",
+        type=str,
+        default="",
+        help="",
+    )
+    args_parser.add_argument(
+        "--is-cn",
+        dest="is_cn",
+        action="store_true",
+        help="if leetcode accout is com",
+    )
 
     args = args_parser.parse_args()
 
     # we don't know issue content so use name
-    p.title = f"{args.me} " + str(args.type).upper() if args.type != "issue" else args.me
+    p.title = (
+        f"{args.me} " + str(args.type).upper() if args.type != "issue" else args.me
+    )
 
     p.colors = {
         "background": args.background_color,

@@ -12,7 +12,7 @@ env:
   # please change to your own config.
   # this actions generate only this year
   # If you fork this please change the type to yours below
-  TYPE: 'ns, duolingo, shanbay, issue, pass' # support strava/gpx/ns/cichang/shanbay/duolingo/issue, Please change the 'pass' it to your own separated by commas
+  TYPE: 'ns, duolingo, shanbay, issue, pass' # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode, Please change the 'pass' it to your own separated by commas
   ME: Yihong0618
   GITHUB_NAME: yihong0618
   GITHUB_EMAIL: zouzou0208@gmail.com
@@ -73,6 +73,11 @@ jobs:
         if: contains(env.TYPE, 'issue')
         run: |
           python cli.py --type issue --github_issue_number ${{ secrets.ISSUE_NUMBER }} --github_repo_name ${{ secrets.REPO_NAME }} --github_token ${{ secrets.G_T }} --me ${{ env.ME }}
+
+      - name: Run sync leetcode script
+        if: contains(env.TYPE, 'leetcode')
+        run: |
+          python cli.py --type leetcode --leetcode_cookie  '${{ secrets.LEETCODE_COOKIE }} --me ${{ env.ME }}
 
       - name: Mv svg files to examples
         # only for me to show
