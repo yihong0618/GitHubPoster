@@ -18,6 +18,7 @@ from loader import (
     GPXLoader,
     GitHubIssuesLoader,
     LeetcodeLoader,
+    TwitterLoader,
 )
 
 LOADER_DICT = {
@@ -29,6 +30,7 @@ LOADER_DICT = {
     "gpx": GPXLoader,
     "issue": GitHubIssuesLoader,
     "leetcode": LeetcodeLoader,
+    "twitter": TwitterLoader,
 }
 
 # TODO refactor
@@ -41,6 +43,7 @@ UNIT_DICT = {
     "ns": "mins",
     "issue": "times",
     "leetcode": "subs",
+    "twitter": "tweets",
 }
 
 TYPES = '", "'.join(LOADER_DICT.keys())
@@ -247,6 +250,14 @@ def main():
         dest="is_cn",
         action="store_true",
         help="if leetcode accout is com",
+    )
+    # twitter
+    args_parser.add_argument(
+        "--twitter_user_name",
+        dest="twitter_user_name",
+        type=str,
+        default="",
+        help="",
     )
 
     args = args_parser.parse_args()

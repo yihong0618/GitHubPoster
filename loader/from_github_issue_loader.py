@@ -55,8 +55,9 @@ class GitHubIssuesLoader(BaseLoader):
             )
             number = self.__map_func(d)
             if number:
-                self.number_by_date_dict[date_str] = number
+                self.number_by_date_dict[date_str] += number
                 self.number_list.append(number)
+
 
     def get_all_track_data(self):
         self.make_track_dict()

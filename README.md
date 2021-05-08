@@ -185,6 +185,19 @@ python3 cli.py --type leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-
 ```
 </details>
 
+### Twitter
+
+<details>
+<summary>Make your <code>Twitter </code> GitHub poster</summary>
+<br>
+
+需要找到你的 Twitter user_id, 网址里那个就是
+
+```python
+python3 cli.py --type twitter --twitter_user_name ${twitter_user_name} --year 2018-2021 --track-color '#1C9CEA'
+```
+</details>
+
 
 # 参与项目
 
@@ -196,7 +209,7 @@ python3 cli.py --type leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-
 
 # TODO
 
-- [ ] twitter
+- [x] twitter
 - [ ] gitlab
 - [ ] GitHub
 - [x] LeetCode
