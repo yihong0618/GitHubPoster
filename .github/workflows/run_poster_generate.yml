@@ -12,7 +12,7 @@ env:
   # please change to your own config.
   # this actions generate only this year
   # If you fork this please change the type to yours below
-  TYPE: 'ns, duolingo, shanbay, issue, pass' # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode, Please change the 'pass' it to your own separated by commas
+  TYPE: 'ns, duolingo, shanbay, issue, pass' # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter, Please change the 'pass' it to your own separated by commas
   ME: Yihong0618
   GITHUB_NAME: yihong0618
   GITHUB_EMAIL: zouzou0208@gmail.com
@@ -83,6 +83,11 @@ jobs:
         # only for me to show
         if: github.repository_owner == 'yihong0618'
         run: mv OUT_FOLDER/*.svg examples/
+
+      - name: Run sync twitter script
+        if: contains(env.TYPE, 'twitter')
+        run: |
+          python cli.py --type twitter --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --me ${{ env.ME }}
 
       - name: Push new svg posters
         uses: github-actions-x/commit@v2.6

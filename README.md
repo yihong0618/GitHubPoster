@@ -222,6 +222,7 @@ python3 cli.py --type twitter --twitter_user_name ${twitter_user_name} --year 20
 - [ ] pypi
 - [x] GitHub Actions
 - [ ] English README
+- [ ] Change all default color
 
 # GitHub Actions
 

@@ -6,13 +6,22 @@ import pendulum
 import requests
 
 from .base_loader import BaseLoader
+
 try:
     import twint
 except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "--user", "--upgrade",
-                           "git+https://github.com/twintproject/twint.git@origin/master#egg=twint"])
+    subprocess.check_call(
+        [
+            sys.executable,
+            "-m",
+            "pip",
+            "install",
+            "--user",
+            "--upgrade",
+            "git+https://github.com/twintproject/twint.git@origin/master#egg=twint",
+        ]
+    )
     import twint
-
 
 
 class TwitterLoader(BaseLoader):
@@ -28,7 +37,8 @@ class TwitterLoader(BaseLoader):
         self.c.Custom["tweet"] = ["id"]
         self.c.Custom["user"] = ["bio"]
         self.c.Store_object = True
-        # self.c.Until = "2018-01-01"
+        self.c.Since = f"{self.from_year}-01-01"
+        self.c.Until = f"{self.to_year}-12-31"
         twint.run.Search(self.c)
         return twint.output.tweets_list
 
