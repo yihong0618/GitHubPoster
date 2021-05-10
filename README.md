@@ -1,7 +1,11 @@
 # GitHubPoster
 Make everything a GitHub svg poster
 
-![image](https://user-images.githubusercontent.com/15976103/116332512-7f0fa780-a804-11eb-9e69-313f369e72d8.png)
+## 直接引入 `svg` 在 `README` 中的例子 
+
+![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/twitter.svg)
+![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/ns.svg)
+![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/shanbay.svg)
 
 ## 支持
 - **[Strava](#strava)**
