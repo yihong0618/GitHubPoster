@@ -218,6 +218,7 @@ python3 cli.py --type twitter --twitter_user_name ${twitter_user_name} --year 20
 - [ ] Steam
 - [ ] PS
 - [ ] Podcast
+- [ ] Spotify ?
 - [ ] 如何写 loader 的 doc
 - [ ] pypi
 - [x] GitHub Actions
