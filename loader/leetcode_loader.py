@@ -13,13 +13,15 @@ class LeetcodeLoader(BaseLoader):
         self.to_year = to_year
         self.leetcode_cookie = kwargs.get("leetcode_cookie", "")
         self.is_cn = kwargs.get("is_cn", False)
-        self.LEETCODE_URL = LEETCODE_CN_SUBMISSIONS_URL if self.is_cn else LEETCODE_SUBMISSIONS_URL
+        self.LEETCODE_URL = (
+            LEETCODE_CN_SUBMISSIONS_URL if self.is_cn else LEETCODE_SUBMISSIONS_URL
+        )
 
     def get_api_data(self):
         data_list = []
         offset = 0
         last_key = ""
-        # leetcode may cause the permission error, just retry 
+        # leetcode may cause the permission error, just retry
         error_times = 0
         while 1:
             try:
@@ -33,7 +35,9 @@ class LeetcodeLoader(BaseLoader):
                 data = r.json()
                 submissions = data["submissions_dump"]
                 last_submission_this_api = submissions[-1]
-                last_year =  pendulum.from_timestamp(last_submission_this_api["timestamp"]).year
+                last_year = pendulum.from_timestamp(
+                    last_submission_this_api["timestamp"]
+                ).year
                 if not submissions or last_year < self.from_year:
                     break
                 data_list.extend(submissions)
@@ -57,7 +61,7 @@ class LeetcodeLoader(BaseLoader):
                 self.number_by_date_dict[date] += 1
         for _, v in self.number_by_date_dict.items():
             self.number_list.append(v)
-            
+
     def get_all_track_data(self):
         self.make_track_dict()
         self._make_years_list()

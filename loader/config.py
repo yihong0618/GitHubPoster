@@ -31,8 +31,5 @@ GITHUB_BASE_URL = "https://github.com"
 # LeetCode
 LEETCODE_SUBMISSIONS_URL = (
     "https://leetcode.com/api/submissions/?offset={offset}&limit=20&lastkey={last_key}"
-
 )
-LEETCODE_CN_SUBMISSIONS_URL= (
-        "https://leetcode-cn.com/api/submissions/?offset={offset}&limit=20&lastkey={last_key}"
-)
+LEETCODE_CN_SUBMISSIONS_URL = "https://leetcode-cn.com/api/submissions/?offset={offset}&limit=20&lastkey={last_key}"

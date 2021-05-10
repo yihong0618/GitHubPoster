@@ -58,7 +58,6 @@ class GitHubIssuesLoader(BaseLoader):
                 self.number_by_date_dict[date_str] += number
                 self.number_list.append(number)
 
-
     def get_all_track_data(self):
         self.make_track_dict()
         self.make_special_number()
