@@ -79,15 +79,15 @@ jobs:
         run: |
           python cli.py --type leetcode --leetcode_cookie  '${{ secrets.LEETCODE_COOKIE }} --me ${{ env.ME }}
 
-      - name: Mv svg files to examples
-        # only for me to show
-        if: github.repository_owner == 'yihong0618'
-        run: mv OUT_FOLDER/*.svg examples/
-
       - name: Run sync twitter script
         if: contains(env.TYPE, 'twitter')
         run: |
           python cli.py --type twitter --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --me ${{ env.ME }}
+
+      - name: Mv svg files to examples
+        # only for me to show
+        if: github.repository_owner == 'yihong0618'
+        run: mv OUT_FOLDER/*.svg examples/
 
       - name: Push new svg posters
         uses: github-actions-x/commit@v2.6
