@@ -16,6 +16,8 @@ Make everything a GitHub svg poster
 - **[多邻国](#duolingo)**
 - **[Issue](#Issue)**
 - **[Twitter](#Twitter)**
+- **[YouTube](#Youtube)**
+- **[Bilibili](#Bilibili)**
 
 
 ## 下载
@@ -203,6 +205,32 @@ python3 cli.py --type twitter --twitter_user_name ${twitter_user_name} --year 20
 ```
 </details>
 
+### Youtube
+
+<details>
+<summary>Make your <code>YouTube </code> GitHub poster</summary>
+<br>
+
+利用 Google 的[历史下载](https://takeout.google.com/settings/takeout) 下载 YouTube 的历史数据，选择 `json` 格式，将 `watch-history.json` 拷贝到 `IN-FOLDER` 然后运行
+
+```python
+python3 cli.py --type youtube --year 2015-2021
+```
+</details>
+
+### Bilibili
+
+<details>
+<summary>Make your <code>Bilibili </code> GitHub poster</summary>
+<br>
+
+需要找到你 Bilibili (XHR) 的 cookie
+
+```python
+python3 cli.py --type bilibili --bilibili_cookie "${bilibili-cookie}"
+```
+</details>
+
 
 # 参与项目
 
@@ -219,6 +247,8 @@ python3 cli.py --type twitter --twitter_user_name ${twitter_user_name} --year 20
 - [ ] GitHub
 - [x] LeetCode
 - [x] GitHub from issues
+- [x] YouTube
+- [x] Bilibili
 - [ ] Steam
 - [ ] PS
 - [ ] Podcast

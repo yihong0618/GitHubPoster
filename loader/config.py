@@ -33,3 +33,6 @@ LEETCODE_SUBMISSIONS_URL = (
     "https://leetcode.com/api/submissions/?offset={offset}&limit=20&lastkey={last_key}"
 )
 LEETCODE_CN_SUBMISSIONS_URL = "https://leetcode-cn.com/api/submissions/?offset={offset}&limit=20&lastkey={last_key}"
+
+# Bilibili
+BILIBILI_HISTORY_URL = "https://api.bilibili.com/x/web-interface/history/cursor?max={max_oid}&view_at={view_at}&business=archive"
