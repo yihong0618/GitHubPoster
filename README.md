@@ -211,7 +211,7 @@ python3 cli.py --type twitter --twitter_user_name ${twitter_user_name} --year 20
 <summary>Make your <code>YouTube </code> GitHub poster</summary>
 <br>
 
-利用 Google 的[历史下载](https://takeout.google.com/settings/takeout) 下载 YouTube 的历史数据，选择 `json` 格式，将 `watch-history.json` 拷贝到 `IN-FOLDER` 然后运行
+利用 Google 的[历史下载](https://takeout.google.com/settings/takeout)下载 YouTube 的历史数据，选择 `json` 格式，将 `watch-history.json` 拷贝到 `IN-FOLDER` 然后运行
 
 ```python
 python3 cli.py --type youtube --year 2015-2021
