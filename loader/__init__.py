@@ -7,3 +7,5 @@ from .gpx_loader import GPXLoader
 from .from_github_issue_loader import GitHubIssuesLoader
 from .leetcode_loader import LeetcodeLoader
 from .twitter_loader import TwitterLoader
+from .youtube_loader import YouTubeLoader
+from .bilibili_loader import BilibiliLoader

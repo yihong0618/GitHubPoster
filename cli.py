@@ -19,6 +19,8 @@ from loader import (
     GitHubIssuesLoader,
     LeetcodeLoader,
     TwitterLoader,
+    YouTubeLoader,
+    BilibiliLoader,
 )
 
 LOADER_DICT = {
@@ -31,6 +33,8 @@ LOADER_DICT = {
     "issue": GitHubIssuesLoader,
     "leetcode": LeetcodeLoader,
     "twitter": TwitterLoader,
+    "youtube": YouTubeLoader,
+    "bilibili": BilibiliLoader,
 }
 
 # TODO refactor
@@ -44,6 +48,17 @@ UNIT_DICT = {
     "issue": "times",
     "leetcode": "subs",
     "twitter": "tweets",
+    "youtube": "videos",
+    "bilibili": "videos",
+}
+
+## default color for different type
+## add more default dict here
+TRACK_COLOR_DICT = {
+    "shanbay": "#33C6A4",
+    "twitter": "#1C9CEA",
+    "youtube": "#FFFFFF",
+    "bilibili": "#FB7299",
 }
 
 TYPES = '", "'.join(LOADER_DICT.keys())
@@ -68,7 +83,7 @@ def main():
         metavar="DIR",
         type=str,
         default="GPX_FOLDER",
-        help="Directory containing GPX files (default: current directory).",
+        help="Directory containing GPX files",
     )
     args_parser.add_argument(
         "--year",
@@ -259,6 +274,30 @@ def main():
         default="",
         help="",
     )
+    # YouTube
+    args_parser.add_argument(
+        "--input-dir",
+        dest="input_dir",
+        metavar="DIR",
+        type=str,
+        default="IN_FOLDER",
+        help="Directory containing input files.",
+    )
+    args_parser.add_argument(
+        "--youtube-file",
+        dest="youtube_file",
+        type=str,
+        default="watch-history.json",
+        help="Deafault youtube history file",
+    )
+    # Bilibili
+    args_parser.add_argument(
+        "--bilibili_cookie",
+        dest="bilibili_cookie",
+        type=str,
+        default="",
+        help="",
+    )
 
     args = args_parser.parse_args()
 
@@ -269,7 +308,8 @@ def main():
 
     p.colors = {
         "background": args.background_color,
-        "track": args.track_color,
+        "track": TRACK_COLOR_DICT.get(args.type)
+        or args.track_color,  # some type has default color
         "special": args.special_color1,
         "special2": args.special_color2 or args.special_color,
         "text": args.text_color,
