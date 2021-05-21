@@ -250,14 +250,12 @@ python3 cli.py --type bilibili --bilibili_cookie "${bilibili-cookie}"
 - [x] YouTube
 - [x] Bilibili
 - [ ] Steam
-- [ ] PS
-- [ ] Podcast
 - [ ] Spotify ?
 - [ ] 如何写 loader 的 doc
 - [ ] pypi
 - [x] GitHub Actions
 - [ ] English README
-- [ ] Change all default color
+- [x] Change all default color
 
 # GitHub Actions
 
