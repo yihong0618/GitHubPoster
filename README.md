@@ -101,7 +101,7 @@ curl -X POST https://www.strava.com/oauth/token \
 7. 同步数据至 Strava   
 在项目根目录执行：
 ```python
-python3 cli.py --type strava --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${client_secret} --year 2012-2021}
+python3 cli.py --type strava --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${refresh_token} --year 2012-2021}
 ```
 </details>
 
