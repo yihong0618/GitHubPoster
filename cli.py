@@ -151,7 +151,19 @@ def main():
         default=0,
         help="Special number 2",
     )
-
+    args_parser.add_argument(
+        "--with-animation",
+        dest="with_animation",
+        action="store_true",
+        help="add animation to the poster",
+    )
+    args_parser.add_argument(
+        "--animation-time",
+        dest="animation_time",
+        type=int,
+        default=10,
+        help="animation duration (default: 10s)",
+    )
     # strava
     args_parser.add_argument(
         "--strava_client_id",
@@ -314,6 +326,9 @@ def main():
         "special2": args.special_color2 or args.special_color,
         "text": args.text_color,
     }
+    # set animate
+    p.set_with_animation(args.with_animation)
+    p.set_animation_time(args.animation_time)
     p.units = UNIT_DICT.get(args.type, "times")
     from_year, to_year = parse_years(args.year)
     d = LOADER_DICT.get(args.type, "duolingo")(

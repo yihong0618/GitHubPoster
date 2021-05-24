@@ -1,5 +1,6 @@
 import re
 import colour
+from itertools import takewhile, count as itercount
 
 
 def interpolate_color(color1: str, color2: str, ratio: float) -> str:
@@ -39,3 +40,13 @@ def parse_years(s):
             from_year = y1
             to_year = y2
     return from_year, to_year
+
+def make_key_times(year_count):
+    """
+    year_count: year run date count
+    return: list of key times points
+    should append `1` because the svg keyTimes rule
+    """
+    s = list(takewhile(lambda n: n < 1, itercount(0, 1 / year_count)))
+    s.append(1)
+    return [str(round(i, 2)) for i in s]
