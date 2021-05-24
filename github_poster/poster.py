@@ -95,13 +95,23 @@ class Poster:
         # maybe support more type
         self.tracks_drawer = None
         self.trans = None
+        self.with_animation = False
+        self.animation_time = 10
+        self.year_tracks_date_count_dict = defaultdict(int)
 
     def set_tracks(self, tracks, years):
         self.tracks = tracks
         self.years = years
-        for num in tracks.values():
+        for date, num in tracks.items():
+            self.year_tracks_date_count_dict[date[:4]] += 1
             self.length_range_by_date.extend(num)
         self.__compute_track_statistics()
+
+    def set_with_animation(self, with_animation):
+        self.with_animation = with_animation
+
+    def set_animation_time(self, animation_time):
+        self.animation_time = animation_time
 
     def draw(self, drawer, output):
         height = self.height
@@ -111,7 +121,6 @@ class Poster:
         d.viewbox(0, 0, self.width, height)
         d.add(d.rect((0, 0), (width, height), fill=self.colors["background"]))
         self.__draw_header(d)
-        # self.__draw_footer(d)
         self.__draw_tracks(d, XY(width - 20, height - 30 - 30), XY(10, 30))
         d.save()
 

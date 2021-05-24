@@ -2,8 +2,7 @@ import calendar
 import datetime
 import svgwrite
 
-from .utils import interpolate_color
-from .poster import Poster
+from .utils import interpolate_color, make_key_times
 
 
 class Drawer:
@@ -31,6 +30,7 @@ class Drawer:
         month_names_style = f"font-size:2.5px; font-family:Arial"
         total_sum_year_dict = self.poster.total_sum_year_dict
         self.poster.years.sort()
+        year_count = len(self.poster.years)
         for year in range(self.poster.years[0], self.poster.years[-1] + 1)[::-1]:
             start_date_weekday, _ = calendar.monthrange(year, 1)
             github_rect_first_day = datetime.date(year, 1, 1)
@@ -87,6 +87,13 @@ class Drawer:
 
             rect_x = 10.0
             dom = (2.6, 2.6)
+            animate_index = 1
+            year_count, key_times = 0, ""
+            if self.poster.with_animation:
+                # set default count 10
+                year_count = self.poster.year_tracks_date_count_dict.get(str(year), 10)
+                key_times = make_key_times(year_count)
+
             # add every day of this year for 53 weeks and per week has 7 days
             for i in range(54):
                 rect_y = offset.y + year_size + 2
@@ -110,7 +117,23 @@ class Drawer:
                                 "special2"
                             ) or self.poster.colors.get("special")
                         date_title = f"{date_title} {num} {self.poster.units}"
+                        # tricky for may cause animate error
+                        if animate_index < len(key_times) - 1:
+                            animate_index += 1
                     rect = dr.rect((rect_x, rect_y), dom, fill=color)
+                    if self.poster.with_animation:
+                        values = (
+                            ";".join(["0"] * animate_index) + ";" + ";".join(["1"] * (len(key_times) - animate_index))
+                        )
+                        rect.add(
+                            svgwrite.animate.Animate(
+                                "opacity",
+                                dur=f"{self.poster.animation_time}s",
+                                values=values,
+                                keyTimes=";".join(key_times),
+                                repeatCount="1",
+                            )
+                        )
                     rect.set_desc(title=date_title)
                     dr.add(rect)
                     github_rect_day += datetime.timedelta(1)
