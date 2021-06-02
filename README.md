@@ -126,7 +126,7 @@ python3 cli.py --type ns --ns_session_token ${session_token} --ns_device_id ${de
 <summary>Make your <code>开心词场</code> GitHub poster</summary>
 <br>
 
-需要下载开心词场的账号和密码
+需要填写开心词场的账号和密码
 
 ```python
 python3 cli.py --type cichang --cichang_user_name ${user_name} --cichang_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618
@@ -277,13 +277,12 @@ python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}"
 - [x] GitHub from issues
 - [x] YouTube
 - [x] Bilibili
-- [ ] Steam
-- [ ] Spotify ?
+- [x] GitHub Actions
+- [x] Change all default color
+- [ ] Skyline
 - [ ] 如何写 loader 的 doc
 - [ ] pypi
-- [x] GitHub Actions
 - [ ] English README
-- [x] Change all default color
 
 # GitHub Actions
 
