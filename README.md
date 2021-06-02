@@ -246,10 +246,10 @@ python3 cli.py --type github --github_user_name "${github_user_name}"
 ```
 </details>
 
-### GitHub
+### GitLab
 
 <details>
-<summary>Make your <code>GitHub </code> GitHub poster</summary>
+<summary>Make your <code>GitLab </code> GitLab poster</summary>
 <br>
 
 需要找到你 GitLab Name (url 后面那个)
@@ -271,7 +271,7 @@ python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}"
 # TODO
 
 - [x] twitter
-- [x] gitlab
+- [x] GitLab
 - [x] GitHub
 - [x] LeetCode
 - [x] GitHub from issues
