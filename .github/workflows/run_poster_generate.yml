@@ -90,7 +90,7 @@ jobs:
           python cli.py --type github --github_user_name ${{ secrets.G_USER_NAME }} --me ${{ env.ME }} --with-animation
 
       - name: Run sync gitlab script
-        if: contains(env.TYPE, 'github')
+        if: contains(env.TYPE, 'gitlab')
         run: |
           python cli.py --type gitlab --gitlab_user_name ${{ secrets.GITLAB_USER_NAME }} --me ${{ env.ME }} --with-animation
   
