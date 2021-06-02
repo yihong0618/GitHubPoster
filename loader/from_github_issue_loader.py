@@ -1,7 +1,6 @@
 import time
 
 import pendulum
-import requests
 from github import Github
 
 from .base_loader import BaseLoader
@@ -17,6 +16,7 @@ class GitHubIssuesLoader(BaseLoader):
         self.repo_name = kwargs.get("github_repo_name", "")
         # for private repo
         self.github_token = kwargs.get("github_token", "")
+        self._make_years_list()
 
     @staticmethod
     def __map_func(comment):

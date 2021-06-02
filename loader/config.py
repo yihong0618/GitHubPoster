@@ -36,3 +36,14 @@ LEETCODE_CN_SUBMISSIONS_URL = "https://leetcode-cn.com/api/submissions/?offset={
 
 # Bilibili
 BILIBILI_HISTORY_URL = "https://api.bilibili.com/x/web-interface/history/cursor?max={max_oid}&view_at={view_at}&business=archive"
+
+# GitHub
+GITHUB_CONTRIBUCTIONS_URL = (
+    "https://github.com/users/{user_name}/contributions?from={start_day}&to={end_day}"
+)
+
+# GitLab
+GITLAB_LATEST_URL = "https://gitlab.com/users/{user_name}/calendar.json"
+GITLAB_ONE_DAY_URL = (
+    "https://gitlab.com/users/{user_name}/calendar_activities?date={date_str}"
+)

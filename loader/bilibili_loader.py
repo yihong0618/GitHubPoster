@@ -17,11 +17,13 @@ class BilibiliLoader(BaseLoader):
         self.number_by_date_dict = defaultdict(int)
         self.session = requests.Session()
         self.bilibili_cookie = kwargs.get("bilibili_cookie", "")
+        self._make_years_list()
 
     def _parse_bilibili_cookie(self):
         cookie = SimpleCookie()
         cookie.load(self.bilibili_cookie)
         cookies_dict = {}
+        cookiejar = None
         for key, morsel in cookie.items():
             cookies_dict[key] = morsel.value
             cookiejar = requests.utils.cookiejar_from_dict(
@@ -62,7 +64,6 @@ class BilibiliLoader(BaseLoader):
         # first we need to activate the session with cookie str from `chrome`
         self.session.cookies = self._parse_bilibili_cookie()
 
-        self._make_years_list()
         self.make_track_dict()
         self.make_special_number()
         return self.number_by_date_dict, self.year_list

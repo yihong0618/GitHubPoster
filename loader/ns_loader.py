@@ -1,14 +1,9 @@
-import time
 from datetime import datetime
-import hashlib
-import json
 
-import pendulum
 import requests
 
 from .base_loader import BaseLoader
 from .config import (
-    TIME_ZONE,
     NS_CLIENT_ID,
     NS_GRANT_TYPE,
     NS_TOKEN_URL,
@@ -37,6 +32,7 @@ class NSLoader(BaseLoader):
             "x-moon-timezone": "America/Los_Angeles",
         }
         self.s = requests.Session()
+        self._make_years_list()
 
     def _make_access_headers(self):
         r = self.s.post(
@@ -89,7 +85,6 @@ class NSLoader(BaseLoader):
                 self.number_list.append(minutes)
 
     def get_all_track_data(self):
-        self._make_years_list()
         self.make_track_dict()
         self.make_special_number()
         return self.number_by_date_dict, self.year_list

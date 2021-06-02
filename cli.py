@@ -4,7 +4,6 @@
 
 import argparse
 import os
-import sys
 from datetime import datetime
 
 from github_poster import poster, drawer
@@ -21,6 +20,8 @@ from loader import (
     TwitterLoader,
     YouTubeLoader,
     BilibiliLoader,
+    GitHubLoader,
+    GitLabLoader,
 )
 
 LOADER_DICT = {
@@ -35,6 +36,8 @@ LOADER_DICT = {
     "twitter": TwitterLoader,
     "youtube": YouTubeLoader,
     "bilibili": BilibiliLoader,
+    "github": GitHubLoader,
+    "gitlab": GitLabLoader,
 }
 
 # TODO refactor
@@ -50,6 +53,8 @@ UNIT_DICT = {
     "twitter": "tweets",
     "youtube": "videos",
     "bilibili": "videos",
+    "github": "cons",
+    "gitlab": "cons",
 }
 
 ## default color for different type
@@ -59,6 +64,8 @@ TRACK_COLOR_DICT = {
     "twitter": "#1C9CEA",
     "youtube": "#FFFFFF",
     "bilibili": "#FB7299",
+    "github": "#9BE9A8",
+    "gitlab": "#ACD5F2",
 }
 
 TYPES = '", "'.join(LOADER_DICT.keys())
@@ -306,6 +313,22 @@ def main():
     args_parser.add_argument(
         "--bilibili_cookie",
         dest="bilibili_cookie",
+        type=str,
+        default="",
+        help="",
+    )
+    # GitHub Contributions
+    args_parser.add_argument(
+        "--github_user_name",
+        dest="github_user_name",
+        type=str,
+        default="",
+        help="",
+    )
+    # GitLab Contributions
+    args_parser.add_argument(
+        "--gitlab_user_name",
+        dest="gitlab_user_name",
         type=str,
         default="",
         help="",

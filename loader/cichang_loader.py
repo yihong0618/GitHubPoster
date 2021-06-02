@@ -1,8 +1,6 @@
-import time
 import hashlib
 import json
 
-import pendulum
 import requests
 
 from .base_loader import BaseLoader
@@ -23,6 +21,7 @@ class CiChangLoader(BaseLoader):
         self.user_name = kwargs.get("cichang_user_name", "")
         self.password = kwargs.get("cichang_password", "")
         self.s = requests.Session()
+        self._make_years_list()
 
     @staticmethod
     def _md5_encode(string):
@@ -81,7 +80,6 @@ class CiChangLoader(BaseLoader):
                     self.number_list.append(number)
 
     def get_all_track_data(self):
-        self._make_years_list()
         self.login()
         self.make_track_dict()
         self.make_special_number()

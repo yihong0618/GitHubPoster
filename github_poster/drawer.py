@@ -123,7 +123,9 @@ class Drawer:
                     rect = dr.rect((rect_x, rect_y), dom, fill=color)
                     if self.poster.with_animation:
                         values = (
-                            ";".join(["0"] * animate_index) + ";" + ";".join(["1"] * (len(key_times) - animate_index))
+                            ";".join(["0"] * animate_index)
+                            + ";"
+                            + ";".join(["1"] * (len(key_times) - animate_index))
                         )
                         rect.add(
                             svgwrite.animate.Animate(

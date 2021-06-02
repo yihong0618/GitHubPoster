@@ -10,6 +10,7 @@ class ShanBayLoader(BaseLoader):
         self.from_year = from_year
         self.to_year = to_year
         self.user_name = kwargs.get("shanbay_user_name", "")
+        self._make_years_list()
 
     def get_api_data(self):
         month_list = self.make_month_list()
@@ -40,6 +41,5 @@ class ShanBayLoader(BaseLoader):
 
     def get_all_track_data(self):
         self.make_track_dict()
-        self._make_years_list()
         self.make_special_number()
         return self.number_by_date_dict, self.year_list

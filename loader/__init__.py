@@ -9,3 +9,5 @@ from .leetcode_loader import LeetcodeLoader
 from .twitter_loader import TwitterLoader
 from .youtube_loader import YouTubeLoader
 from .bilibili_loader import BilibiliLoader
+from .github_loader import GitHubLoader
+from .gitlab_loader import GitLabLoader
