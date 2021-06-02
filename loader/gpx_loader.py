@@ -17,6 +17,7 @@ class GPXLoader(BaseLoader):
         self.before = None
         self.after = None
         self.base_dir = kwargs.get("gpx_dir", "")
+        self._make_years_list()
 
     def _make_year_before_after(self):
         self.before = datetime.datetime(int(self.to_year) + 1, 1, 1)
@@ -68,6 +69,5 @@ class GPXLoader(BaseLoader):
 
     def get_all_track_data(self):
         self.make_track_dict()
-        self._make_years_list()
         self.make_special_number()
         return self.number_by_date_dict, self.year_list

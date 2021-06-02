@@ -1,9 +1,7 @@
 import os
 import json
-import datetime
 from collections import defaultdict
 
-import gpxpy
 import pendulum
 from .base_loader import BaseLoader
 from .config import GPX_ACTIVITY_NAME_TUPLE
@@ -18,6 +16,7 @@ class YouTubeLoader(BaseLoader):
         self.number_by_date_dict = defaultdict(int)
         self.input_dir = kwargs.get("input_dir", "")
         self.youtube_file = kwargs.get("youtube_file", "")
+        self._make_years_list()
 
     def _parse_youtube_history(self):
         base_file = os.path.join(self.input_dir, self.youtube_file)
@@ -43,6 +42,5 @@ class YouTubeLoader(BaseLoader):
 
     def get_all_track_data(self):
         self.make_track_dict()
-        self._make_years_list()
         self.make_special_number()
         return self.number_by_date_dict, self.year_list

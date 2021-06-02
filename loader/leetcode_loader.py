@@ -16,6 +16,7 @@ class LeetcodeLoader(BaseLoader):
         self.LEETCODE_URL = (
             LEETCODE_CN_SUBMISSIONS_URL if self.is_cn else LEETCODE_SUBMISSIONS_URL
         )
+        self._make_years_list()
 
     def get_api_data(self):
         data_list = []
@@ -64,6 +65,5 @@ class LeetcodeLoader(BaseLoader):
 
     def get_all_track_data(self):
         self.make_track_dict()
-        self._make_years_list()
         self.make_special_number()
         return self.number_by_date_dict, self.year_list

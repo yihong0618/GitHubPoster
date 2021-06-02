@@ -7,21 +7,7 @@ import requests
 
 from .base_loader import BaseLoader
 
-try:
-    import twint
-except ImportError:
-    subprocess.check_call(
-        [
-            sys.executable,
-            "-m",
-            "pip",
-            "install",
-            "--user",
-            "--upgrade",
-            "git+https://github.com/twintproject/twint.git@origin/master#egg=twint",
-        ]
-    )
-    import twint
+import twint
 
 
 class TwitterLoader(BaseLoader):
@@ -31,6 +17,7 @@ class TwitterLoader(BaseLoader):
         self.to_year = to_year
         self.user_name = kwargs.get("twitter_user_name", "")
         self.c = twint.Config()
+        self._make_years_list()
 
     def get_api_data(self):
         self.c.Username = self.user_name
@@ -51,7 +38,6 @@ class TwitterLoader(BaseLoader):
             self.number_list.append(v)
 
     def get_all_track_data(self):
-        self._make_years_list()
         self.make_track_dict()
         self.make_special_number()
         return self.number_by_date_dict, self.year_list

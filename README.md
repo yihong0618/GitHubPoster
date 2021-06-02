@@ -17,6 +17,8 @@ Make everything a GitHub svg poster
 - **[Twitter](#Twitter)**
 - **[YouTube](#Youtube)**
 - **[Bilibili](#Bilibili)**
+- **[GitHub](#GitHub)**
+- **[GitLab](#GitLab)**
 
 
 ## 下载
@@ -231,6 +233,32 @@ python3 cli.py --type bilibili --bilibili_cookie "${bilibili-cookie}"
 ```
 </details>
 
+### GitHub
+
+<details>
+<summary>Make your <code>GitHub </code> GitHub poster</summary>
+<br>
+
+需要找到你 GitHub Name (url 后面那个)
+
+```python
+python3 cli.py --type github --github_user_name "${github_user_name}"
+```
+</details>
+
+### GitHub
+
+<details>
+<summary>Make your <code>GitHub </code> GitHub poster</summary>
+<br>
+
+需要找到你 GitLab Name (url 后面那个)
+
+```python
+python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}"
+```
+</details>
+
 
 # 参与项目
 
@@ -243,8 +271,8 @@ python3 cli.py --type bilibili --bilibili_cookie "${bilibili-cookie}"
 # TODO
 
 - [x] twitter
-- [ ] gitlab
-- [ ] GitHub
+- [x] gitlab
+- [x] GitHub
 - [x] LeetCode
 - [x] GitHub from issues
 - [x] YouTube

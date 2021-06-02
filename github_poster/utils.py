@@ -41,6 +41,7 @@ def parse_years(s):
             to_year = y2
     return from_year, to_year
 
+
 def make_key_times(year_count):
     """
     year_count: year run date count

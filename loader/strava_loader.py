@@ -1,4 +1,3 @@
-import requests
 import datetime
 from collections import defaultdict
 
@@ -21,6 +20,7 @@ class StravaLoader(BaseLoader):
         self.client_secret = kwargs.get("strava_client_secret", "")
         self.refresh_token = kwargs.get("strava_refresh_token", "")
         self.strava_access = False
+        self._make_years_list()
 
     def _make_year_before_after(self):
         self.before = datetime.datetime(int(self.to_year) + 1, 1, 1)
@@ -58,6 +58,5 @@ class StravaLoader(BaseLoader):
 
     def get_all_track_data(self):
         self.make_track_dict()
-        self._make_years_list()
         self.make_special_number()
         return self.number_by_date_dict, self.year_list

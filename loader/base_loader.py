@@ -15,6 +15,7 @@ class BaseLoader(ABC):
         self.special_number1 = None
         self.special_number2 = None
         self.number_list = []
+        self.year_list = []
 
     def _make_years_list(self):
         self.year_list = list(range(int(self.from_year), int(self.to_year) + 1))
