@@ -1,3 +1,4 @@
+import time
 from parser import GitLabParser
 
 import requests
@@ -39,9 +40,12 @@ class GitLabLoader(BaseLoader):
                 r = requests.get(
                     GITLAB_ONE_DAY_URL.format(user_name=self.user_name, date_str=d)
                 )
+                # spider rule
+                time.sleep(0.1)
                 p.feed(r.text)
                 self.number_by_date_dict[d] = len(p.lis)
             except:
+                # what fucking things happened just pass
                 pass
 
     def make_track_dict(self):
