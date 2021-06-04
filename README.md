@@ -1,5 +1,6 @@
 # GitHubPoster
 Make everything a GitHub svg poster
+
 简体中文 | [English](https://github.com/yihong0618/GitHubPoster/blob/main/README-EN.md)
 
 ## 直接引入 `svg` 在 `README` 中的例子 
