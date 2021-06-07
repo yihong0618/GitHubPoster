@@ -62,7 +62,7 @@ jobs:
       - name: Run sync duolingo script
         if: contains(env.TYPE, 'duolingo')
         run: |
-          python cli.py --type duolingo --duolingo_user_name ${{ secrets.DUOLINGO_USER_NAME }} --me ${{ env.ME }}
+          python cli.py --type duolingo --duolingo_user_name ${{ secrets.DUOLINGO_USER_NAME }} --me ${{ env.ME }} --with-skyline
 
       - name: Run sync cichang script
         if: contains(env.TYPE, 'cichang')
@@ -82,7 +82,7 @@ jobs:
       - name: Run sync twitter script
         if: contains(env.TYPE, 'twitter')
         run: |
-          python cli.py --type twitter --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --me ${{ env.ME }} --with-animation
+          python cli.py --type twitter --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --me ${{ env.ME }} --with-animation --with-skyline
 
       - name: Run sync github script
         if: contains(env.TYPE, 'github')

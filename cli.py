@@ -23,6 +23,7 @@ from loader import (
     GitHubLoader,
     GitLabLoader,
 )
+from skyline import Skyline
 
 LOADER_DICT = {
     "duolingo": DuolingoLoader,
@@ -171,6 +172,22 @@ def main():
         default=10,
         help="animation duration (default: 10s)",
     )
+    # skyline args here
+    args_parser.add_argument(
+        "--with-skyline",
+        dest="with_skyline",
+        action="store_true",
+        help="with skyline(stl file)",
+    )
+
+    args_parser.add_argument(
+        "--skyline-year",
+        dest="skyline_year",
+        type=str,
+        default="",
+        help="the year to generate skyline",
+    )
+
     # strava
     args_parser.add_argument(
         "--strava_client_id",
@@ -371,6 +388,17 @@ def main():
     if not os.path.exists(OUT_FOLDER):
         os.mkdir(OUT_FOLDER)
     p.draw(drawer.Drawer(p), os.path.join(OUT_FOLDER, str(args.type) + ".svg"))
+
+    # generate skyline
+    if args.with_skyline:
+        if args.skyline_year:
+            year = args.skyline_year
+        else:
+            year = years[-1]
+        # filter data
+        number_by_date_dict = {k: v for k, v in tracks.items() if k[:4] == str(year)}
+        s = Skyline(os.path.join(OUT_FOLDER, f"{year}_{str(args.type)}" + ".stl"), year, args.type, number_by_date_dict)
+        s.make_skyline()
 
 
 if __name__ == "__main__":

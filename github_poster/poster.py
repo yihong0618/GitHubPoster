@@ -1,8 +1,5 @@
 """Create a poster from track data."""
-from datetime import datetime
-import pytz
 from collections import defaultdict
-import locale
 import svgwrite
 
 
