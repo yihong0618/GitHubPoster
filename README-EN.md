@@ -1,5 +1,5 @@
 # GitHubPoster
-Make everything a GitHub svg poster
+Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 
 ##  `svg` in `README` emamples 
 
@@ -35,9 +35,9 @@ pip3 install -r requirements.txt
 - By default, the number of different colors is automatically generated (special colors), you can also specify the color: --special-number1 10 -- special_number2 20
 - You can also specify the color: --special-color1 pink --special-color2 '#33C6A4'
 - Other parameters can be found in cli.py
-- you can add animation --with-animation (add GOGOGO animation), you can control the animation time --animation-time 14 (default is 10s)
+- you can add animation, --with-animation (add GOGOGO animation), you can control the animation time --animation-time 14 (default is 10s)
+- you can save skyline `stl` file --with-skyline (default skyline year is to_year)
 
-Translated with www.DeepL.com/Translator (free version)
 
 ### GPX
 

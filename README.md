@@ -1,5 +1,5 @@
 # GitHubPoster
-Make everything a GitHub svg poster
+Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 
 简体中文 | [English](https://github.com/yihong0618/GitHubPoster/blob/main/README-EN.md)
 
@@ -41,6 +41,7 @@ pip3 install -r requirements.txt
 - 也可以指定颜色： --special-color1 pink --special-color2 '#33C6A4'
 - 其它参数可以见 cli.py
 - 可以增加动画 --with-animation (加入 GOGOGO 动画), 可以控制动画时间 --animation-time 14（默认是 10s）
+- 可以增加 Skyline --with-skyline (默认生成的为 to_year)
 
 ### GPX
 
