@@ -1,4 +1,5 @@
 import math
+import os
 from sdf import rectangle, ease, box, union, measure_text, text, X, pi, Y
 from pendulum import period, parse
 import numpy as np
@@ -64,7 +65,7 @@ class Skyline:
         return box_list
 
     def _make_skyline_card(self, text_info, offset=0):
-        FONT = "/usr/share/fonts/truetype/noto/NotoMono-Regular.ttf"
+        FONT = os.path.join("font", "arial.ttf")
         TEXT = text_info
         w, h = measure_text(FONT, TEXT)
         t = (
