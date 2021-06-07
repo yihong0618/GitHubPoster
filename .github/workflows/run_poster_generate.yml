@@ -97,7 +97,7 @@ jobs:
       - name: Mv svg files to examples
         # only for me to show
         if: github.repository_owner == 'yihong0618'
-        run: mv OUT_FOLDER/*.svg examples/
+        run: mv OUT_FOLDER/*.svg examples/ && mv OUT_FOLDER/*.stl examples/
 
       - name: Push new svg posters
         uses: github-actions-x/commit@v2.6
