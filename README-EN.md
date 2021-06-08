@@ -254,10 +254,10 @@ Before submitting PR:
 - [x] Bilibili
 - [x] GitHub Actions
 - [x] Change all default color
-- [ ] Skyline
+- [x] Skyline
 - [ ] Loader doc
 - [ ] pypi
-- [ ] English README
+- [x] English README
 
 # GitHub Actions
 

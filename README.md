@@ -285,10 +285,10 @@ python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}"
 - [x] Bilibili
 - [x] GitHub Actions
 - [x] Change all default color
-- [ ] Skyline
+- [x] Skyline
 - [ ] 如何写 loader 的 doc
 - [ ] pypi
-- [ ] English README
+- [x] English README
 
 # GitHub Actions
 
