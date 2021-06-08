@@ -248,7 +248,7 @@ python3 cli.py --type bilibili --bilibili_cookie "${bilibili-cookie}"
 需要找到你 GitHub Name (url 后面那个)
 
 ```python
-python3 cli.py --type github --github_user_name "${github_user_name}"
+python3 cli.py --type github --github_user_name "${github_user_name}" --with-skyline
 ```
 </details>
 

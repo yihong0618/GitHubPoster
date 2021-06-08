@@ -217,7 +217,7 @@ python3 cli.py --type bilibili --bilibili_cookie "${bilibili-cookie}"
 Get your GitHub Name (in the url)
 
 ```python
-python3 cli.py --type github --github_user_name "${github_user_name}"
+python3 cli.py --type github --github_user_name "${github_user_name}" --with-skyline
 ```
 </details>
 
