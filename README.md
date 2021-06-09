@@ -272,7 +272,8 @@ python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}"
 - 可以提交新的 loader
 
 提交PR前:
-- 使用 black 对 Python 代码进行格式化。
+- 使用 black 对 Python 代码进行格式化。(black .)
+- 使用 isort 对 Python import 进行格式化。(isort --profile black  **/**/*.py )
 
 # TODO
 

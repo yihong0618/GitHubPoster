@@ -241,7 +241,9 @@ python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}"
 - Any new loader welcome
 
 Before submitting PR:
-- Format Python code with `Black`
+- Format Python code with `black` (black .)
+- Format Python code with `isort` (isort --profile black  **/**/*.py )
+
  
 # TODO
 
