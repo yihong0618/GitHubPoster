@@ -1,5 +1,6 @@
 """Create a poster from track data."""
 from collections import defaultdict
+
 import svgwrite
 
 

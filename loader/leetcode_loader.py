@@ -1,8 +1,10 @@
 import time
-import requests
+
 import pendulum
+import requests
+
 from .base_loader import BaseLoader
-from .config import LEETCODE_SUBMISSIONS_URL, LEETCODE_CN_SUBMISSIONS_URL
+from .config import LEETCODE_CN_SUBMISSIONS_URL, LEETCODE_SUBMISSIONS_URL
 
 
 class LeetcodeLoader(BaseLoader):

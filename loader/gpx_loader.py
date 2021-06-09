@@ -1,8 +1,9 @@
-import os
 import datetime
+import os
 from collections import defaultdict
 
 import gpxpy
+
 from .base_loader import BaseLoader
 from .config import GPX_ACTIVITY_NAME_TUPLE
 

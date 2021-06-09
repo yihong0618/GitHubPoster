@@ -1,15 +1,17 @@
 import math
 import os
-from sdf import rectangle, ease, box, union, measure_text, text, X, pi, Y
-from pendulum import period, parse
+
 import numpy as np
+from pendulum import parse, period
+from sdf import X, Y, box, ease, measure_text, pi, rectangle, text, union
+
 from .config import (
-    BOX_DIMENSION,
     BASE_HEIGHT,
     BASE_LENGTH,
-    BASE_WIDTH,
-    BASE_TOP_WIDTH,
     BASE_TOP_LENGTH,
+    BASE_TOP_WIDTH,
+    BASE_WIDTH,
+    BOX_DIMENSION,
 )
 
 

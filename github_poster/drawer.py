@@ -1,5 +1,6 @@
 import calendar
 import datetime
+
 import svgwrite
 
 from .utils import interpolate_color, make_key_times

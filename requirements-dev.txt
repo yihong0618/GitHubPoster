@@ -7,3 +7,7 @@ colour
 git+https://github.com/twintproject/twint.git@origin/master#egg=twint
 # for skyline
 git+https://github.com/fogleman/sdf.git
+
+# Ci
+black
+isort
