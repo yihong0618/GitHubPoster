@@ -33,9 +33,6 @@ class Skyline:
         }
 
 
-
-
-
     def _make_box(self, box_height):
         b = box((BOX_DIMENSION, BOX_DIMENSION, box_height))
         # change to the base location
