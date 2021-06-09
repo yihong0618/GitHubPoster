@@ -3,12 +3,7 @@ from datetime import datetime
 import requests
 
 from .base_loader import BaseLoader
-from .config import (
-    NS_CLIENT_ID,
-    NS_GRANT_TYPE,
-    NS_TOKEN_URL,
-    NS_CLAENDAR_URL,
-)
+from .config import NS_CLAENDAR_URL, NS_CLIENT_ID, NS_GRANT_TYPE, NS_TOKEN_URL
 
 
 class NSLoader(BaseLoader):

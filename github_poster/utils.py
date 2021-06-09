@@ -1,6 +1,8 @@
 import re
+from itertools import count as itercount
+from itertools import takewhile
+
 import colour
-from itertools import takewhile, count as itercount
 
 
 def interpolate_color(color1: str, color2: str, ratio: float) -> str:

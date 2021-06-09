@@ -6,22 +6,22 @@ import argparse
 import os
 from datetime import datetime
 
-from github_poster import poster, drawer
+from github_poster import drawer, poster
 from github_poster.utils import parse_years
 from loader import (
-    DuolingoLoader,
-    ShanBayLoader,
-    StravaLoader,
-    CiChangLoader,
-    NSLoader,
-    GPXLoader,
-    GitHubIssuesLoader,
-    LeetcodeLoader,
-    TwitterLoader,
-    YouTubeLoader,
     BilibiliLoader,
+    CiChangLoader,
+    DuolingoLoader,
+    GitHubIssuesLoader,
     GitHubLoader,
     GitLabLoader,
+    GPXLoader,
+    LeetcodeLoader,
+    NSLoader,
+    ShanBayLoader,
+    StravaLoader,
+    TwitterLoader,
+    YouTubeLoader,
 )
 from skyline import Skyline
 
@@ -397,7 +397,12 @@ def main():
             year = years[-1]
         # filter data
         number_by_date_dict = {k: v for k, v in tracks.items() if k[:4] == str(year)}
-        s = Skyline(os.path.join(OUT_FOLDER, f"{year}_{str(args.type)}" + ".stl"), year, args.type, number_by_date_dict)
+        s = Skyline(
+            os.path.join(OUT_FOLDER, f"{year}_{str(args.type)}" + ".stl"),
+            year,
+            args.type,
+            number_by_date_dict,
+        )
         s.make_skyline()
 
 

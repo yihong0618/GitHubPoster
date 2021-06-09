@@ -3,6 +3,7 @@ from parser import GitLabParser
 
 import requests
 from pendulum import parse, period
+
 from .base_loader import BaseLoader
 from .config import GITLAB_LATEST_URL, GITLAB_ONE_DAY_URL
 
