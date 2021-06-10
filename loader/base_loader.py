@@ -1,4 +1,4 @@
-from abc import ABC, abstractclassmethod
+from abc import ABC, abstractmethod
 from collections import defaultdict
 from datetime import datetime
 
@@ -54,10 +54,10 @@ class BaseLoader(ABC):
         tc_offset = datetime.now(pytz.timezone(self.time_zone)).utcoffset()
         return time + tc_offset
 
-    @abstractclassmethod
+    @abstractmethod
     def make_track_dict(self):
         pass
 
-    @abstractclassmethod
+    @abstractmethod
     def get_all_track_data(self):
         pass
