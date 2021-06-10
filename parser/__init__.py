@@ -1,2 +1,2 @@
-from .github_paser import GitHubParser
-from .gitlab_paser import GitLabParser
+from .github_parser import GitHubParser
+from .gitlab_parser import GitLabParser
