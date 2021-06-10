@@ -275,7 +275,7 @@ python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}"
 在亚马逊网站上需要找到你 [Amazon-CN](https://www.amazon.cn/) (XHR) Cookie
 
 ```python
-python3 cli.py --type kindle ----kindle_cookie ${kindle_cookie} --is-cn --year 2018-2021
+python3 cli.py --type kindle --kindle_cookie ${kindle_cookie} --is-cn --year 2018-2021
 ```
 
 </details>

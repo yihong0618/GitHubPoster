@@ -244,7 +244,7 @@ python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}"
 Find your [Amazon](https://www.amazon.com/) Cookie
 
 ```python
-python3 cli.py --type kindle ----kindle_cookie ${kindle_cookie} --year 2018-2021
+python3 cli.py --type kindle --kindle_cookie ${kindle_cookie} --year 2018-2021
 ```
 
 </details>
