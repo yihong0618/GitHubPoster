@@ -67,6 +67,8 @@ class Skyline:
         return box_list
 
     def _make_skyline_card(self, text_info, offset=0):
+        # TODO change the magic numbers
+        # support change font
         FONT = os.path.join("font", "arial.ttf")
         TEXT = text_info
         w, h = measure_text(FONT, TEXT)
