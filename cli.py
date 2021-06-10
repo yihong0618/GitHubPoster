@@ -22,6 +22,7 @@ from loader import (
     StravaLoader,
     TwitterLoader,
     YouTubeLoader,
+    KindleLoader,
 )
 from skyline import Skyline
 
@@ -39,6 +40,7 @@ LOADER_DICT = {
     "bilibili": BilibiliLoader,
     "github": GitHubLoader,
     "gitlab": GitLabLoader,
+    "kindle": KindleLoader,
 }
 
 # TODO refactor
@@ -56,6 +58,7 @@ UNIT_DICT = {
     "bilibili": "videos",
     "github": "cons",
     "gitlab": "cons",
+    "kindle": "days",
 }
 
 ## default color for different type
@@ -67,6 +70,7 @@ TRACK_COLOR_DICT = {
     "bilibili": "#FB7299",
     "github": "#9BE9A8",
     "gitlab": "#ACD5F2",
+    "kindle": "#2A4A7B",
 }
 
 TYPES = '", "'.join(LOADER_DICT.keys())
@@ -296,12 +300,7 @@ def main():
         default="",
         help="",
     )
-    args_parser.add_argument(
-        "--is-cn",
-        dest="is_cn",
-        action="store_true",
-        help="if leetcode accout is com",
-    )
+
     # twitter
     args_parser.add_argument(
         "--twitter_user_name",
@@ -349,6 +348,22 @@ def main():
         type=str,
         default="",
         help="",
+    )
+    # Kindle
+    args_parser.add_argument(
+        "--kindle_cookie",
+        dest="kindle_cookie",
+        type=str,
+        default="",
+        help="",
+    )
+
+    # is CN (leetcode and kindele for now--20210610)
+    args_parser.add_argument(
+        "--is-cn",
+        dest="is_cn",
+        action="store_true",
+        help="if accout is CN",
     )
 
     args = args_parser.parse_args()
