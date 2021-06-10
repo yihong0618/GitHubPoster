@@ -54,12 +54,10 @@ class BaseLoader(ABC):
         tc_offset = datetime.now(pytz.timezone(self.time_zone)).utcoffset()
         return time + tc_offset
 
-    @classmethod
     @abstractmethod
     def make_track_dict(self):
         pass
 
-    @classmethod
     @abstractmethod
     def get_all_track_data(self):
         pass
