@@ -41,7 +41,7 @@ class BaseLoader(ABC):
         number_list_set = sorted(list(set(self.number_list)))
         number_list_set_len = len(number_list_set)
         if number_list_set_len < 3:
-            self.special_number1 = self.special_number2 = 1
+            self.special_number1 = self.special_number2 = float("inf")
             return
         elif len(self.number_list) < 10:
             self.special_number1 = number_list_set[-1]

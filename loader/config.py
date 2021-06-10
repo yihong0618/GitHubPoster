@@ -47,3 +47,10 @@ GITLAB_LATEST_URL = "https://gitlab.com/users/{user_name}/calendar.json"
 GITLAB_ONE_DAY_URL = (
     "https://gitlab.com/users/{user_name}/calendar_activities?date={date_str}"
 )
+
+# Kindle
+KINDLE_HISTORY_URL = "https://www.amazon.com/kindle/reading/insights"
+KINDLE_CN_HISTORY_URL = "https://www.amazon.cn/kindle/reading/insights"
+KINDLE_HEADER = {
+    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/1AE148",
+}

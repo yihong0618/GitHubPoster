@@ -17,6 +17,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Bilibili](#Bilibili)**
 - **[GitHub](#GitHub)**
 - **[GitLab](#GitLab)**
+- **[Kindle](#Kindle)**
 
 ## Download
 ```
@@ -234,6 +235,20 @@ python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}"
 ```
 </details>
 
+### Kindle
+
+<details>
+<summary>Make your <code>Kindle </code> GitHub poster</summary>
+<br>
+
+Find your [Amazon](https://www.amazon.com/) Cookie
+
+```python
+python3 cli.py --type kindle ----kindle_cookie ${kindle_cookie} --year 2018-2021
+```
+
+</details>
+
 
 # Contribution
 
@@ -243,7 +258,6 @@ python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}"
 Before submitting PR:
 - Format Python code with `black` (black .)
 - Format Python code with `isort` (isort --profile black  **/**/*.py )
-
  
 # TODO
 
