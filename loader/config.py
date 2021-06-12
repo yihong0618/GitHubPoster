@@ -43,9 +43,9 @@ GITHUB_CONTRIBUCTIONS_URL = (
 )
 
 # GitLab
-GITLAB_LATEST_URL = "https://gitlab.com/users/{user_name}/calendar.json"
+GITLAB_LATEST_URL = "{gitlab_base_url}/users/{user_name}/calendar.json"
 GITLAB_ONE_DAY_URL = (
-    "https://gitlab.com/users/{user_name}/calendar_activities?date={date_str}"
+    "{gitlab_base_url}/users/{user_name}/calendar_activities?date={date_str}"
 )
 
 # Kindle
