@@ -233,6 +233,13 @@ Get your GitLab Name (in the url)
 ```python
 python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}"
 ```
+
+For self-managed GitLab, specify the base url of your instance. You should use _gitlab_session from Cookies if sign in required.
+s
+```python
+python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}" --gitlab_base_url "https://your-gitlab.com" --gitlab_session "${gitlab_session}"
+```
+
 </details>
 
 ### Kindle
