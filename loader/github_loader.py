@@ -1,6 +1,6 @@
-from parser import GitHubParser
-
 import requests
+
+from html_parser import GitHubParser
 
 from .base_loader import BaseLoader
 from .config import GITHUB_CONTRIBUCTIONS_URL

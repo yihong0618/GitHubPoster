@@ -256,8 +256,8 @@ python3 cli.py --type kindle --kindle_cookie ${kindle_cookie} --year 2018-2021
 - Any new loader welcome
 
 Before submitting PR:
-- Format Python code with `black` (black .)
-- Format Python code with `isort` (isort --profile black  **/**/*.py )
+- Format Python code with `black` (`black .`)
+- Format Python code with `isort` (`isort --profile black  **/**/*.py`)
  
 # TODO
 

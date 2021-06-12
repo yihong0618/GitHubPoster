@@ -1,8 +1,8 @@
 from http.cookies import SimpleCookie
-from parser import parse_kindle_text_to_list
 
-import pendulum
 import requests
+
+from html_parser import parse_kindle_text_to_list
 
 from .base_loader import BaseLoader
 from .config import KINDLE_CN_HISTORY_URL, KINDLE_HEADER, KINDLE_HISTORY_URL
