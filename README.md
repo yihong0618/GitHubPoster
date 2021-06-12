@@ -287,8 +287,8 @@ python3 cli.py --type kindle --kindle_cookie ${kindle_cookie} --is-cn --year 201
 - 可以提交新的 loader
 
 提交PR前:
-- 使用 black 对 Python 代码进行格式化。(black .)
-- 使用 isort 对 Python import 进行格式化。(isort --profile black  **/**/*.py )
+- 使用 black 对 Python 代码进行格式化。(`black .`)
+- 使用 isort 对 Python import 进行格式化。(`isort --profile black  **/**/*.py` )
 
 # TODO
 
