@@ -349,6 +349,20 @@ def main():
         default="",
         help="",
     )
+    args_parser.add_argument(
+        "--gitlab_base_url",
+        dest="gitlab_base_url",
+        type=str,
+        default="https://gitlab.com",
+        help="specify the base url of your self-managed gitlab",
+    )
+    args_parser.add_argument(
+        "--gitlab_session",
+        dest="gitlab_session",
+        type=str,
+        default="",
+        help="use _gitlab_session from Cookies if your gitlab instance needs to sign in",
+    )
     # Kindle
     args_parser.add_argument(
         "--kindle_cookie",

@@ -264,6 +264,13 @@ python3 cli.py --type github --github_user_name "${github_user_name}" --with-sky
 ```python
 python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}"
 ```
+
+如果是自己搭建的GitLab，可以指定GitLab的URL，以及登录GitLab后得到的_gitlab_session这个cookie(如果需要登录的话)
+
+```python
+python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}" --gitlab_base_url "https://your-gitlab.com" --gitlab_session "${gitlab_session}"
+```
+
 </details>
 
 ### Kindle
