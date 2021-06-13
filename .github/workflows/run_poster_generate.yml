@@ -104,7 +104,7 @@ jobs:
       - name: Run sync bilibili script
         if: contains(env.TYPE, 'bilibili')
         run: |
-          python3 cli.py --type bilibili --bilibili_cookie "${{ secrets.BILIBILI_COOKIE }}"
+          python3 cli.py --type bilibili --bilibili_cookie "${{ secrets.BILIBILI_COOKIE }}" --me ${{ env.ME }}
 
       - name: Mv svg files to examples
         # only for me to show
