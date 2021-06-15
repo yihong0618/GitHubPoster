@@ -61,7 +61,7 @@ UNIT_DICT = {
     "github": "cons",
     "gitlab": "cons",
     "kindle": "days",
-    "wakatime": "cons",
+    "wakatime": "mins",
 }
 
 ## default color for different type
@@ -390,7 +390,7 @@ def main():
         dest="wakatime_key",
         type=str,
         default="",
-        help="",
+        help="your wakatime api key here, more info: https://wakatime.com/settings/api-key",
     )
 
     args = args_parser.parse_args()
