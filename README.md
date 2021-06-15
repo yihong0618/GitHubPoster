@@ -339,6 +339,7 @@ python cli.py --type wakatime --wakatime_key="your_wakatime_api_key" --year 2019
 
 # 特别感谢
 - @[flopp](https://github.com/flopp) 特别棒的项目 [GpxTrackPoster](https://github.com/flopp/GpxTrackPoster)
+- @[JasonkayZK](https://github.com/JasonkayZK) Wakatime loader
 
 # 赞赏
 谢谢就够了

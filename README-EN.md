@@ -279,7 +279,7 @@ python cli.py --type wakatime --wakatime_key="your_wakatime_api_key" --year 2019
 
 Before submitting PR:
 - Format Python code with `black` (`black .`)
-- Format Python code with `isort` (`isort --profile black  **/**/*.py`)
+- Format Python code with `isort` (`isort --profile black  **/*.py`)
  
 # TODO
 
@@ -308,6 +308,7 @@ Before submitting PR:
 
 # Special thanks
 - @[flopp](https://github.com/flopp) great repo [GpxTrackPoster](https://github.com/flopp/GpxTrackPoster)
+- @[JasonkayZK](https://github.com/JasonkayZK) Wakatime loader
 
 # Support
 Thanks is enough.
