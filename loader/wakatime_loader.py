@@ -40,7 +40,7 @@ class WakaTimeLoader(BaseLoader):
             if d:
                 date = d["range"]["date"]
                 self.number_by_date_dict[date] += (
-                    d["grand_total"]["total_seconds"] / 60.0
+                    int(d["grand_total"]["total_seconds"] / 60.0)
                 )
         for _, v in self.number_by_date_dict.items():
             self.number_list.append(v)
