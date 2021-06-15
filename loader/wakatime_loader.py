@@ -23,7 +23,8 @@ class WakaTimeLoader(BaseLoader):
                 WAKATIME_SUMMARY_URL.format(
                     wakatime_key=self.wakatime_key,
                     from_year="{}-01-01".format(year),
-                    to_year="{}-12-31".format(year))
+                    to_year="{}-12-31".format(year),
+                )
             )
             if not r.ok:
                 print(r.text)
@@ -38,8 +39,9 @@ class WakaTimeLoader(BaseLoader):
         for d in data_list:
             if d:
                 date = d["range"]["date"]
-                self.number_by_date_dict[date] += d["grand_total"]["total_seconds"]
-                # self.number_by_date_dict[date] += 1
+                self.number_by_date_dict[date] += (
+                    d["grand_total"]["total_seconds"] / 60.0
+                )
         for _, v in self.number_by_date_dict.items():
             self.number_list.append(v)
 

@@ -17,7 +17,7 @@ class GitLabLoader(BaseLoader):
         self.to_year = to_year
         self.user_name = kwargs.get("gitlab_user_name", "")
         self.gitlab_base_url = kwargs.get("gitlab_base_url") or "https://gitlab.com"
-        self.gitlab_session = kwargs.get('gitlab_session')
+        self.gitlab_session = kwargs.get("gitlab_session")
         self._make_years_list()
         self.left_dates = []
 
@@ -27,14 +27,18 @@ class GitLabLoader(BaseLoader):
 
     def _set_cookies(self):
         if self.gitlab_session:
-            return {'_gitlab_session': self.gitlab_session}
+            return {"_gitlab_session": self.gitlab_session}
 
         return {}
 
     def make_latest_date_dict(self):
         try:
-            r = requests.get(GITLAB_LATEST_URL.format(gitlab_base_url=self.gitlab_base_url, user_name=self.user_name),
-                             cookies=self._set_cookies())
+            r = requests.get(
+                GITLAB_LATEST_URL.format(
+                    gitlab_base_url=self.gitlab_base_url, user_name=self.user_name
+                ),
+                cookies=self._set_cookies(),
+            )
             date_dict = r.json()
             min_date = min(date_dict.keys())
             self.number_by_date_dict = date_dict
@@ -49,8 +53,12 @@ class GitLabLoader(BaseLoader):
         for d in self.left_dates:
             try:
                 r = requests.get(
-                    GITLAB_ONE_DAY_URL.format(gitlab_base_url=self.gitlab_base_url,
-                                              user_name=self.user_name, date_str=d), cookies=self._set_cookies()
+                    GITLAB_ONE_DAY_URL.format(
+                        gitlab_base_url=self.gitlab_base_url,
+                        user_name=self.user_name,
+                        date_str=d,
+                    ),
+                    cookies=self._set_cookies(),
                 )
                 # spider rule
                 time.sleep(0.1)
