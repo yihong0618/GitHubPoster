@@ -16,14 +16,14 @@ from loader import (
     GitHubLoader,
     GitLabLoader,
     GPXLoader,
+    KindleLoader,
     LeetcodeLoader,
     NSLoader,
     ShanBayLoader,
     StravaLoader,
     TwitterLoader,
-    YouTubeLoader,
-    KindleLoader,
     WakaTimeLoader,
+    YouTubeLoader,
 )
 from skyline import Skyline
 
