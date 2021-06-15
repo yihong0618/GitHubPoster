@@ -16,13 +16,14 @@ from loader import (
     GitHubLoader,
     GitLabLoader,
     GPXLoader,
+    KindleLoader,
     LeetcodeLoader,
     NSLoader,
     ShanBayLoader,
     StravaLoader,
     TwitterLoader,
+    WakaTimeLoader,
     YouTubeLoader,
-    KindleLoader,
 )
 from skyline import Skyline
 
@@ -41,6 +42,7 @@ LOADER_DICT = {
     "github": GitHubLoader,
     "gitlab": GitLabLoader,
     "kindle": KindleLoader,
+    "wakatime": WakaTimeLoader,
 }
 
 # TODO refactor
@@ -59,6 +61,7 @@ UNIT_DICT = {
     "github": "cons",
     "gitlab": "cons",
     "kindle": "days",
+    "wakatime": "mins",
 }
 
 ## default color for different type
@@ -71,6 +74,7 @@ TRACK_COLOR_DICT = {
     "github": "#9BE9A8",
     "gitlab": "#ACD5F2",
     "kindle": "#2A4A7B",
+    "wakatime": "#9BE9A8",
 }
 
 TYPES = '", "'.join(LOADER_DICT.keys())
@@ -378,6 +382,15 @@ def main():
         dest="is_cn",
         action="store_true",
         help="if accout is CN",
+    )
+
+    # WakaTime
+    args_parser.add_argument(
+        "--wakatime_key",
+        dest="wakatime_key",
+        type=str,
+        default="",
+        help="your wakatime api key here, more info: https://wakatime.com/settings/api-key",
     )
 
     args = args_parser.parse_args()
