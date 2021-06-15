@@ -54,3 +54,6 @@ KINDLE_CN_HISTORY_URL = "https://www.amazon.cn/kindle/reading/insights"
 KINDLE_HEADER = {
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/1AE148",
 }
+
+# WakaTime
+WAKATIME_SUMMARY_URL = "https://wakatime.com/api/v1/users/current/summaries?api_key={wakatime_key}&start={from_year}&end={to_year}"

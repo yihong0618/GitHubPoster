@@ -6,7 +6,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 ![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/twitter.svg)
 ![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/shanbay.svg)
 
-## 支持
+## Support
 - **[Strava](#strava)**
 - **[Nintendo Switch](#ns)**
 - **[GPX](#GPX)**
@@ -18,6 +18,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[GitHub](#GitHub)**
 - **[GitLab](#GitLab)**
 - **[Kindle](#Kindle)**
+- **[WakaTime](#WakaTime)**
 
 ## Download
 ```
@@ -252,6 +253,20 @@ Find your [Amazon](https://www.amazon.com/) Cookie
 
 ```python
 python3 cli.py --type kindle --kindle_cookie ${kindle_cookie} --year 2018-2021
+```
+
+</details>
+
+### WakaTime
+
+<details>
+<summary>Make your <code>WakaTime </code> poster</summary>
+<br>
+
+Find your own WakaTime API Key at: [WakaTime API Key](https://wakatime.com/settings/api-key)
+
+```python
+python cli.py --type wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
 ```
 
 </details>
