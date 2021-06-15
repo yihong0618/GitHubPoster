@@ -25,6 +25,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[GitHub](#GitHub)**
 - **[GitLab](#GitLab)**
 - **[Kindle](#Kindle)**
+- **[WakaTime](#WakaTime)**
 
 
 ## 下载
@@ -283,6 +284,20 @@ python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}" --gitlab_b
 
 ```python
 python3 cli.py --type kindle --kindle_cookie ${kindle_cookie} --is-cn --year 2018-2021
+```
+
+</details>
+
+### WakaTime
+
+<details>
+<summary>Make your <code>WakaTime </code> poster</summary>
+<br>
+
+在WakaTime官网获取你的 WakaTime API Key：[WakaTime API Key](https://wakatime.com/settings/api-key)
+
+```python
+python cli.py --type wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
 ```
 
 </details>

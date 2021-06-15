@@ -11,4 +11,5 @@ from .ns_loader import NSLoader
 from .shanbay_loader import ShanBayLoader
 from .strava_loader import StravaLoader
 from .twitter_loader import TwitterLoader
+from .wakatime_loader import WakaTimeLoader
 from .youtube_loader import YouTubeLoader
