@@ -287,6 +287,20 @@ python3 cli.py --type kindle --kindle_cookie ${kindle_cookie} --is-cn --year 201
 
 </details>
 
+### WakaTime
+
+<details>
+<summary>Make your <code>WakaTime </code> poster</summary>
+<br>
+
+在WakaTime官网获取你的 WakaTime API Key：[WakaTime API Key](https://wakatime.com/settings/api-key)
+
+```python
+python cli.py --type wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
+```
+
+</details>
+
 
 # 参与项目
 
