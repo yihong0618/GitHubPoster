@@ -25,6 +25,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[GitHub](#GitHub)**
 - **[GitLab](#GitLab)**
 - **[Kindle](#Kindle)**
+- **[WakaTime](#WakaTime)**
 
 
 ## 下载
