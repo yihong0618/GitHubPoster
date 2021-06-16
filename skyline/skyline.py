@@ -90,6 +90,9 @@ class Skyline:
         return base
 
     def _normalize_data(self):
+        """
+        normalize the values from 1 to 20
+        """
         if self.number_by_date_dict:
             values_list = list(self.number_by_date_dict.values())
             values_list = (values_list - np.min(values_list)) / (
