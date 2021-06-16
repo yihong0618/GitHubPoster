@@ -324,8 +324,10 @@ python cli.py --type wakatime --wakatime_key="your_wakatime_api_key" --year 2019
 - [x] GitHub Actions
 - [x] Change all default color
 - [x] Skyline
+- [ ] Dota2？
 - [ ] 如何写 loader 的 doc
 - [ ] pypi
+- [ ] test 
 - [x] English README
 
 # GitHub Actions
