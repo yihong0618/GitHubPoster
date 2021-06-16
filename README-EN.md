@@ -293,8 +293,10 @@ Before submitting PR:
 - [x] GitHub Actions
 - [x] Change all default color
 - [x] Skyline
+- [ ] Dota2?
 - [ ] Loader doc
 - [ ] pypi
+- [ ] test
 - [x] English README
 
 # GitHub Actions
