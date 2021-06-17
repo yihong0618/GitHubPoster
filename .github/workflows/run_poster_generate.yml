@@ -12,7 +12,7 @@ env:
   # please change to your own config.
   # this actions generate only this year
   # If you fork this please change the type to yours below
-  TYPE: 'ns, duolingo, issue, twitter, github, pass' # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili, Please change the 'pass' it to your own separated by commas
+  TYPE: 'ns, duolingo, issue, twitter, github, pass' # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime, Please change the 'pass' it to your own separated by commas
   ME: Yihong0618
   GITHUB_NAME: yihong0618
   GITHUB_EMAIL: zouzou0208@gmail.com
@@ -105,6 +105,11 @@ jobs:
         if: contains(env.TYPE, 'bilibili')
         run: |
           python3 cli.py --type bilibili --bilibili_cookie "${{ secrets.BILIBILI_COOKIE }}" --me ${{ env.ME }}
+
+      - name: Run sync wakatime script
+        if: contains(env.TYPE, 'wakatime')
+        run: |
+          python3 cli.py --type wakatime --wakatime_key "${{ secrets.WAKATIME_KEY }}" --me ${{ env.ME }}
 
       - name: Mv svg files to examples
         # only for me to show
