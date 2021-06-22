@@ -8,7 +8,7 @@ from .config import LEETCODE_CN_SUBMISSIONS_URL, LEETCODE_SUBMISSIONS_URL
 
 
 class LeetcodeLoader(BaseLoader):
-    def __init__(self, from_year, to_year, **kwargs) -> None:
+    def __init__(self, from_year, to_year, **kwargs):
         super().__init__()
         assert to_year >= from_year
         self.from_year = from_year

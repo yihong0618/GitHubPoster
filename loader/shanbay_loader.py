@@ -5,7 +5,7 @@ from .config import SHANBAY_CALENDAR_API
 
 
 class ShanBayLoader(BaseLoader):
-    def __init__(self, from_year, to_year, **kwargs) -> None:
+    def __init__(self, from_year, to_year, **kwargs):
         super().__init__()
         assert to_year >= from_year
         self.from_year = from_year

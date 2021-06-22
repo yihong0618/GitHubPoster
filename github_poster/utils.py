@@ -5,7 +5,7 @@ from itertools import takewhile
 import colour
 
 
-def interpolate_color(color1: str, color2: str, ratio: float) -> str:
+def interpolate_color(color1, color2, ratio):
     if ratio < 0:
         ratio = 0
     elif ratio > 1:
@@ -41,6 +41,9 @@ def parse_years(s):
         if y1 <= y2:
             from_year = y1
             to_year = y2
+        else:
+            from_year = y2
+            to_year = y1
     return from_year, to_year
 
 
