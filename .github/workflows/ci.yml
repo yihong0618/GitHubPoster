@@ -34,3 +34,5 @@ jobs:
       run: black . --check
     - name: Run isort
       run: isort --profile black  **/*.py -c -v
+    - name: Run test
+      run: pytest tests/

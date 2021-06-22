@@ -11,3 +11,4 @@ git+https://github.com/fogleman/sdf.git
 # Ci
 black
 isort
+pytest

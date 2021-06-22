@@ -10,30 +10,30 @@ class ValueRange:
         self._upper = None
 
     @classmethod
-    def from_pair(cls, value1: float, value2: float) -> "ValueRange":
+    def from_pair(cls, value1, value2):
         r = cls()
         r.extend(value1)
         r.extend(value2)
         return r
 
-    def is_valid(self) -> bool:
+    def is_valid(self):
         return self._lower is not None
 
-    def lower(self) -> float:
+    def lower(self):
         return self._lower
 
-    def upper(self) -> float:
+    def upper(self):
         return self._upper
 
-    def diameter(self) -> float:
+    def diameter(self):
         if self.is_valid():
             return self.upper() - self.lower()
         return 0
 
-    def contains(self, value: float) -> bool:
+    def contains(self, value):
         return self.is_valid() and (self.lower() <= value <= self.upper())
 
-    def extend(self, value: float):
+    def extend(self, value):
         if not self.is_valid():
             self._lower = value
             self._upper = value
