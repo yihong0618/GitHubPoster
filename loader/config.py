@@ -57,3 +57,6 @@ KINDLE_HEADER = {
 
 # WakaTime
 WAKATIME_SUMMARY_URL = "https://wakatime.com/api/v1/users/current/summaries?api_key={wakatime_key}&start={from_year}&end={to_year}"
+
+# Dota2
+DOTA2_CALENDAR_API = "https://api.opendota.com/api/players/{dota2_id}/matches"
