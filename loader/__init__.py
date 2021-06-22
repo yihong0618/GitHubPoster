@@ -1,5 +1,6 @@
 from .bilibili_loader import BilibiliLoader
 from .cichang_loader import CiChangLoader
+from .dota2_loader import Dota2Loader
 from .duolingo_loader import DuolingoLoader
 from .from_github_issue_loader import GitHubIssuesLoader
 from .github_loader import GitHubLoader

@@ -11,6 +11,7 @@ from github_poster.utils import parse_years
 from loader import (
     BilibiliLoader,
     CiChangLoader,
+    Dota2Loader,
     DuolingoLoader,
     GitHubIssuesLoader,
     GitHubLoader,
@@ -43,6 +44,7 @@ LOADER_DICT = {
     "gitlab": GitLabLoader,
     "kindle": KindleLoader,
     "wakatime": WakaTimeLoader,
+    "dota2": Dota2Loader,
 }
 
 # TODO refactor
@@ -62,6 +64,7 @@ UNIT_DICT = {
     "gitlab": "cons",
     "kindle": "days",
     "wakatime": "mins",
+    "dota2": "matches",
 }
 
 ## default color for different type
@@ -75,6 +78,7 @@ TRACK_COLOR_DICT = {
     "gitlab": "#ACD5F2",
     "kindle": "#2A4A7B",
     "wakatime": "#9BE9A8",
+    "dota2": "#2A4A7B",
 }
 
 TYPES = '", "'.join(LOADER_DICT.keys())
@@ -391,6 +395,14 @@ def main():
         type=str,
         default="",
         help="your wakatime api key here, more info: https://wakatime.com/settings/api-key",
+    )
+
+    args_parser.add_argument(
+        "--dota_id",
+        dest="dota2_id",
+        type=str,
+        default="",
+        help="Check your dota2-id in-game or on the website(steamid32): https://steamid.xyz/",
     )
 
     args = args_parser.parse_args()
