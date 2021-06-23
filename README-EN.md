@@ -19,6 +19,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[GitLab](#GitLab)**
 - **[Kindle](#Kindle)**
 - **[WakaTime](#WakaTime)**
+- **[Dota2](#Dota2)**
 
 ## Download
 ```
@@ -33,10 +34,10 @@ pip3 install -r requirements.txt
 
 - Different types are used as specified below
 - You can specify a year such as --year 2021, (default) or a year range 2012-2021
-- The generated svg is in OUT_FOLDER, named with type (for now)
+- The generated svg is in `OUT_FOLDER`, named with type (for now)
 - By default, the number of different colors is automatically generated (special colors), you can also specify the color: --special-number1 10 -- special_number2 20
 - You can also specify the color: --special-color1 pink --special-color2 '#33C6A4'
-- Other parameters can be found in cli.py
+- Other parameters can be found in [cli.py](https://github.com/yihong0618/GitHubPoster/blob/main/cli.py)
 - you can add animation, --with-animation (add GOGOGO animation), you can control the animation time --animation-time 14 (default is 10s)
 - you can save skyline `stl` file --with-skyline (default skyline year is to_year)
 
@@ -56,7 +57,7 @@ python3 cli.py --type gpx --gpx-dir ~/blog/GPX_OUT/ --year 2013-2021
 ### Strava
 
 <details>
-<summary>Make your strava GitHub poster</summary>
+<summary>Make your <code>Strava</code> GitHub poster</summary>
 
 1. Sign in/Sign up [Strava](https://www.strava.com/) account
 2. Open after successful Signin [Strava Developers](http://developers.strava.com) -> [Create & Manage Your App](https://strava.com/settings/api)
@@ -72,7 +73,7 @@ Created successfully：
 
 ![](https://raw.githubusercontent.com/shaonianche/gallery/master/running_page/created_successfully_1.png)
 
-4. Use the link below to request all permissions: Replace `${your_id}` in the link with `My API Application` Client ID 
+4. Use the link below to request all permissions: Replace `${your_id}` in the link with `My API Application` `Client ID` 
 ```
 https://www.strava.com/oauth/authorize?client_id=${your_id}&response_type=code&redirect_uri=http://localhost/exchange_token&approval_prompt=force&scope=read_all,profile:read_all,activity:read_all,profile:write,activity:write
 ```
@@ -121,7 +122,7 @@ python3 cli.py --type strava --strava_client_id  ${client_id} --strava_client_se
 <summary>Make your <code>Nintendo Switch</code> GitHub poster</summary>
 <br>
 
-From APP(Nintendo Switch Parent Controls)` using mitmproxy to get the session_token and devide _id
+From APP`(Nintendo Switch Parent Controls)` using `mitmproxy` to get the `session_token` and `devide _id`
 
 ```python
 python3 cli.py --type ns --ns_session_token ${session_token} --ns_device_id ${device_id} --year 2020-2021
@@ -132,10 +133,10 @@ python3 cli.py --type ns --ns_session_token ${session_token} --ns_device_id ${de
 ### Duolingo
 
 <details>
-<summary>Make your <code> Duolingo</code> GitHub poster</summary>
+<summary>Make your <code>Duolingo</code> GitHub poster</summary>
 <br>
 
-Find your duolingo id, F12 from `XHR`
+Find your `duolingo id`, F12 from `XHR`
 ![image](https://user-images.githubusercontent.com/15976103/116336188-baad7000-a80a-11eb-80d7-033d4bf0f260.png)
 
 
@@ -160,10 +161,10 @@ python3 cli.py --type issue --github_issue_number ${issue_number} --github_repo_
 ### LeetCode
 
 <details>
-<summary>Make your <code>LeetCode </code> GitHub poster</summary>
+<summary>Make your <code>LeetCode</code> GitHub poster</summary>
 <br>
 
-Find your LeetCode Cookie
+Find your `LeetCode Cookie`
 
 ```python
 python3 cli.py --type leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
@@ -174,10 +175,10 @@ python3 cli.py --type leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-
 ### Twitter
 
 <details>
-<summary>Make your <code>Twitter </code> GitHub poster</summary>
+<summary>Make your <code>Twitter</code> GitHub poster</summary>
 <br>
 
-Find your Twitter user_id (in the url)
+Find your `Twitter user_id` (in the url)
 
 ```python
 python3 cli.py --type twitter --twitter_user_name ${twitter_user_name} --year 2018-2021 --track-color '#1C9CEA'
@@ -187,10 +188,10 @@ python3 cli.py --type twitter --twitter_user_name ${twitter_user_name} --year 20
 ### Youtube
 
 <details>
-<summary>Make your <code>YouTube </code> GitHub poster</summary>
+<summary>Make your <code>YouTube</code> GitHub poster</summary>
 <br>
 
-Use Google [History Takeout](https://takeout.google.com/settings/takeout) to download YouTube history data，choose `json` format，mv `watch-history.json` to `IN-FOLDER` then run the code
+Use Google [History Takeout](https://takeout.google.com/settings/takeout) to download `YouTube` history data，choose `json` format，mv `watch-history.json` to `IN-FOLDER` then run the code
 
 ```python
 python3 cli.py --type youtube --year 2015-2021
@@ -200,10 +201,10 @@ python3 cli.py --type youtube --year 2015-2021
 ### Bilibili
 
 <details>
-<summary>Make your <code>Bilibili </code> GitHub poster</summary>
+<summary>Make your <code>Bilibili</code> GitHub poster</summary>
 <br>
 
-Find your Bilibili (XHR) cookie
+Find your `Bilibili (XHR) cookie`
 
 ```python
 python3 cli.py --type bilibili --bilibili_cookie "${bilibili-cookie}"
@@ -213,10 +214,10 @@ python3 cli.py --type bilibili --bilibili_cookie "${bilibili-cookie}"
 ### GitHub
 
 <details>
-<summary>Make your <code>GitHub </code> GitHub poster</summary>
+<summary>Make your <code>GitHub</code> GitHub poster</summary>
 <br>
 
-Get your GitHub Name (in the url)
+Get your `GitHub Name` (in the url)
 
 ```python
 python3 cli.py --type github --github_user_name "${github_user_name}" --with-skyline
@@ -226,16 +227,16 @@ python3 cli.py --type github --github_user_name "${github_user_name}" --with-sky
 ### GitLab
 
 <details>
-<summary>Make your <code>GitLab </code> GitLab poster</summary>
+<summary>Make your <code>GitLab</code> GitLab poster</summary>
 <br>
 
-Get your GitLab Name (in the url)
+Get your `GitLab Name` (in the url)
 
 ```python
 python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}"
 ```
 
-For self-managed GitLab, specify the base url of your instance. You should use _gitlab_session from Cookies if sign in required.
+For self-managed `GitLab`, specify the base url of your instance. You should use `_gitlab_session` from Cookies if sign in required.
 s
 ```python
 python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}" --gitlab_base_url "https://your-gitlab.com" --gitlab_session "${gitlab_session}"
@@ -246,7 +247,7 @@ python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}" --gitlab_b
 ### Kindle
 
 <details>
-<summary>Make your <code>Kindle </code> GitHub poster</summary>
+<summary>Make your <code>Kindle</code> GitHub poster</summary>
 <br>
 
 Find your [Amazon](https://www.amazon.com/) Cookie
@@ -260,10 +261,10 @@ python3 cli.py --type kindle --kindle_cookie ${kindle_cookie} --year 2018-2021
 ### WakaTime
 
 <details>
-<summary>Make your <code>WakaTime </code> poster</summary>
+<summary>Make your <code>WakaTime</code> poster</summary>
 <br>
 
-Find your own WakaTime API Key at: [WakaTime API Key](https://wakatime.com/settings/api-key)
+Find your own `WakaTime API Key` at: [WakaTime API Key](https://wakatime.com/settings/api-key)
 
 ```python
 python cli.py --type wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
@@ -271,6 +272,21 @@ python cli.py --type wakatime --wakatime_key="your_wakatime_api_key" --year 2019
 
 </details>
 
+### Dota2
+
+<details>
+<summary>Make your <code>Dota2</code> poster</summary>
+<br>
+
+Find your `dota2_id`, eg：Dendi's ID `70388657`   
+Check your dota2_id(steamid32): https://steamid.xyz/.   
+Check your game data: https://api.opendota.com/api/players/{dota2_id}/matches.   
+more info: https://docs.opendota.com/#section/Introduction"
+
+
+```python
+python cli.py --type dota2 --dota_id="your dota2 id" --year 2017-2018
+```
 
 # Contribution
 
@@ -293,7 +309,7 @@ Before submitting PR:
 - [x] GitHub Actions
 - [x] Change all default color
 - [x] Skyline
-- [ ] Dota2?
+- [x] Dota2
 - [ ] Loader doc
 - [ ] pypi
 - [ ] test

@@ -26,6 +26,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[GitLab](#GitLab)**
 - **[Kindle](#Kindle)**
 - **[WakaTime](#WakaTime)**
+- **[Dota2](#Dota2)**
 
 
 ## 下载
@@ -41,10 +42,10 @@ pip3 install -r requirements.txt
 
 - 不同类型按下方指定的使用方式
 - 可以指定年份如 --year 2021, (default) 或年份区间 2012-2021
-- 生成的 svg 在 OUT_FOLDER 内, 用 type 命名（暂时）
+- 生成的 svg 在 `OUT_FOLDER` 内, 用 type 命名（暂时）
 - 默认自动生成不同颜色需要的 number（特殊颜色）, 也可以指定如： --special-number1 10 -- special_number2 20
 - 也可以指定颜色： --special-color1 pink --special-color2 '#33C6A4'
-- 其它参数可以见 cli.py
+- 其它参数可以见 [cli.py](https://github.com/yihong0618/GitHubPoster/blob/main/cli.py)
 - 可以增加动画 --with-animation (加入 GOGOGO 动画), 可以控制动画时间 --animation-time 14（默认是 10s）
 - 可以增加 Skyline --with-skyline (默认生成的为 to_year)
 
@@ -63,7 +64,7 @@ python3 cli.py --type gpx --gpx-dir ~/blog/GPX_OUT/ --year 2013-2021
 ### Strava
 
 <details>
-<summary>Make your strava GitHub poster</summary>
+<summary>Make your <code>Strava</code> GitHub poster</summary>
 
 1. 注册/登陆 [Strava](https://www.strava.com/) 账号
 2. 登陆成功后打开 [Strava Developers](http://developers.strava.com) -> [Create & Manage Your App](https://strava.com/settings/api)
@@ -89,7 +90,7 @@ http://localhost/exchange_token?state=&code=1dab37edd9970971fb502c9efdd087f4f347
 1dab37edd9970971fb502c9efdd087f4f3471e6
 ```
 ![get_code](https://raw.githubusercontent.com/shaonianche/gallery/master/running_page/get_code.png)
-6. 使用 Client_id、Client_secret、Code 请求 refresch_token   
+6. 使用 `Client_id`、`Client_secret`、`Code` 请求 `refresch_token`   
 在 `终端/iTerm` 中执行：
 ```
 curl -X POST https://www.strava.com/oauth/token \
@@ -108,7 +109,7 @@ curl -X POST https://www.strava.com/oauth/token \
 ```
 ![get_refresch_token](https://raw.githubusercontent.com/shaonianche/gallery/master/running_page/get_refresch_token.png)
 
-7. 同步数据至 Strava   
+7. 同步数据至 `Strava`   
 在项目根目录执行：
 ```python
 python3 cli.py --type strava --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${refresh_token} --year 2012-2021}
@@ -190,7 +191,7 @@ python3 cli.py --type issue --github_issue_number ${issue_number} --github_repo_
 <summary>Make your <code>LeetCode </code> GitHub poster</summary>
 <br>
 
-需要找到你 LeetCode 的 cookie
+需要找到你 `LeetCode` 的 `cookie`
 
 ```python
 python3 cli.py --type leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
@@ -208,7 +209,7 @@ python3 cli.py --type leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-
 <summary>Make your <code>Twitter </code> GitHub poster</summary>
 <br>
 
-需要找到你的 Twitter user_id, 网址里那个就是
+需要找到你的 `Twitter user_id`, 网址里那个就是
 
 ```python
 python3 cli.py --type twitter --twitter_user_name ${twitter_user_name} --year 2018-2021 --track-color '#1C9CEA'
@@ -221,7 +222,7 @@ python3 cli.py --type twitter --twitter_user_name ${twitter_user_name} --year 20
 <summary>Make your <code>YouTube </code> GitHub poster</summary>
 <br>
 
-利用 Google 的[历史下载](https://takeout.google.com/settings/takeout)下载 YouTube 的历史数据，选择 `json` 格式，将 `watch-history.json` 拷贝到 `IN-FOLDER` 然后运行
+利用 Google 的[历史下载](https://takeout.google.com/settings/takeout)下载 `YouTube` 的历史数据，选择 `json` 格式，将 `watch-history.json` 拷贝到 `IN-FOLDER` 然后运行
 
 ```python
 python3 cli.py --type youtube --year 2015-2021
@@ -234,7 +235,7 @@ python3 cli.py --type youtube --year 2015-2021
 <summary>Make your <code>Bilibili </code> GitHub poster</summary>
 <br>
 
-需要找到你 Bilibili (XHR) 的 cookie
+需要找到你 `Bilibili (XHR)` 的 `cookie`
 
 ```python
 python3 cli.py --type bilibili --bilibili_cookie "${bilibili-cookie}"
@@ -247,7 +248,7 @@ python3 cli.py --type bilibili --bilibili_cookie "${bilibili-cookie}"
 <summary>Make your <code>GitHub </code> GitHub poster</summary>
 <br>
 
-需要找到你 GitHub Name (url 后面那个)
+需要找到你 `GitHub Name` (url 后面那个)
 
 ```python
 python3 cli.py --type github --github_user_name "${github_user_name}" --with-skyline
@@ -260,13 +261,13 @@ python3 cli.py --type github --github_user_name "${github_user_name}" --with-sky
 <summary>Make your <code>GitLab </code> GitLab poster</summary>
 <br>
 
-需要找到你 GitLab Name (url 后面那个)
+需要找到你 `GitLab Name` (url 后面那个)
 
 ```python
 python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}"
 ```
 
-如果是自己搭建的GitLab，可以指定GitLab的URL，以及登录GitLab后得到的_gitlab_session这个cookie(如果需要登录的话)
+如果是自己搭建的 `GitLab`，可以指定 `GitLab` 的 URL，以及登录 `GitLab` 后得到的 `_gitlab_session` 这个 `cookie`(如果需要登录的话)
 
 ```python
 python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}" --gitlab_base_url "https://your-gitlab.com" --gitlab_session "${gitlab_session}"
@@ -277,7 +278,7 @@ python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}" --gitlab_b
 ### Kindle
 
 <details>
-<summary>Make your <code>Kindle </code> GitHub poster</summary>
+<summary>Make your <code>Kindle</code> GitHub poster</summary>
 <br>
 
 在亚马逊网站上需要找到你 [Amazon-CN](https://www.amazon.cn/) (XHR) Cookie
@@ -291,10 +292,10 @@ python3 cli.py --type kindle --kindle_cookie ${kindle_cookie} --is-cn --year 201
 ### WakaTime
 
 <details>
-<summary>Make your <code>WakaTime </code> poster</summary>
+<summary>Make your <code>WakaTime</code> poster</summary>
 <br>
 
-在WakaTime官网获取你的 WakaTime API Key：[WakaTime API Key](https://wakatime.com/settings/api-key)
+在 WakaTime 官网获取你的 WakaTime API Key：[WakaTime API Key](https://wakatime.com/settings/api-key)
 
 ```python
 python cli.py --type wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
@@ -302,7 +303,24 @@ python cli.py --type wakatime --wakatime_key="your_wakatime_api_key" --year 2019
 
 </details>
 
+### Dota2
 
+<details>
+<summary>Make your <code>Dota2</code> poster</summary>
+<br>
+
+找到 `Dota2` 的游戏 ID，例如：`Dendi` 的 ID `70388657`   
+通过 `steam url/username` 查询到你的 `dota2_id` : https://steamid.xyz/   
+使用 `dota2_id` 取得你的游戏数据：https://api.opendota.com/api/players/{dota2_id}/matches.   
+更多接口信息：https://docs.opendota.com/#section/Introduction"
+
+
+
+```python
+python cli.py --type dota2 --dota_id="your dota2 id" --year 2017-2018
+```
+
+</details>
 # 参与项目
 
 - 任何 Issues PR 均欢迎。
@@ -324,7 +342,7 @@ python cli.py --type wakatime --wakatime_key="your_wakatime_api_key" --year 2019
 - [x] GitHub Actions
 - [x] Change all default color
 - [x] Skyline
-- [ ] Dota2？
+- [x] Dota2
 - [ ] 如何写 loader 的 doc
 - [ ] pypi
 - [ ] test 
