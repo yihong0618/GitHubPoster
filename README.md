@@ -317,7 +317,7 @@ python cli.py --type wakatime --wakatime_key="your_wakatime_api_key" --year 2019
 
 
 ```python
-python cli.py --type dota2 --dota_id="your dota2 id" --year 2017-2018
+python cli.py --type dota2 --dota2_id="your dota2 id" --year 2017-2018
 ```
 
 </details>
@@ -345,7 +345,7 @@ python cli.py --type dota2 --dota_id="your dota2 id" --year 2017-2018
 - [x] Dota2
 - [ ] 如何写 loader 的 doc
 - [ ] pypi
-- [ ] test 
+- [x] test 
 - [x] English README
 
 # GitHub Actions

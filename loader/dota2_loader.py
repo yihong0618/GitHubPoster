@@ -19,25 +19,21 @@ class Dota2Loader(BaseLoader):
         self._make_years_list()
 
     def get_api_data(self):
-        data_list = []
-        for year in range(self.from_year, self.to_year + 1):
-            r = requests.get(
-                DOTA2_CALENDAR_API.format(
-                    dota2_id=self.dota2_id,
-                    from_year="{}-01-01".format(year),
-                    to_year="{}-12-31".format(year),
-                )
+        r = requests.get(
+            DOTA2_CALENDAR_API.format(
+                dota2_id=self.dota2_id,
             )
-            if not r.ok:
-                print(f"get data2 calendar api failed {str(r.text)}")
+        )
+        if not r.ok:
+            print(f"get data2 calendar api failed {str(r.text)}")
+            return []
         return r.json()
 
     def make_track_dict(self):
         data_list = self.get_api_data()
         for d in data_list:
-            if d:
-                date = datetime.utcfromtimestamp(d["start_time"]).strftime("%Y-%m-%d")
-                self.number_by_date_dict[date] += 1
+            date = datetime.utcfromtimestamp(d["start_time"]).strftime("%Y-%m-%d")
+            self.number_by_date_dict[date] += 1
         for _, v in self.number_by_date_dict.items():
             self.number_list.append(v)
 

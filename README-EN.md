@@ -285,7 +285,7 @@ more info: https://docs.opendota.com/#section/Introduction"
 
 
 ```python
-python cli.py --type dota2 --dota_id="your dota2 id" --year 2017-2018
+python cli.py --type dota2 --dota2_id="your dota2 id" --year 2017-2018
 ```
 
 # Contribution
@@ -312,7 +312,7 @@ Before submitting PR:
 - [x] Dota2
 - [ ] Loader doc
 - [ ] pypi
-- [ ] test
+- [x] test
 - [x] English README
 
 # GitHub Actions

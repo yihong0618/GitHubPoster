@@ -64,7 +64,7 @@ UNIT_DICT = {
     "gitlab": "cons",
     "kindle": "days",
     "wakatime": "mins",
-    "dota2": "matches",
+    "dota2": "games",
 }
 
 ## default color for different type
@@ -78,7 +78,7 @@ TRACK_COLOR_DICT = {
     "gitlab": "#ACD5F2",
     "kindle": "#2A4A7B",
     "wakatime": "#9BE9A8",
-    "dota2": "#2A4A7B",
+    "dota2": "#567433",
 }
 
 TYPES = '", "'.join(LOADER_DICT.keys())
@@ -397,8 +397,9 @@ def main():
         help="your wakatime api key here, more info: https://wakatime.com/settings/api-key",
     )
 
+    # Dota2
     args_parser.add_argument(
-        "--dota_id",
+        "--dota2_id",
         dest="dota2_id",
         type=str,
         default="",

@@ -3,7 +3,7 @@ import os
 
 import numpy as np
 from pendulum import parse, period
-from sdf import X, Y, box, ease, measure_text, pi, rectangle, text, union
+from sdf import X, Y, box, ease, measure_text, rectangle, text, union
 
 from .config import (
     BASE_HEIGHT,
