@@ -14,13 +14,27 @@ from .config import (
 
 class CiChangLoader(BaseLoader):
     def __init__(self, from_year, to_year, **kwargs):
-        super().__init__()
-        self.from_year = from_year
-        self.to_year = to_year
-        self.user_name = kwargs.get("cichang_user_name", "")
-        self.password = kwargs.get("cichang_password", "")
+        super().__init__(from_year, to_year)
+        self.user_name = kwargs.get("user_name", "")
+        self.password = kwargs.get("password", "")
         self.s = requests.Session()
-        self._make_years_list()
+
+    @classmethod
+    def add_loader_arguments(cls, parser):
+        parser.add_argument(
+            "--user_name",
+            dest="user_name",
+            type=str,
+            required=True,
+            help="The username of CiChang",
+        )
+        parser.add_argument(
+            "--password",
+            dest="password",
+            type=str,
+            required=True,
+            help="The password of CiChang",
+        )
 
     @staticmethod
     def _md5_encode(string):
