@@ -10,6 +10,9 @@ from .config import BILIBILI_HISTORY_URL
 
 
 class BilibiliLoader(BaseLoader):
+    track_color = "#FB7299"
+    unit = "videos"
+
     def __init__(self, from_year, to_year, **kwargs):
         super().__init__(from_year, to_year)
         self.number_by_date_dict = defaultdict(int)

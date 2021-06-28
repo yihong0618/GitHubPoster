@@ -8,6 +8,8 @@ from .config import LEETCODE_CN_SUBMISSIONS_URL, LEETCODE_SUBMISSIONS_URL
 
 
 class LeetcodeLoader(BaseLoader):
+    unit = "subs"
+
     def __init__(self, from_year, to_year, **kwargs):
         super().__init__(from_year, to_year)
         self.leetcode_cookie = kwargs.get("cookie", "")

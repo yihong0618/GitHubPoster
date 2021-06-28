@@ -9,6 +9,9 @@ from .config import KINDLE_CN_HISTORY_URL, KINDLE_HEADER, KINDLE_HISTORY_URL
 
 
 class KindleLoader(BaseLoader):
+    track_color = "#2A4A7B"
+    unit = "days"
+
     def __init__(self, from_year, to_year, **kwargs):
         super().__init__(from_year, to_year)
         self.kindle_cookie = kwargs.get("cookie", "")

@@ -9,6 +9,8 @@ from .config import GPX_ACTIVITY_NAME_TUPLE
 
 
 class GPXLoader(BaseLoader):
+    unit = "km"
+
     def __init__(self, from_year, to_year, **kwargs):
         super().__init__(from_year, to_year)
         self.number_by_date_dict = defaultdict(float)

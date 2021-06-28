@@ -7,6 +7,9 @@ from .config import GITHUB_CONTRIBUCTIONS_URL
 
 
 class GitHubLoader(BaseLoader):
+    track_color = "#9BE9A8"
+    unit = "cons"
+
     def __init__(self, from_year, to_year, **kwargs):
         super().__init__(from_year, to_year)
         self.user_name = kwargs.get("user_name", "")

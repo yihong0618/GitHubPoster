@@ -4,6 +4,9 @@ from .base_loader import BaseLoader
 
 
 class TwitterLoader(BaseLoader):
+    track_color = "#1C9CEA"
+    unit = "tweets"
+
     def __init__(self, from_year, to_year, **kwargs):
         super().__init__(from_year, to_year)
         self.user_name = kwargs.get("user_name", "")

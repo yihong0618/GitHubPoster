@@ -7,6 +7,8 @@ from .base_loader import BaseLoader, LoadError
 
 
 class StravaLoader(BaseLoader):
+    unit = "km"
+
     def __init__(self, from_year, to_year, **kwargs):
         super().__init__(from_year, to_year)
         self.before = None

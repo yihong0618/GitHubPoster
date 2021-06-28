@@ -10,6 +10,9 @@ from .config import DOTA2_CALENDAR_API
 
 
 class Dota2Loader(BaseLoader):
+    track_color = "#567433"
+    unit = "games"
+
     def __init__(self, from_year, to_year, **kwargs):
         super().__init__(from_year, to_year)
         self.dota2_id = kwargs.get("id", "")
