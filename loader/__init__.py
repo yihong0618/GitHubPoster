@@ -14,3 +14,22 @@ from .strava_loader import StravaLoader
 from .twitter_loader import TwitterLoader
 from .wakatime_loader import WakaTimeLoader
 from .youtube_loader import YouTubeLoader
+
+__all__ = (
+    "BilibiliLoader",
+    "CiChangLoader",
+    "Dota2Loader",
+    "DuolingoLoader",
+    "GitHubIssuesLoader",
+    "GitHubLoader",
+    "GitLabLoader",
+    "GPXLoader",
+    "KindleLoader",
+    "LeetcodeLoader",
+    "NSLoader",
+    "ShanBayLoader",
+    "StravaLoader",
+    "TwitterLoader",
+    "WakaTimeLoader",
+    "YouTubeLoader",
+)

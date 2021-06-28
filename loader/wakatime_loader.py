@@ -1,6 +1,5 @@
 import time
 
-import pendulum
 import requests
 
 from .base_loader import BaseLoader

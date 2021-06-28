@@ -6,6 +6,10 @@ import svgwrite
 from .utils import interpolate_color, make_key_times
 
 
+class DrawError(Exception):
+    pass
+
+
 class Drawer:
     def __init__(self, p):
         self.poster = p
@@ -24,18 +28,19 @@ class Drawer:
 
     def draw(self, dr, size, offset):
         if self.poster.tracks is None:
-            raise Exception("No tracks to draw")
+            raise DrawError("No tracks to draw")
         year_size = 200 * 4.0 / 80.0
         year_style = f"font-size:{year_size}px; font-family:Arial;"
         year_length_style = f"font-size:{110 * 3.0 / 80.0}px; font-family:Arial;"
-        month_names_style = f"font-size:2.5px; font-family:Arial"
+        month_names_style = "font-size:2.5px; font-family:Arial"
         total_sum_year_dict = self.poster.total_sum_year_dict
         self.poster.years.sort()
         year_count = len(self.poster.years)
         for year in range(self.poster.years[0], self.poster.years[-1] + 1)[::-1]:
             start_date_weekday, _ = calendar.monthrange(year, 1)
             github_rect_first_day = datetime.date(year, 1, 1)
-            # Github profile the first day start from the last Monday of the last year or the first Monday of this year
+            # Github profile the first day start from the last Monday of the last year
+            # or the first Monday of this year.
             # It depands on if the first day of this year is Monday or not.
             github_rect_day = github_rect_first_day + datetime.timedelta(
                 -start_date_weekday
@@ -75,7 +80,8 @@ class Drawer:
                     style=year_length_style,
                 )
             )
-            # add month name up to the poster one by one because of svg text auto trim the spaces.
+            # add month name up to the poster one by one
+            # because of svg text auto trim the spaces.
             for num, name in enumerate(month_names):
                 dr.add(
                     dr.text(

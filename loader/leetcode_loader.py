@@ -49,7 +49,7 @@ class LeetcodeLoader(BaseLoader):
                 last_key = data["last_key"]
                 offset += 20
                 time.sleep(1)
-            except:
+            except Exception:
                 error_times += 1
                 print(f"error times {error_times}")
                 if error_times > 3:

@@ -8,6 +8,10 @@ import pytz
 from .config import TIME_ZONE
 
 
+class LoadError(Exception):
+    pass
+
+
 class BaseLoader(ABC):
     def __init__(self):
         self.from_year = None

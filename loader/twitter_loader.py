@@ -1,9 +1,3 @@
-import subprocess
-import sys
-import time
-
-import pendulum
-import requests
 import twint
 
 from .base_loader import BaseLoader

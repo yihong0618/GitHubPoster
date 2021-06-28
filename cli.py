@@ -67,8 +67,8 @@ UNIT_DICT = {
     "dota2": "games",
 }
 
-## default color for different type
-## add more default dict here
+# default color for different type
+# add more default dict here
 TRACK_COLOR_DICT = {
     "shanbay": "#33C6A4",
     "twitter": "#1C9CEA",
@@ -369,7 +369,8 @@ def main():
         dest="gitlab_session",
         type=str,
         default="",
-        help="use _gitlab_session from Cookies if your gitlab instance needs to sign in",
+        help="use _gitlab_session from Cookies "
+        "if your gitlab instance needs to sign in",
     )
     # Kindle
     args_parser.add_argument(
@@ -394,7 +395,8 @@ def main():
         dest="wakatime_key",
         type=str,
         default="",
-        help="your wakatime api key here, more info: https://wakatime.com/settings/api-key",
+        help="your wakatime api key here, "
+        "more info: https://wakatime.com/settings/api-key",
     )
 
     # Dota2
@@ -403,7 +405,8 @@ def main():
         dest="dota2_id",
         type=str,
         default="",
-        help="Check your dota2-id in-game or on the website(steamid32): https://steamid.xyz/",
+        help="Check your dota2-id in-game or on the website(steamid32): "
+        "https://steamid.xyz/",
     )
 
     args = args_parser.parse_args()

@@ -28,7 +28,7 @@ class ShanBayLoader(BaseLoader):
                 print(f"get shanbay calendar api failed {str(r.text)}")
             try:
                 data_list.extend(r.json()["logs"])
-            except:
+            except Exception:
                 # just pass for now
                 pass
         return data_list
