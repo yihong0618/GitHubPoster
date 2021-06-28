@@ -12,7 +12,7 @@ env:
   # please change to your own config.
   # this actions generate only this year
   # If you fork this please change the type to yours below
-  TYPE: 'ns, duolingo, issue, twitter, github, pass' # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2, Please change the 'pass' it to your own separated by commas
+  TYPE: "ns, duolingo, issue, twitter, github, pass" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2, Please change the 'pass' it to your own separated by commas
   ME: Yihong0618
   GITHUB_NAME: yihong0618
   GITHUB_EMAIL: zouzou0208@gmail.com
@@ -49,72 +49,72 @@ jobs:
       - name: Run sync ns script
         if: contains(env.TYPE, 'ns')
         run: |
-          python cli.py --type ns --ns_session_token ${{ secrets.NS_SESSION_TOKEN }} --ns_device_id ${{ secrets.NS_DEVICE_ID }} --me ${{ env.ME }}
+          python cli.py ns --session_token ${{ secrets.NS_SESSION_TOKEN }} --device_id ${{ secrets.NS_DEVICE_ID }} --me ${{ env.ME }}
 
       - name: Run sync strava script
         if: contains(env.TYPE, 'strava')
         run: |
-          python cli.py --type strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --me ${{ env.ME }}
-  
+          python cli.py strava --client_id ${{ secrets.STRAVA_CLIENT_ID }} --client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --me ${{ env.ME }}
+
       - name: Run sync shanbay script
         if: contains(env.TYPE, 'shanbay')
         run: |
-          python cli.py --type shanbay --shanbay_user_name ${{ secrets.SHANBAY_USER_NAME }}  --special-color1 '#33C6A4' --special-color2  '#33C6A4' --me ${{ env.ME }}
+          python cli.py shanbay --user_name ${{ secrets.SHANBAY_USER_NAME }}  --special-color1 '#33C6A4' --special-color2  '#33C6A4' --me ${{ env.ME }}
 
       - name: Run sync duolingo script
         if: contains(env.TYPE, 'duolingo')
         run: |
-          python cli.py --type duolingo --duolingo_user_name ${{ secrets.DUOLINGO_USER_NAME }} --me ${{ env.ME }}
+          python cli.py duolingo --user_name ${{ secrets.DUOLINGO_USER_NAME }} --me ${{ env.ME }}
 
       - name: Run sync cichang script
         if: contains(env.TYPE, 'cichang')
         run: |
-          python cli.py --type cichang --cichang_user_name ${{ secrets.CICHANG_USER_NAME }} --cichang_password ${{ secrets.CICHANG_PASSWORD }} --me ${{ env.ME }}
+          python cli.py cichang --user_name ${{ secrets.CICHANG_USER_NAME }} --password ${{ secrets.CICHANG_PASSWORD }} --me ${{ env.ME }}
 
       - name: Run sync issue script
         if: contains(env.TYPE, 'issue')
         run: |
-          python cli.py --type issue --github_issue_number ${{ secrets.ISSUE_NUMBER }} --github_repo_name ${{ secrets.REPO_NAME }} --github_token ${{ secrets.G_T }} --me ${{ env.ME }}
+          python cli.py issue --issue_number ${{ secrets.ISSUE_NUMBER }} --repo_name ${{ secrets.REPO_NAME }} --token ${{ secrets.G_T }} --me ${{ env.ME }}
 
       - name: Run sync leetcode script
         if: contains(env.TYPE, 'leetcode')
         run: |
-          python cli.py --type leetcode --leetcode_cookie  '${{ secrets.LEETCODE_COOKIE }} --me ${{ env.ME }}
+          python cli.py leetcode --cookie  '${{ secrets.LEETCODE_COOKIE }} --me ${{ env.ME }}
 
       - name: Run sync twitter script
         if: contains(env.TYPE, 'twitter')
         run: |
-          python cli.py --type twitter --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --me ${{ env.ME }} --with-animation --with-skyline
+          python cli.py twitter --user_name ${{ secrets.TWITTER_USER_NAME }} --me ${{ env.ME }} --with-animation --with-skyline
 
       - name: Run sync github script
         if: contains(env.TYPE, 'github')
         run: |
-          python cli.py --type github --github_user_name ${{ secrets.G_USER_NAME }} --me ${{ env.ME }} --with-animation
+          python cli.py github --user_name ${{ secrets.G_USER_NAME }} --me ${{ env.ME }} --with-animation
 
       - name: Run sync gitlab script
         if: contains(env.TYPE, 'gitlab')
         run: |
-          python cli.py --type gitlab --gitlab_user_name ${{ secrets.GITLAB_USER_NAME }} --me ${{ env.ME }} --with-animation
+          python cli.py gitlab --user_name ${{ secrets.GITLAB_USER_NAME }} --me ${{ env.ME }} --with-animation
 
       - name: Run sync kindle script
         if: contains(env.TYPE, 'kindle')
         run: |
-          python cli.py --type kindle --kindle_cookie  '${{ secrets.KINDLE_COOKIE }} --me ${{ env.ME }}
-          
+          python cli.py kindle --cookie  '${{ secrets.KINDLE_COOKIE }} --me ${{ env.ME }}
+
       - name: Run sync bilibili script
         if: contains(env.TYPE, 'bilibili')
         run: |
-          python3 cli.py --type bilibili --bilibili_cookie "${{ secrets.BILIBILI_COOKIE }}" --me ${{ env.ME }}
+          python3 cli.py bilibili --cookie "${{ secrets.BILIBILI_COOKIE }}" --me ${{ env.ME }}
 
       - name: Run sync wakatime script
         if: contains(env.TYPE, 'wakatime')
         run: |
-          python3 cli.py --type wakatime --wakatime_key "${{ secrets.WAKATIME_KEY }}" --me ${{ env.ME }}
+          python3 cli.py wakatime --key "${{ secrets.WAKATIME_KEY }}" --me ${{ env.ME }}
 
       - name: Run sync dota2 script
         if: contains(env.TYPE, 'dota2')
         run: |
-            python3 cli.py --type dota2 --dota2_id "${{ secrets.DOTA2_ID }}" --me ${{ env.ME }}
+          python3 cli.py dota2 --id "${{ secrets.DOTA2_ID }}" --me ${{ env.ME }}
 
       - name: Mv svg files to examples
         # only for me to show
@@ -127,6 +127,6 @@ jobs:
           github-token: ${{ secrets.G_T }}
           commit-message: "Make new poster"
           files: examples OUT_FOLDER
-          rebase: 'true'
+          rebase: "true"
           name: ${{ env.GITHUB_NAME }}
           email: ${{ env.GITHUB_EMAIL }}
