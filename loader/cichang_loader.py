@@ -3,13 +3,12 @@ import json
 
 import requests
 
-from .base_loader import BaseLoader
+from .base_loader import BaseLoader, LoadError
 from .config import (
     CICHANG_CLAENDAR_URL,
     CICHANG_COVERT_URL,
     CICHANG_LOGIN_URL,
     HJ_APPKEY,
-    TIME_ZONE,
 )
 
 
@@ -35,14 +34,14 @@ class CiChangLoader(BaseLoader):
             CICHANG_LOGIN_URL.format(user_name=self.user_name, password=password_md5)
         )
         if not r.ok:
-            raise Exception(f"Someting is wrong to login -- {r.text}")
+            raise LoadError(f"Someting is wrong to login -- {r.text}")
         club_auth_cookie = r.json()["Data"]["Cookie"]
         data = {"club_auth_cookie": club_auth_cookie}
         headers = {"hj_appkey": HJ_APPKEY, "Content-Type": "application/json"}
         # real login to get real token
         r = self.s.post(CICHANG_COVERT_URL, headers=headers, data=json.dumps(data))
         if not r.ok:
-            raise Exception(f"Get real token failed -- {r.text}")
+            raise LoadError(f"Get real token failed -- {r.text}")
         data = r.json()["data"]
         access_token = data["access_token"]
         user_id = data["user_id"]
@@ -65,7 +64,7 @@ class CiChangLoader(BaseLoader):
                 print(f"get cichang calendar api failed {str(r.text)}")
             try:
                 data_list.extend(r.json()["data"]["studyCountDays"])
-            except:
+            except Exception:
                 # just pass for now
                 pass
         return data_list

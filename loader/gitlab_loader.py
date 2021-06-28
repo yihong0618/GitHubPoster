@@ -5,7 +5,7 @@ from pendulum import parse, period
 
 from html_parser import GitLabParser
 
-from .base_loader import BaseLoader
+from .base_loader import BaseLoader, LoadError
 from .config import GITLAB_LATEST_URL, GITLAB_ONE_DAY_URL
 
 
@@ -46,7 +46,7 @@ class GitLabLoader(BaseLoader):
                 return
             self._make_left_dates(min_date)
         except Exception as e:
-            raise Exception(f"Can not get gitlab data error: {str(e)}")
+            raise LoadError(f"Can not get gitlab data error: {str(e)}")
 
     def make_left_data_dict(self):
         p = GitLabParser()
@@ -64,7 +64,7 @@ class GitLabLoader(BaseLoader):
                 time.sleep(0.1)
                 p.feed(r.text)
                 self.number_by_date_dict[d] = len(p.lis)
-            except:
+            except Exception:
                 # what fucking things happened just pass
                 pass
 

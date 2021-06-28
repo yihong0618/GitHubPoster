@@ -1,10 +1,7 @@
-import time
-
 import pendulum
 from github import Github
 
 from .base_loader import BaseLoader
-from .config import GITHUB_BASE_URL
 
 
 class GitHubIssuesLoader(BaseLoader):
@@ -23,7 +20,7 @@ class GitHubIssuesLoader(BaseLoader):
         data = comment.body.splitlines()[0]
         try:
             return int(data)
-        except:
+        except (ValueError, TypeError):
             return 0
 
     def get_api_data(self):

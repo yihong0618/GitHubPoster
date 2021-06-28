@@ -3,7 +3,7 @@ from collections import defaultdict
 
 import stravalib
 
-from .base_loader import BaseLoader
+from .base_loader import BaseLoader, LoadError
 
 
 class StravaLoader(BaseLoader):
@@ -33,8 +33,8 @@ class StravaLoader(BaseLoader):
                 client_secret=self.client_secret,
                 refresh_token=self.refresh_token,
             )
-        except:
-            raise Exception("Something is wrong with your auth please check")
+        except Exception:
+            raise LoadError("Something is wrong with your auth please check")
 
         self.access_token = response["access_token"]
         self.refresh_token = response["refresh_token"]

@@ -2,7 +2,7 @@ from datetime import datetime
 
 import requests
 
-from .base_loader import BaseLoader
+from .base_loader import BaseLoader, LoadError
 from .config import NS_CLAENDAR_URL, NS_CLIENT_ID, NS_GRANT_TYPE, NS_TOKEN_URL
 
 
@@ -23,7 +23,8 @@ class NSLoader(BaseLoader):
             "x-moon-os": "IOS",
             "accept-encoding": "gzip;q=1.0, compress;q=0.5",
             "accept-language": "en-US;q=1.0",
-            "user-agent": "moon_ios/1.14.0 (com.nintendo.znma; build:293; iOS 14.2.0) Alamofire/4.8.2",
+            "user-agent": "moon_ios/1.14.0 (com.nintendo.znma; build:293; iOS 14.2.0) "
+            "Alamofire/4.8.2",
             "x-moon-timezone": "America/Los_Angeles",
         }
         self.s = requests.Session()
@@ -39,7 +40,7 @@ class NSLoader(BaseLoader):
             },
         )
         if not r.ok:
-            raise Exception("can not get ns access token")
+            raise LoadError("can not get ns access token")
         access = r.json()
         self.headers["authorization"] = (
             access["token_type"] + " " + access["access_token"]
@@ -65,7 +66,7 @@ class NSLoader(BaseLoader):
                 print(f"Get ns calendar api failed {str(r.text)}")
             try:
                 data_list.extend(list(r.json()["dailySummaries"].values()))
-            except:
+            except Exception:
                 # just pass for now
                 pass
         return data_list

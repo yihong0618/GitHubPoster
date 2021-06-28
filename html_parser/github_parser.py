@@ -19,7 +19,7 @@ class GitHubParser(html.parser.HTMLParser):
                     number = int(r.get("data-count"))
                     if number:
                         number_by_date_dict[r["data-date"]] = number
-                except:
+                except Exception:
                     # just ignore it
                     pass
         return number_by_date_dict

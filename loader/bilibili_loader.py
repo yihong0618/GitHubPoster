@@ -5,7 +5,7 @@ from http.cookies import SimpleCookie
 import pendulum
 import requests
 
-from .base_loader import BaseLoader
+from .base_loader import BaseLoader, LoadError
 from .config import BILIBILI_HISTORY_URL
 
 
@@ -36,16 +36,16 @@ class BilibiliLoader(BaseLoader):
             BILIBILI_HISTORY_URL.format(max_oid=max_oid, view_at=view_at)
         )
         if not r.ok:
-            raise Exception(
+            raise LoadError(
                 "Can not get bilibili history data, please check your cookie"
             )
         data = r.json()["data"]
         if not data["list"]:
             return data_list
-        l = data["list"]
-        max_oid = l[-1]["history"]["oid"]
-        view_at = l[-1]["view_at"]
-        data_list.extend(l)
+        lst = data["list"]
+        max_oid = lst[-1]["history"]["oid"]
+        view_at = lst[-1]["view_at"]
+        data_list.extend(lst)
         # spider rule
         time.sleep(0.1)
         return self.get_api_data(max_oid=max_oid, view_at=view_at, data_list=data_list)
