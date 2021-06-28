@@ -1,7 +1,7 @@
 # GitHubPoster
 Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 
-##  `svg` in `README` emamples 
+##  `svg` in `README` emamples
 
 ![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/twitter.svg)
 ![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/shanbay.svg)
@@ -37,7 +37,7 @@ pip3 install -r requirements.txt
 - The generated svg is in `OUT_FOLDER`, named with type (for now)
 - By default, the number of different colors is automatically generated (special colors), you can also specify the color: --special-number1 10 -- special_number2 20
 - You can also specify the color: --special-color1 pink --special-color2 '#33C6A4'
-- Other parameters can be found in [cli.py](https://github.com/yihong0618/GitHubPoster/blob/main/cli.py)
+- Other parameters can be found with `python cli.py <type> --help`
 - you can add animation, --with-animation (add GOGOGO animation), you can control the animation time --animation-time 14 (default is 10s)
 - you can save skyline `stl` file --with-skyline (default skyline year is to_year)
 
@@ -49,8 +49,8 @@ pip3 install -r requirements.txt
 <br>
 
 mv gpx files to `GPX_FOLDER` then run the code
-```python
-python3 cli.py --type gpx --gpx-dir ~/blog/GPX_OUT/ --year 2013-2021
+```
+python3 cli.py gpx --dir ~/blog/GPX_OUT/ --year 2013-2021
 ```
 </details>
 
@@ -73,13 +73,13 @@ Created successfully：
 
 ![](https://raw.githubusercontent.com/shaonianche/gallery/master/running_page/created_successfully_1.png)
 
-4. Use the link below to request all permissions: Replace `${your_id}` in the link with `My API Application` `Client ID` 
+4. Use the link below to request all permissions: Replace `${your_id}` in the link with `My API Application` `Client ID`
 ```
 https://www.strava.com/oauth/authorize?client_id=${your_id}&response_type=code&redirect_uri=http://localhost/exchange_token&approval_prompt=force&scope=read_all,profile:read_all,activity:read_all,profile:write,activity:write
 ```
 ![get_all_permissions](https://raw.githubusercontent.com/shaonianche/gallery/master/running_page/get_all_permissions.png)
 
-5. Get the `code` value in the link   
+5. Get the `code` value in the link
 
 <br>
 
@@ -111,8 +111,8 @@ curl -X POST https://www.strava.com/oauth/token \
 ```
 ![get_refresch_token](https://raw.githubusercontent.com/shaonianche/gallery/master/running_page/get_refresch_token.png)
 
-```python
-python3 cli.py --type strava --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${refresh_token} --year 2012-2021}
+```
+python3 cli.py strava --client_id  ${client_id} --client_secret ${client_secret} --refresh_token ${refresh_token} --year 2012-2021}
 ```
 </details>
 
@@ -124,8 +124,8 @@ python3 cli.py --type strava --strava_client_id  ${client_id} --strava_client_se
 
 From APP`(Nintendo Switch Parent Controls)` using `mitmproxy` to get the `session_token` and `devide _id`
 
-```python
-python3 cli.py --type ns --ns_session_token ${session_token} --ns_device_id ${device_id} --year 2020-2021
+```
+python3 cli.py ns --session_token ${session_token} --device_id ${device_id} --year 2020-2021
 ```
 </details>
 
@@ -140,8 +140,8 @@ Find your `duolingo id`, F12 from `XHR`
 ![image](https://user-images.githubusercontent.com/15976103/116336188-baad7000-a80a-11eb-80d7-033d4bf0f260.png)
 
 
-```python
-python3 cli.py --type duolingo --duolingo_user_name ${user_id} --year 2015-2021
+```
+python3 cli.py duolingo --user_name ${user_id} --year 2015-2021
 ```
 </details>
 
@@ -151,10 +151,10 @@ python3 cli.py --type duolingo --duolingo_user_name ${user_id} --year 2015-2021
 <summary>Make your <code>Issue</code> GitHub poster</summary>
 <br>
 
-Like my issue [issue](https://github.com/yihong0618/2021/issues/5) 
+Like my issue [issue](https://github.com/yihong0618/2021/issues/5)
 
-```python
-python3 cli.py --type issue --github_issue_number ${issue_number} --github_repo_name ${repo_name} --github_token ${github_token}
+```
+python3 cli.py issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
 ```
 </details>
 
@@ -166,8 +166,8 @@ python3 cli.py --type issue --github_issue_number ${issue_number} --github_repo_
 
 Find your `LeetCode Cookie`
 
-```python
-python3 cli.py --type leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
+```
+python3 cli.py leetcode --cookie ${leetcode_cookie} --year 2019-2021
 ```
 
 </details>
@@ -180,8 +180,8 @@ python3 cli.py --type leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-
 
 Find your `Twitter user_id` (in the url)
 
-```python
-python3 cli.py --type twitter --twitter_user_name ${twitter_user_name} --year 2018-2021 --track-color '#1C9CEA'
+```
+python3 cli.py twitter --user_name ${twitter_user_name} --year 2018-2021 --track-color '#1C9CEA'
 ```
 </details>
 
@@ -193,8 +193,8 @@ python3 cli.py --type twitter --twitter_user_name ${twitter_user_name} --year 20
 
 Use Google [History Takeout](https://takeout.google.com/settings/takeout) to download `YouTube` history data，choose `json` format，mv `watch-history.json` to `IN-FOLDER` then run the code
 
-```python
-python3 cli.py --type youtube --year 2015-2021
+```
+python3 cli.py youtube --year 2015-2021
 ```
 </details>
 
@@ -206,8 +206,8 @@ python3 cli.py --type youtube --year 2015-2021
 
 Find your `Bilibili (XHR) cookie`
 
-```python
-python3 cli.py --type bilibili --bilibili_cookie "${bilibili-cookie}"
+```
+python3 cli.py bilibili --cookie "${bilibili-cookie}"
 ```
 </details>
 
@@ -219,8 +219,8 @@ python3 cli.py --type bilibili --bilibili_cookie "${bilibili-cookie}"
 
 Get your `GitHub Name` (in the url)
 
-```python
-python3 cli.py --type github --github_user_name "${github_user_name}" --with-skyline
+```
+python3 cli.py github --user_name "${github_user_name}" --with-skyline
 ```
 </details>
 
@@ -232,14 +232,14 @@ python3 cli.py --type github --github_user_name "${github_user_name}" --with-sky
 
 Get your `GitLab Name` (in the url)
 
-```python
-python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}"
+```
+python3 cli.py gitlab --user_name "${gitlab_user_name}"
 ```
 
 For self-managed `GitLab`, specify the base url of your instance. You should use `_gitlab_session` from Cookies if sign in required.
 s
-```python
-python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}" --gitlab_base_url "https://your-gitlab.com" --gitlab_session "${gitlab_session}"
+```
+python3 cli.py gitlab --user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
 ```
 
 </details>
@@ -252,8 +252,8 @@ python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}" --gitlab_b
 
 Find your [Amazon](https://www.amazon.com/) Cookie
 
-```python
-python3 cli.py --type kindle --kindle_cookie ${kindle_cookie} --year 2018-2021
+```
+python3 cli.py kindle --cookie ${kindle_cookie} --year 2018-2021
 ```
 
 </details>
@@ -266,8 +266,8 @@ python3 cli.py --type kindle --kindle_cookie ${kindle_cookie} --year 2018-2021
 
 Find your own `WakaTime API Key` at: [WakaTime API Key](https://wakatime.com/settings/api-key)
 
-```python
-python cli.py --type wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
+```
+python cli.py wakatime --key="your_wakatime_api_key" --year 2019-2021
 ```
 
 </details>
@@ -278,14 +278,14 @@ python cli.py --type wakatime --wakatime_key="your_wakatime_api_key" --year 2019
 <summary>Make your <code>Dota2</code> poster</summary>
 <br>
 
-Find your `dota2_id`, eg：Dendi's ID `70388657`   
-Check your dota2_id(steamid32): https://steamid.xyz/.   
-Check your game data: https://api.opendota.com/api/players/{dota2_id}/matches.   
+Find your `dota2_id`, eg：Dendi's ID `70388657`
+Check your dota2_id(steamid32): https://steamid.xyz/.
+Check your game data: https://api.opendota.com/api/players/{dota2_id}/matches.
 more info: https://docs.opendota.com/#section/Introduction"
 
 
-```python
-python cli.py --type dota2 --dota2_id="your dota2 id" --year 2017-2018
+```
+python cli.py dota2 --id="your dota2 id" --year 2017-2018
 ```
 
 # Contribution
@@ -296,7 +296,7 @@ python cli.py --type dota2 --dota2_id="your dota2 id" --year 2017-2018
 Before submitting PR:
 - Format Python code with `black` (`black .`)
 - Format Python code with `isort` (`isort --profile black  **/*.py`)
- 
+
 # TODO
 
 - [x] twitter

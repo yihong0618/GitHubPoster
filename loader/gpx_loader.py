@@ -9,16 +9,25 @@ from .config import GPX_ACTIVITY_NAME_TUPLE
 
 
 class GPXLoader(BaseLoader):
+    unit = "km"
+
     def __init__(self, from_year, to_year, **kwargs):
-        super().__init__()
-        assert to_year >= from_year
-        self.from_year = from_year
-        self.to_year = to_year
+        super().__init__(from_year, to_year)
         self.number_by_date_dict = defaultdict(float)
         self.before = None
         self.after = None
-        self.base_dir = kwargs.get("gpx_dir", "")
-        self._make_years_list()
+        self.base_dir = kwargs.get("dir", "")
+
+    @classmethod
+    def add_loader_arguments(cls, parser):
+        parser.add_argument(
+            "--dir",
+            dest="dir",
+            metavar="DIR",
+            type=str,
+            default="GPX_FOLDER",
+            help="Directory containing GPX files",
+        )
 
     def _make_year_before_after(self):
         self.before = datetime.datetime(int(self.to_year) + 1, 1, 1)

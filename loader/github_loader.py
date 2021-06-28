@@ -7,13 +7,22 @@ from .config import GITHUB_CONTRIBUCTIONS_URL
 
 
 class GitHubLoader(BaseLoader):
+    track_color = "#9BE9A8"
+    unit = "cons"
+
     def __init__(self, from_year, to_year, **kwargs):
-        super().__init__()
-        assert to_year >= from_year
-        self.from_year = from_year
-        self.to_year = to_year
-        self.user_name = kwargs.get("github_user_name", "")
-        self._make_years_list()
+        super().__init__(from_year, to_year)
+        self.user_name = kwargs.get("user_name", "")
+
+    @classmethod
+    def add_loader_arguments(cls, parser):
+        parser.add_argument(
+            "--user_name",
+            dest="user_name",
+            type=str,
+            required=True,
+            help="",
+        )
 
     def make_track_dict(self):
         for y in self.year_list:

@@ -7,13 +7,13 @@ from .config import NS_CLAENDAR_URL, NS_CLIENT_ID, NS_GRANT_TYPE, NS_TOKEN_URL
 
 
 class NSLoader(BaseLoader):
+    unit = "mins"
+
     def __init__(self, from_year, to_year, **kwargs):
-        super().__init__()
-        self.from_year = from_year
-        self.to_year = to_year
-        self.session_token = kwargs.get("ns_session_token", "")
-        self.device_id = kwargs.get("ns_device_id", "")
-        self.smart_device_id = kwargs.get("ns_smart_device_id", "")
+        super().__init__(from_year, to_year)
+        self.session_token = kwargs.get("session_token", "")
+        self.device_id = kwargs.get("device_id", "")
+        self.smart_device_id = kwargs.get("smart_device_id", "")
         self.headers = {
             "x-moon-os-language": "en-US",
             "x-moon-app-language": "en-US",
@@ -28,7 +28,30 @@ class NSLoader(BaseLoader):
             "x-moon-timezone": "America/Los_Angeles",
         }
         self.s = requests.Session()
-        self._make_years_list()
+
+    @classmethod
+    def add_loader_arguments(cls, parser):
+        parser.add_argument(
+            "--device_id",
+            dest="device_id",
+            type=str,
+            required=True,
+            help="",
+        )
+        parser.add_argument(
+            "--smart_device_id",
+            dest="smart_device_id",
+            type=str,
+            required=True,
+            help="",
+        )
+        parser.add_argument(
+            "--session_token",
+            dest="session_token",
+            type=str,
+            required=True,
+            help="",
+        )
 
     def _make_access_headers(self):
         r = self.s.post(

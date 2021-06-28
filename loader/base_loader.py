@@ -13,18 +13,25 @@ class LoadError(Exception):
 
 
 class BaseLoader(ABC):
-    def __init__(self):
-        self.from_year = None
-        self.to_year = None
+
+    #: The track color of the poster
+    track_color = None
+    #: The unit used by the poster
+    unit = "times"
+
+    def __init__(self, from_year, to_year, **kwargs):
+        assert to_year >= from_year
+        self.from_year = from_year
+        self.to_year = to_year
         self.time_zone = TIME_ZONE
         self.number_by_date_dict = defaultdict(int)
         self.special_number1 = None
         self.special_number2 = None
         self.number_list = []
-        self.year_list = []
+        self.year_list = self._make_years_list()
 
     def _make_years_list(self):
-        self.year_list = list(range(int(self.from_year), int(self.to_year) + 1))
+        return list(range(int(self.from_year), int(self.to_year) + 1))
 
     def make_month_list(self):
         start = pendulum.datetime(self.from_year, 1, 1)
@@ -57,6 +64,110 @@ class BaseLoader(ABC):
     def adjust_time(self, time):
         tc_offset = datetime.now(pytz.timezone(self.time_zone)).utcoffset()
         return time + tc_offset
+
+    @classmethod
+    def add_arguments(cls, parser):
+        loader_group = parser.add_argument_group("Loader Arguments")
+        cls.add_loader_arguments(loader_group)
+        group = parser.add_argument_group("Common Arguments")
+        group.add_argument(
+            "--year",
+            metavar="YEAR",
+            type=str,
+            default=str(datetime.now().year),
+            help='Filter tracks by year; "NUM", "NUM-NUM", "all" (default: all years)',
+        )
+        group.add_argument(
+            "--me",
+            metavar="NAME",
+            type=str,
+            default="Joey",
+            help='Athlete name to display (default: "Joey").',
+        )
+        group.add_argument(
+            "--background-color",
+            dest="background_color",
+            metavar="COLOR",
+            type=str,
+            default="#222222",
+            help='Background color of poster (default: "#222222").',
+        )
+        group.add_argument(
+            "--track-color",
+            dest="track_color",
+            metavar="COLOR",
+            type=str,
+            default="#4DD2FF",
+            help='Color of tracks (default: "#4DD2FF").',
+        )
+        group.add_argument(
+            "--text-color",
+            dest="text_color",
+            metavar="COLOR",
+            type=str,
+            default="#FFFFFF",
+            help='Color of text (default: "#FFFFFF").',
+        )
+        group.add_argument(
+            "--special-color1",
+            dest="special_color1",
+            metavar="COLOR",
+            default="yellow",
+            help='Special track color (default: "yellow").',
+        )
+        group.add_argument(
+            "--special-color2",
+            dest="special_color2",
+            metavar="COLOR",
+            default="red",
+            help="Secondary color of special tracks (default: red).",
+        )
+        group.add_argument(
+            "--special-number1",
+            dest="special_number1",
+            type=float,
+            default=0,
+            help="Special number 1",
+        )
+        group.add_argument(
+            "--special-number2",
+            dest="special_number2",
+            type=float,
+            default=0,
+            help="Special number 2",
+        )
+        group.add_argument(
+            "--with-animation",
+            dest="with_animation",
+            action="store_true",
+            help="add animation to the poster",
+        )
+        group.add_argument(
+            "--animation-time",
+            dest="animation_time",
+            type=int,
+            default=10,
+            help="animation duration (default: 10s)",
+        )
+        # skyline args here
+        group.add_argument(
+            "--with-skyline",
+            dest="with_skyline",
+            action="store_true",
+            help="with skyline(stl file)",
+        )
+
+        group.add_argument(
+            "--skyline-year",
+            dest="skyline_year",
+            type=str,
+            default="",
+            help="the year to generate skyline",
+        )
+
+    @classmethod
+    def add_loader_arguments(cls, parser):
+        pass
 
     @abstractmethod
     def make_track_dict(self):
