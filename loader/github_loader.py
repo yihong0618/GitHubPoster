@@ -2,7 +2,7 @@ import requests
 
 from html_parser import GitHubParser
 
-from .base_loader import BaseLoader
+from .base_loader import BaseLoader, LoadError
 from .config import GITHUB_CONTRIBUCTIONS_URL
 
 
@@ -28,7 +28,7 @@ class GitHubLoader(BaseLoader):
                 )
                 self.number_by_date_dict.update(p.make_contribution_dict(r.text))
             except Exception as e:
-                raise Exception(f"Can not get GitHub contribuctions error: {str(e)}")
+                raise LoadError(f"Can not get GitHub contribuctions error: {str(e)}")
         for _, v in self.number_by_date_dict.items():
             self.number_list.append(v)
 

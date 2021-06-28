@@ -4,7 +4,7 @@ import requests
 
 from html_parser import parse_kindle_text_to_list
 
-from .base_loader import BaseLoader
+from .base_loader import BaseLoader, LoadError
 from .config import KINDLE_CN_HISTORY_URL, KINDLE_HEADER, KINDLE_HISTORY_URL
 
 
@@ -36,7 +36,7 @@ class KindleLoader(BaseLoader):
     def get_api_data(self):
         r = self.session.get(self.KINDLE_URL, headers=self.header)
         if not r.ok:
-            raise Exception("Can not get kindle calendar data, please check cookie")
+            raise LoadError("Can not get kindle calendar data, please check cookie")
         data_list = parse_kindle_text_to_list(r.text)
         return data_list
 

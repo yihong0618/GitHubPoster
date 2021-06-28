@@ -5,7 +5,6 @@ from collections import defaultdict
 import pendulum
 
 from .base_loader import BaseLoader
-from .config import GPX_ACTIVITY_NAME_TUPLE
 
 
 class YouTubeLoader(BaseLoader):
