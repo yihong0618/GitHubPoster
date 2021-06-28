@@ -6,14 +6,35 @@ from .base_loader import BaseLoader
 
 class GitHubIssuesLoader(BaseLoader):
     def __init__(self, from_year, to_year, **kwargs):
-        super().__init__()
-        self.from_year = from_year
-        self.to_year = to_year
-        self.issue_number = int(kwargs.get("github_issue_number", "1"))
-        self.repo_name = kwargs.get("github_repo_name", "")
+        super().__init__(from_year, to_year)
+        self.issue_number = int(kwargs.get("issue_number", "1"))
+        self.repo_name = kwargs.get("repo_name", "")
         # for private repo
-        self.github_token = kwargs.get("github_token", "")
-        self._make_years_list()
+        self.token = kwargs.get("token", "")
+
+    @classmethod
+    def add_loader_arguments(cls, parser):
+        parser.add_argument(
+            "--issue_number",
+            dest="issue_number",
+            type=str,
+            required=True,
+            help="The issue number",
+        )
+        parser.add_argument(
+            "--repo_name",
+            dest="repo_name",
+            type=str,
+            required=True,
+            help="The repo name",
+        )
+        parser.add_argument(
+            "--token",
+            dest="token",
+            type=str,
+            default="",
+            help="The GitHub token, required by private repo",
+        )
 
     @staticmethod
     def __map_func(comment):
@@ -24,7 +45,6 @@ class GitHubIssuesLoader(BaseLoader):
             return 0
 
     def get_api_data(self):
-        self._make_years_list()
         if self.github_token:
             u = Github(self.github_token)
         else:

@@ -11,13 +11,20 @@ from .config import BILIBILI_HISTORY_URL
 
 class BilibiliLoader(BaseLoader):
     def __init__(self, from_year, to_year, **kwargs):
-        super().__init__()
-        self.from_year = from_year
-        self.to_year = to_year
+        super().__init__(from_year, to_year)
         self.number_by_date_dict = defaultdict(int)
         self.session = requests.Session()
-        self.bilibili_cookie = kwargs.get("bilibili_cookie", "")
-        self._make_years_list()
+        self.bilibili_cookie = kwargs.get("cookie", "")
+
+    @classmethod
+    def add_loader_arguments(cls, parser):
+        parser.add_argument(
+            "--cookie",
+            dest="cookie",
+            type=str,
+            required=True,
+            help="The cookie for the bilibili website(XHR)",
+        )
 
     def _parse_bilibili_cookie(self):
         cookie = SimpleCookie()

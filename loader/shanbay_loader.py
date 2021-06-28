@@ -6,12 +6,18 @@ from .config import SHANBAY_CALENDAR_API
 
 class ShanBayLoader(BaseLoader):
     def __init__(self, from_year, to_year, **kwargs):
-        super().__init__()
-        assert to_year >= from_year
-        self.from_year = from_year
-        self.to_year = to_year
-        self.user_name = kwargs.get("shanbay_user_name", "")
-        self._make_years_list()
+        super().__init__(from_year, to_year)
+        self.user_name = kwargs.get("user_name", "")
+
+    @classmethod
+    def add_loader_arguments(cls, parser):
+        parser.add_argument(
+            "--user_name",
+            dest="user_name",
+            type=str,
+            required=True,
+            help="",
+        )
 
     def get_api_data(self):
         month_list = self.make_month_list()

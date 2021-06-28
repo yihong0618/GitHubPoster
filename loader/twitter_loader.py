@@ -5,12 +5,19 @@ from .base_loader import BaseLoader
 
 class TwitterLoader(BaseLoader):
     def __init__(self, from_year, to_year, **kwargs):
-        super().__init__()
-        self.from_year = from_year
-        self.to_year = to_year
-        self.user_name = kwargs.get("twitter_user_name", "")
+        super().__init__(from_year, to_year)
+        self.user_name = kwargs.get("user_name", "")
         self.c = twint.Config()
-        self._make_years_list()
+
+    @classmethod
+    def add_loader_arguments(cls, parser):
+        parser.add_argument(
+            "--user_name",
+            dest="user_name",
+            type=str,
+            required=True,
+            help="",
+        )
 
     def get_api_data(self):
         self.c.Username = self.user_name

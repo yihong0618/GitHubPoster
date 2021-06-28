@@ -10,16 +10,29 @@ from .config import KINDLE_CN_HISTORY_URL, KINDLE_HEADER, KINDLE_HISTORY_URL
 
 class KindleLoader(BaseLoader):
     def __init__(self, from_year, to_year, **kwargs):
-        super().__init__()
-        assert to_year >= from_year
-        self.from_year = from_year
-        self.to_year = to_year
-        self.kindle_cookie = kwargs.get("kindle_cookie", "")
+        super().__init__(from_year, to_year)
+        self.kindle_cookie = kwargs.get("cookie", "")
         self.session = requests.Session()
         self.header = KINDLE_HEADER
-        self.is_cn = kwargs.get("is_cn", False)
+        self.is_cn = kwargs.get("cn", False)
         self.KINDLE_URL = KINDLE_CN_HISTORY_URL if self.is_cn else KINDLE_HISTORY_URL
         self._make_years_list()
+
+    @classmethod
+    def add_loader_arguments(cls, parser):
+        parser.add_argument(
+            "--cn",
+            dest="cn",
+            action="store_true",
+            help="if accout is CN",
+        )
+        parser.add_argument(
+            "--cookie",
+            dest="cookie",
+            type=str,
+            required=True,
+            help="",
+        )
 
     def _parse_kindle_cookie(self):
         cookie = SimpleCookie()
