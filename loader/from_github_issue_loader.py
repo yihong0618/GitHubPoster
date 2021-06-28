@@ -45,8 +45,8 @@ class GitHubIssuesLoader(BaseLoader):
             return 0
 
     def get_api_data(self):
-        if self.github_token:
-            u = Github(self.github_token)
+        if self.token:
+            u = Github(self.token)
         else:
             u = Github()
         me = u.get_user().login
