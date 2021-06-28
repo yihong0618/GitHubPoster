@@ -13,7 +13,6 @@ class NSLoader(BaseLoader):
         super().__init__(from_year, to_year)
         self.session_token = kwargs.get("session_token", "")
         self.device_id = kwargs.get("device_id", "")
-        self.smart_device_id = kwargs.get("smart_device_id", "")
         self.headers = {
             "x-moon-os-language": "en-US",
             "x-moon-app-language": "en-US",
@@ -34,13 +33,6 @@ class NSLoader(BaseLoader):
         parser.add_argument(
             "--device_id",
             dest="device_id",
-            type=str,
-            required=True,
-            help="",
-        )
-        parser.add_argument(
-            "--smart_device_id",
-            dest="smart_device_id",
             type=str,
             required=True,
             help="",
