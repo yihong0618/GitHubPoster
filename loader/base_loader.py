@@ -13,6 +13,12 @@ class LoadError(Exception):
 
 
 class BaseLoader(ABC):
+
+    #: The track color of the poster
+    track_color = None
+    #: The unit used by the poster
+    unit = "times"
+
     def __init__(self, from_year, to_year, **kwargs):
         assert to_year >= from_year
         self.from_year = from_year

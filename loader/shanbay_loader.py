@@ -5,6 +5,9 @@ from .config import SHANBAY_CALENDAR_API
 
 
 class ShanBayLoader(BaseLoader):
+    track_color = "#33C6A4"
+    unit = "days"
+
     def __init__(self, from_year, to_year, **kwargs):
         super().__init__(from_year, to_year)
         self.user_name = kwargs.get("user_name", "")

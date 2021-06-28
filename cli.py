@@ -46,42 +46,6 @@ LOADER_DICT = {
     "dota2": Dota2Loader,
 }
 
-# TODO refactor
-UNIT_DICT = {
-    "duolingo": "XP",
-    "shanbay": "days",
-    "strava": "km",
-    "gpx": "km",
-    "cichang": "words",
-    "ns": "mins",
-    "issue": "times",
-    "leetcode": "subs",
-    "twitter": "tweets",
-    "youtube": "videos",
-    "bilibili": "videos",
-    "github": "cons",
-    "gitlab": "cons",
-    "kindle": "days",
-    "wakatime": "mins",
-    "dota2": "games",
-}
-
-# default color for different type
-# add more default dict here
-TRACK_COLOR_DICT = {
-    "shanbay": "#33C6A4",
-    "twitter": "#1C9CEA",
-    "youtube": "#FFFFFF",
-    "bilibili": "#FB7299",
-    "github": "#9BE9A8",
-    "gitlab": "#ACD5F2",
-    "kindle": "#2A4A7B",
-    "wakatime": "#9BE9A8",
-    "dota2": "#567433",
-}
-
-TYPES = '", "'.join(LOADER_DICT.keys())
-
 OUT_FOLDER = os.path.join(os.getcwd(), "OUT_FOLDER")
 
 
@@ -104,8 +68,8 @@ def main():
 
     p.colors = {
         "background": args.background_color,
-        "track": TRACK_COLOR_DICT.get(args.type)
-        or args.track_color,  # some type has default color
+        "track": args.loader.track_color  # some type has default color
+        or args.track_color,
         "special": args.special_color1,
         "special2": args.special_color2 or args.special_color,
         "text": args.text_color,
@@ -113,7 +77,7 @@ def main():
     # set animate
     p.set_with_animation(args.with_animation)
     p.set_animation_time(args.animation_time)
-    p.units = UNIT_DICT.get(args.type, "times")
+    p.units = args.loader.unit
     from_year, to_year = parse_years(args.year)
     d = LOADER_DICT.get(args.type, "duolingo")(
         from_year, to_year, **dict(args._get_kwargs())

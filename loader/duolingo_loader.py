@@ -6,6 +6,8 @@ from .config import DUOLINGO_CALENDAR_API
 
 
 class DuolingoLoader(BaseLoader):
+    unit = "XP"
+
     def __init__(self, from_year, to_year, **kwargs):
         super().__init__(from_year, to_year)
         self.user_name = kwargs.get("user_name", "")

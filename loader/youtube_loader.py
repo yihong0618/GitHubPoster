@@ -7,6 +7,9 @@ from .base_loader import BaseLoader
 
 
 class YouTubeLoader(BaseLoader):
+    track_color = "#FFFFFF"
+    unit = "videos"
+
     def __init__(self, from_year, to_year, **kwargs):
         super().__init__(from_year, to_year)
         self.number_by_date_dict = defaultdict(int)

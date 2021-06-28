@@ -7,6 +7,8 @@ from .config import NS_CLAENDAR_URL, NS_CLIENT_ID, NS_GRANT_TYPE, NS_TOKEN_URL
 
 
 class NSLoader(BaseLoader):
+    unit = "mins"
+
     def __init__(self, from_year, to_year, **kwargs):
         super().__init__(from_year, to_year)
         self.session_token = kwargs.get("session_token", "")
