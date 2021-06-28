@@ -8,17 +8,31 @@ from .config import LEETCODE_CN_SUBMISSIONS_URL, LEETCODE_SUBMISSIONS_URL
 
 
 class LeetcodeLoader(BaseLoader):
+    unit = "subs"
+
     def __init__(self, from_year, to_year, **kwargs):
-        super().__init__()
-        assert to_year >= from_year
-        self.from_year = from_year
-        self.to_year = to_year
-        self.leetcode_cookie = kwargs.get("leetcode_cookie", "")
-        self.is_cn = kwargs.get("is_cn", False)
+        super().__init__(from_year, to_year)
+        self.leetcode_cookie = kwargs.get("cookie", "")
+        self.is_cn = kwargs.get("cn", False)
         self.LEETCODE_URL = (
             LEETCODE_CN_SUBMISSIONS_URL if self.is_cn else LEETCODE_SUBMISSIONS_URL
         )
-        self._make_years_list()
+
+    @classmethod
+    def add_loader_arguments(cls, parser):
+        parser.add_argument(
+            "--cookie",
+            dest="cookie",
+            type=str,
+            required=True,
+            help="",
+        )
+        parser.add_argument(
+            "--cn",
+            dest="cn",
+            action="store_true",
+            help="if accout is CN",
+        )
 
     def get_api_data(self):
         data_list = []

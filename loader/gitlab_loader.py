@@ -10,16 +10,41 @@ from .config import GITLAB_LATEST_URL, GITLAB_ONE_DAY_URL
 
 
 class GitLabLoader(BaseLoader):
+    track_color = "#ACD5F2"
+    unit = "cons"
+
     def __init__(self, from_year, to_year, **kwargs):
-        super().__init__()
-        assert to_year >= from_year
-        self.from_year = from_year
-        self.to_year = to_year
-        self.user_name = kwargs.get("gitlab_user_name", "")
-        self.gitlab_base_url = kwargs.get("gitlab_base_url") or "https://gitlab.com"
-        self.gitlab_session = kwargs.get("gitlab_session")
-        self._make_years_list()
+        super().__init__(from_year, to_year)
+        self.user_name = kwargs.get("user_name", "")
+        self.gitlab_base_url = kwargs.get("base_url") or "https://gitlab.com"
+        self.gitlab_session = kwargs.get("session")
         self.left_dates = []
+
+    @classmethod
+    def add_loader_arguments(cls, parser):
+        parser.add_argument(
+            "--user_name",
+            dest="user_name",
+            type=str,
+            required=True,
+            help="",
+        )
+
+        parser.add_argument(
+            "--base_url",
+            dest="base_url",
+            type=str,
+            default="https://gitlab.com",
+            help="specify the base url of your self-managed gitlab",
+        )
+        parser.add_argument(
+            "--session",
+            dest="session",
+            type=str,
+            default="",
+            help="use _gitlab_session from Cookies "
+            "if your gitlab instance needs to sign in",
+        )
 
     def _make_left_dates(self, last_date):
         dates = list(period(parse(f"{self.from_year}-01-01"), parse(last_date)))

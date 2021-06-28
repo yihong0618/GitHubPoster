@@ -1,5 +1,4 @@
 import json
-import os
 from collections import defaultdict
 
 import pendulum
@@ -8,18 +7,26 @@ from .base_loader import BaseLoader
 
 
 class YouTubeLoader(BaseLoader):
+    track_color = "#FFFFFF"
+    unit = "videos"
+
     def __init__(self, from_year, to_year, **kwargs):
-        super().__init__()
-        assert to_year >= from_year
-        self.from_year = from_year
-        self.to_year = to_year
+        super().__init__(from_year, to_year)
         self.number_by_date_dict = defaultdict(int)
-        self.input_dir = kwargs.get("input_dir", "")
-        self.youtube_file = kwargs.get("youtube_file", "")
-        self._make_years_list()
+        self.youtube_file = kwargs.get("history_file")
+
+    @classmethod
+    def add_loader_arguments(cls, parser):
+        parser.add_argument(
+            "--history-file",
+            dest="history_file",
+            type=str,
+            default="IN_FOLDER/watch-history.json",
+            help="youtube history file path",
+        )
 
     def _parse_youtube_history(self):
-        base_file = os.path.join(self.input_dir, self.youtube_file)
+        base_file = self.youtube_file
         data_list = []
         with open(base_file) as f:
             data_list = json.load(f)

@@ -3,7 +3,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 
 简体中文 | [English](https://github.com/yihong0618/GitHubPoster/blob/main/README-EN.md)
 
-## 直接引入 `svg` 在 `README` 中的例子 
+## 直接引入 `svg` 在 `README` 中的例子
 
 ![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/twitter.svg)
 ![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/shanbay.svg)
@@ -45,7 +45,7 @@ pip3 install -r requirements.txt
 - 生成的 svg 在 `OUT_FOLDER` 内, 用 type 命名（暂时）
 - 默认自动生成不同颜色需要的 number（特殊颜色）, 也可以指定如： --special-number1 10 -- special_number2 20
 - 也可以指定颜色： --special-color1 pink --special-color2 '#33C6A4'
-- 其它参数可以见 [cli.py](https://github.com/yihong0618/GitHubPoster/blob/main/cli.py)
+- 其它参数可以见 `python cli.py <type> --help`
 - 可以增加动画 --with-animation (加入 GOGOGO 动画), 可以控制动画时间 --animation-time 14（默认是 10s）
 - 可以增加 Skyline --with-skyline (默认生成的为 to_year)
 
@@ -56,8 +56,8 @@ pip3 install -r requirements.txt
 <br>
 
 把其它软件生成的(like running_page) gpx files 拷贝到 `GPX_FOLDER` 之后运行，或指定文件夹如我的文件夹是 `~/blog/GPX_OUT/`
-```python
-python3 cli.py --type gpx --gpx-dir ~/blog/GPX_OUT/ --year 2013-2021
+```
+python3 cli.py gpx --dir ~/blog/GPX_OUT/ --year 2013-2021
 ```
 </details>
 
@@ -69,18 +69,18 @@ python3 cli.py --type gpx --gpx-dir ~/blog/GPX_OUT/ --year 2013-2021
 1. 注册/登陆 [Strava](https://www.strava.com/) 账号
 2. 登陆成功后打开 [Strava Developers](http://developers.strava.com) -> [Create & Manage Your App](https://strava.com/settings/api)
 
-3. 创建 `My API Application`   
+3. 创建 `My API Application`
 输入下列信息：
 ![My API Application](https://raw.githubusercontent.com/shaonianche/gallery/master/running_page/strava_settings_api.png)
 创建成功：
 ![](https://raw.githubusercontent.com/shaonianche/gallery/master/running_page/created_successfully_1.png)
-4. 使用以下链接请求所有权限   
+4. 使用以下链接请求所有权限
 将 ${your_id} 替换为 My API Application 中的 Client ID 后访问完整链接
 ```
 https://www.strava.com/oauth/authorize?client_id=${your_id}&response_type=code&redirect_uri=http://localhost/exchange_token&approval_prompt=force&scope=read_all,profile:read_all,activity:read_all,profile:write,activity:write
 ```
 ![get_all_permissions](https://raw.githubusercontent.com/shaonianche/gallery/master/running_page/get_all_permissions.png)
-5. 提取授权后返回链接中的 code 值   
+5. 提取授权后返回链接中的 code 值
 例如：
 ```
 http://localhost/exchange_token?state=&code=1dab37edd9970971fb502c9efdd087f4f3471e6e&scope=read,activity:write,activity:read_all,profile:write,profile:read_all,read_all
@@ -90,7 +90,7 @@ http://localhost/exchange_token?state=&code=1dab37edd9970971fb502c9efdd087f4f347
 1dab37edd9970971fb502c9efdd087f4f3471e6
 ```
 ![get_code](https://raw.githubusercontent.com/shaonianche/gallery/master/running_page/get_code.png)
-6. 使用 `Client_id`、`Client_secret`、`Code` 请求 `refresch_token`   
+6. 使用 `Client_id`、`Client_secret`、`Code` 请求 `refresch_token`
 在 `终端/iTerm` 中执行：
 ```
 curl -X POST https://www.strava.com/oauth/token \
@@ -109,10 +109,10 @@ curl -X POST https://www.strava.com/oauth/token \
 ```
 ![get_refresch_token](https://raw.githubusercontent.com/shaonianche/gallery/master/running_page/get_refresch_token.png)
 
-7. 同步数据至 `Strava`   
+7. 同步数据至 `Strava`
 在项目根目录执行：
-```python
-python3 cli.py --type strava --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${refresh_token} --year 2012-2021}
+```
+python3 cli.py strava --client_id  ${client_id} --client_secret ${client_secret} --refresh_token ${refresh_token} --year 2012-2021
 ```
 </details>
 
@@ -124,8 +124,8 @@ python3 cli.py --type strava --strava_client_id  ${client_id} --strava_client_se
 
 需要下载 `家长控制那个 APP(Nintendo Switch Parent Controls)` 进行抓包（可以使用 mitmproxy 等抓包软件）
 
-```python
-python3 cli.py --type ns --ns_session_token ${session_token} --ns_device_id ${device_id} --year 2020-2021
+```
+python3 cli.py ns --session_token ${session_token} --device_id ${device_id} --year 2020-2021
 ```
 </details>
 
@@ -137,8 +137,8 @@ python3 cli.py --type ns --ns_session_token ${session_token} --ns_device_id ${de
 
 需要填写开心词场的账号和密码
 
-```python
-python3 cli.py --type cichang --cichang_user_name ${user_name} --cichang_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618
+```
+python3 cli.py cichang --user_name ${user_name} --password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618
 ```
 </details>
 
@@ -152,8 +152,8 @@ python3 cli.py --type cichang --cichang_user_name ${user_name} --cichang_passwor
 ![image](https://user-images.githubusercontent.com/15976103/116336188-baad7000-a80a-11eb-80d7-033d4bf0f260.png)
 
 
-```python
-python3 cli.py --type duolingo --duolingo_user_name ${user_id} --year 2015-2021
+```
+python3 cli.py duolingo --user_name ${user_id} --year 2015-2021
 ```
 </details>
 
@@ -167,8 +167,8 @@ python3 cli.py --type duolingo --duolingo_user_name ${user_id} --year 2015-2021
 ![image](https://user-images.githubusercontent.com/15976103/116340351-a02ac500-a811-11eb-938f-72ff141e4942.png)
 
 
-```python
-python3 cli.py --type shanbay --shanbay_user_name ${user_name} --year 2012-2021 --special-color1 '#33C6A4' --special-color2 '#33C6A4'
+```
+python3 cli.py shanbay --user_name ${user_name} --year 2012-2021 --special-color1 '#33C6A4' --special-color2 '#33C6A4'
 ```
 </details>
 
@@ -178,10 +178,10 @@ python3 cli.py --type shanbay --shanbay_user_name ${user_name} --year 2012-2021 
 <summary>Make your <code>Issue</code> GitHub poster</summary>
 <br>
 
-可以参考我的 [issue](https://github.com/yihong0618/2021/issues/5) 
+可以参考我的 [issue](https://github.com/yihong0618/2021/issues/5)
 
-```python
-python3 cli.py --type issue --github_issue_number ${issue_number} --github_repo_name ${repo_name} --github_token ${github_token}
+```
+python3 cli.py issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
 ```
 </details>
 
@@ -193,13 +193,13 @@ python3 cli.py --type issue --github_issue_number ${issue_number} --github_repo_
 
 需要找到你 `LeetCode` 的 `cookie`
 
-```python
-python3 cli.py --type leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
 ```
-如果使用的是 leetcode-cn（leetcode 中国需要加上参数）--is-cn
+python3 cli.py leetcode --cookie ${leetcode_cookie} --year 2019-2021
+```
+如果使用的是 leetcode-cn（leetcode 中国需要加上参数）--cn
 
-```python
-python3 cli.py --type leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021 --is-cn
+```
+python3 cli.py leetcode --cookie ${leetcode_cookie} --year 2019-2021 --cn
 ```
 </details>
 
@@ -211,8 +211,8 @@ python3 cli.py --type leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-
 
 需要找到你的 `Twitter user_id`, 网址里那个就是
 
-```python
-python3 cli.py --type twitter --twitter_user_name ${twitter_user_name} --year 2018-2021 --track-color '#1C9CEA'
+```
+python3 cli.py twitter --user_name ${user_name} --year 2018-2021 --track-color '#1C9CEA'
 ```
 </details>
 
@@ -224,8 +224,8 @@ python3 cli.py --type twitter --twitter_user_name ${twitter_user_name} --year 20
 
 利用 Google 的[历史下载](https://takeout.google.com/settings/takeout)下载 `YouTube` 的历史数据，选择 `json` 格式，将 `watch-history.json` 拷贝到 `IN-FOLDER` 然后运行
 
-```python
-python3 cli.py --type youtube --year 2015-2021
+```
+python3 cli.py youtube --year 2015-2021
 ```
 </details>
 
@@ -237,8 +237,8 @@ python3 cli.py --type youtube --year 2015-2021
 
 需要找到你 `Bilibili (XHR)` 的 `cookie`
 
-```python
-python3 cli.py --type bilibili --bilibili_cookie "${bilibili-cookie}"
+```
+python3 cli.py bilibili --cookie "${bilibili-cookie}"
 ```
 </details>
 
@@ -250,8 +250,8 @@ python3 cli.py --type bilibili --bilibili_cookie "${bilibili-cookie}"
 
 需要找到你 `GitHub Name` (url 后面那个)
 
-```python
-python3 cli.py --type github --github_user_name "${github_user_name}" --with-skyline
+```
+python3 cli.py github --user_name "${github_user_name}" --with-skyline
 ```
 </details>
 
@@ -263,14 +263,14 @@ python3 cli.py --type github --github_user_name "${github_user_name}" --with-sky
 
 需要找到你 `GitLab Name` (url 后面那个)
 
-```python
-python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}"
+```
+python3 cli.py gitlab --user_name "${gitlab_user_name}"
 ```
 
 如果是自己搭建的 `GitLab`，可以指定 `GitLab` 的 URL，以及登录 `GitLab` 后得到的 `_gitlab_session` 这个 `cookie`(如果需要登录的话)
 
-```python
-python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}" --gitlab_base_url "https://your-gitlab.com" --gitlab_session "${gitlab_session}"
+```
+python3 cli.py gitlab --user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
 ```
 
 </details>
@@ -283,8 +283,8 @@ python3 cli.py --type gitlab --gitlab_user_name "${gitlab_user_name}" --gitlab_b
 
 在亚马逊网站上需要找到你 [Amazon-CN](https://www.amazon.cn/) (XHR) Cookie
 
-```python
-python3 cli.py --type kindle --kindle_cookie ${kindle_cookie} --is-cn --year 2018-2021
+```
+python3 cli.py kindle --cookie ${kindle_cookie} --cn --year 2018-2021
 ```
 
 </details>
@@ -297,8 +297,8 @@ python3 cli.py --type kindle --kindle_cookie ${kindle_cookie} --is-cn --year 201
 
 在 WakaTime 官网获取你的 WakaTime API Key：[WakaTime API Key](https://wakatime.com/settings/api-key)
 
-```python
-python cli.py --type wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
+```
+python cli.py wakatime --key="your_wakatime_api_key" --year 2019-2021
 ```
 
 </details>
@@ -309,15 +309,15 @@ python cli.py --type wakatime --wakatime_key="your_wakatime_api_key" --year 2019
 <summary>Make your <code>Dota2</code> poster</summary>
 <br>
 
-找到 `Dota2` 的游戏 ID，例如：`Dendi` 的 ID `70388657`   
-通过 `steam url/username` 查询到你的 `dota2_id` : https://steamid.xyz/   
-使用 `dota2_id` 取得你的游戏数据：https://api.opendota.com/api/players/{dota2_id}/matches.   
+找到 `Dota2` 的游戏 ID，例如：`Dendi` 的 ID `70388657`
+通过 `steam url/username` 查询到你的 `dota2_id` : https://steamid.xyz/
+使用 `dota2_id` 取得你的游戏数据：https://api.opendota.com/api/players/{dota2_id}/matches.
 更多接口信息：https://docs.opendota.com/#section/Introduction"
 
 
 
-```python
-python cli.py --type dota2 --dota2_id="your dota2 id" --year 2017-2018
+```
+python cli.py dota2 --id="your dota2 id" --year 2017-2018
 ```
 
 </details>
@@ -345,7 +345,7 @@ python cli.py --type dota2 --dota2_id="your dota2 id" --year 2017-2018
 - [x] Dota2
 - [ ] 如何写 loader 的 doc
 - [ ] pypi
-- [x] test 
+- [x] test
 - [x] English README
 
 # GitHub Actions
