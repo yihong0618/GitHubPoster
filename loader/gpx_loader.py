@@ -4,7 +4,7 @@ from collections import defaultdict
 
 import gpxpy
 
-from .base_loader import BaseLoader
+from .base_loader import BaseLoader, LoadError
 from .config import GPX_ACTIVITY_NAME_TUPLE
 
 
@@ -27,7 +27,7 @@ class GPXLoader(BaseLoader):
     def _list_gpx_files(self):
         base_dir = os.path.abspath(self.base_dir)
         if not os.path.isdir(base_dir):
-            raise Exception(f"Not a directory: {base_dir}")
+            raise LoadError(f"Not a directory: {base_dir}")
         for name in os.listdir(base_dir):
             if name.startswith("."):
                 continue
