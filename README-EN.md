@@ -327,6 +327,8 @@ Before submitting PR:
 # Special thanks
 - @[flopp](https://github.com/flopp) great repo [GpxTrackPoster](https://github.com/flopp/GpxTrackPoster)
 - @[JasonkayZK](https://github.com/JasonkayZK) Wakatime loader
+- @[shaonianche](https://github.com/shaonianche) Dota2 loader
+- @[frostming](https://github.com/frostming) `CI` refator and some Actions code
 
 # Support
 Thanks is enough.

@@ -360,6 +360,8 @@ python cli.py --type dota2 --dota2_id="your dota2 id" --year 2017-2018
 # 特别感谢
 - @[flopp](https://github.com/flopp) 特别棒的项目 [GpxTrackPoster](https://github.com/flopp/GpxTrackPoster)
 - @[JasonkayZK](https://github.com/JasonkayZK) Wakatime loader
+- @[shaonianche](https://github.com/shaonianche) Dota2 loader
+- @[frostming](https://github.com/frostming) `CI` refator and some Actions code
 
 # 赞赏
 谢谢就够了
