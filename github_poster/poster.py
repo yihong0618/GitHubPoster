@@ -1,8 +1,9 @@
 """Create a poster from track data."""
 from collections import defaultdict
 
-from .structures import ValueRange, XY
 import svgwrite
+
+from .structures import XY, ValueRange
 
 
 class Poster:
