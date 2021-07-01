@@ -156,7 +156,12 @@ class BaseLoader(ABC):
             action="store_true",
             help="with skyline(stl file)",
         )
-
+        group.add_argument(
+            "--skyline-with-name",
+            dest="skyline_with_name",
+            action="store_true",
+            help="print name on skyline",
+        )
         group.add_argument(
             "--skyline-year",
             dest="skyline_year",
