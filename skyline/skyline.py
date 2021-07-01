@@ -16,7 +16,7 @@ from .config import (
 
 
 class Skyline:
-    def __init__(self, file_name, year, skyline_type, number_by_date_dict):
+    def __init__(self, file_name, year, skyline_type, number_by_date_dict, user_name):
         self.file_name = file_name
         self.year = year
         self.skyline_type = skyline_type
@@ -31,6 +31,8 @@ class Skyline:
             "strava": "Strava",
             "bilibili": "bilibili",
         }
+        assert(len(user_name) < 16)
+        self.user_name = user_name
 
     def _make_box(self, box_height):
         b = box((BOX_DIMENSION, BOX_DIMENSION, box_height))
@@ -113,4 +115,7 @@ class Skyline:
         skyline_info_card = self._make_skyline_card(text_info)
         skyline_year_card = self._make_skyline_card(str(self.year), offset=120)
         skyline = base | boxes | skyline_info_card.k(0.25) | skyline_year_card.k(0.25)
+        if self.user_name:
+            skyline_name_card = self._make_skyline_card(self.user_name, offset=30)
+            skyline = skyline | skyline_name_card
         skyline.save(self.file_name)
