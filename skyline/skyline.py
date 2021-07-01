@@ -31,7 +31,7 @@ class Skyline:
             "strava": "Strava",
             "bilibili": "bilibili",
         }
-        assert(len(user_name) < 16)
+        assert len(user_name) < 16
         self.user_name = user_name
 
     def _make_box(self, box_height):
