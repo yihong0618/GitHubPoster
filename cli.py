@@ -105,11 +105,15 @@ def main():
             year = years[-1]
         # filter data
         number_by_date_dict = {k: v for k, v in tracks.items() if k[:4] == str(year)}
+        skyline_name = ""
+        if args.skyline_with_name:
+            skyline_name = args.me
         s = Skyline(
             os.path.join(OUT_FOLDER, f"{year}_{str(args.type)}" + ".stl"),
             year,
             args.type,
             number_by_date_dict,
+            skyline_name,
         )
         s.make_skyline()
 

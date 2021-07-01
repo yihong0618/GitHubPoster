@@ -39,7 +39,7 @@ pip3 install -r requirements.txt
 - You can also specify the color: --special-color1 pink --special-color2 '#33C6A4'
 - Other parameters can be found with `python cli.py <type> --help`
 - you can add animation, --with-animation (add GOGOGO animation), you can control the animation time --animation-time 14 (default is 10s)
-- you can save skyline `stl` file --with-skyline (default skyline year is to_year)
+- you can save skyline `stl` file --with-skyline (default skyline year is to_year), set `--skyline-with-name` to print user name on model
 
 
 ### GPX
