@@ -113,7 +113,7 @@ def main():
             year,
             args.type,
             number_by_date_dict,
-            skyline_with_name
+            skyline_with_name,
         )
         s.make_skyline()
 
