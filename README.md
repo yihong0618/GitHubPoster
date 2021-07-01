@@ -47,7 +47,7 @@ pip3 install -r requirements.txt
 - 也可以指定颜色： --special-color1 pink --special-color2 '#33C6A4'
 - 其它参数可以见 `python cli.py <type> --help`
 - 可以增加动画 --with-animation (加入 GOGOGO 动画), 可以控制动画时间 --animation-time 14（默认是 10s）
-- 可以增加 Skyline --with-skyline (默认生成的为 to_year)
+- 可以增加 Skyline --with-skyline (默认生成的为 to_year), 可以使用 --skyline-with-name 将用户名打印在 skyline 上
 
 ### GPX
 
