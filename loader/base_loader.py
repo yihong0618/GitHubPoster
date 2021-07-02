@@ -82,7 +82,7 @@ class BaseLoader(ABC):
             metavar="NAME",
             type=str,
             default="Joey",
-            help='Athlete name to display (default: "Joey").',
+            help='User name to display (default: "Joey").',
         )
         group.add_argument(
             "--background-color",
