@@ -1,8 +1,8 @@
 from http.cookies import SimpleCookie
 
 import requests
-from html_parser import parse_kindle_text_to_list
 
+from github_poster.html_parser import parse_kindle_text_to_list
 from github_poster.loader.base_loader import BaseLoader, LoadError
 from github_poster.loader.config import (
     KINDLE_CN_HISTORY_URL,
