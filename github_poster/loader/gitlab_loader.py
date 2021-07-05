@@ -3,10 +3,9 @@ import time
 import requests
 from pendulum import parse, period
 
-from html_parser import GitLabParser
-
-from .base_loader import BaseLoader, LoadError
-from .config import GITLAB_LATEST_URL, GITLAB_ONE_DAY_URL
+from github_poster.html_parser import GitLabParser
+from github_poster.loader.base_loader import BaseLoader, LoadError
+from github_poster.loader.config import GITLAB_LATEST_URL, GITLAB_ONE_DAY_URL
 
 
 class GitLabLoader(BaseLoader):

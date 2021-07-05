@@ -1,11 +1,14 @@
 from http.cookies import SimpleCookie
 
 import requests
-
 from html_parser import parse_kindle_text_to_list
 
-from .base_loader import BaseLoader, LoadError
-from .config import KINDLE_CN_HISTORY_URL, KINDLE_HEADER, KINDLE_HISTORY_URL
+from github_poster.loader.base_loader import BaseLoader, LoadError
+from github_poster.loader.config import (
+    KINDLE_CN_HISTORY_URL,
+    KINDLE_HEADER,
+    KINDLE_HISTORY_URL,
+)
 
 
 class KindleLoader(BaseLoader):
