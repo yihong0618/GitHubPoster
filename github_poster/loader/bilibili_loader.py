@@ -5,8 +5,8 @@ from http.cookies import SimpleCookie
 import pendulum
 import requests
 
-from .base_loader import BaseLoader, LoadError
-from .config import BILIBILI_HISTORY_URL
+from github_poster.loader.base_loader import BaseLoader, LoadError
+from github_poster.loader.config import BILIBILI_HISTORY_URL
 
 
 class BilibiliLoader(BaseLoader):

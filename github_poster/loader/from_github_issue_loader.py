@@ -1,7 +1,7 @@
 import pendulum
 from github import Github
 
-from .base_loader import BaseLoader
+from github_poster.loader.base_loader import BaseLoader
 
 
 class GitHubIssuesLoader(BaseLoader):

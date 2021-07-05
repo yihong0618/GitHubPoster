@@ -3,8 +3,11 @@ import time
 import pendulum
 import requests
 
-from .base_loader import BaseLoader
-from .config import LEETCODE_CN_SUBMISSIONS_URL, LEETCODE_SUBMISSIONS_URL
+from github_poster.loader.base_loader import BaseLoader
+from github_poster.loader.config import (
+    LEETCODE_CN_SUBMISSIONS_URL,
+    LEETCODE_SUBMISSIONS_URL,
+)
 
 
 class LeetcodeLoader(BaseLoader):

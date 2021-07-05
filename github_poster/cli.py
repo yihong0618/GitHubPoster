@@ -6,8 +6,7 @@ import argparse
 import os
 
 from github_poster import drawer, poster
-from github_poster.utils import parse_years
-from loader import (
+from github_poster.loader import (
     BilibiliLoader,
     CiChangLoader,
     Dota2Loader,
@@ -25,7 +24,8 @@ from loader import (
     WakaTimeLoader,
     YouTubeLoader,
 )
-from skyline import Skyline
+from github_poster.skyline import Skyline
+from github_poster.utils import parse_years
 
 LOADER_DICT = {
     "duolingo": DuolingoLoader,
