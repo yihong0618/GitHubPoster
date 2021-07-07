@@ -4,6 +4,8 @@ stravalib
 svgwrite
 pendulum
 colour
-git+https://github.com/twintproject/twint.git@origin/master#egg=twint
-# for skyline
-git+https://github.com/fogleman/sdf.git
+# my fork from sdf
+sdf_fork
+# my fork twint for twitter loader 
+twint_fork
+

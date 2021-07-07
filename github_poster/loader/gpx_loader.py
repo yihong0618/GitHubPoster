@@ -4,8 +4,8 @@ from collections import defaultdict
 
 import gpxpy
 
-from .base_loader import BaseLoader, LoadError
-from .config import GPX_ACTIVITY_NAME_TUPLE
+from github_poster.loader.base_loader import BaseLoader, LoadError
+from github_poster.loader.config import GPX_ACTIVITY_NAME_TUPLE
 
 
 class GPXLoader(BaseLoader):

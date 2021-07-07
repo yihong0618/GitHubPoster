@@ -2,8 +2,8 @@ import time
 
 import requests
 
-from .base_loader import BaseLoader
-from .config import WAKATIME_SUMMARY_URL
+from github_poster.loader.base_loader import BaseLoader
+from github_poster.loader.config import WAKATIME_SUMMARY_URL
 
 
 class WakaTimeLoader(BaseLoader):

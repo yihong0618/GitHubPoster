@@ -3,7 +3,7 @@ import datetime
 
 import svgwrite
 
-from .utils import interpolate_color, make_key_times
+from github_poster.utils import interpolate_color, make_key_times
 
 
 class DrawError(Exception):

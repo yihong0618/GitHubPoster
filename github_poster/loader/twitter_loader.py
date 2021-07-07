@@ -1,6 +1,6 @@
 import twint
 
-from .base_loader import BaseLoader
+from github_poster.loader.base_loader import BaseLoader
 
 
 class TwitterLoader(BaseLoader):
