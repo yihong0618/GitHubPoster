@@ -387,7 +387,7 @@ github_poster dota2 --id="your dota2 id" --year 2017-2018
 - [x] Skyline
 - [x] Dota2
 - [ ] 如何写 loader 的 doc
-- [ ] pypi
+- [x] pypi
 - [x] test
 - [x] English README
 

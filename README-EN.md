@@ -322,6 +322,8 @@ or
 github_poster dota2 --id="your dota2 id" --year 2017-2018
 ```
 
+</details>
+
 # Contribution
 
 - Any Issues PR welcome.
@@ -345,7 +347,7 @@ Before submitting PR:
 - [x] Skyline
 - [x] Dota2
 - [ ] Loader doc
-- [ ] pypi
+- [x] pypi
 - [x] test
 - [x] English README
 
