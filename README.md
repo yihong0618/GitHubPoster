@@ -336,7 +336,7 @@ github_poster kindle --cookie ${kindle_cookie} --cn --year 2018-2021
 在 WakaTime 官网获取你的 WakaTime API Key：[WakaTime API Key](https://wakatime.com/settings/api-key)
 
 ```
-python -m github_poster wakatime --key="your_wakatime_api_key" --year 2019-2021
+python3 -m github_poster wakatime --key="your_wakatime_api_key" --year 2019-2021
 or
 github_poster wakatime --key="your_wakatime_api_key" --year 2019-2021
 ```
@@ -357,7 +357,7 @@ github_poster wakatime --key="your_wakatime_api_key" --year 2019-2021
 
 
 ```
-python -m github_poster dota2 --id="your dota2 id" --year 2017-2018
+python3 -m github_poster dota2 --id="your dota2 id" --year 2017-2018
 or
 github_poster dota2 --id="your dota2 id" --year 2017-2018
 ```
