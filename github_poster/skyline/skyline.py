@@ -5,7 +5,7 @@ import numpy as np
 from pendulum import parse, period
 from sdf import X, Y, box, ease, measure_text, rectangle, text, union
 
-from .config import (
+from github_poster.skyline.config import (
     BASE_HEIGHT,
     BASE_LENGTH,
     BASE_TOP_LENGTH,

@@ -3,7 +3,7 @@ from collections import defaultdict
 
 import svgwrite
 
-from .structures import XY, ValueRange
+from github_poster.structures import XY, ValueRange
 
 
 class Poster:

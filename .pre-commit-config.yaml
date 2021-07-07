@@ -12,6 +12,7 @@ repos:
       - id: flake8
         args:
           - --max-line-length=88
+          - --extend-ignore=E203
 
   - repo: https://github.com/pycqa/isort
     rev: 5.8.0

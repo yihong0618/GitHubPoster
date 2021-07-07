@@ -3,7 +3,7 @@ from collections import defaultdict
 
 import stravalib
 
-from .base_loader import BaseLoader, LoadError
+from github_poster.loader.base_loader import BaseLoader, LoadError
 
 
 class StravaLoader(BaseLoader):

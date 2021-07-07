@@ -5,8 +5,8 @@ from datetime import datetime
 
 import requests
 
-from .base_loader import BaseLoader
-from .config import DOTA2_CALENDAR_API
+from github_poster.loader.base_loader import BaseLoader
+from github_poster.loader.config import DOTA2_CALENDAR_API
 
 
 class Dota2Loader(BaseLoader):

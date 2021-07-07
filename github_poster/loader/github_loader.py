@@ -1,9 +1,8 @@
 import requests
 
-from html_parser import GitHubParser
-
-from .base_loader import BaseLoader, LoadError
-from .config import GITHUB_CONTRIBUCTIONS_URL
+from github_poster.html_parser import GitHubParser
+from github_poster.loader.base_loader import BaseLoader, LoadError
+from github_poster.loader.config import GITHUB_CONTRIBUCTIONS_URL
 
 
 class GitHubLoader(BaseLoader):

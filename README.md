@@ -33,6 +33,12 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 ```
 git clone https://github.com/yihong0618/GitHubPoster.git
 ```
+## pip 安装
+
+```
+pip3 install -U github_poster
+```
+
 ## 安装(Python3.6+)
 ```
 pip3 install -r requirements.txt
@@ -45,7 +51,7 @@ pip3 install -r requirements.txt
 - 生成的 svg 在 `OUT_FOLDER` 内, 用 type 命名（暂时）
 - 默认自动生成不同颜色需要的 number（特殊颜色）, 也可以指定如： --special-number1 10 -- special_number2 20
 - 也可以指定颜色： --special-color1 pink --special-color2 '#33C6A4'
-- 其它参数可以见 `python cli.py <type> --help`
+- 其它参数可以见 `python3 -m github_poster <type> --help`
 - 可以增加动画 --with-animation (加入 GOGOGO 动画), 可以控制动画时间 --animation-time 14（默认是 10s）
 - 可以增加 Skyline --with-skyline (默认生成的为 to_year), 可以使用 --skyline-with-name 将用户名打印在 skyline 上
 
@@ -57,7 +63,9 @@ pip3 install -r requirements.txt
 
 把其它软件生成的(like running_page) gpx files 拷贝到 `GPX_FOLDER` 之后运行，或指定文件夹如我的文件夹是 `~/blog/GPX_OUT/`
 ```
-python3 cli.py gpx --dir ~/blog/GPX_OUT/ --year 2013-2021
+python3 -m github_poster gpx --dir ~/blog/GPX_OUT/ --year 2013-2021
+or pip
+github_poster github_poster gpx --dir ~/blog/GPX_OUT/ --year 2013-2021
 ```
 </details>
 
@@ -112,7 +120,9 @@ curl -X POST https://www.strava.com/oauth/token \
 7. 同步数据至 `Strava`
 在项目根目录执行：
 ```
-python3 cli.py strava --client_id  ${client_id} --client_secret ${client_secret} --refresh_token ${refresh_token} --year 2012-2021
+python3 -m github_poster --client_id  ${client_id} --client_secret ${client_secret} --refresh_token ${refresh_token} --year 2012-2021
+or pip
+github_poster --client_id  ${client_id} --client_secret ${client_secret} --refresh_token ${refresh_token} --year 2012-2021
 ```
 </details>
 
@@ -125,7 +135,9 @@ python3 cli.py strava --client_id  ${client_id} --client_secret ${client_secret}
 需要下载 `家长控制那个 APP(Nintendo Switch Parent Controls)` 进行抓包（可以使用 mitmproxy 等抓包软件）
 
 ```
-python3 cli.py ns --session_token ${session_token} --device_id ${device_id} --year 2020-2021
+python3 -m github_poster ns --session_token ${session_token} --device_id ${device_id} --year 2020-2021
+or pip
+github_poster ns --session_token ${session_token} --device_id ${device_id} --year 2020-2021
 ```
 </details>
 
@@ -138,7 +150,9 @@ python3 cli.py ns --session_token ${session_token} --device_id ${device_id} --ye
 需要填写开心词场的账号和密码
 
 ```
-python3 cli.py cichang --user_name ${user_name} --password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618
+python3 -m github_poster cichang --user_name ${user_name} --password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618
+or
+github_poster cichang --user_name ${user_name} --password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618
 ```
 </details>
 
@@ -153,7 +167,9 @@ python3 cli.py cichang --user_name ${user_name} --password ${pass_word} --year 2
 
 
 ```
-python3 cli.py duolingo --user_name ${user_id} --year 2015-2021
+python3 -m github_poster duolingo --user_name ${user_id} --year 2015-2021
+or
+github_poster duolingo --user_name ${user_id} --year 2015-2021
 ```
 </details>
 
@@ -168,7 +184,9 @@ python3 cli.py duolingo --user_name ${user_id} --year 2015-2021
 
 
 ```
-python3 cli.py shanbay --user_name ${user_name} --year 2012-2021 --special-color1 '#33C6A4' --special-color2 '#33C6A4'
+python3 -m github_poster shanbay --user_name ${user_name} --year 2012-2021 --special-color1 '#33C6A4' --special-color2 '#33C6A4'
+or
+github_poster shanbay --user_name ${user_name} --year 2012-2021 --special-color1 '#33C6A4' --special-color2 '#33C6A4'
 ```
 </details>
 
@@ -181,7 +199,9 @@ python3 cli.py shanbay --user_name ${user_name} --year 2012-2021 --special-color
 可以参考我的 [issue](https://github.com/yihong0618/2021/issues/5)
 
 ```
-python3 cli.py issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
+python3 -m github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
+or
+github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
 ```
 </details>
 
@@ -194,12 +214,16 @@ python3 cli.py issue --issue_number ${issue_number} --repo_name ${repo_name} --t
 需要找到你 `LeetCode` 的 `cookie`
 
 ```
-python3 cli.py leetcode --cookie ${leetcode_cookie} --year 2019-2021
+python3 -m github_poster leetcode --cookie ${leetcode_cookie} --year 2019-2021
+or
+github_poster leetcode --cookie ${leetcode_cookie} --year 2019-2021
 ```
 如果使用的是 leetcode-cn（leetcode 中国需要加上参数）--cn
 
 ```
-python3 cli.py leetcode --cookie ${leetcode_cookie} --year 2019-2021 --cn
+python3 -m github_poster leetcode --cookie ${leetcode_cookie} --year 2019-2021 --cn
+or
+github_poster leetcode --cookie ${leetcode_cookie} --year 2019-2021 --cn
 ```
 </details>
 
@@ -212,7 +236,9 @@ python3 cli.py leetcode --cookie ${leetcode_cookie} --year 2019-2021 --cn
 需要找到你的 `Twitter user_id`, 网址里那个就是
 
 ```
-python3 cli.py twitter --user_name ${user_name} --year 2018-2021 --track-color '#1C9CEA'
+python3 -m github_poster twitter --user_name ${user_name} --year 2018-2021 --track-color '#1C9CEA'
+or
+github_poster twitter --user_name ${user_name} --year 2018-2021 --track-color '#1C9CEA'
 ```
 </details>
 
@@ -225,7 +251,9 @@ python3 cli.py twitter --user_name ${user_name} --year 2018-2021 --track-color '
 利用 Google 的[历史下载](https://takeout.google.com/settings/takeout)下载 `YouTube` 的历史数据，选择 `json` 格式，将 `watch-history.json` 拷贝到 `IN-FOLDER` 然后运行
 
 ```
-python3 cli.py youtube --year 2015-2021
+python3 -m github_poster youtube --year 2015-2021
+or
+github_poster youtube --year 2015-2021
 ```
 </details>
 
@@ -238,7 +266,9 @@ python3 cli.py youtube --year 2015-2021
 需要找到你 `Bilibili (XHR)` 的 `cookie`
 
 ```
-python3 cli.py bilibili --cookie "${bilibili-cookie}"
+python3 -m github_poster bilibili --cookie "${bilibili-cookie}"
+or
+github_poster bilibili --cookie "${bilibili-cookie}"
 ```
 </details>
 
@@ -251,7 +281,9 @@ python3 cli.py bilibili --cookie "${bilibili-cookie}"
 需要找到你 `GitHub Name` (url 后面那个)
 
 ```
-python3 cli.py github --user_name "${github_user_name}" --with-skyline
+python3 -m github_poster github --user_name "${github_user_name}" --with-skyline
+or
+github_poster github --user_name "${github_user_name}" --with-skyline
 ```
 </details>
 
@@ -264,13 +296,17 @@ python3 cli.py github --user_name "${github_user_name}" --with-skyline
 需要找到你 `GitLab Name` (url 后面那个)
 
 ```
-python3 cli.py gitlab --user_name "${gitlab_user_name}"
+python3 -m github_poster gitlab --user_name "${gitlab_user_name}"
+or
+github_poster gitlab --user_name "${gitlab_user_name}"
 ```
 
 如果是自己搭建的 `GitLab`，可以指定 `GitLab` 的 URL，以及登录 `GitLab` 后得到的 `_gitlab_session` 这个 `cookie`(如果需要登录的话)
 
 ```
-python3 cli.py gitlab --user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
+python3 -m github_poster gitlab --user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
+or
+github_poster gitlab --user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
 ```
 
 </details>
@@ -284,7 +320,9 @@ python3 cli.py gitlab --user_name "${gitlab_user_name}" --base_url "https://your
 在亚马逊网站上需要找到你 [Amazon-CN](https://www.amazon.cn/) (XHR) Cookie
 
 ```
-python3 cli.py kindle --cookie ${kindle_cookie} --cn --year 2018-2021
+python3 -m github_poster kindle --cookie ${kindle_cookie} --cn --year 2018-2021
+or
+github_poster kindle --cookie ${kindle_cookie} --cn --year 2018-2021
 ```
 
 </details>
@@ -298,7 +336,9 @@ python3 cli.py kindle --cookie ${kindle_cookie} --cn --year 2018-2021
 在 WakaTime 官网获取你的 WakaTime API Key：[WakaTime API Key](https://wakatime.com/settings/api-key)
 
 ```
-python cli.py wakatime --key="your_wakatime_api_key" --year 2019-2021
+python -m github_poster wakatime --key="your_wakatime_api_key" --year 2019-2021
+or
+github_poster wakatime --key="your_wakatime_api_key" --year 2019-2021
 ```
 
 </details>
@@ -317,7 +357,9 @@ python cli.py wakatime --key="your_wakatime_api_key" --year 2019-2021
 
 
 ```
-python cli.py dota2 --id="your dota2 id" --year 2017-2018
+python -m github_poster dota2 --id="your dota2 id" --year 2017-2018
+or
+github_poster dota2 --id="your dota2 id" --year 2017-2018
 ```
 
 </details>
@@ -329,7 +371,7 @@ python cli.py dota2 --id="your dota2 id" --year 2017-2018
 
 提交PR前:
 - 使用 black 对 Python 代码进行格式化。(`black .`)
-- 使用 isort 对 Python import 进行格式化。(`isort --profile black  **/*.py` )
+- 使用 isort 对 Python import 进行格式化。(`isort --profile black  **/**/*.py` )
 
 # TODO
 

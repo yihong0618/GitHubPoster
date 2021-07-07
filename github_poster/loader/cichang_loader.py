@@ -3,8 +3,8 @@ import json
 
 import requests
 
-from .base_loader import BaseLoader, LoadError
-from .config import (
+from github_poster.loader.base_loader import BaseLoader, LoadError
+from github_poster.loader.config import (
     CICHANG_CLAENDAR_URL,
     CICHANG_COVERT_URL,
     CICHANG_LOGIN_URL,
