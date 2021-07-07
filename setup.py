@@ -37,7 +37,7 @@ setup(
     author_email="zouzou0208@gmail.com",
     url="https://github.com/yihong0618/GitHubPoster",
     license="MIT",
-    version="0.3.1",
+    version="1.0.0",
     description="Make everything a GitHub svg poster and Skyline!",
     packages=find_packages(),
     install_requires=required,

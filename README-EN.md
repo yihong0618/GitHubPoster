@@ -25,6 +25,12 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 ```
 git clone https://github.com/yihong0618/GitHubPoster.git
 ```
+## pip install
+
+```
+pip3 install -U github_poster
+```
+
 ## Install(Python3.6+)
 ```
 pip3 install -r requirements.txt
@@ -50,7 +56,9 @@ pip3 install -r requirements.txt
 
 mv gpx files to `GPX_FOLDER` then run the code
 ```
-python3 cli.py gpx --dir ~/blog/GPX_OUT/ --year 2013-2021
+python3 -m github_poster gpx --dir ~/blog/GPX_OUT/ --year 2013-2021
+or pip
+github_poster github_poster gpx --dir ~/blog/GPX_OUT/ --year 2013-2021
 ```
 </details>
 
@@ -112,7 +120,9 @@ curl -X POST https://www.strava.com/oauth/token \
 ![get_refresch_token](https://raw.githubusercontent.com/shaonianche/gallery/master/running_page/get_refresch_token.png)
 
 ```
-python3 -m github_poster strava --client_id  ${client_id} --client_secret ${client_secret} --refresh_token ${refresh_token} --year 2012-2021}
+python3 -m github_poster --client_id  ${client_id} --client_secret ${client_secret} --refresh_token ${refresh_token} --year 2012-2021
+or pip
+github_poster --client_id  ${client_id} --client_secret ${client_secret} --refresh_token ${refresh_token} --year 2012-2021
 ```
 </details>
 
@@ -126,6 +136,8 @@ From APP`(Nintendo Switch Parent Controls)` using `mitmproxy` to get the `sessio
 
 ```
 python3 -m github_poster ns --session_token ${session_token} --device_id ${device_id} --year 2020-2021
+or pip
+github_poster ns --session_token ${session_token} --device_id ${device_id} --year 2020-2021
 ```
 </details>
 
@@ -142,6 +154,8 @@ Find your `duolingo id`, F12 from `XHR`
 
 ```
 python3 -m github_poster duolingo --user_name ${user_id} --year 2015-2021
+or
+github_poster duolingo --user_name ${user_id} --year 2015-2021
 ```
 </details>
 
@@ -155,6 +169,8 @@ Like my issue [issue](https://github.com/yihong0618/2021/issues/5)
 
 ```
 python3 -m github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
+or
+github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
 ```
 </details>
 
@@ -168,6 +184,8 @@ Find your `LeetCode Cookie`
 
 ```
 python3 -m github_poster leetcode --cookie ${leetcode_cookie} --year 2019-2021
+or
+github_poster leetcode --cookie ${leetcode_cookie} --year 2019-2021
 ```
 
 </details>
@@ -181,7 +199,9 @@ python3 -m github_poster leetcode --cookie ${leetcode_cookie} --year 2019-2021
 Find your `Twitter user_id` (in the url)
 
 ```
-python3 -m github_poster twitter --user_name ${twitter_user_name} --year 2018-2021 --track-color '#1C9CEA'
+python3 -m github_poster twitter --user_name ${user_name} --year 2018-2021 --track-color '#1C9CEA'
+or
+github_poster twitter --user_name ${user_name} --year 2018-2021 --track-color '#1C9CEA'
 ```
 </details>
 
@@ -195,6 +215,8 @@ Use Google [History Takeout](https://takeout.google.com/settings/takeout) to dow
 
 ```
 python3 -m github_poster youtube --year 2015-2021
+or
+github_poster youtube --year 2015-2021
 ```
 </details>
 
@@ -208,6 +230,8 @@ Find your `Bilibili (XHR) cookie`
 
 ```
 python3 -m github_poster bilibili --cookie "${bilibili-cookie}"
+or
+github_poster bilibili --cookie "${bilibili-cookie}"
 ```
 </details>
 
@@ -221,6 +245,8 @@ Get your `GitHub Name` (in the url)
 
 ```
 python3 -m github_poster github --user_name "${github_user_name}" --with-skyline
+or
+github_poster github --user_name "${github_user_name}" --with-skyline
 ```
 </details>
 
@@ -234,6 +260,8 @@ Get your `GitLab Name` (in the url)
 
 ```
 python3 -m github_poster gitlab --user_name "${gitlab_user_name}"
+or
+github_poster gitlab --user_name "${gitlab_user_name}"
 ```
 
 For self-managed `GitLab`, specify the base url of your instance. You should use `_gitlab_session` from Cookies if sign in required.
@@ -253,7 +281,9 @@ python3 -m github_poster gitlab --user_name "${gitlab_user_name}" --base_url "ht
 Find your [Amazon](https://www.amazon.com/) Cookie
 
 ```
-python3 -m github_poster kindle --cookie ${kindle_cookie} --year 2018-2021
+python3 -m github_poster kindle --cookie ${kindle_cookie} --cn --year 2018-2021
+or
+github_poster kindle --cookie ${kindle_cookie} --cn --year 2018-2021
 ```
 
 </details>
@@ -268,6 +298,8 @@ Find your own `WakaTime API Key` at: [WakaTime API Key](https://wakatime.com/set
 
 ```
 python -m github_poster wakatime --key="your_wakatime_api_key" --year 2019-2021
+or
+github_poster wakatime --key="your_wakatime_api_key" --year 2019-2021
 ```
 
 </details>
@@ -286,6 +318,8 @@ more info: https://docs.opendota.com/#section/Introduction"
 
 ```
 python -m github_poster dota2 --id="your dota2 id" --year 2017-2018
+or
+github_poster dota2 --id="your dota2 id" --year 2017-2018
 ```
 
 # Contribution
