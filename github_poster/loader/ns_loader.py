@@ -22,12 +22,12 @@ class NSLoader(BaseLoader):
             "x-moon-os-language": "en-US",
             "x-moon-app-language": "en-US",
             "authorization": "",
-            "x-moon-app-internal-version": "293",
-            "x-moon-app-display-version": "1.14.0",
+            "x-moon-app-internal-version": "303",
+            "x-moon-app-display-version": "1.15.0",
             "x-moon-os": "IOS",
             "accept-encoding": "gzip;q=1.0, compress;q=0.5",
             "accept-language": "en-US;q=1.0",
-            "user-agent": "moon_ios/1.14.0 (com.nintendo.znma; build:293; iOS 14.2.0) "
+            "user-agent": "moon_ios/1.15.0 (com.nintendo.znma; build:303; iOS 14.6) "
             "Alamofire/4.8.2",
             "x-moon-timezone": "America/Los_Angeles",
         }
