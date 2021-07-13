@@ -10,8 +10,8 @@ class WakaTimeLoader(BaseLoader):
     track_color = "#9BE9A8"
     unit = "mins"
 
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
         self.wakatime_key = kwargs.get("key", "")
 
     @classmethod

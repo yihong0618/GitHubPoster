@@ -29,13 +29,16 @@ class Poster:
         self.animation_time = 10
         self.year_tracks_date_count_dict = defaultdict(int)
 
-    def set_tracks(self, tracks, years):
+    def set_tracks(self, tracks, years, _type):
         self.tracks = tracks
         self.years = years
-        for date, num in tracks.items():
-            self.year_tracks_date_count_dict[date[:4]] += 1
-            self.length_range_by_date.extend(num)
-        self.__compute_track_statistics()
+        # for mutiple types...
+        # TODO maybe refactor another class later
+        if _type != "multiple":
+            for date, num in tracks.items():
+                self.year_tracks_date_count_dict[date[:4]] += 1
+                self.length_range_by_date.extend(num)
+            self.__compute_track_statistics()
 
     def set_with_animation(self, with_animation):
         self.with_animation = with_animation
@@ -51,11 +54,11 @@ class Poster:
         d.viewbox(0, 0, self.width, height)
         d.add(d.rect((0, 0), (width, height), fill=self.colors["background"]))
         self.__draw_header(d)
-        self.__draw_tracks(d, XY(width - 20, height - 30 - 30), XY(10, 30))
+        self.__draw_tracks(d, XY(10, 30))
         d.save()
 
-    def __draw_tracks(self, d, size, offset):
-        self.tracks_drawer.draw(d, size, offset)
+    def __draw_tracks(self, d, offset):
+        self.tracks_drawer.draw(d, offset)
 
     def __draw_header(self, d):
         text_color = self.colors["text"]

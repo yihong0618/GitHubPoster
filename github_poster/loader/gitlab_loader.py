@@ -12,8 +12,8 @@ class GitLabLoader(BaseLoader):
     track_color = "#ACD5F2"
     unit = "cons"
 
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
         self.user_name = kwargs.get("user_name", "")
         self.gitlab_base_url = kwargs.get("base_url") or "https://gitlab.com"
         self.gitlab_session = kwargs.get("session")

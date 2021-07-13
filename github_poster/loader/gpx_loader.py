@@ -11,8 +11,8 @@ from github_poster.loader.config import GPX_ACTIVITY_NAME_TUPLE
 class GPXLoader(BaseLoader):
     unit = "km"
 
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
         self.number_by_date_dict = defaultdict(float)
         self.before = None
         self.after = None

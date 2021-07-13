@@ -8,12 +8,33 @@ from github_poster.loader.gitlab_loader import GitLabLoader
 from github_poster.loader.gpx_loader import GPXLoader
 from github_poster.loader.kindle_loader import KindleLoader
 from github_poster.loader.leetcode_loader import LeetcodeLoader
+from github_poster.loader.multiple_loader import MutipleLoader
 from github_poster.loader.ns_loader import NSLoader
 from github_poster.loader.shanbay_loader import ShanBayLoader
 from github_poster.loader.strava_loader import StravaLoader
 from github_poster.loader.twitter_loader import TwitterLoader
 from github_poster.loader.wakatime_loader import WakaTimeLoader
 from github_poster.loader.youtube_loader import YouTubeLoader
+
+LOADER_DICT = {
+    "duolingo": DuolingoLoader,
+    "shanbay": ShanBayLoader,
+    "strava": StravaLoader,
+    "cichang": CiChangLoader,
+    "ns": NSLoader,
+    "gpx": GPXLoader,
+    "issue": GitHubIssuesLoader,
+    "leetcode": LeetcodeLoader,
+    "twitter": TwitterLoader,
+    "youtube": YouTubeLoader,
+    "bilibili": BilibiliLoader,
+    "github": GitHubLoader,
+    "gitlab": GitLabLoader,
+    "kindle": KindleLoader,
+    "wakatime": WakaTimeLoader,
+    "dota2": Dota2Loader,
+    "multiple": MutipleLoader,
+}
 
 __all__ = (
     "BilibiliLoader",
@@ -32,4 +53,6 @@ __all__ = (
     "TwitterLoader",
     "WakaTimeLoader",
     "YouTubeLoader",
+    "MutipleLoader",
+    "LOADER_DICT",
 )

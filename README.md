@@ -236,9 +236,9 @@ github_poster leetcode --cookie ${leetcode_cookie} --year 2019-2021 --cn
 需要找到你的 `Twitter user_id`, 网址里那个就是
 
 ```
-python3 -m github_poster twitter --user_name ${user_name} --year 2018-2021 --track-color '#1C9CEA'
+python3 -m github_poster twitter --twitter_user_name ${user_name} --year 2018-2021 --track-color '#1C9CEA'
 or
-github_poster twitter --user_name ${user_name} --year 2018-2021 --track-color '#1C9CEA'
+github_poster twitter --user_name ${twitter_user_name} --year 2018-2021 --track-color '#1C9CEA'
 ```
 </details>
 
@@ -281,9 +281,9 @@ github_poster bilibili --cookie "${bilibili-cookie}"
 需要找到你 `GitHub Name` (url 后面那个)
 
 ```
-python3 -m github_poster github --user_name "${github_user_name}" --with-skyline
+python3 -m github_poster github --github_user_name "${github_user_name}" --with-skyline
 or
-github_poster github --user_name "${github_user_name}" --with-skyline
+github_poster github --github_user_name "${github_user_name}" --with-skyline
 ```
 </details>
 

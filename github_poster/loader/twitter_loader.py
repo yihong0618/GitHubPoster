@@ -7,16 +7,17 @@ class TwitterLoader(BaseLoader):
     track_color = "#1C9CEA"
     unit = "tweets"
 
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
-        self.user_name = kwargs.get("user_name", "")
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
+        self.user_name = kwargs.get("twitter_user_name", "")
+        print(self.user_name)
         self.c = twint.Config()
 
     @classmethod
     def add_loader_arguments(cls, parser):
         parser.add_argument(
-            "--user_name",
-            dest="user_name",
+            "--twitter_user_name",
+            dest="twitter_user_name",
             type=str,
             required=True,
             help="",

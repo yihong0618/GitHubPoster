@@ -13,8 +13,8 @@ from github_poster.loader.config import (
 class LeetcodeLoader(BaseLoader):
     unit = "subs"
 
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
         self.leetcode_cookie = kwargs.get("cookie", "")
         self.is_cn = kwargs.get("cn", False)
         self.LEETCODE_URL = (

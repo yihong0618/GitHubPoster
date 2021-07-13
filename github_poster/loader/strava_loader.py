@@ -9,8 +9,8 @@ from github_poster.loader.base_loader import BaseLoader, LoadError
 class StravaLoader(BaseLoader):
     unit = "km"
 
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
         self.before = None
         self.after = None
         self.number_by_date_dict = defaultdict(float)
