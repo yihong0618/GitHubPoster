@@ -8,8 +8,8 @@ class ShanBayLoader(BaseLoader):
     track_color = "#33C6A4"
     unit = "days"
 
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
         self.user_name = kwargs.get("user_name", "")
 
     @classmethod

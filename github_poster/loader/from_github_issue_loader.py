@@ -5,8 +5,8 @@ from github_poster.loader.base_loader import BaseLoader
 
 
 class GitHubIssuesLoader(BaseLoader):
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
         self.issue_number = int(kwargs.get("issue_number", "1"))
         self.repo_name = kwargs.get("repo_name", "")
         # for private repo

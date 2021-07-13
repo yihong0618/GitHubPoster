@@ -9,15 +9,15 @@ class GitHubLoader(BaseLoader):
     track_color = "#9BE9A8"
     unit = "cons"
 
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
-        self.user_name = kwargs.get("user_name", "")
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
+        self.user_name = kwargs.get("github_user_name", "")
 
     @classmethod
     def add_loader_arguments(cls, parser):
         parser.add_argument(
-            "--user_name",
-            dest="user_name",
+            "--github_user_name",
+            dest="github_user_name",
             type=str,
             required=True,
             help="",

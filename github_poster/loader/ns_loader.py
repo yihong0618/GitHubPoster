@@ -14,8 +14,8 @@ from github_poster.loader.config import (
 class NSLoader(BaseLoader):
     unit = "mins"
 
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
         self.session_token = kwargs.get("session_token", "")
         self.device_id = kwargs.get("device_id", "")
         self.headers = {

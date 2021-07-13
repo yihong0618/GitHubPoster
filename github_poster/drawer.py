@@ -3,6 +3,7 @@ import datetime
 
 import svgwrite
 
+from github_poster.config import DOM_TUPLE, MONTH_NAMES
 from github_poster.utils import interpolate_color, make_key_times
 
 
@@ -26,7 +27,37 @@ class Drawer:
 
         return interpolate_color(color1, color2, (length - length_range.lower()) / diff)
 
-    def draw(self, dr, size, offset):
+    def _gen_day_boxes(
+        self, dr, rect_x, rect_y, title, color, with_animation, key_times, animate_index
+    ):
+        """
+        max len(boxes) == 3 like douban see #7
+        yield rect1, rect2, rect3
+        or
+        yield rect1, rect2
+        or
+        yield rect
+        """
+        rect = dr.rect((rect_x, rect_y), DOM_TUPLE, fill=color)
+        if with_animation:
+            values = (
+                ";".join(["0"] * animate_index)
+                + ";"
+                + ";".join(["1"] * (len(key_times) - animate_index))
+            )
+            rect.add(
+                svgwrite.animate.Animate(
+                    "opacity",
+                    dur=f"{self.poster.animation_time}s",
+                    values=values,
+                    keyTimes=";".join(key_times),
+                    repeatCount="1",
+                )
+            )
+        rect.set_desc(title=title)
+        yield rect
+
+    def draw(self, dr, offset):
         if self.poster.tracks is None:
             raise DrawError("No tracks to draw")
         year_size = 200 * 4.0 / 80.0
@@ -47,20 +78,6 @@ class Drawer:
             )
             year_length = total_sum_year_dict.get(year, 0)
             year_length = str(int(year_length)) + f" {self.poster.units}"
-            month_names = [
-                "Jan",
-                "Feb",
-                "Mar",
-                "Apr",
-                "May",
-                "Jun",
-                "Jul",
-                "Aug",
-                "Sep",
-                "Oct",
-                "Nov",
-                "Dec",
-            ]
             dr.add(
                 dr.text(
                     f"{year}",
@@ -82,7 +99,7 @@ class Drawer:
             )
             # add month name up to the poster one by one
             # because of svg text auto trim the spaces.
-            for num, name in enumerate(month_names):
+            for num, name in enumerate(MONTH_NAMES):
                 dr.add(
                     dr.text(
                         f"{name}",
@@ -93,7 +110,6 @@ class Drawer:
                 )
 
             rect_x = 10.0
-            dom = (2.6, 2.6)
             animate_index = 1
             year_count, key_times = 0, ""
             if self.poster.with_animation:
@@ -127,24 +143,17 @@ class Drawer:
                         # tricky for may cause animate error
                         if animate_index < len(key_times) - 1:
                             animate_index += 1
-                    rect = dr.rect((rect_x, rect_y), dom, fill=color)
-                    if self.poster.with_animation:
-                        values = (
-                            ";".join(["0"] * animate_index)
-                            + ";"
-                            + ";".join(["1"] * (len(key_times) - animate_index))
-                        )
-                        rect.add(
-                            svgwrite.animate.Animate(
-                                "opacity",
-                                dur=f"{self.poster.animation_time}s",
-                                values=values,
-                                keyTimes=";".join(key_times),
-                                repeatCount="1",
-                            )
-                        )
-                    rect.set_desc(title=date_title)
-                    dr.add(rect)
+                    for rect in self._gen_day_boxes(
+                        dr,
+                        rect_x,
+                        rect_y,
+                        date_title,
+                        color,
+                        self.poster.with_animation,
+                        key_times,
+                        animate_index,
+                    ):
+                        dr.add(rect)
                     github_rect_day += datetime.timedelta(1)
                 rect_x += 3.5
             offset.y += 3.5 * 9 + year_size + 1.5

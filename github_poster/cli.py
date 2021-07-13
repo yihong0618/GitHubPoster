@@ -6,45 +6,9 @@ import argparse
 import os
 
 from github_poster import drawer, poster
-from github_poster.loader import (
-    BilibiliLoader,
-    CiChangLoader,
-    Dota2Loader,
-    DuolingoLoader,
-    GitHubIssuesLoader,
-    GitHubLoader,
-    GitLabLoader,
-    GPXLoader,
-    KindleLoader,
-    LeetcodeLoader,
-    NSLoader,
-    ShanBayLoader,
-    StravaLoader,
-    TwitterLoader,
-    WakaTimeLoader,
-    YouTubeLoader,
-)
+from github_poster.loader import LOADER_DICT
 from github_poster.skyline import Skyline
 from github_poster.utils import parse_years
-
-LOADER_DICT = {
-    "duolingo": DuolingoLoader,
-    "shanbay": ShanBayLoader,
-    "strava": StravaLoader,
-    "cichang": CiChangLoader,
-    "ns": NSLoader,
-    "gpx": GPXLoader,
-    "issue": GitHubIssuesLoader,
-    "leetcode": LeetcodeLoader,
-    "twitter": TwitterLoader,
-    "youtube": YouTubeLoader,
-    "bilibili": BilibiliLoader,
-    "github": GitHubLoader,
-    "gitlab": GitLabLoader,
-    "kindle": KindleLoader,
-    "wakatime": WakaTimeLoader,
-    "dota2": Dota2Loader,
-}
 
 OUT_FOLDER = os.path.join(os.getcwd(), "OUT_FOLDER")
 
@@ -60,10 +24,13 @@ def main():
         loader.add_arguments(parser)
 
     args = args_parser.parse_args()
+    no_title_types = ("issue", "multiple")
 
     # we don't know issue content so use name
     p.title = (
-        f"{args.me} " + str(args.type).upper() if args.type != "issue" else args.me
+        f"{args.me} " + str(args.type).upper()
+        if args.type not in no_title_types
+        else args.me
     )
 
     p.colors = {
@@ -79,9 +46,20 @@ def main():
     p.set_animation_time(args.animation_time)
     p.units = args.loader.unit
     from_year, to_year = parse_years(args.year)
+    args_dict = dict(args._get_kwargs())
     d = LOADER_DICT.get(args.type, "duolingo")(
-        from_year, to_year, **dict(args._get_kwargs())
+        from_year, to_year, args.type, **args_dict
     )
+    # for multiple types
+    if args.type == "multiple":
+        types_list = args_dict.get("types").split(",")
+        # trim drop the spaces
+        types_list = [t.replace(" ", "") for t in types_list]
+        assert len(types_list) <= 3
+        for t in types_list:
+            if t not in LOADER_DICT:
+                raise Exception(f"{t} must in support loader types")
+            d.set_loader_list(LOADER_DICT.get(t)(from_year, to_year, t, **args_dict))
     tracks, years = d.get_all_track_data()
     p.special_number = {
         "special_number1": d.special_number1,
@@ -91,7 +69,7 @@ def main():
         p.special_number["special_number1"] = args.special_number1
     if args.special_number2:
         p.special_number["special_number2"] = args.special_number2
-    p.set_tracks(tracks, years)
+    p.set_tracks(tracks, years, args.type)
     p.height = 35 + len(p.years) * 43
     if not os.path.exists(OUT_FOLDER):
         os.mkdir(OUT_FOLDER)

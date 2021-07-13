@@ -10,8 +10,8 @@ class YouTubeLoader(BaseLoader):
     track_color = "#FFFFFF"
     unit = "videos"
 
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
         self.number_by_date_dict = defaultdict(int)
         self.youtube_file = kwargs.get("history_file")
 
