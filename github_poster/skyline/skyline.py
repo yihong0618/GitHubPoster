@@ -5,6 +5,7 @@ import numpy as np
 from pendulum import parse, period
 from sdf import X, Y, box, ease, measure_text, rectangle, text, union
 
+import github_poster.skyline
 from github_poster.skyline.config import (
     BASE_HEIGHT,
     BASE_LENGTH,
@@ -71,7 +72,7 @@ class Skyline:
     def _make_skyline_card(self, text_info, offset=0):
         # TODO change the magic numbers
         # support change font
-        FONT = os.path.join("font", "arial.ttf")
+        FONT = os.path.join(github_poster.skyline.__path__[0], "font", "arial.ttf")
         TEXT = text_info
         w, h = measure_text(FONT, TEXT)
         t = (

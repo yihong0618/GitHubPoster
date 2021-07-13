@@ -331,7 +331,7 @@ github_poster dota2 --id="your dota2 id" --year 2017-2018
 
 Before submitting PR:
 - Format Python code with `black` (`black .`)
-- Format Python code with `isort` (`isort --profile black  **/*.py`)
+- Format Python code with `isort` (`isort --profile black  **/**/*.py`)
 
 # TODO
 
