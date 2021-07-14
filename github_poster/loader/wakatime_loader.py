@@ -40,6 +40,7 @@ class WakaTimeLoader(BaseLoader):
                 return data_list
             data = r.json()
             data_list.extend(data["data"])
+            # spider rule
             time.sleep(1)
         return data_list
 

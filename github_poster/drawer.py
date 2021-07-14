@@ -3,7 +3,7 @@ import datetime
 
 import svgwrite
 
-from github_poster.config import DOM_TUPLE, MONTH_NAMES
+from github_poster.config import DOM_BOX_DICT, DOM_BOX_TUPLE, MONTH_NAMES
 from github_poster.utils import interpolate_color, make_key_times
 
 
@@ -27,8 +27,16 @@ class Drawer:
 
         return interpolate_color(color1, color2, (length - length_range.lower()) / diff)
 
-    def _gen_day_boxes(
-        self, dr, rect_x, rect_y, title, color, with_animation, key_times, animate_index
+    def _gen_day_box(
+        self,
+        dr,
+        rect_x,
+        rect_y,
+        date_title,
+        day_tracks,
+        with_animation,
+        key_times,
+        animate_index,
     ):
         """
         max len(boxes) == 3 like douban see #7
@@ -38,7 +46,21 @@ class Drawer:
         or
         yield rect
         """
-        rect = dr.rect((rect_x, rect_y), DOM_TUPLE, fill=color)
+        color = "#444444"
+        if day_tracks:
+            special_num1 = self.poster.special_number["special_number1"]
+            special_num2 = self.poster.special_number["special_number2"]
+            has_special = special_num2 < day_tracks < special_num1
+
+            color = self.color(
+                self.poster.length_range_by_date, day_tracks, has_special
+            )
+            if day_tracks >= special_num1:
+                color = self.poster.colors.get("special2") or self.poster.colors.get(
+                    "special"
+                )
+            date_title = f"{date_title} {day_tracks} {self.poster.units}"
+        rect = dr.rect((rect_x, rect_y), DOM_BOX_TUPLE, fill=color)
         if with_animation:
             values = (
                 ";".join(["0"] * animate_index)
@@ -54,8 +76,48 @@ class Drawer:
                     repeatCount="1",
                 )
             )
-        rect.set_desc(title=title)
+        rect.set_desc(title=date_title)
         yield rect
+
+    def _gen_day_boxes(
+        self,
+        dr,
+        rect_x,
+        rect_y,
+        date_title,
+        day_tracks,
+        with_animation,
+        key_times,
+        animate_index,
+    ):
+        """
+        max len(boxes) == 3 like douban see #7
+        yield rect1, rect2, rect3
+        or
+        yield rect1, rect2
+        or
+        yield rect
+        """
+        color = "#444444"
+        color_tuple = ("green", "blue")
+        type_list = ["github", "twitter"]
+
+        if day_tracks:
+            types_len = len(day_tracks)
+            dom_tuple = DOM_BOX_DICT.get(types_len).get("dom")
+            index = 0
+            for _type in type_list:
+                num = day_tracks.get(_type)
+                if not num:
+                    continue
+                dom = dom_tuple[index]
+                rect = dr.rect((rect_x, rect_y), dom, fill=color_tuple[index])
+                yield rect
+                rect_y += dom_tuple[index][1]
+                index += 1
+        else:
+            rect = dr.rect((rect_x, rect_y), DOM_BOX_TUPLE, fill=color)
+            yield rect
 
     def draw(self, dr, offset):
         if self.poster.tracks is None:
@@ -124,31 +186,21 @@ class Drawer:
                     if int(github_rect_day.year) > year:
                         break
                     rect_y += 3.5
-                    color = "#444444"
                     date_title = str(github_rect_day)
+                    day_tracks = None
                     if date_title in self.poster.tracks:
-                        num = self.poster.tracks[date_title]
-                        special_num1 = self.poster.special_number["special_number1"]
-                        special_num2 = self.poster.special_number["special_number2"]
-                        has_special = special_num2 < num < special_num1
+                        day_tracks = self.poster.tracks[date_title]
 
-                        color = self.color(
-                            self.poster.length_range_by_date, num, has_special
-                        )
-                        if num >= special_num1:
-                            color = self.poster.colors.get(
-                                "special2"
-                            ) or self.poster.colors.get("special")
-                        date_title = f"{date_title} {num} {self.poster.units}"
                         # tricky for may cause animate error
                         if animate_index < len(key_times) - 1:
                             animate_index += 1
+                    # for rect in self._gen_day_box(
                     for rect in self._gen_day_boxes(
                         dr,
                         rect_x,
                         rect_y,
                         date_title,
-                        color,
+                        day_tracks,
                         self.poster.with_animation,
                         key_times,
                         animate_index,
