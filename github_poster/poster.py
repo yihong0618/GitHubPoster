@@ -10,8 +10,9 @@ class Poster:
     def __init__(self):
         self.title = None
         self.tracks = {}
-        self.length_range = ValueRange()
+        self.type_list = []
         self.length_range_by_date = ValueRange()
+        self.length_range_by_date_dict = defaultdict(ValueRange)
         self.units = "metric"
         self.colors = {
             "background": "#222222",
@@ -28,17 +29,23 @@ class Poster:
         self.with_animation = False
         self.animation_time = 10
         self.year_tracks_date_count_dict = defaultdict(int)
+        self.year_tracks_type_dict = defaultdict(dict)
 
-    def set_tracks(self, tracks, years, _type):
+    def set_tracks(self, tracks, years, type_list):
+        self.type_list.extend(type_list)
         self.tracks = tracks
         self.years = years
         # for mutiple types...
         # TODO maybe refactor another class later
-        if _type != "multiple":
-            for date, num in tracks.items():
-                self.year_tracks_date_count_dict[date[:4]] += 1
+        for date, num in tracks.items():
+            self.year_tracks_date_count_dict[date[:4]] += 1
+            if type(num) is dict:
+                for k, v in num.items():
+                    self.length_range_by_date_dict[k].extend(v)
+            else:
                 self.length_range_by_date.extend(num)
-            self.__compute_track_statistics()
+        for t in type_list:
+            self.__compute_track_statistics(t)
 
     def set_with_animation(self, with_animation):
         self.with_animation = with_animation
@@ -65,12 +72,12 @@ class Poster:
         title_style = "font-size:12px; font-family:Arial; font-weight:bold;"
         d.add(d.text(self.title, insert=(10, 20), fill=text_color, style=title_style))
 
-    def __compute_track_statistics(self):
-        length_range = ValueRange()
-        total_sum = 0
+    def __compute_track_statistics(self, t):
         total_sum_year_dict = defaultdict(int)
         for date, num in self.tracks.items():
-            total_sum += num
-            total_sum_year_dict[int(date[:4])] += num
-            length_range.extend(num)
+            if type(num) is dict:
+                total_sum_year_dict[int(date[:4])] += num.get(t, 0)
+            else:
+                total_sum_year_dict[int(date[:4])] += num
         self.total_sum_year_dict = total_sum_year_dict
+        return total_sum_year_dict

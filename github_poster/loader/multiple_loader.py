@@ -49,6 +49,10 @@ class MutipleLoader(BaseLoader):
         pass
 
     def get_all_track_data(self):
+        """
+        date_summary_dict:
+        -> {date: {github:1, twitter:2}, date2: {github: 2}}
+        """
         date_summary_dict = defaultdict(dict)
         for loader in self.loader_list:
             data, _ = loader.get_all_track_data()

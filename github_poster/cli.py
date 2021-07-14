@@ -50,13 +50,14 @@ def main():
     d = LOADER_DICT.get(args.type, "duolingo")(
         from_year, to_year, args.type, **args_dict
     )
+    type_list = [args.type]
     # for multiple types
     if args.type == "multiple":
         types_list = args_dict.get("types").split(",")
         # trim drop the spaces
-        types_list = [t.replace(" ", "") for t in types_list]
+        type_list = [t.replace(" ", "") for t in types_list]
         assert len(types_list) <= 3
-        for t in types_list:
+        for t in type_list:
             if t not in LOADER_DICT:
                 raise Exception(f"{t} must in support loader types")
             d.set_loader_list(LOADER_DICT.get(t)(from_year, to_year, t, **args_dict))
@@ -69,7 +70,8 @@ def main():
         p.special_number["special_number1"] = args.special_number1
     if args.special_number2:
         p.special_number["special_number2"] = args.special_number2
-    p.set_tracks(tracks, years, args.type)
+
+    p.set_tracks(tracks, years, type_list)
     p.height = 35 + len(p.years) * 43
     if not os.path.exists(OUT_FOLDER):
         os.mkdir(OUT_FOLDER)

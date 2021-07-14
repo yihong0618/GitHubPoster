@@ -10,7 +10,6 @@ class TwitterLoader(BaseLoader):
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
         self.user_name = kwargs.get("twitter_user_name", "")
-        print(self.user_name)
         self.c = twint.Config()
 
     @classmethod
