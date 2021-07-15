@@ -3,6 +3,13 @@ import datetime
 
 import svgwrite
 
+from github_poster.config import (
+    COLOR_TUPLE,
+    DEFAULT_DOM_COLOR,
+    DOM_BOX_DICT,
+    DOM_BOX_TUPLE,
+    MONTH_NAMES,
+)
 from github_poster.utils import interpolate_color, make_key_times
 
 
@@ -14,19 +21,123 @@ class Drawer:
     def __init__(self, p):
         self.poster = p
 
-    def color(self, length_range, length, is_special):
-        color1 = (
-            self.poster.colors["special"] if is_special else self.poster.colors["track"]
+    @property
+    def type_color_dict(self):
+        """
+        for multiple types
+        """
+        return dict(
+            zip(self.poster.type_list, COLOR_TUPLE[: len(self.poster.type_list)])
         )
-        color2 = self.poster.colors["special2"]
 
+    def make_color(self, length_range, length, color_from, color_to):
         diff = length_range.diameter()
         if diff == 0:
-            return color1
+            return color_from
 
-        return interpolate_color(color1, color2, (length - length_range.lower()) / diff)
+        return interpolate_color(
+            color_from, color_to, (length - length_range.lower()) / diff
+        )
 
-    def draw(self, dr, size, offset):
+    def __add_animation(self, rect, key_times, animate_index):
+        values = (
+            ";".join(["0"] * animate_index)
+            + ";"
+            + ";".join(["1"] * (len(key_times) - animate_index))
+        )
+        rect.add(
+            svgwrite.animate.Animate(
+                "opacity",
+                dur=f"{self.poster.animation_time}s",
+                values=values,
+                keyTimes=";".join(key_times),
+                repeatCount="1",
+            )
+        )
+        return rect
+
+    def _gen_day_box(
+        self,
+        dr,
+        rect_x,
+        rect_y,
+        date_title,
+        day_tracks,
+        with_animation,
+        key_times,
+        animate_index,
+    ):
+        color = DEFAULT_DOM_COLOR
+        if day_tracks:
+            special_num1 = self.poster.special_number["special_number1"]
+            special_num2 = self.poster.special_number["special_number2"]
+            has_special = special_num2 < day_tracks < special_num1
+            color_from = (
+                self.poster.colors["special"]
+                if has_special
+                else self.poster.colors["track"]
+            )
+            color_to = self.poster.colors["special2"]
+            color = self.make_color(
+                self.poster.length_range_by_date, day_tracks, color_from, color_to
+            )
+            if day_tracks >= special_num1:
+                color = self.poster.colors.get("special2") or self.poster.colors.get(
+                    "special"
+                )
+            date_title = f"{date_title} {day_tracks} {self.poster.units}"
+        rect = dr.rect((rect_x, rect_y), DOM_BOX_TUPLE, fill=color)
+        if with_animation:
+            rect = self.__add_animation(rect, key_times, animate_index)
+        rect.set_desc(title=date_title)
+        yield rect
+
+    def _gen_day_boxes(
+        self,
+        dr,
+        rect_x,
+        rect_y,
+        date_title,
+        day_tracks,
+        with_animation,
+        key_times,
+        animate_index,
+    ):
+        """
+        max len(boxes) == 3 like douban see #7
+        yield rect1, rect2, rect3
+        or
+        yield rect1, rect2
+        or
+        yield rect
+        """
+        if day_tracks:
+            types_len = len(day_tracks)
+            dom_tuple = DOM_BOX_DICT.get(types_len).get("dom")
+            index = 0
+            for _type in self.poster.type_list:
+                num = day_tracks.get(_type)
+                length_range = self.poster.length_range_by_date_dict.get(_type)
+                if not num:
+                    continue
+                dom = dom_tuple[index]
+                color_from, color_to = self.type_color_dict.get(_type)
+                color = self.make_color(length_range, num, color_from, color_to)
+                rect = dr.rect((rect_x, rect_y), dom, fill=color)
+                date_title = f"{date_title} {num} for {_type}"
+                if with_animation:
+                    rect = self.__add_animation(rect, key_times, animate_index)
+                rect.set_desc(title=date_title)
+                yield rect
+                rect_y += dom_tuple[index][1]
+                index += 1
+        else:
+            rect = dr.rect((rect_x, rect_y), DOM_BOX_TUPLE, fill=DEFAULT_DOM_COLOR)
+            if with_animation:
+                rect = self.__add_animation(rect, key_times, animate_index)
+            yield rect
+
+    def draw(self, dr, offset):
         if self.poster.tracks is None:
             raise DrawError("No tracks to draw")
         year_size = 200 * 4.0 / 80.0
@@ -47,20 +158,6 @@ class Drawer:
             )
             year_length = total_sum_year_dict.get(year, 0)
             year_length = str(int(year_length)) + f" {self.poster.units}"
-            month_names = [
-                "Jan",
-                "Feb",
-                "Mar",
-                "Apr",
-                "May",
-                "Jun",
-                "Jul",
-                "Aug",
-                "Sep",
-                "Oct",
-                "Nov",
-                "Dec",
-            ]
             dr.add(
                 dr.text(
                     f"{year}",
@@ -82,7 +179,7 @@ class Drawer:
             )
             # add month name up to the poster one by one
             # because of svg text auto trim the spaces.
-            for num, name in enumerate(month_names):
+            for num, name in enumerate(MONTH_NAMES):
                 dr.add(
                     dr.text(
                         f"{name}",
@@ -93,7 +190,6 @@ class Drawer:
                 )
 
             rect_x = 10.0
-            dom = (2.6, 2.6)
             animate_index = 1
             year_count, key_times = 0, ""
             if self.poster.with_animation:
@@ -102,49 +198,55 @@ class Drawer:
                 key_times = make_key_times(year_count)
 
             # add every day of this year for 53 weeks and per week has 7 days
-            for i in range(54):
+            for _ in range(54):
                 rect_y = offset.y + year_size + 2
-                for j in range(7):
+                for _ in range(7):
                     if int(github_rect_day.year) > year:
                         break
                     rect_y += 3.5
-                    color = "#444444"
                     date_title = str(github_rect_day)
+                    day_tracks = None
                     if date_title in self.poster.tracks:
-                        num = self.poster.tracks[date_title]
-                        special_num1 = self.poster.special_number["special_number1"]
-                        special_num2 = self.poster.special_number["special_number2"]
-                        has_special = special_num2 < num < special_num1
+                        day_tracks = self.poster.tracks[date_title]
 
-                        color = self.color(
-                            self.poster.length_range_by_date, num, has_special
-                        )
-                        if num >= special_num1:
-                            color = self.poster.colors.get(
-                                "special2"
-                            ) or self.poster.colors.get("special")
-                        date_title = f"{date_title} {num} {self.poster.units}"
                         # tricky for may cause animate error
                         if animate_index < len(key_times) - 1:
                             animate_index += 1
-                    rect = dr.rect((rect_x, rect_y), dom, fill=color)
-                    if self.poster.with_animation:
-                        values = (
-                            ";".join(["0"] * animate_index)
-                            + ";"
-                            + ";".join(["1"] * (len(key_times) - animate_index))
-                        )
-                        rect.add(
-                            svgwrite.animate.Animate(
-                                "opacity",
-                                dur=f"{self.poster.animation_time}s",
-                                values=values,
-                                keyTimes=";".join(key_times),
-                                repeatCount="1",
-                            )
-                        )
-                    rect.set_desc(title=date_title)
-                    dr.add(rect)
+                    gen_box_func = (
+                        self._gen_day_box
+                        if len(self.poster.type_list) == 1
+                        else self._gen_day_boxes
+                    )
+                    for rect in gen_box_func(
+                        dr,
+                        rect_x,
+                        rect_y,
+                        date_title,
+                        day_tracks,
+                        self.poster.with_animation,
+                        key_times,
+                        animate_index,
+                    ):
+                        dr.add(rect)
                     github_rect_day += datetime.timedelta(1)
                 rect_x += 3.5
             offset.y += 3.5 * 9 + year_size + 1.5
+
+    def draw_footer(self, dr):
+        text_color = self.poster.colors["text"]
+        header_style = "font-size:4px; font-family:Arial"
+        x = 10
+        y = self.poster.height - 2.5
+        index = 0
+        for _type in self.poster.type_list:
+            dr.add(dr.rect((x, y - 2.5), DOM_BOX_TUPLE, fill=COLOR_TUPLE[index][0]))
+            dr.add(
+                dr.text(
+                    f": {_type}",
+                    insert=(x + 3, y),
+                    fill=text_color,
+                    style=header_style,
+                )
+            )
+            x += 20
+            index += 1

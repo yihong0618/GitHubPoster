@@ -10,15 +10,15 @@ class WakaTimeLoader(BaseLoader):
     track_color = "#9BE9A8"
     unit = "mins"
 
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
-        self.wakatime_key = kwargs.get("key", "")
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
+        self.wakatime_key = kwargs.get("wakatime_key", "")
 
     @classmethod
     def add_loader_arguments(cls, parser):
         parser.add_argument(
-            "--key",
-            dest="key",
+            "--wakatime_key",
+            dest="wakatime_key",
             type=str,
             required=True,
             help="your wakatime api key here, "
@@ -40,6 +40,7 @@ class WakaTimeLoader(BaseLoader):
                 return data_list
             data = r.json()
             data_list.extend(data["data"])
+            # spider rule
             time.sleep(1)
         return data_list
 

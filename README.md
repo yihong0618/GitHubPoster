@@ -27,6 +27,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Kindle](#Kindle)**
 - **[WakaTime](#WakaTime)**
 - **[Dota2](#Dota2)**
+- **[Multiple](#Multiple)**
 
 
 ## 下载
@@ -63,9 +64,9 @@ pip3 install -r requirements.txt
 
 把其它软件生成的(like running_page) gpx files 拷贝到 `GPX_FOLDER` 之后运行，或指定文件夹如我的文件夹是 `~/blog/GPX_OUT/`
 ```
-python3 -m github_poster gpx --dir ~/blog/GPX_OUT/ --year 2013-2021
+python3 -m github_poster gpx --gpx_dir ~/blog/GPX_OUT/ --year 2013-2021
 or pip
-github_poster github_poster gpx --dir ~/blog/GPX_OUT/ --year 2013-2021
+github_poster github_poster gpx --gpx_dir ~/blog/GPX_OUT/ --year 2013-2021
 ```
 </details>
 
@@ -120,9 +121,9 @@ curl -X POST https://www.strava.com/oauth/token \
 7. 同步数据至 `Strava`
 在项目根目录执行：
 ```
-python3 -m github_poster --client_id  ${client_id} --client_secret ${client_secret} --refresh_token ${refresh_token} --year 2012-2021
+python3 -m github_poster --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${refresh_token} --year 2012-2021
 or pip
-github_poster --client_id  ${client_id} --client_secret ${client_secret} --refresh_token ${refresh_token} --year 2012-2021
+github_poster --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${refresh_token} --year 2012-2021
 ```
 </details>
 
@@ -135,9 +136,9 @@ github_poster --client_id  ${client_id} --client_secret ${client_secret} --refre
 需要下载 `家长控制那个 APP(Nintendo Switch Parent Controls)` 进行抓包（可以使用 mitmproxy 等抓包软件）
 
 ```
-python3 -m github_poster ns --session_token ${session_token} --device_id ${device_id} --year 2020-2021
+python3 -m github_poster ns --ns_session_token ${session_token} --ns_device_id ${device_id} --year 2020-2021
 or pip
-github_poster ns --session_token ${session_token} --device_id ${device_id} --year 2020-2021
+github_poster ns --ns_session_token ${session_token} --ns_device_id ${device_id} --year 2020-2021
 ```
 </details>
 
@@ -150,9 +151,9 @@ github_poster ns --session_token ${session_token} --device_id ${device_id} --yea
 需要填写开心词场的账号和密码
 
 ```
-python3 -m github_poster cichang --user_name ${user_name} --password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618
+python3 -m github_poster cichang --cichang_user_name ${user_name} --cichang_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618
 or
-github_poster cichang --user_name ${user_name} --password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618
+github_poster cichang --cichang_user_name ${user_name} --cichang_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618
 ```
 </details>
 
@@ -167,9 +168,9 @@ github_poster cichang --user_name ${user_name} --password ${pass_word} --year 20
 
 
 ```
-python3 -m github_poster duolingo --user_name ${user_id} --year 2015-2021
+python3 -m github_poster duolingo --duolingo_user_name ${user_id} --year 2015-2021
 or
-github_poster duolingo --user_name ${user_id} --year 2015-2021
+github_poster duolingo --duolingo_user_name ${user_id} --year 2015-2021
 ```
 </details>
 
@@ -184,9 +185,9 @@ github_poster duolingo --user_name ${user_id} --year 2015-2021
 
 
 ```
-python3 -m github_poster shanbay --user_name ${user_name} --year 2012-2021 --special-color1 '#33C6A4' --special-color2 '#33C6A4'
+python3 -m github_poster shanbay --shanbay_user_name ${user_name} --year 2012-2021 --special-color1 '#33C6A4' --special-color2 '#33C6A4'
 or
-github_poster shanbay --user_name ${user_name} --year 2012-2021 --special-color1 '#33C6A4' --special-color2 '#33C6A4'
+github_poster shanbay --shanbay_user_name ${user_name} --year 2012-2021 --special-color1 '#33C6A4' --special-color2 '#33C6A4'
 ```
 </details>
 
@@ -214,16 +215,16 @@ github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --to
 需要找到你 `LeetCode` 的 `cookie`
 
 ```
-python3 -m github_poster leetcode --cookie ${leetcode_cookie} --year 2019-2021
+python3 -m github_poster leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
 or
-github_poster leetcode --cookie ${leetcode_cookie} --year 2019-2021
+github_poster leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
 ```
 如果使用的是 leetcode-cn（leetcode 中国需要加上参数）--cn
 
 ```
-python3 -m github_poster leetcode --cookie ${leetcode_cookie} --year 2019-2021 --cn
+python3 -m github_poster leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021 --cn
 or
-github_poster leetcode --cookie ${leetcode_cookie} --year 2019-2021 --cn
+github_poster leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021 --cn
 ```
 </details>
 
@@ -236,9 +237,9 @@ github_poster leetcode --cookie ${leetcode_cookie} --year 2019-2021 --cn
 需要找到你的 `Twitter user_id`, 网址里那个就是
 
 ```
-python3 -m github_poster twitter --user_name ${user_name} --year 2018-2021 --track-color '#1C9CEA'
+python3 -m github_poster twitter --twitter_user_name ${user_name} --year 2018-2021 --track-color '#1C9CEA'
 or
-github_poster twitter --user_name ${user_name} --year 2018-2021 --track-color '#1C9CEA'
+github_poster twitter --user_name ${twitter_user_name} --year 2018-2021 --track-color '#1C9CEA'
 ```
 </details>
 
@@ -266,9 +267,9 @@ github_poster youtube --year 2015-2021
 需要找到你 `Bilibili (XHR)` 的 `cookie`
 
 ```
-python3 -m github_poster bilibili --cookie "${bilibili-cookie}"
+python3 -m github_poster bilibili --bilibili_cookie "${bilibili-cookie}"
 or
-github_poster bilibili --cookie "${bilibili-cookie}"
+github_poster bilibili --bilibili_cookie "${bilibili-cookie}"
 ```
 </details>
 
@@ -281,9 +282,9 @@ github_poster bilibili --cookie "${bilibili-cookie}"
 需要找到你 `GitHub Name` (url 后面那个)
 
 ```
-python3 -m github_poster github --user_name "${github_user_name}" --with-skyline
+python3 -m github_poster github --github_user_name "${github_user_name}" --with-skyline
 or
-github_poster github --user_name "${github_user_name}" --with-skyline
+github_poster github --github_user_name "${github_user_name}" --with-skyline
 ```
 </details>
 
@@ -296,17 +297,17 @@ github_poster github --user_name "${github_user_name}" --with-skyline
 需要找到你 `GitLab Name` (url 后面那个)
 
 ```
-python3 -m github_poster gitlab --user_name "${gitlab_user_name}"
+python3 -m github_poster gitlab --gitlab_user_name "${gitlab_user_name}"
 or
-github_poster gitlab --user_name "${gitlab_user_name}"
+github_poster gitlab --gitlab_user_name "${gitlab_user_name}"
 ```
 
 如果是自己搭建的 `GitLab`，可以指定 `GitLab` 的 URL，以及登录 `GitLab` 后得到的 `_gitlab_session` 这个 `cookie`(如果需要登录的话)
 
 ```
-python3 -m github_poster gitlab --user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
+python3 -m github_poster gitlab --gitlab_user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
 or
-github_poster gitlab --user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
+github_poster gitlab --gitlab_user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
 ```
 
 </details>
@@ -320,9 +321,9 @@ github_poster gitlab --user_name "${gitlab_user_name}" --base_url "https://your-
 在亚马逊网站上需要找到你 [Amazon-CN](https://www.amazon.cn/) (XHR) Cookie
 
 ```
-python3 -m github_poster kindle --cookie ${kindle_cookie} --cn --year 2018-2021
+python3 -m github_poster kindle --kindle_cookie ${kindle_cookie} --cn --year 2018-2021
 or
-github_poster kindle --cookie ${kindle_cookie} --cn --year 2018-2021
+github_poster kindle --kindle_cookie ${kindle_cookie} --cn --year 2018-2021
 ```
 
 </details>
@@ -336,9 +337,9 @@ github_poster kindle --cookie ${kindle_cookie} --cn --year 2018-2021
 在 WakaTime 官网获取你的 WakaTime API Key：[WakaTime API Key](https://wakatime.com/settings/api-key)
 
 ```
-python3 -m github_poster wakatime --key="your_wakatime_api_key" --year 2019-2021
+python3 -m github_poster wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
 or
-github_poster wakatime --key="your_wakatime_api_key" --year 2019-2021
+github_poster wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
 ```
 
 </details>
@@ -357,9 +358,9 @@ github_poster wakatime --key="your_wakatime_api_key" --year 2019-2021
 
 
 ```
-python3 -m github_poster dota2 --id="your dota2 id" --year 2017-2018
+python3 -m github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 or
-github_poster dota2 --id="your dota2 id" --year 2017-2018
+github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 ```
 
 </details>
