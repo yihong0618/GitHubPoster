@@ -62,6 +62,9 @@ class Poster:
         d.add(d.rect((0, 0), (width, height), fill=self.colors["background"]))
         self.__draw_header(d)
         self.__draw_tracks(d, XY(10, 30))
+        # for multiple types show
+        if len(self.type_list) > 1:
+            self.__draw_footer(d)
         d.save()
 
     def __draw_tracks(self, d, offset):
@@ -71,6 +74,9 @@ class Poster:
         text_color = self.colors["text"]
         title_style = "font-size:12px; font-family:Arial; font-weight:bold;"
         d.add(d.text(self.title, insert=(10, 20), fill=text_color, style=title_style))
+
+    def __draw_footer(self, d):
+        self.tracks_drawer.draw_footer(d)
 
     def __compute_track_statistics(self, t):
         total_sum_year_dict = defaultdict(int)

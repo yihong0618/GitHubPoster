@@ -10,13 +10,13 @@ class ShanBayLoader(BaseLoader):
 
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
-        self.user_name = kwargs.get("user_name", "")
+        self.user_name = kwargs.get("shanbay_user_name", "")
 
     @classmethod
     def add_loader_arguments(cls, parser):
         parser.add_argument(
-            "--user_name",
-            dest="user_name",
+            "--shanbay_user_name",
+            dest="shanbay_user_name",
             type=str,
             required=True,
             help="",

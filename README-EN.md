@@ -20,6 +20,8 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Kindle](#Kindle)**
 - **[WakaTime](#WakaTime)**
 - **[Dota2](#Dota2)**
+- **[Multiple](#Multiple)**
+
 
 ## Download
 ```
@@ -56,9 +58,9 @@ pip3 install -r requirements.txt
 
 mv gpx files to `GPX_FOLDER` then run the code
 ```
-python3 -m github_poster gpx --dir ~/blog/GPX_OUT/ --year 2013-2021
+python3 -m github_poster gpx --gpx_dir ~/blog/GPX_OUT/ --year 2013-2021
 or pip
-github_poster github_poster gpx --dir ~/blog/GPX_OUT/ --year 2013-2021
+github_poster github_poster gpx --gpx_dir ~/blog/GPX_OUT/ --year 2013-2021
 ```
 </details>
 
@@ -120,9 +122,9 @@ curl -X POST https://www.strava.com/oauth/token \
 ![get_refresch_token](https://raw.githubusercontent.com/shaonianche/gallery/master/running_page/get_refresch_token.png)
 
 ```
-python3 -m github_poster --client_id  ${client_id} --client_secret ${client_secret} --refresh_token ${refresh_token} --year 2012-2021
+python3 -m github_poster --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${refresh_token} --year 2012-2021
 or pip
-github_poster --client_id  ${client_id} --client_secret ${client_secret} --refresh_token ${refresh_token} --year 2012-2021
+github_poster --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${refresh_token} --year 2012-2021
 ```
 </details>
 
@@ -135,9 +137,9 @@ github_poster --client_id  ${client_id} --client_secret ${client_secret} --refre
 From APP`(Nintendo Switch Parent Controls)` using `mitmproxy` to get the `session_token` and `devide _id`
 
 ```
-python3 -m github_poster ns --session_token ${session_token} --device_id ${device_id} --year 2020-2021
+python3 -m github_poster ns --ns_session_token ${session_token} --ns_device_id ${device_id} --year 2020-2021
 or pip
-github_poster ns --session_token ${session_token} --device_id ${device_id} --year 2020-2021
+github_poster ns --ns_session_token ${session_token} --ns_device_id ${device_id} --year 2020-2021
 ```
 </details>
 
@@ -153,9 +155,9 @@ Find your `duolingo id`, F12 from `XHR`
 
 
 ```
-python3 -m github_poster duolingo --user_name ${user_id} --year 2015-2021
+python3 -m github_poster duolingo --duolingo_user_name ${user_id} --year 2015-2021
 or
-github_poster duolingo --user_name ${user_id} --year 2015-2021
+github_poster duolingo --duolingo_user_name ${user_id} --year 2015-2021
 ```
 </details>
 
@@ -168,7 +170,7 @@ github_poster duolingo --user_name ${user_id} --year 2015-2021
 Like my issue [issue](https://github.com/yihong0618/2021/issues/5)
 
 ```
-python3 -m github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
+	python3 -m github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
 or
 github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
 ```
@@ -183,9 +185,9 @@ github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --to
 Find your `LeetCode Cookie`
 
 ```
-python3 -m github_poster leetcode --cookie ${leetcode_cookie} --year 2019-2021
+python3 -m github_poster leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
 or
-github_poster leetcode --cookie ${leetcode_cookie} --year 2019-2021
+github_poster leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
 ```
 
 </details>
@@ -259,15 +261,17 @@ github_poster github --github_user_name "${github_user_name}" --with-skyline
 Get your `GitLab Name` (in the url)
 
 ```
-python3 -m github_poster gitlab --user_name "${gitlab_user_name}"
+python3 -m github_poster gitlab --gitlab_user_name "${gitlab_user_name}"
 or
-github_poster gitlab --user_name "${gitlab_user_name}"
+github_poster gitlab --gialab_user_name "${gitlab_user_name}"
 ```
 
 For self-managed `GitLab`, specify the base url of your instance. You should use `_gitlab_session` from Cookies if sign in required.
 s
 ```
-python3 -m github_poster gitlab --user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
+python3 -m github_poster gitlab --gitlab_user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
+or
+github_poster gitlab --gitlab_user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
 ```
 
 </details>
@@ -281,9 +285,9 @@ python3 -m github_poster gitlab --user_name "${gitlab_user_name}" --base_url "ht
 Find your [Amazon](https://www.amazon.com/) Cookie
 
 ```
-python3 -m github_poster kindle --cookie ${kindle_cookie} --cn --year 2018-2021
+python3 -m github_poster kindle --kindle_cookie ${kindle_cookie} --cn --year 2018-2021
 or
-github_poster kindle --cookie ${kindle_cookie} --cn --year 2018-2021
+github_poster kindle --kindle_cookie ${kindle_cookie} --cn --year 2018-2021
 ```
 
 </details>
@@ -297,9 +301,9 @@ github_poster kindle --cookie ${kindle_cookie} --cn --year 2018-2021
 Find your own `WakaTime API Key` at: [WakaTime API Key](https://wakatime.com/settings/api-key)
 
 ```
-python -m github_poster wakatime --key="your_wakatime_api_key" --year 2019-2021
+python -m github_poster wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
 or
-github_poster wakatime --key="your_wakatime_api_key" --year 2019-2021
+github_poster wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
 ```
 
 </details>
@@ -317,9 +321,9 @@ more info: https://docs.opendota.com/#section/Introduction"
 
 
 ```
-python -m github_poster dota2 --id="your dota2 id" --year 2017-2018
+python -m github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 or
-github_poster dota2 --id="your dota2 id" --year 2017-2018
+github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 ```
 
 </details>

@@ -10,7 +10,7 @@ class GitHubIssuesLoader(BaseLoader):
         self.issue_number = int(kwargs.get("issue_number", "1"))
         self.repo_name = kwargs.get("repo_name", "")
         # for private repo
-        self.token = kwargs.get("token", "")
+        self.token = kwargs.get("github_token", "")
 
     @classmethod
     def add_loader_arguments(cls, parser):
@@ -29,8 +29,8 @@ class GitHubIssuesLoader(BaseLoader):
             help="The repo name",
         )
         parser.add_argument(
-            "--token",
-            dest="token",
+            "--github_token",
+            dest="github_token",
             type=str,
             default="",
             help="The GitHub token, required by private repo",
