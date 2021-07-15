@@ -365,6 +365,21 @@ github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 
 </details>
 
+
+### Mutiple
+
+<details>
+<summary>Make your <code>Mutiple types</code> poster</summary>
+<br>
+
+多个 types 最多支持三个，参数参考上面文档
+
+```
+python3 -m github_poster multiple  --types "github, twitter, strava" --twitter_user_name "twitter user name" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
+```
+
+</details>
+
 # 参与项目
 
 - 任何 Issues PR 均欢迎。

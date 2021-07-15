@@ -50,7 +50,7 @@ jobs:
       - name: Run sync ns script
         if: contains(env.TYPE, 'ns')
         run: |
-          python -m github_poster ns --ns_session_token ${{ secrets.NS_SESSION_TOKEN }} --device_id ${{ secrets.NS_DEVICE_ID }} --me ${{ env.ME }}
+          python -m github_poster ns --ns_session_token ${{ secrets.NS_SESSION_TOKEN }} --ns_device_id ${{ secrets.NS_DEVICE_ID }} --me ${{ env.ME }}
 
       - name: Run sync strava script
         if: contains(env.TYPE, 'strava')
