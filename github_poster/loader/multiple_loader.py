@@ -7,13 +7,9 @@ from github_poster.loader.base_loader import BaseLoader
 
 
 class MutipleLoader(BaseLoader):
-    track_color = "#567433"
-    unit = "games"
-
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
         self.types = kwargs.get("types", "")
-        self.dota2_id = kwargs.get("id", "")
         self.type_summary_dict = {}
         self.loader_list = []
 
@@ -40,6 +36,54 @@ class MutipleLoader(BaseLoader):
             dest="github_user_name",
             type=str,
             help="github_user_name",
+        )
+        parser.add_argument(
+            "--dota2_id",
+            dest="dota2_id",
+            type=str,
+            help="dota2 id",
+        )
+        parser.add_argument(
+            "--leetcode_cookie",
+            dest="leetcode_cookie",
+            type=str,
+            help="",
+        )
+        parser.add_argument(
+            "--cn",
+            dest="cn",
+            action="store_true",
+            help="if accout is CN",
+        )
+        parser.add_argument(
+            "--ns_device_id",
+            dest="ns_device_id",
+            type=str,
+            help="",
+        )
+        parser.add_argument(
+            "--ns_session_token",
+            dest="ns_session_token",
+            type=str,
+            help="",
+        )
+        parser.add_argument(
+            "--strava_client_id",
+            dest="strava_client_id",
+            type=str,
+            help="",
+        )
+        parser.add_argument(
+            "--strava_client_secret",
+            dest="strava_client_secret",
+            type=str,
+            help="",
+        )
+        parser.add_argument(
+            "--strava_refresh_token",
+            dest="strava_refresh_token",
+            type=str,
+            help="",
         )
 
     def get_api_data(self):

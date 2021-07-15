@@ -15,7 +15,7 @@ class LeetcodeLoader(BaseLoader):
 
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
-        self.leetcode_cookie = kwargs.get("cookie", "")
+        self.leetcode_cookie = kwargs.get("leetcode_cookie", "")
         self.is_cn = kwargs.get("cn", False)
         self.LEETCODE_URL = (
             LEETCODE_CN_SUBMISSIONS_URL if self.is_cn else LEETCODE_SUBMISSIONS_URL
@@ -24,8 +24,8 @@ class LeetcodeLoader(BaseLoader):
     @classmethod
     def add_loader_arguments(cls, parser):
         parser.add_argument(
-            "--cookie",
-            dest="cookie",
+            "--leetcode_cookie",
+            dest="leetcode_cookie",
             type=str,
             required=True,
             help="",

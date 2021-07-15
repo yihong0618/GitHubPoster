@@ -16,13 +16,13 @@ class GPXLoader(BaseLoader):
         self.number_by_date_dict = defaultdict(float)
         self.before = None
         self.after = None
-        self.base_dir = kwargs.get("dir", "")
+        self.base_dir = kwargs.get("gpx_dir", "")
 
     @classmethod
     def add_loader_arguments(cls, parser):
         parser.add_argument(
-            "--dir",
-            dest="dir",
+            "--gpx_dir",
+            dest="gpx_dir",
             metavar="DIR",
             type=str,
             default="GPX_FOLDER",

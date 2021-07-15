@@ -12,13 +12,13 @@ class WakaTimeLoader(BaseLoader):
 
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
-        self.wakatime_key = kwargs.get("key", "")
+        self.wakatime_key = kwargs.get("wakatime_key", "")
 
     @classmethod
     def add_loader_arguments(cls, parser):
         parser.add_argument(
-            "--key",
-            dest="key",
+            "--wakatime_key",
+            dest="wakatime_key",
             type=str,
             required=True,
             help="your wakatime api key here, "

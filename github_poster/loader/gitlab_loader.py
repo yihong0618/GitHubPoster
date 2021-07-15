@@ -14,7 +14,7 @@ class GitLabLoader(BaseLoader):
 
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
-        self.user_name = kwargs.get("user_name", "")
+        self.user_name = kwargs.get("gitlab_user_name", "")
         self.gitlab_base_url = kwargs.get("base_url") or "https://gitlab.com"
         self.gitlab_session = kwargs.get("session")
         self.left_dates = []
@@ -22,8 +22,8 @@ class GitLabLoader(BaseLoader):
     @classmethod
     def add_loader_arguments(cls, parser):
         parser.add_argument(
-            "--user_name",
-            dest="user_name",
+            "--gitlab_user_name",
+            dest="gitlab_user_name",
             type=str,
             required=True,
             help="",
@@ -41,7 +41,7 @@ class GitLabLoader(BaseLoader):
             dest="session",
             type=str,
             default="",
-            help="use _gitlab_session from Cookies "
+            help="use gitlab_session from Cookies "
             "if your gitlab instance needs to sign in",
         )
 

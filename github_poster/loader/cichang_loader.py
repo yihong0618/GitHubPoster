@@ -17,22 +17,22 @@ class CiChangLoader(BaseLoader):
 
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
-        self.user_name = kwargs.get("user_name", "")
-        self.password = kwargs.get("password", "")
+        self.user_name = kwargs.get("cichang_user_name", "")
+        self.password = kwargs.get("cichang_password", "")
         self.s = requests.Session()
 
     @classmethod
     def add_loader_arguments(cls, parser):
         parser.add_argument(
-            "--user_name",
-            dest="user_name",
+            "--cichang_user_name",
+            dest="cichang_user_name",
             type=str,
             required=True,
             help="The username of CiChang",
         )
         parser.add_argument(
-            "--password",
-            dest="password",
+            "--cichang_password",
+            dest="cichang_password",
             type=str,
             required=True,
             help="The password of CiChang",

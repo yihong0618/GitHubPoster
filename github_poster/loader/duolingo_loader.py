@@ -10,13 +10,13 @@ class DuolingoLoader(BaseLoader):
 
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
-        self.user_name = kwargs.get("user_name", "")
+        self.user_name = kwargs.get("duolingo_user_name", "")
 
     @classmethod
     def add_loader_arguments(cls, parser):
         parser.add_argument(
-            "--user_name",
-            dest="user_name",
+            "--duolingo_user_name",
+            dest="duolingo_user_name",
             type=str,
             help="",
             required=True,

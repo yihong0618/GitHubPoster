@@ -56,6 +56,8 @@ def main():
         types_list = args_dict.get("types").split(",")
         # trim drop the spaces
         type_list = [t.replace(" ", "") for t in types_list]
+        if args.with_skyline:
+            raise Exception("Skyline does not support for multiple types")
         assert len(types_list) <= 3
         for t in type_list:
             if t not in LOADER_DICT:
