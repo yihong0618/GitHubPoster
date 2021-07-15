@@ -14,10 +14,10 @@ from github_poster.loader.config import (
 class NSLoader(BaseLoader):
     unit = "mins"
 
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
-        self.session_token = kwargs.get("session_token", "")
-        self.device_id = kwargs.get("device_id", "")
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
+        self.session_token = kwargs.get("ns_session_token", "")
+        self.device_id = kwargs.get("ns_device_id", "")
         self.headers = {
             "x-moon-os-language": "en-US",
             "x-moon-app-language": "en-US",
@@ -36,15 +36,15 @@ class NSLoader(BaseLoader):
     @classmethod
     def add_loader_arguments(cls, parser):
         parser.add_argument(
-            "--device_id",
-            dest="device_id",
+            "--ns_device_id",
+            dest="ns_device_id",
             type=str,
             required=True,
             help="",
         )
         parser.add_argument(
-            "--session_token",
-            dest="session_token",
+            "--ns_session_token",
+            dest="ns_session_token",
             type=str,
             required=True,
             help="",

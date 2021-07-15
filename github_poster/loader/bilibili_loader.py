@@ -13,17 +13,17 @@ class BilibiliLoader(BaseLoader):
     track_color = "#FB7299"
     unit = "videos"
 
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
         self.number_by_date_dict = defaultdict(int)
         self.session = requests.Session()
-        self.bilibili_cookie = kwargs.get("cookie", "")
+        self.bilibili_cookie = kwargs.get("bilibili_cookie", "")
 
     @classmethod
     def add_loader_arguments(cls, parser):
         parser.add_argument(
-            "--cookie",
-            dest="cookie",
+            "--bilibili_cookie",
+            dest="bilibili_cookie",
             type=str,
             required=True,
             help="The cookie for the bilibili website(XHR)",

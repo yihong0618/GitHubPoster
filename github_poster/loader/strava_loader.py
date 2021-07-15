@@ -9,36 +9,36 @@ from github_poster.loader.base_loader import BaseLoader, LoadError
 class StravaLoader(BaseLoader):
     unit = "km"
 
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
         self.before = None
         self.after = None
         self.number_by_date_dict = defaultdict(float)
         self.client = stravalib.Client()
-        self.client_id = kwargs.get("client_id", "")
-        self.client_secret = kwargs.get("client_secret", "")
-        self.refresh_token = kwargs.get("refresh_token", "")
+        self.client_id = kwargs.get("strava_client_id", "")
+        self.client_secret = kwargs.get("strava_client_secret", "")
+        self.refresh_token = kwargs.get("strava_refresh_token", "")
         self.strava_access = False
 
     @classmethod
     def add_loader_arguments(cls, parser):
         parser.add_argument(
-            "--client_id",
-            dest="client_id",
+            "--strava_client_id",
+            dest="strava_client_id",
             type=str,
             required=True,
             help="",
         )
         parser.add_argument(
-            "--client_secret",
-            dest="client_secret",
+            "--strava_client_secret",
+            dest="strava_client_secret",
             type=str,
             required=True,
             help="",
         )
         parser.add_argument(
-            "--refresh_token",
-            dest="refresh_token",
+            "--strava_refresh_token",
+            dest="strava_refresh_token",
             type=str,
             required=True,
             help="",

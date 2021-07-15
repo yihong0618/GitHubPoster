@@ -19,10 +19,11 @@ class BaseLoader(ABC):
     #: The unit used by the poster
     unit = "times"
 
-    def __init__(self, from_year, to_year, **kwargs):
+    def __init__(self, from_year, to_year, _type, **kwargs):
         assert to_year >= from_year
         self.from_year = from_year
         self.to_year = to_year
+        self._type = _type
         self.time_zone = TIME_ZONE
         self.number_by_date_dict = defaultdict(int)
         self.special_number1 = None

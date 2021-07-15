@@ -5,12 +5,12 @@ from github_poster.loader.base_loader import BaseLoader
 
 
 class GitHubIssuesLoader(BaseLoader):
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
         self.issue_number = int(kwargs.get("issue_number", "1"))
         self.repo_name = kwargs.get("repo_name", "")
         # for private repo
-        self.token = kwargs.get("token", "")
+        self.token = kwargs.get("github_token", "")
 
     @classmethod
     def add_loader_arguments(cls, parser):
@@ -29,8 +29,8 @@ class GitHubIssuesLoader(BaseLoader):
             help="The repo name",
         )
         parser.add_argument(
-            "--token",
-            dest="token",
+            "--github_token",
+            dest="github_token",
             type=str,
             default="",
             help="The GitHub token, required by private repo",

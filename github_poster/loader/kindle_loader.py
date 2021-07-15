@@ -15,9 +15,9 @@ class KindleLoader(BaseLoader):
     track_color = "#2A4A7B"
     unit = "days"
 
-    def __init__(self, from_year, to_year, **kwargs):
-        super().__init__(from_year, to_year)
-        self.kindle_cookie = kwargs.get("cookie", "")
+    def __init__(self, from_year, to_year, _type, **kwargs):
+        super().__init__(from_year, to_year, _type)
+        self.kindle_cookie = kwargs.get("kindle_cookie", "")
         self.session = requests.Session()
         self.header = KINDLE_HEADER
         self.is_cn = kwargs.get("cn", False)
@@ -33,8 +33,8 @@ class KindleLoader(BaseLoader):
             help="if accout is CN",
         )
         parser.add_argument(
-            "--cookie",
-            dest="cookie",
+            "--kindle_cookie",
+            dest="kindle_cookie",
             type=str,
             required=True,
             help="",
