@@ -49,6 +49,12 @@ class NSLoader(BaseLoader):
             required=True,
             help="",
         )
+        parser.add_argument(
+            "--kindle_cookie",
+            dest="kindle_cookie",
+            type=str,
+            help="",
+        )
 
     def _make_access_headers(self):
         r = self.s.post(

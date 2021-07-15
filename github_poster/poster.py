@@ -47,6 +47,10 @@ class Poster:
         for t in type_list:
             self.__compute_track_statistics(t)
 
+    @property
+    def is_multiple_type(self):
+        return len(self.type_list) > 1
+
     def set_with_animation(self, with_animation):
         self.with_animation = with_animation
 
@@ -63,7 +67,7 @@ class Poster:
         self.__draw_header(d)
         self.__draw_tracks(d, XY(10, 30))
         # for multiple types show
-        if len(self.type_list) > 1:
+        if self.is_multiple_type:
             self.__draw_footer(d)
         d.save()
 

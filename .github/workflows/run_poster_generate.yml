@@ -13,7 +13,7 @@ env:
   # please change to your own config.
   # this actions generate only this year
   # If you fork this please change the type to yours below
-  TYPE: "ns, duolingo, issue, twitter, github, pass" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2, Please change the 'pass' it to your own separated by commas
+  TYPE: "ns, duolingo, issue, twitter, github, multiple, pass" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2, Please change the 'pass' it to your own separated by commas
   ME: Yihong0618
   GITHUB_NAME: yihong0618
   GITHUB_EMAIL: zouzou0208@gmail.com
@@ -116,6 +116,12 @@ jobs:
         if: contains(env.TYPE, 'dota2')
         run: |
           python3 -m github_poster dota2 --dota2_id "${{ secrets.DOTA2_ID }}" --me ${{ env.ME }}
+
+      # change the types to yours
+      - name: Run sync multiple script
+        if: contains(env.TYPE, 'multiple')
+        run: |
+          python3 -m github_poster multiple --types "github, twitter, strava"  --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --github_user_name ${{ secrets.G_USER_NAME }} --twitter_user_name ${{ secrets.TWITTER_USER_NAME }}
 
       - name: Mv svg files to examples
         # only for me to show

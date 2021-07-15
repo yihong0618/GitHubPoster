@@ -85,6 +85,93 @@ class MutipleLoader(BaseLoader):
             type=str,
             help="",
         )
+        parser.add_argument(
+            "--wakatime_key",
+            dest="wakatime_key",
+            type=str,
+            help="your wakatime api key here, "
+            "more info: https://wakatime.com/settings/api-key",
+        )
+        parser.add_argument(
+            "--gpx_dir",
+            dest="gpx_dir",
+            metavar="DIR",
+            type=str,
+            default="GPX_FOLDER",
+            help="Directory containing GPX files",
+        )
+        # for gitlab
+        parser.add_argument(
+            "--gitlab_user_name",
+            dest="gitlab_user_name",
+            type=str,
+            help="",
+        )
+
+        parser.add_argument(
+            "--base_url",
+            dest="base_url",
+            type=str,
+            default="https://gitlab.com",
+            help="specify the base url of your self-managed gitlab",
+        )
+        parser.add_argument(
+            "--session",
+            dest="session",
+            type=str,
+            default="",
+            help="use gitlab_session from Cookies "
+            "if your gitlab instance needs to sign in",
+        )
+
+        # github issue
+        parser.add_argument(
+            "--issue_number",
+            dest="issue_number",
+            type=str,
+            help="The issue number",
+        )
+        parser.add_argument(
+            "--repo_name",
+            dest="repo_name",
+            type=str,
+            help="The repo name",
+        )
+        parser.add_argument(
+            "--github_token",
+            dest="github_token",
+            type=str,
+            default="",
+            help="The GitHub token, required by private repo",
+        )
+        # duolingo
+        parser.add_argument(
+            "--duolingo_user_name",
+            dest="duolingo_user_name",
+            type=str,
+            help="",
+        )
+
+        # cichang
+        parser.add_argument(
+            "--cichang_user_name",
+            dest="cichang_user_name",
+            type=str,
+            help="The username of CiChang",
+        )
+        parser.add_argument(
+            "--cichang_password",
+            dest="cichang_password",
+            type=str,
+            help="The password of CiChang",
+        )
+        # bilibili
+        parser.add_argument(
+            "--bilibili_cookie",
+            dest="bilibili_cookie",
+            type=str,
+            help="The cookie for the bilibili website(XHR)",
+        )
 
     def get_api_data(self):
         pass
