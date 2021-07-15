@@ -168,15 +168,16 @@ class Drawer:
                 )
             )
 
-            dr.add(
-                dr.text(
-                    f"{year_length}",
-                    insert=(offset.tuple()[0] + 165, offset.tuple()[1] + 5),
-                    fill=self.poster.colors["text"],
-                    alignment_baseline="hanging",
-                    style=year_length_style,
+            if not self.poster.is_multiple_type:
+                dr.add(
+                    dr.text(
+                        f"{year_length}",
+                        insert=(offset.tuple()[0] + 165, offset.tuple()[1] + 5),
+                        fill=self.poster.colors["text"],
+                        alignment_baseline="hanging",
+                        style=year_length_style,
+                    )
                 )
-            )
             # add month name up to the poster one by one
             # because of svg text auto trim the spaces.
             for num, name in enumerate(MONTH_NAMES):
