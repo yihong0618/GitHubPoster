@@ -75,7 +75,7 @@ jobs:
       - name: Run sync issue script
         if: contains(env.TYPE, 'issue')
         run: |
-          python -m github_poster issue --issue_number ${{ secrets.ISSUE_NUMBER }} --repo_name ${{ secrets.REPO_NAME }} --token ${{ secrets.G_T }} --me ${{ env.ME }}
+          python -m github_poster issue --issue_number ${{ secrets.ISSUE_NUMBER }} --repo_name ${{ secrets.REPO_NAME }} --github_token ${{ secrets.G_T }} --me ${{ env.ME }}
 
       - name: Run sync leetcode script
         if: contains(env.TYPE, 'leetcode')
