@@ -172,6 +172,26 @@ class MutipleLoader(BaseLoader):
             type=str,
             help="The cookie for the bilibili website(XHR)",
         )
+        # nrc
+        parser.add_argument(
+            "--nike_refresh_token",
+            dest="nike_refresh_token",
+            type=str,
+            help="",
+        )
+        # garmin
+        parser.add_argument(
+            "--garmin_user_name",
+            dest="garmin_user_name",
+            type=str,
+            help="The username of Garmin",
+        )
+        parser.add_argument(
+            "--garmin_password",
+            dest="garmin_password",
+            type=str,
+            help="The password of Garmin",
+        )
 
     def get_api_data(self):
         pass
