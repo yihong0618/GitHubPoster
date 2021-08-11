@@ -85,3 +85,8 @@ WAKATIME_SUMMARY_URL = (
 
 # Dota2
 DOTA2_CALENDAR_API = "https://api.opendota.com/api/players/{dota2_id}/matches"
+
+# NRC (nike)
+NIKE_TOKEN_REFRESH_URL = "https://unite.nike.com/tokenRefresh"
+NIKE_CLIENT_ID = "HlHa2Cje3ctlaOqnxvgZXNaAs7T9nAuH"
+NIKE_BASE_URL = "https://api.nike.com/sport/v3/me"

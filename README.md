@@ -27,6 +27,8 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Kindle](#Kindle)**
 - **[WakaTime](#WakaTime)**
 - **[Dota2](#Dota2)**
+- **[Nike](#Nike)**
+- **[Garmin](#Garmin)**
 - **[Multiple](#Multiple)**
 
 
@@ -356,7 +358,6 @@ github_poster wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
 更多接口信息：https://docs.opendota.com/#section/Introduction"
 
 
-
 ```
 python3 -m github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 or
@@ -365,6 +366,37 @@ github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 
 </details>
 
+### Nike
+
+<details>
+<summary>Make your <code> Nike </code> poster</summary>>
+
+获取 Nike 的 refresh_token
+
+1. 登录 [Nike](https://www.nike.com) 官网
+2. In Developer -> Application-> Storage -> https:unite.nike.com 中找到 refresh_token
+
+
+```
+python3 -m github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-2021
+or
+github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-2021
+```
+
+</details>
+
+### Garmin
+<details>
+<summary>Make your <code> Garmin </code> poster</summary>>
+
+需要填写 Garmin 的账号和密码
+
+```
+python3 -m github_poster garmin --garmin_user_name ${user_name} --garmin_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618 --cn
+or
+github_poster garmin --garmin_user_name ${user_name} --garmin_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618 --cn
+```
+</details>
 
 ### Mutiple
 

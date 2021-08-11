@@ -24,7 +24,6 @@ class ShanBayLoader(BaseLoader):
 
     def get_api_data(self):
         month_list = self.make_month_list()
-        data_list = []
         for m in month_list:
             r = requests.get(
                 SHANBAY_CALENDAR_API.format(
@@ -36,11 +35,10 @@ class ShanBayLoader(BaseLoader):
             if not r.ok:
                 print(f"get shanbay calendar api failed {str(r.text)}")
             try:
-                data_list.extend(r.json()["logs"])
+                yield from r.json()["logs"]
             except Exception:
                 # just pass for now
                 pass
-        return data_list
 
     def make_track_dict(self):
         data_list = self.get_api_data()
