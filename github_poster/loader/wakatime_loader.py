@@ -26,7 +26,6 @@ class WakaTimeLoader(BaseLoader):
         )
 
     def get_api_data(self):
-        data_list = []
         for year in range(self.from_year, self.to_year + 1):
             r = requests.get(
                 WAKATIME_SUMMARY_URL.format(
@@ -36,13 +35,11 @@ class WakaTimeLoader(BaseLoader):
                 )
             )
             if not r.ok:
-                print(r.text)
-                return data_list
+                yield []
             data = r.json()
-            data_list.extend(data["data"])
+            yield from data["data"]
             # spider rule
             time.sleep(1)
-        return data_list
 
     def make_track_dict(self):
         data_list = self.get_api_data()

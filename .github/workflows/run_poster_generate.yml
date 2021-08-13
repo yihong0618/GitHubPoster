@@ -121,7 +121,7 @@ jobs:
       - name: Run sync multiple script
         if: contains(env.TYPE, 'multiple')
         run: |
-          python3 -m github_poster multiple --types "github, twitter, strava"  --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --github_user_name ${{ secrets.G_USER_NAME }} --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --year 2019-2021
+          python3 -m github_poster multiple --types "github, twitter" --github_user_name ${{ secrets.G_USER_NAME }} --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --year 2019-2021
 
       - name: Mv svg files to examples
         # only for me to show

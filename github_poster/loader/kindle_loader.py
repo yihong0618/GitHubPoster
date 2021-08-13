@@ -56,8 +56,7 @@ class KindleLoader(BaseLoader):
         r = self.session.get(self.KINDLE_URL, headers=self.header)
         if not r.ok:
             raise LoadError("Can not get kindle calendar data, please check cookie")
-        data_list = parse_kindle_text_to_list(r.text)
-        return data_list
+        yield from parse_kindle_text_to_list(r.text)
 
     def make_track_dict(self):
         data_list = self.get_api_data()

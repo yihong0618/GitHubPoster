@@ -24,7 +24,6 @@ class DuolingoLoader(BaseLoader):
 
     def get_api_data(self):
         month_list = self.make_month_list()
-        data_list = []
         for m in month_list:
             r = requests.get(
                 DUOLINGO_CALENDAR_API.format(
@@ -36,11 +35,10 @@ class DuolingoLoader(BaseLoader):
             if not r.ok:
                 print(f"get duolingo calendar api failed {str(r.text)}")
             try:
-                data_list.extend(r.json()["summaries"])
+                yield from r.json()["summaries"]
             except Exception:
                 # just pass for now
                 pass
-        return data_list
 
     def make_track_dict(self):
         data_list = self.get_api_data()
