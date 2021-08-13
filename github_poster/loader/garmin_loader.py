@@ -61,7 +61,7 @@ class GarminLoader(BaseLoader):
         if activities:
             # maybe some other way to do this
             yield from activities
-            yield from self.get_api_data(start=start + 100, limit=limit)
+            yield from self.get_api_data(start=start + limit, limit=limit)
 
     def make_track_dict(self):
         for activity in self.get_api_data():

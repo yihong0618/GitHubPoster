@@ -59,15 +59,13 @@ class GPXLoader(BaseLoader):
     def get_api_data(self):
         self._make_year_before_after()
         files = list(self._list_gpx_files())
-        activites = []
         print("Loading your gpx files it may take a little time please wait")
         for f in files:
             date, distance = self.__parse_gpx(f)
             # filter
             if date.year < self.from_year or date.year > self.to_year:
                 continue
-            activites.append(GPX_ACTIVITY_NAME_TUPLE(date, distance))
-        return activites
+            yield GPX_ACTIVITY_NAME_TUPLE(date, distance)
 
     def make_track_dict(self):
         tracks = list(self.get_api_data())
