@@ -202,9 +202,9 @@ github_poster shanbay --shanbay_user_name ${user_name} --year 2012-2021 --specia
 可以参考我的 [issue](https://github.com/yihong0618/2021/issues/5)
 
 ```
-python3 -m github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
+python3 -m github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --github_token ${github_token}
 or
-github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
+github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --github_token ${github_token}
 ```
 </details>
 
