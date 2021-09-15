@@ -77,7 +77,13 @@ def main():
     p.height = 35 + len(p.years) * 43
     if not os.path.exists(OUT_FOLDER):
         os.mkdir(OUT_FOLDER)
-    p.draw(drawer.Drawer(p), os.path.join(OUT_FOLDER, str(args.type) + ".svg"))
+    # support different issues, maybe better way
+    file_name = str(args.type) + ".svg"
+    if args.type == "issue":
+        issue_number = args_dict.get("issue_number", "1")
+        repo_name = args_dict.get("repo_name", "").replace("/", "_")
+        file_name = f"issue_{repo_name}_{issue_number}.svg"
+    p.draw(drawer.Drawer(p), os.path.join(OUT_FOLDER, file_name))
 
     # generate skyline
     if args.with_skyline:
