@@ -58,6 +58,23 @@ class Poster:
         self.animation_time = animation_time
 
     def draw(self, drawer, output):
+        assert self.type_list, "type_list is empty"
+        if drawer.name == "circular":
+            self._draw_circular(drawer, output)
+        else:
+            self._draw_github(drawer, output)
+
+    def _draw_circular(self, drawer, output):
+        self.tracks_drawer = drawer
+        self.colors["background"] = "#1a1a1a"
+        self.colors["text"] = "#e1ed5e"
+        d = svgwrite.Drawing(output, (f"{self.width}mm", f"{self.height}mm"))
+        d.viewbox(0, 0, self.width, self.height)
+        d.add(d.rect((0, 0), (self.width, self.height), fill=self.colors["background"]))
+        self.__draw_tracks(d, XY(100, 100))
+        d.save()
+
+    def _draw_github(self, drawer, output):
         height = self.height
         width = self.width
         self.tracks_drawer = drawer
