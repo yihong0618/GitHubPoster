@@ -5,8 +5,10 @@
 import argparse
 import os
 
-from github_poster import drawer, poster
+from github_poster.circluar_drawer import CircularDrawer
+from github_poster.drawer import Drawer
 from github_poster.loader import LOADER_DICT
+from github_poster.poster import Poster
 from github_poster.skyline import Skyline
 from github_poster.utils import parse_years
 
@@ -15,7 +17,7 @@ OUT_FOLDER = os.path.join(os.getcwd(), "OUT_FOLDER")
 
 def main():
     """Handle command line arguments and call other modules as needed."""
-    p = poster.Poster()
+    p = Poster()
     args_parser = argparse.ArgumentParser()
     subparser = args_parser.add_subparsers()
     for type_, loader in LOADER_DICT.items():
@@ -78,12 +80,22 @@ def main():
     if not os.path.exists(OUT_FOLDER):
         os.mkdir(OUT_FOLDER)
     # support different issues, maybe better way
-    file_name = str(args.type) + ".svg"
+    file_name = str(args.type)
+
+    # make different drawer
+    is_circular = args.is_circular
+    d = CircularDrawer if is_circular else Drawer
     if args.type == "issue":
         issue_number = args_dict.get("issue_number", "1")
         repo_name = args_dict.get("repo_name", "").replace("/", "_")
-        file_name = f"issue_{repo_name}_{issue_number}.svg"
-    p.draw(drawer.Drawer(p), os.path.join(OUT_FOLDER, file_name))
+        file_name = f"issue_{repo_name}_{issue_number}"
+    if is_circular:
+        file_name = f"{file_name}_circular"
+        p.height = 120
+        p.width = 120
+
+    file_name = f"{file_name}.svg"
+    p.draw(d(p), os.path.join(OUT_FOLDER, file_name))
 
     # generate skyline
     if args.with_skyline:
