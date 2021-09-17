@@ -66,8 +66,6 @@ class Poster:
 
     def _draw_circular(self, drawer, output):
         self.tracks_drawer = drawer
-        self.colors["background"] = "#1a1a1a"
-        self.colors["text"] = "#e1ed5e"
         d = svgwrite.Drawing(output, (f"{self.width}mm", f"{self.height}mm"))
         d.viewbox(0, 0, self.width, self.height)
         d.add(d.rect((0, 0), (self.width, self.height), fill=self.colors["background"]))

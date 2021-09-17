@@ -22,16 +22,7 @@ class Skyline:
         self.year = year
         self.skyline_type = skyline_type
         self.number_by_date_dict = number_by_date_dict
-        self.type_info_dict = {
-            "duolingo": "Duolingo",
-            "github": "GitHub",
-            "leetcode": "LeetCode",
-            "twitter": "Twitter",
-            "youtube": "YouTube",
-            "gitlab": "GitLab",
-            "strava": "Strava",
-            "bilibili": "bilibili",
-        }
+        self.type_info_dict = None
         assert len(user_name) < 16
         self.user_name = user_name
 
