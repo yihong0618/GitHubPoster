@@ -142,9 +142,10 @@ class CircularDrawer(Drawer):
             date += datetime.timedelta(1)
 
     def _make_key_anmiate(self, values, key_times):
+        dur = len(key_times)
         return animate.Animate(
             "opacity",
-            dur="5s",
+            dur=f"{dur}s",
             values=values,
             keyTimes=";".join(key_times),
             repeatCount="indefinite",
