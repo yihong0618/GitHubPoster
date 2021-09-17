@@ -121,8 +121,7 @@ class Drawer:
                 if not num:
                     continue
                 dom = dom_tuple[index]
-                color_from, color_to = self.type_color_dict.get(_type)
-                color = self.make_color(length_range, num, color_from, color_to)
+                color = self.make_color(length_range, num)
                 rect = dr.rect((rect_x, rect_y), dom, fill=color)
                 date_title = f"{date_title} {num} for {_type}"
                 if with_animation:
