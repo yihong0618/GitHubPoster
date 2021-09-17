@@ -6,6 +6,7 @@ import svgwrite
 from svgwrite import animate
 
 from github_poster.drawer import Drawer
+from github_poster.err import CircularDrawError
 from github_poster.structures import XY, ValueRange
 from github_poster.utils import make_key_times
 
@@ -20,7 +21,7 @@ class CircularDrawer(Drawer):
 
     def draw(self, dr, size):
         if self.poster.tracks is None:
-            raise Exception("No tracks to draw.")
+            raise CircularDrawError("No tracks to draw.")
         if self.poster.length_range_by_date is None:
             return
         margin = XY(10, 10)
@@ -46,15 +47,40 @@ class CircularDrawer(Drawer):
 
         year_text = dr.text(
             f"{year}",
-            insert=center.tuple(),
+            insert=(center.x, center.y),
             fill=self.poster.colors["text"],
             text_anchor="middle",
             alignment_baseline="middle",
             style=year_style,
         )
         year_text.add(key_animate)
-
         dr.add(year_text)
+
+        year_length = self.poster.total_sum_year_dict.get(year, 0)
+        year_length_str = str(year_length) + f" {self.poster.units}"
+
+        year_stats = dr.text(
+            year_length_str,
+            insert=(115 - len(str(year_length_str)), 8),  # TODO: make this dynamic
+            fill=self.poster.colors["text"],
+            text_anchor="middle",
+            alignment_baseline="middle",
+            style=year_style,
+        )
+        year_stats.add(key_animate)
+        dr.add(year_stats)
+
+        # user stats
+        user_stats = dr.text(
+            f"{self.poster.title}",
+            insert=(5 + len(self.poster.title), 8),  # ToDO: make this dynamic
+            fill=self.poster.colors["text"],
+            text_anchor="middle",
+            alignment_baseline="middle",
+            style=year_style,
+        )
+        user_stats.add(key_animate)
+        dr.add(user_stats)
         df = 360.0 / (366 if calendar.isleap(year) else 365)
         day = 0
         date = datetime.date(year, 1, 1)

@@ -6,6 +6,7 @@ import argparse
 import os
 
 from github_poster.circluar_drawer import CircularDrawer
+from github_poster.config import TYPE_INFO_DICT
 from github_poster.drawer import Drawer
 from github_poster.loader import LOADER_DICT
 from github_poster.poster import Poster
@@ -30,7 +31,7 @@ def main():
 
     # we don't know issue content so use name
     p.title = (
-        f"{args.me} " + str(args.type).upper()
+        f"{args.me} " + TYPE_INFO_DICT.get(args.type, args.type)
         if args.type not in no_title_types
         else args.me
     )
@@ -58,8 +59,8 @@ def main():
         types_list = args_dict.get("types").split(",")
         # trim drop the spaces
         type_list = [t.replace(" ", "") for t in types_list]
-        if args.with_skyline:
-            raise Exception("Skyline does not support for multiple types")
+        if args.with_skyline or args.with_circular:
+            raise Exception("Skyline or Circular does not support for multiple types")
         assert len(types_list) <= 3
         for t in type_list:
             if t not in LOADER_DICT:
@@ -91,6 +92,8 @@ def main():
         file_name = f"issue_{repo_name}_{issue_number}"
     if is_circular:
         file_name = f"{file_name}_circular"
+
+        # circular type is 120*120 square
         p.height = 120
         p.width = 120
 
@@ -115,6 +118,7 @@ def main():
             number_by_date_dict,
             skyline_name,
         )
+        s.type_info_dict = TYPE_INFO_DICT
         s.make_skyline()
 
 
