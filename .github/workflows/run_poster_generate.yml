@@ -90,7 +90,7 @@ jobs:
       - name: Run sync github script
         if: contains(env.TYPE, 'github')
         run: |
-          python -m github_poster github --github_user_name ${{ secrets.G_USER_NAME }} --me ${{ env.ME }} --with-animation
+          python -m github_poster github --github_user_name ${{ secrets.G_USER_NAME }} --me ${{ env.ME }} --with-animation --with-skyline
 
       - name: Run sync gitlab script
         if: contains(env.TYPE, 'gitlab')
