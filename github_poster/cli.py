@@ -59,7 +59,7 @@ def main():
         types_list = args_dict.get("types").split(",")
         # trim drop the spaces
         type_list = [t.replace(" ", "") for t in types_list]
-        if args.with_skyline or args.with_circular:
+        if args.with_skyline or args.is_circular:
             raise Exception("Skyline or Circular does not support for multiple types")
         assert len(types_list) <= 3
         for t in type_list:
