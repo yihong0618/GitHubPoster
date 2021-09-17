@@ -50,6 +50,7 @@ pip3 install -r requirements.txt
 - Other parameters can be found with `python3 -m github_poster <type> --help`
 - you can add animation, --with-animation (add GOGOGO animation), you can control the animation time --animation-time 14 (default is 10s)
 - you can save skyline `stl` file --with-skyline (default skyline year is to_year), set `--skyline-with-name` to print user name on model
+- with `--is-circular` command,	the svg will be circular and with animation
 
 
 ### GPX

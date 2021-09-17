@@ -170,6 +170,13 @@ class BaseLoader(ABC):
             default="",
             help="the year to generate skyline",
         )
+        # circular args here
+        group.add_argument(
+            "--is-circular",
+            dest="is_circular",
+            action="store_true",
+            help="if is circular poster",
+        )
 
     @classmethod
     def add_loader_arguments(cls, parser):
