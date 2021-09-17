@@ -57,7 +57,7 @@ class CircularDrawer(Drawer):
         dr.add(year_text)
 
         year_length = self.poster.total_sum_year_dict.get(year, 0)
-        year_length_str = str(year_length) + f" {self.poster.units}"
+        year_length_str = str(int(year_length)) + f" {self.poster.units}"
 
         year_stats = dr.text(
             year_length_str,
