@@ -37,5 +37,5 @@ jobs:
       - name: Run running tests
         run: |
            python -m github_poster github --github_user_name yihong0618
-           python -m github_poster multiple --types "github, twitter, dota2" --twitter_user_name Piglei  --github_user_name piglei --dota2_id 70388657 --year 2018-2021
+           python -m github_poster multiple --types "github, dota2" --twitter_user_name Piglei  --github_user_name piglei --dota2_id 70388657 --year 2018-2021
 
