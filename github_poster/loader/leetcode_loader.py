@@ -64,7 +64,7 @@ class LeetcodeLoader(BaseLoader):
                     break
                 last_key = data["last_key"]
                 offset += 20
-                time.sleep(1)
+                time.sleep(2)
             except Exception:
                 error_times += 1
                 print(f"error times {error_times}")
