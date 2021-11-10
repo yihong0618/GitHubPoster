@@ -26,3 +26,20 @@ MONTH_NAMES = [
     "Nov",
     "Dec",
 ]
+
+TYPE_INFO_DICT = {
+    "duolingo": "Duolingo",
+    "github": "GitHub",
+    "leetcode": "LeetCode",
+    "twitter": "Twitter",
+    "youtube": "YouTube",
+    "gitlab": "GitLab",
+    "strava": "Strava",
+    "bilibili": "bilibili",
+    "nike": "Nike",
+    "strava": "Strava",
+    "ns": "NS",
+    "kindle": "Kindle",
+    "garmin": "Garmin",
+    "shanbay": "Shanbay",
+}

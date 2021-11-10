@@ -4,7 +4,12 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 ##  `svg` in `README` emamples
 
 ![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/twitter.svg)
-![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/shanbay.svg)
+
+## Circular
+![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/strava_circular.svg)
+
+## Skyline
+![image](https://user-images.githubusercontent.com/15976103/120966953-80d07180-c799-11eb-8769-92554905ab3f.png)
 
 ## Support
 - **[Strava](#strava)**
@@ -20,6 +25,8 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Kindle](#Kindle)**
 - **[WakaTime](#WakaTime)**
 - **[Dota2](#Dota2)**
+- **[Nike](#Nike)**
+- **[Garmin](#Garmin)**
 - **[Multiple](#Multiple)**
 
 
@@ -48,6 +55,7 @@ pip3 install -r requirements.txt
 - Other parameters can be found with `python3 -m github_poster <type> --help`
 - you can add animation, --with-animation (add GOGOGO animation), you can control the animation time --animation-time 14 (default is 10s)
 - you can save skyline `stl` file --with-skyline (default skyline year is to_year), set `--skyline-with-name` to print user name on model
+- with `--is-circular` command,	the svg will be circular and with animation
 
 
 ### GPX
@@ -326,6 +334,39 @@ or
 github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 ```
 
+</details>
+
+### Nike
+
+<details>
+<summary>Make your <code> Nike </code> poster</summary>>
+
+获取 Nike 的 refresh_token
+
+1. 登录 [Nike](https://www.nike.com) 官网
+2. In Developer -> Application-> Storage -> https:unite.nike.com 中找到 refresh_token
+
+
+```
+python3 -m github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-2021
+or
+github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-2021
+```
+
+</details>
+
+### Garmin
+<details>
+
+<summary>Make your <code> Garmin </code> poster</summary>
+
+需要填写 Garmin 的账号和密码
+
+```
+python3 -m github_poster garmin --garmin_user_name ${user_name} --garmin_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618 --cn
+or
+github_poster garmin --garmin_user_name ${user_name} --garmin_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618 --cn
+```
 </details>
 
 ### Mutiple

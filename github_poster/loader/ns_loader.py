@@ -75,7 +75,6 @@ class NSLoader(BaseLoader):
     def get_api_data(self):
         self._make_access_headers()
         month_list = self.make_month_list()
-        data_list = []
         for m in month_list:
             # no data for this month for ns
             if m.month == datetime.now().month:
@@ -91,11 +90,10 @@ class NSLoader(BaseLoader):
             if not r.ok:
                 print(f"Get ns calendar api failed {str(r.text)}")
             try:
-                data_list.extend(list(r.json()["dailySummaries"].values()))
+                yield from list(r.json()["dailySummaries"].values())
             except Exception:
                 # just pass for now
                 pass
-        return data_list
 
     def make_track_dict(self):
         data_list = self.get_api_data()

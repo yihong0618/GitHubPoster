@@ -5,8 +5,11 @@
 import argparse
 import os
 
-from github_poster import drawer, poster
+from github_poster.circluar_drawer import CircularDrawer
+from github_poster.config import TYPE_INFO_DICT
+from github_poster.drawer import Drawer
 from github_poster.loader import LOADER_DICT
+from github_poster.poster import Poster
 from github_poster.skyline import Skyline
 from github_poster.utils import parse_years
 
@@ -15,7 +18,7 @@ OUT_FOLDER = os.path.join(os.getcwd(), "OUT_FOLDER")
 
 def main():
     """Handle command line arguments and call other modules as needed."""
-    p = poster.Poster()
+    p = Poster()
     args_parser = argparse.ArgumentParser()
     subparser = args_parser.add_subparsers()
     for type_, loader in LOADER_DICT.items():
@@ -28,7 +31,7 @@ def main():
 
     # we don't know issue content so use name
     p.title = (
-        f"{args.me} " + str(args.type).upper()
+        f"{args.me} " + TYPE_INFO_DICT.get(args.type, args.type)
         if args.type not in no_title_types
         else args.me
     )
@@ -56,8 +59,8 @@ def main():
         types_list = args_dict.get("types").split(",")
         # trim drop the spaces
         type_list = [t.replace(" ", "") for t in types_list]
-        if args.with_skyline:
-            raise Exception("Skyline does not support for multiple types")
+        if args.with_skyline or args.is_circular:
+            raise Exception("Skyline or Circular does not support for multiple types")
         assert len(types_list) <= 3
         for t in type_list:
             if t not in LOADER_DICT:
@@ -77,7 +80,25 @@ def main():
     p.height = 35 + len(p.years) * 43
     if not os.path.exists(OUT_FOLDER):
         os.mkdir(OUT_FOLDER)
-    p.draw(drawer.Drawer(p), os.path.join(OUT_FOLDER, str(args.type) + ".svg"))
+    # support different issues, maybe better way
+    file_name = str(args.type)
+
+    # make different drawer
+    is_circular = args.is_circular
+    d = CircularDrawer if is_circular else Drawer
+    if args.type == "issue":
+        issue_number = args_dict.get("issue_number", "1")
+        repo_name = args_dict.get("repo_name", "").replace("/", "_")
+        file_name = f"issue_{repo_name}_{issue_number}"
+    if is_circular:
+        file_name = f"{file_name}_circular"
+
+        # circular type is 120*120 square
+        p.height = 120
+        p.width = 120
+
+    file_name = f"{file_name}.svg"
+    p.draw(d(p), os.path.join(OUT_FOLDER, file_name))
 
     # generate skyline
     if args.with_skyline:
@@ -97,6 +118,7 @@ def main():
             number_by_date_dict,
             skyline_name,
         )
+        s.type_info_dict = TYPE_INFO_DICT
         s.make_skyline()
 
 

@@ -10,14 +10,14 @@ from github_poster.config import (
     DOM_BOX_TUPLE,
     MONTH_NAMES,
 )
+from github_poster.err import BaseDrawError
 from github_poster.utils import interpolate_color, make_key_times
 
 
-class DrawError(Exception):
-    pass
-
-
 class Drawer:
+
+    name = "github"
+
     def __init__(self, p):
         self.poster = p
 
@@ -30,7 +30,18 @@ class Drawer:
             zip(self.poster.type_list, COLOR_TUPLE[: len(self.poster.type_list)])
         )
 
-    def make_color(self, length_range, length, color_from, color_to):
+    def make_color(self, length_range, length):
+        has_special = (
+            self.poster.special_number["special_number2"]
+            < length
+            < self.poster.special_number["special_number1"]
+        )
+        color_from = (
+            self.poster.colors["special"]
+            if has_special
+            else self.poster.colors["track"]
+        )
+        color_to = self.poster.colors["special2"]
         diff = length_range.diameter()
         if diff == 0:
             return color_from
@@ -69,19 +80,8 @@ class Drawer:
     ):
         color = DEFAULT_DOM_COLOR
         if day_tracks:
-            special_num1 = self.poster.special_number["special_number1"]
-            special_num2 = self.poster.special_number["special_number2"]
-            has_special = special_num2 < day_tracks < special_num1
-            color_from = (
-                self.poster.colors["special"]
-                if has_special
-                else self.poster.colors["track"]
-            )
-            color_to = self.poster.colors["special2"]
-            color = self.make_color(
-                self.poster.length_range_by_date, day_tracks, color_from, color_to
-            )
-            if day_tracks >= special_num1:
+            color = self.make_color(self.poster.length_range_by_date, day_tracks)
+            if day_tracks >= self.poster.special_number["special_number1"]:
                 color = self.poster.colors.get("special2") or self.poster.colors.get(
                     "special"
                 )
@@ -117,12 +117,11 @@ class Drawer:
             index = 0
             for _type in self.poster.type_list:
                 num = day_tracks.get(_type)
-                length_range = self.poster.length_range_by_date_dict.get(_type)
+                length_range = self.poster.length_range_by_date_dict.get(_type, 1)
                 if not num:
                     continue
                 dom = dom_tuple[index]
-                color_from, color_to = self.type_color_dict.get(_type)
-                color = self.make_color(length_range, num, color_from, color_to)
+                color = self.make_color(length_range, num)
                 rect = dr.rect((rect_x, rect_y), dom, fill=color)
                 date_title = f"{date_title} {num} for {_type}"
                 if with_animation:
@@ -139,7 +138,7 @@ class Drawer:
 
     def draw(self, dr, offset):
         if self.poster.tracks is None:
-            raise DrawError("No tracks to draw")
+            raise BaseDrawError("No tracks to draw")
         year_size = 200 * 4.0 / 80.0
         year_style = f"font-size:{year_size}px; font-family:Arial;"
         year_length_style = f"font-size:{110 * 3.0 / 80.0}px; font-family:Arial;"

@@ -47,11 +47,11 @@ class GitHubIssuesLoader(BaseLoader):
     def get_api_data(self):
         if self.token:
             u = Github(self.token)
+            me = u.get_user().login
         else:
             u = Github()
-        me = u.get_user().login
+            me = "someone"
         repo = u.get_repo(self.repo_name)
-        data_list = []
         comments = repo.get_issue(self.issue_number).get_comments()
         for c in comments:
             if (
@@ -59,8 +59,7 @@ class GitHubIssuesLoader(BaseLoader):
                 and pendulum.instance(c.created_at).in_timezone(self.time_zone).year
                 in self.year_list
             ):
-                data_list.append(c)
-        return data_list
+                yield c
 
     def make_track_dict(self):
         data_list = self.get_api_data()

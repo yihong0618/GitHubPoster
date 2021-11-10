@@ -38,7 +38,6 @@ class LeetcodeLoader(BaseLoader):
         )
 
     def get_api_data(self):
-        data_list = []
         offset = 0
         last_key = ""
         # leetcode may cause the permission error, just retry
@@ -60,18 +59,17 @@ class LeetcodeLoader(BaseLoader):
                 ).year
                 if not submissions or last_year < self.from_year:
                     break
-                data_list.extend(submissions)
+                yield from submissions
                 if not data["has_next"]:
                     break
                 last_key = data["last_key"]
                 offset += 20
-                time.sleep(1)
+                time.sleep(2)
             except Exception:
                 error_times += 1
                 print(f"error times {error_times}")
                 if error_times > 3:
                     break
-        return data_list
 
     def make_track_dict(self):
         data_list = self.get_api_data()
