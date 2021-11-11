@@ -27,8 +27,8 @@ class NSLoader(BaseLoader):
             "x-moon-os": "IOS",
             "accept-encoding": "gzip;q=1.0, compress;q=0.5",
             "accept-language": "en-US;q=1.0",
-            "user-agent": "moon_ios/1.16.0 (com.nintendo.znma; build:310; iOS 15.1.0) \
-            Alamofire/1.16.0",
+            "user-agent": "moon_ios/1.16.0 (com.nintendo.znma; build:310; iOS 15.1.0) "
+            "Alamofire/1.16.0",
             "x-moon-timezone": "America/Los_Angeles",
         }
         self.s = requests.Session()
