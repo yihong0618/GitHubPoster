@@ -32,9 +32,9 @@ class Drawer:
 
     def make_color(self, length_range, length):
         has_special = (
-            self.poster.special_number["special_number2"]
+            self.poster.special_number.get("special_number2", length)
             < length
-            < self.poster.special_number["special_number1"]
+            < self.poster.special_number.get("special_number1", length)
         )
         color_from = (
             self.poster.colors["special"]
