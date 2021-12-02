@@ -27,7 +27,8 @@ def main():
         loader.add_arguments(parser)
 
     args = args_parser.parse_args()
-    no_title_types = ("issue", "multiple")
+    # without title
+    no_title_types = ("issue", "multiple", "json")
 
     # we don't know issue content so use name
     p.title = (

@@ -1,4 +1,5 @@
 import json
+import os
 from collections import defaultdict
 
 import pendulum
@@ -21,7 +22,7 @@ class YouTubeLoader(BaseLoader):
             "--youtube_history_file_file",
             dest="youtube_history_file",
             type=str,
-            default="IN_FOLDER/watch-history.json",
+            default=os.path.join("IN_FOLDER", "watch-history.json"),
             help="youtube history file path",
         )
 
