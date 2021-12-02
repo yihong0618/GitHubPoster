@@ -7,6 +7,7 @@ from github_poster.loader.garmin_loader import GarminLoader
 from github_poster.loader.github_loader import GitHubLoader
 from github_poster.loader.gitlab_loader import GitLabLoader
 from github_poster.loader.gpx_loader import GPXLoader
+from github_poster.loader.json_loader import JsonLoader
 from github_poster.loader.kindle_loader import KindleLoader
 from github_poster.loader.leetcode_loader import LeetcodeLoader
 from github_poster.loader.multiple_loader import MutipleLoader
@@ -38,6 +39,7 @@ LOADER_DICT = {
     "multiple": MutipleLoader,
     "nike": NRCLoader,
     "garmin": GarminLoader,
+    "json": JsonLoader,
 }
 
 __all__ = (
@@ -61,4 +63,5 @@ __all__ = (
     "NRCLoader",
     "LOADER_DICT",
     "GarminLoader",
+    "JsonLoader",
 )

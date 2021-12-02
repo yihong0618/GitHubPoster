@@ -33,6 +33,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Dota2](#Dota2)**
 - **[Nike](#Nike)**
 - **[Garmin](#Garmin)**
+- **[Json](#json)**
 - **[Multiple](#Multiple)**
 
 
@@ -402,6 +403,23 @@ or
 github_poster garmin --garmin_user_name ${user_name} --garmin_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618 --cn
 ```
 </details>
+
+### Json
+
+<details>
+<summary>Make your <code>Json(source data) types</code> poster</summary>
+<br>
+
+make sure your json file format is like `data.json` in examples
+
+```
+python3 -m github_poster json --json_file "your json data file" --year 2019-2021 --me PythonHunter
+or
+github_poster json --json_file "your json data file" --year 2019-2021 --me PythonHunter
+```
+
+</details>
+
 
 ### Mutiple
 
