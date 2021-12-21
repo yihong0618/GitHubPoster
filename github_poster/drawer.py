@@ -116,7 +116,7 @@ class Drawer:
             dom_tuple = DOM_BOX_DICT.get(types_len).get("dom")
             index = 0
             for _type in self.poster.type_list:
-                num = day_tracks.get(_type)
+                num = day_tracks.get(_type, 0)
                 length_range = self.poster.length_range_by_date_dict.get(_type, 1)
                 if not num:
                     continue
