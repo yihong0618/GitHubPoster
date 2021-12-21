@@ -2,6 +2,7 @@ from github_poster.loader.bilibili_loader import BilibiliLoader
 from github_poster.loader.cichang_loader import CiChangLoader
 from github_poster.loader.dota2_loader import Dota2Loader
 from github_poster.loader.duolingo_loader import DuolingoLoader
+from github_poster.loader.forest_loader import ForestLoader
 from github_poster.loader.from_github_issue_loader import GitHubIssuesLoader
 from github_poster.loader.garmin_loader import GarminLoader
 from github_poster.loader.github_loader import GitHubLoader
@@ -39,6 +40,7 @@ LOADER_DICT = {
     "multiple": MutipleLoader,
     "nike": NRCLoader,
     "garmin": GarminLoader,
+    "forest": ForestLoader,
     "json": JsonLoader,
 }
 
@@ -62,6 +64,7 @@ __all__ = (
     "MutipleLoader",
     "NRCLoader",
     "LOADER_DICT",
+    "ForestLoader",
     "GarminLoader",
     "JsonLoader",
 )

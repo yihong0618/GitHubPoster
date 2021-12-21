@@ -42,4 +42,5 @@ TYPE_INFO_DICT = {
     "kindle": "Kindle",
     "garmin": "Garmin",
     "shanbay": "Shanbay",
+    "forest": "Forest",
 }
