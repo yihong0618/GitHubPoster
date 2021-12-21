@@ -27,6 +27,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Dota2](#Dota2)**
 - **[Nike](#Nike)**
 - **[Garmin](#Garmin)**
+- **[Forest](#Forest)**
 - **[Json](#Json)**
 - **[Multiple](#Multiple)**
 
@@ -367,6 +368,21 @@ github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-20
 python3 -m github_poster garmin --garmin_user_name ${user_name} --garmin_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618 --cn
 or
 github_poster garmin --garmin_user_name ${user_name} --garmin_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618 --cn
+```
+</details>
+
+### Forest
+
+<details>
+<summary>Make your <code> Forest </code> GitHub poster</summary>
+<br>
+
+Need to add your Forest email and password
+
+```
+python3 -m github_poster forest --forest_email ${user_name} --forest_password ${pass_word} --year 2016-2021 --special-color1 blue --me yihong0618
+or
+github_poster forest --forest_email ${user_name} --forest_password ${pass_word} --year 2016-2021 --special-color1 blue --me yihong0618
 ```
 </details>
 

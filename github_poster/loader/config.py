@@ -90,3 +90,11 @@ DOTA2_CALENDAR_API = "https://api.opendota.com/api/players/{dota2_id}/matches"
 NIKE_TOKEN_REFRESH_URL = "https://unite.nike.com/tokenRefresh"
 NIKE_CLIENT_ID = "HlHa2Cje3ctlaOqnxvgZXNaAs7T9nAuH"
 NIKE_BASE_URL = "https://api.nike.com/sport/v3/me"
+
+# forest(need to login)
+FOREST_URL_HEAD = "https://forest.dc.upwardsware.com"
+FOREST_LOGIN_URL = FOREST_URL_HEAD + "/api/v1/sessions"
+FOREST_CLAENDAR_URL = (
+    FOREST_URL_HEAD
+    + "/api/v1/plants/updated_plants?update_since={date}&seekruid={user_id}"
+)
