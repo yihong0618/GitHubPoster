@@ -36,6 +36,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Forest](#Forest)**
 - **[Json](#json)**
 - **[Multiple](#Multiple)**
+- **[Jike](#Jike)**
 
 
 ## 下载
@@ -450,6 +451,25 @@ python3 -m github_poster multiple  --types "github, twitter, strava" --twitter_u
 ```
 
 </details>
+
+
+## Jike
+
+<details>
+<summary>Make your <code>Jike(source data) types</code> poster</summary>
+<br>
+
+需要找到你的 `Jike (XHR)` 的 `cookie`
+ps. 只能获取最近一年的数据
+
+```
+python3 -m github_poster jike --jike_cookie "your jike cookie" --user_id --year 2021 --me "xxx" --with-animation --animation-time 14
+or
+github_poster jike --jike_cookie "your jike cookie" --user_id --year 2021 --me "xxx" --with-animation --animation-time 14
+```
+
+</details>
+
 
 # 参与项目
 

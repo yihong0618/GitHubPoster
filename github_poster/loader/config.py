@@ -98,3 +98,7 @@ FOREST_CLAENDAR_URL = (
     FOREST_URL_HEAD
     + "/api/v1/plants/updated_plants?update_since={date}&seekruid={user_id}"
 )
+
+# jike
+JIKE_GRAPHQL_URL = "https://web-api.okjike.com/api/graphql"
+JIKE_PERSON_URL = "https://web.okjike.com/u/{user_id}"
