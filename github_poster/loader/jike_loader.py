@@ -110,7 +110,6 @@ class JikeLoader(BaseLoader):
                 "Can not get bilibili history data, please check your cookie"
             )
         else:
-            print(self._find_html_last_id(r.text))
             return self._find_html_last_id(r.text), self._find_html_dateTime(r.text)
 
     def _request_post_data(self, last_id="", resp_date_list=[]):
