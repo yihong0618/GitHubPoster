@@ -43,4 +43,5 @@ TYPE_INFO_DICT = {
     "garmin": "Garmin",
     "shanbay": "Shanbay",
     "forest": "Forest",
+    "jike": "Jike",
 }

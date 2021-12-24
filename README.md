@@ -36,6 +36,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Forest](#Forest)**
 - **[Json](#json)**
 - **[Multiple](#Multiple)**
+- **[即刻](#Jike)**
 
 
 ## 下载
@@ -450,6 +451,27 @@ python3 -m github_poster multiple  --types "github, twitter, strava" --twitter_u
 ```
 
 </details>
+
+
+## 即刻
+
+<details>
+<summary>Make your <code>即刻 (source data) types</code> poster</summary>
+<br>
+
+需要找到你的 `Jike (XHR)` 的 `cookie` 和 `user_id`，`user_id` 可在个人主页的链接中获取：
+如`https://web.okjike.com/u/82D23B32-CF36-4C59-AD6F-D05E3552CBF3`中`82D23B32-CF36-4C59-AD6F-D05E3552CBF3`为`user_id`
+
+ps. 只能获取最近一年的数据
+
+```
+python3 -m github_poster jike --jike_cookie "your jike cookie" --user_id 'your user_id' --year 2021 --me "your name" --with-animation --animation-time 14
+or
+github_poster jike --jike_cookie "your jike cookie" --user_id "your user_id" --year 2021 --me "your name" --with-animation --animation-time 14
+```
+
+</details>
+
 
 # 参与项目
 
