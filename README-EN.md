@@ -30,6 +30,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Forest](#Forest)**
 - **[Json](#Json)**
 - **[Multiple](#Multiple)**
+- **[Jike](#Jike)**
 
 
 ## Download
@@ -412,6 +413,26 @@ support mutiple types
 
 ```
 python3 -m github_poster multiple  --types "github, twitter, strava" --twitter_user_name "twitter user name" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
+```
+
+</details>
+
+
+## Jike
+
+<details>
+<summary>Make your <code>Jike(source data) types</code> poster</summary>
+<br>
+
+need to find your Jike cookie from `Jike (XHR)` and `user_id`, `user_id` can be find in your personal page link
+eg. in the link `https://web.okjike.com/u/82D23B32-CF36-4C59-AD6F-D05E3552CBF3`, `82D23B32-CF36-4C59-AD6F-D05E3552CBF3` is the user_id
+
+ps. only get the data for the last year
+
+```
+python3 -m github_poster jike --jike_cookie "your jike cookie" --user_id 'your user_id' --year 2021 --me "your name" --with-animation --animation-time 14
+or
+github_poster jike --jike_cookie "your jike cookie" --user_id "your user_id" --year 2021 --me "your name" --with-animation --animation-time 14
 ```
 
 </details>
