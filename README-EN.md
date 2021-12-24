@@ -477,6 +477,7 @@ Before submitting PR:
 - @[flopp](https://github.com/flopp) great repo [GpxTrackPoster](https://github.com/flopp/GpxTrackPoster)
 - @[JasonkayZK](https://github.com/JasonkayZK) Wakatime loader
 - @[shaonianche](https://github.com/shaonianche) Dota2 loader
+- @[umm233](https://github.com/umm233) Jike loader
 - @[frostming](https://github.com/frostming) `CI` refator and some Actions code
 
 # Support
