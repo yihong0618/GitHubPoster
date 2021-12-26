@@ -37,13 +37,14 @@ def find_dateTime_in_html(text):
 
 def find_count_dict_by_type_in_html(text, count_type):
     """
-    find count by type in html, likeCount, commentCount, shareCount, repostCount, dateCount
+    find count by type in html:
+    likeCount, commentCount, shareCount, repostCount, recordCount
     """
     number_by_date_dict = defaultdict(int)
     # find all post data
     posts = findall('"__typename".*?"readTrackInfo"', text)
     if posts:
-        r_count = compile(count_type + "Count.*?(\d+)")
+        r_count = compile(count_type + "Count.*?(\\d+)")
         create_at = compile('"createdAt":"(.*?)"')
         for post in posts:
             # find count by type

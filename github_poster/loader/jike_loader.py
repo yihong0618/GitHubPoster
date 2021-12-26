@@ -65,7 +65,10 @@ class JikeLoader(BaseLoader):
             type=str,
             required=False,
             default="record",
-            help="The count type of jike post, such as 'like' or 'comment' or 'repost' or 'share'",
+            help="""
+            The count type of jike post,
+            such as 'like' or 'comment' or 'repost' or 'share'
+            """,
         )
 
     def _parse_jike_cookie(self):
@@ -203,7 +206,10 @@ class JikeLoader(BaseLoader):
         count_types = ("record", "like", "comment", "repost", "share")
         if self.count_type not in count_types:
             raise LoadError(
-                "count_type must be one of 'record', 'like', 'comment', 'repost', 'share'"
+                """
+                count_type must be one of
+                'record', 'like', 'comment', 'repost', 'share'
+                """
             )
 
         data_list, first_data_dict = self.get_api_data()
