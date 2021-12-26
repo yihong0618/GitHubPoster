@@ -177,6 +177,14 @@ class BaseLoader(ABC):
             action="store_true",
             help="if is circular poster",
         )
+        # title ignore type name
+        group.add_argument(
+            "--without-type-name",
+            dest="without_type_name",
+            default=True,
+            action="store_false",
+            help="if poster title with type name",
+        )
 
     @classmethod
     def add_loader_arguments(cls, parser):

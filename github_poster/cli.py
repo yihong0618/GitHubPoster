@@ -33,7 +33,7 @@ def main():
     # we don't know issue content so use name
     p.title = (
         f"{args.me} " + TYPE_INFO_DICT.get(args.type, args.type)
-        if args.type not in no_title_types
+        if args.type not in no_title_types and args.without_type_name
         else args.me
     )
 
