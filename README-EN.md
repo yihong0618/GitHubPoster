@@ -51,14 +51,15 @@ pip3 install -r requirements.txt
 ## Use
 
 - Different types are used as specified below
-- You can specify a year such as --year 2021, (default) or a year range 2012-2021
+- You can specify a year such as `--year 2021`, (default) or a year range 2012-2021
 - The generated svg is in `OUT_FOLDER`, named with type (for now)
-- By default, the number of different colors is automatically generated (special colors), you can also specify the color: --special-number1 10 -- special_number2 20
-- You can also specify the color: --special-color1 pink --special-color2 '#33C6A4'
+- By default, the number of different colors is automatically generated (special colors), you can also specify the color: `--special-number1 10 -- special_number2 20`
+- You can also specify the color: `--special-color1 pink --special-color2 '#33C6A4'`
 - Other parameters can be found with `python3 -m github_poster <type> --help`
-- you can add animation, --with-animation (add GOGOGO animation), you can control the animation time --animation-time 14 (default is 10s)
-- you can save skyline `stl` file --with-skyline (default skyline year is to_year), set `--skyline-with-name` to print user name on model
-- with `--is-circular` command,	the svg will be circular and with animation
+- You can add animation, `--with-animation` (add GOGOGO animation), you can control the animation time `--animation-time 14` (default is 10s)
+- You can save skyline `stl` file `--with-skyline` (default skyline year is to_year), set `--skyline-with-name` to print user name on model
+- With `--is-circular` command,	the svg will be circular and with animation
+- Support for hiding the name of the build type in the title: `--without-type-name`
 
 
 ### GPX
