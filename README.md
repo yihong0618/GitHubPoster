@@ -513,6 +513,7 @@ github_poster jike --jike_cookie "your jike cookie" --user_id "your user_id" --y
 - @[flopp](https://github.com/flopp) 特别棒的项目 [GpxTrackPoster](https://github.com/flopp/GpxTrackPoster)
 - @[JasonkayZK](https://github.com/JasonkayZK) Wakatime loader
 - @[shaonianche](https://github.com/shaonianche) Dota2 loader
+- @[umm233](https://github.com/umm233) Jike loader
 - @[frostming](https://github.com/frostming) `CI` refator and some Actions code
 
 # 赞赏
