@@ -465,10 +465,17 @@ python3 -m github_poster multiple  --types "github, twitter, strava" --twitter_u
 
 ps. 只能获取最近一年的数据
 
+可选参数`count_type`，指定统计类型:
+- `record`: 动态记录数（默认）
+- `like`: 动态被点赞数
+- `share`: 动态被分享数
+- `comment`: 动态被评论数
+- `repost`: 动态被转发数
+
 ```
-python3 -m github_poster jike --jike_cookie "your jike cookie" --user_id 'your user_id' --year 2021 --me "your name" --with-animation --animation-time 14
+python3 -m github_poster jike --jike_cookie "your jike cookie" --user_id 'your user_id' --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
 or
-github_poster jike --jike_cookie "your jike cookie" --user_id "your user_id" --year 2021 --me "your name" --with-animation --animation-time 14
+github_poster jike --jike_cookie "your jike cookie" --user_id "your user_id" --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
 ```
 
 </details>

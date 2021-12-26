@@ -431,10 +431,17 @@ eg. in the link `https://web.okjike.com/u/82D23B32-CF36-4C59-AD6F-D05E3552CBF3`,
 ps. only get the data for the last year
 
 ```
-python3 -m github_poster jike --jike_cookie "your jike cookie" --user_id 'your user_id' --year 2021 --me "your name" --with-animation --animation-time 14
+python3 -m github_poster jike --jike_cookie "your jike cookie" --user_id 'your user_id' --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
 or
-github_poster jike --jike_cookie "your jike cookie" --user_id "your user_id" --year 2021 --me "your name" --with-animation --animation-time 14
+github_poster jike --jike_cookie "your jike cookie" --user_id "your user_id" --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
 ```
+
+Option argument `count_type`, your can specify statistics type:
+- `record`: post num (default)
+- `like`: post be liked num
+- `share`: post be share num
+- `comment`: post be comment num
+- `repost`: post be repost num
 
 </details>
 

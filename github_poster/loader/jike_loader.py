@@ -1,13 +1,15 @@
 import json
+import time
 from http.cookies import SimpleCookie
+from random import randint
 from re import compile
 
 import pendulum
 import requests
 
 from github_poster.html_parser.jike_parse import (
+    find_count_dict_by_type_in_html,
     find_date_in_response,
-    find_dateTime_in_html,
     find_last_id_in_html,
     find_last_id_in_response,
 )
@@ -23,6 +25,7 @@ class JikeLoader(BaseLoader):
         super().__init__(from_year, to_year, _type)
         self.user_id = kwargs.get("user_id", "")
         self.jike_cookie = kwargs.get("jike_cookie", "")
+        self.count_type = kwargs.get("count_type", "")
         self.session = requests.Session()
         self.headers = {
             "authority": "web-api.okjike.com",
@@ -37,6 +40,8 @@ class JikeLoader(BaseLoader):
             "sec-fetch-dest": "empty",
             "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
         }
+        # not more then 3 times for some day in svg are last year cells
+        self.stop_time = 0
 
     @classmethod
     def add_loader_arguments(cls, parser):
@@ -53,6 +58,14 @@ class JikeLoader(BaseLoader):
             type=str,
             required=True,
             help="The cookie for the jike website(XHR)",
+        )
+        parser.add_argument(
+            "--count_type",
+            dest="count_type",
+            type=str,
+            required=False,
+            default="record",
+            help="The count type of jike post, such as 'like' or 'comment' or 'repost' or 'share'",
         )
 
     def _parse_jike_cookie(self):
@@ -77,9 +90,11 @@ class JikeLoader(BaseLoader):
         if not r.ok:
             raise LoadError("Can not get first last id, please check your cookie")
         else:
-            return find_last_id_in_html(r.text), find_dateTime_in_html(r.text)
+            return find_last_id_in_html(r.text), find_count_dict_by_type_in_html(
+                r.text, self.count_type
+            )
 
-    def _request_post_data(self, last_id="", resp_date_list=[]):
+    def _request_post_data(self, last_id="", resp_data_list=[]):
         """
         request next page posts
         """
@@ -87,7 +102,7 @@ class JikeLoader(BaseLoader):
             "operationName": "UserFeeds",
             "variables": {"username": "", "loadMoreKey": {"lastId": ""}},
             "query": """
-            query UserFeeds($username: String!, $loadMoreKey: JSON) {
+                query UserFeeds($username: String!, $loadMoreKey: JSON) {
                 userProfile(username: $username) {
                     username
                     feeds(loadMoreKey: $loadMoreKey) {
@@ -96,7 +111,7 @@ class JikeLoader(BaseLoader):
                     }
                     __typename
                 }
-            }
+                }
 
                 fragment BasicFeedItem on FeedsConnection {
                 pageInfo {
@@ -116,16 +131,31 @@ class JikeLoader(BaseLoader):
 
                 fragment FeedMessageFragment on MessageEssential {
                 ...EssentialFragment
-                __typename
+                ... on OriginalPost {
+                    ...LikeableFragment
+                    ...CommentableFragment
+                    __typename
+                }
                 }
 
                 fragment EssentialFragment on MessageEssential {
-                id
                 type
+                shareCount
+                repostCount
                 createdAt
+                }
+
+                fragment LikeableFragment on LikeableMessage {
+                liked
+                likeCount
                 __typename
                 }
-            """,
+
+                fragment CommentableFragment on CommentableMessage {
+                commentCount
+                __typename
+                }
+                            """,
         }
         # set lastId
         payload_data["variables"]["loadMoreKey"]["lastId"] = last_id
@@ -134,42 +164,62 @@ class JikeLoader(BaseLoader):
         r = self.session.post(
             JIKE_GRAPHQL_URL, headers=self.headers, data=json.dumps(payload_data)
         )
+        # print(r.json())
         resp_dates = find_date_in_response(r)
         next_last_id = find_last_id_in_response(r.text)
-        resp_date_list.extend(resp_dates)
-        if self._check_if_stop(resp_dates) or next_last_id == "":
-            return resp_date_list
-        self._request_post_data(next_last_id, resp_date_list)
 
-    def _check_if_stop(self, list_of_dates):
+        resp_data_list.extend(r.json()["data"]["userProfile"]["feeds"]["nodes"])
+        if self._check_if_stop(resp_dates) or next_last_id == "":
+            return resp_data_list
+        time.sleep(randint(1, 3))
+        self._request_post_data(next_last_id, resp_data_list)
+
+    def _check_if_stop(self, dates):
         """
         stop when content other year data
         """
         r_date = compile(str(self.from_year) + ".*?")
-        filter_list = list(filter(r_date.match, list_of_dates))
-        return len(filter_list) != len(list_of_dates)
+        filter_list = list(filter(r_date.match, dates))
+        if len(filter_list) != len(dates):
+            self.stop_time += 1
+        return self.stop_time == 3
 
     def get_api_data(self):
-        dateTime_cache = []
-        # get first last id
-        first_last_id, first_dateTime_list = self._get_first_last_id()
+        data_cache = []
+        # get first last id and first data
+        first_last_id, first_data_dict = self._get_first_last_id()
         if first_last_id == "":
             raise LoadError("Can not get first last id, please check your cookie")
-        dateTime_cache.extend(first_dateTime_list)
-        if self._check_if_stop(first_dateTime_list):
-            return dateTime_cache
+        if self._check_if_stop(first_data_dict.keys()):
+            return data_cache
         else:
             # do post get more
             post_resp_dates = []
             self._request_post_data(first_last_id, post_resp_dates)
-            dateTime_cache.extend(post_resp_dates)
-            return dateTime_cache
+            data_cache.extend(post_resp_dates)
+            return data_cache, first_data_dict
 
     def make_track_dict(self):
-        data_list = self.get_api_data()
-        for d in data_list:
-            date_str = pendulum.parse(d, tz=self.time_zone).to_date_string()
-            self.number_by_date_dict[date_str] += 1
+        count_types = ("record", "like", "comment", "repost", "share")
+        if self.count_type not in count_types:
+            raise LoadError(
+                "count_type must be one of 'record', 'like', 'comment', 'repost', 'share'"
+            )
+
+        data_list, first_data_dict = self.get_api_data()
+        # add first page data
+        self.number_by_date_dict.update(first_data_dict)
+        # add rest page data
+        count_key = self.count_type + "Count"
+        for data in data_list:
+            post_date = data["createdAt"]
+            date_str = pendulum.parse(post_date, tz=self.time_zone).to_date_string()
+            if self.count_type == "record":
+                self.number_by_date_dict[date_str] += 1
+            else:
+                self.number_by_date_dict[date_str] += (
+                    data[count_key] if data.get(count_key) else 0
+                )
         for _, v in self.number_by_date_dict.items():
             self.number_list.append(v)
 
@@ -177,5 +227,5 @@ class JikeLoader(BaseLoader):
         self.session.cookies = self._parse_jike_cookie()
         self.make_track_dict()
         self.make_special_number()
-        print("Thanks for being addicted to jike")
+        print("Thanks for being addicted to jike.")
         return self.number_by_date_dict, self.year_list
