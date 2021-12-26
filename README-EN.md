@@ -436,7 +436,7 @@ or
 github_poster jike --jike_cookie "your jike cookie" --user_id "your user_id" --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
 ```
 
-Option argument `count_type`, your can specify statistics type:
+Option argument `count_type`, you can specify statistics type:
 - `record`: post num (default)
 - `like`: post be liked num
 - `share`: post be share num
