@@ -49,13 +49,13 @@ def find_count_dict_by_type_in_html(text, count_type):
         for post in posts:
             # find count by type
             date = create_at.findall(post)[0]
-            date_str = pendulum.parse(date, tz=TIME_ZONE).to_date_string()
-            if count_type == "record":
-                count = 1
-            else:
-                count = r_count.findall(post)[0]
-            number_by_date_dict[date_str] += int(count)
-            # print(date, count)
+            if date:
+                date_str = pendulum.parse(date, tz=TIME_ZONE).to_date_string()
+                if count_type == "record":
+                    count = 1
+                else:
+                    count = r_count.findall(post)[0]
+                number_by_date_dict[date_str] += int(count)
     return number_by_date_dict
 
 

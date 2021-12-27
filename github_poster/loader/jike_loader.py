@@ -46,7 +46,7 @@ class JikeLoader(BaseLoader):
     @classmethod
     def add_loader_arguments(cls, parser):
         parser.add_argument(
-            "--user_id",
+            "--jike_user_id",
             dest="user_id",
             type=str,
             required=False,
@@ -65,6 +65,7 @@ class JikeLoader(BaseLoader):
             type=str,
             required=False,
             default="record",
+            choices=["record", "like", "comment", "repost", "share"],
             help="""
             The count type of jike post,
             such as 'like' or 'comment' or 'repost' or 'share'
@@ -97,10 +98,13 @@ class JikeLoader(BaseLoader):
                 r.text, self.count_type
             )
 
-    def _request_post_data(self, last_id="", resp_data_list=[]):
+    def _request_post_data(self, last_id="", resp_data_list=None):
         """
         request next page posts
         """
+        if resp_data_list is None:
+            resp_data_list = []
+
         payload_data = {
             "operationName": "UserFeeds",
             "variables": {"username": "", "loadMoreKey": {"lastId": ""}},
@@ -158,7 +162,7 @@ class JikeLoader(BaseLoader):
                 commentCount
                 __typename
                 }
-                            """,
+            """,
         }
         # set lastId
         payload_data["variables"]["loadMoreKey"]["lastId"] = last_id
@@ -167,15 +171,15 @@ class JikeLoader(BaseLoader):
         r = self.session.post(
             JIKE_GRAPHQL_URL, headers=self.headers, data=json.dumps(payload_data)
         )
-        # print(r.json())
         resp_dates = find_date_in_response(r)
         next_last_id = find_last_id_in_response(r.text)
 
         resp_data_list.extend(r.json()["data"]["userProfile"]["feeds"]["nodes"])
-        if self._check_if_stop(resp_dates) or next_last_id == "":
+        if self._check_if_stop(resp_dates) or not next_last_id:
             return resp_data_list
-        time.sleep(randint(1, 3))
-        self._request_post_data(next_last_id, resp_data_list)
+        else:
+            time.sleep(randint(1, 3))
+            return self._request_post_data(next_last_id, resp_data_list)
 
     def _check_if_stop(self, dates):
         """
@@ -191,27 +195,17 @@ class JikeLoader(BaseLoader):
         data_cache = []
         # get first last id and first data
         first_last_id, first_data_dict = self._get_first_last_id()
-        if first_last_id == "":
+        if not first_last_id:
             raise LoadError("Can not get first last id, please check your cookie")
         if self._check_if_stop(first_data_dict.keys()):
             return data_cache
         else:
             # do post get more
-            post_resp_dates = []
-            self._request_post_data(first_last_id, post_resp_dates)
+            post_resp_dates = self._request_post_data(first_last_id)
             data_cache.extend(post_resp_dates)
             return data_cache, first_data_dict
 
     def make_track_dict(self):
-        count_types = ("record", "like", "comment", "repost", "share")
-        if self.count_type not in count_types:
-            raise LoadError(
-                """
-                count_type must be one of
-                'record', 'like', 'comment', 'repost', 'share'
-                """
-            )
-
         data_list, first_data_dict = self.get_api_data()
         # add first page data
         self.number_by_date_dict.update(first_data_dict)
