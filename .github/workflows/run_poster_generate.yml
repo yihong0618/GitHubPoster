@@ -4,10 +4,6 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "0 0 * * *"
-  push:
-    branches:
-      - main
-      - refactor
 
 env:
   # please change to your own config.
