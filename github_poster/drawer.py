@@ -140,9 +140,11 @@ class Drawer:
         if self.poster.tracks is None:
             raise BaseDrawError("No tracks to draw")
         year_size = 200 * 4.0 / 80.0
-        year_style = f"font-size:{year_size}px; font-family:Arial;"
-        year_length_style = f"font-size:{110 * 3.0 / 80.0}px; font-family:Arial;"
-        month_names_style = "font-size:2.5px; font-family:Arial"
+        year_style = f"font-size:{year_size}px; font-family:{self.poster.font};"
+        year_length_style = (
+            f"font-size:{110 * 3.0 / 80.0}px; font-family:{self.poster.font};"
+        )
+        month_names_style = f"font-size:2.5px; font-family:{self.poster.font}"
         total_sum_year_dict = self.poster.total_sum_year_dict
         self.poster.years.sort()
         year_count = len(self.poster.years)
@@ -234,7 +236,7 @@ class Drawer:
 
     def draw_footer(self, dr):
         text_color = self.poster.colors["text"]
-        header_style = "font-size:4px; font-family:Arial"
+        header_style = f"font-size:4px; font-family:{self.poster.font}"
         x = 10
         y = self.poster.height - 2.5
         index = 0

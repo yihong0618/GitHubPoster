@@ -29,6 +29,8 @@ def main():
     args = args_parser.parse_args()
     # without title
     no_title_types = ("issue", "multiple", "json")
+    # set font here
+    p.font = args.font
 
     # we don't know issue content so use name
     p.title = (

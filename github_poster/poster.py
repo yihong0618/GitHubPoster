@@ -14,6 +14,7 @@ class Poster:
         self.length_range_by_date = ValueRange()
         self.length_range_by_date_dict = defaultdict(ValueRange)
         self.units = "metric"
+        self.font = "Arial"
         self.colors = {
             "background": "#222222",
             "text": "#FFFFFF",
@@ -91,7 +92,7 @@ class Poster:
 
     def __draw_header(self, d):
         text_color = self.colors["text"]
-        title_style = "font-size:12px; font-family:Arial; font-weight:bold;"
+        title_style = f"font-size:12px; font-family:{self.font}; font-weight:bold;"
         d.add(d.text(self.title, insert=(10, 20), fill=text_color, style=title_style))
 
     def __draw_footer(self, d):

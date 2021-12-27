@@ -42,8 +42,10 @@ class CircularDrawer(Drawer):
         center = offset + 0.5 * size
 
         year_style = f"dominant-baseline: central; font-size:{min_size * 4.0 / 80.0}px; \
-                       font-family:Arial;"
-        month_style = f"font-size:{min_size * 3.0 / 80.0}px; font-family:Arial;"
+                       font-family:{self.poster.font};"
+        month_style = (
+            f"font-size:{min_size * 3.0 / 80.0}px; font-family:{self.poster.font};"
+        )
 
         year_text = dr.text(
             f"{year}",

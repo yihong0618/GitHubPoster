@@ -63,7 +63,7 @@ class Skyline:
     def _make_skyline_card(self, text_info, offset=0):
         # TODO change the magic numbers
         # support change font
-        FONT = os.path.join(github_poster.skyline.__path__[0], "font", "arial.ttf")
+        FONT = os.path.join(github_poster.skyline.__path__[0], "font", "hei.ttf")
         TEXT = text_info
         w, h = measure_text(FONT, TEXT)
         t = (

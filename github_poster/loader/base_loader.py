@@ -86,6 +86,14 @@ class BaseLoader(ABC):
             help='User name to display (default: "Joey").',
         )
         group.add_argument(
+            "--font",
+            dest="font",
+            metavar="FONT",
+            type=str,
+            default="Arial",
+            help='font to display (default: "Arial").',
+        )
+        group.add_argument(
             "--background-color",
             dest="background_color",
             metavar="COLOR",
