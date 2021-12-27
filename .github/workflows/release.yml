@@ -1,0 +1,19 @@
+name: Release to PyPI
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+    branches:
+      - main
+      - refactor
+  push:
+    tags:
+      - v*
+
+jobs:
+  - name: Publish package
+    uses: pypa/gh-action-pypi-publish@release/v1
+    with:
+      user: ${{ env.GITHUB_NAME }}
+      password: ${{ secrets.PYPI_API_TOKEN }}
