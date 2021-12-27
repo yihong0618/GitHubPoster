@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "0 0 * * *"
+  push:
     branches:
       - main
       - refactor
@@ -141,9 +142,3 @@ jobs:
           rebase: "true"
           name: ${{ env.GITHUB_NAME }}
           email: ${{ env.GITHUB_EMAIL }}
-      - name: Publish package
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: ${{ env.GITHUB_NAME }}
-          password: ${{ secrets.PYPI_API_TOKEN }}
