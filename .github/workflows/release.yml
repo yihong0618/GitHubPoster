@@ -7,8 +7,9 @@ on:
       - v*
 
 jobs:
-  - name: Publish package
-    uses: pypa/gh-action-pypi-publish@release/v1
-    with:
-      user: ${{ env.GITHUB_NAME }}
-      password: ${{ secrets.PYPI_API_TOKEN }}
+  release-pypi:
+    - name: Publish package
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        user: ${{ env.GITHUB_NAME }}
+        password: ${{ secrets.PYPI_API_TOKEN }}
