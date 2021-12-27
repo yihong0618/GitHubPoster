@@ -2,11 +2,6 @@ name: Release to PyPI
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *"
-    branches:
-      - main
-      - refactor
   push:
     tags:
       - v*
