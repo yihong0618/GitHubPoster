@@ -51,14 +51,15 @@ pip3 install -r requirements.txt
 ## Use
 
 - Different types are used as specified below
-- You can specify a year such as --year 2021, (default) or a year range 2012-2021
+- You can specify a year such as `--year 2021`, (default) or a year range 2012-2021
 - The generated svg is in `OUT_FOLDER`, named with type (for now)
-- By default, the number of different colors is automatically generated (special colors), you can also specify the color: --special-number1 10 -- special_number2 20
-- You can also specify the color: --special-color1 pink --special-color2 '#33C6A4'
+- By default, the number of different colors is automatically generated (special colors), you can also specify the color: `--special-number1 10 -- special_number2 20`
+- You can also specify the color: `--special-color1 pink --special-color2 '#33C6A4'`
 - Other parameters can be found with `python3 -m github_poster <type> --help`
-- you can add animation, --with-animation (add GOGOGO animation), you can control the animation time --animation-time 14 (default is 10s)
-- you can save skyline `stl` file --with-skyline (default skyline year is to_year), set `--skyline-with-name` to print user name on model
-- with `--is-circular` command,	the svg will be circular and with animation
+- You can add animation, `--with-animation` (add GOGOGO animation), you can control the animation time `--animation-time 14` (default is 10s)
+- You can save skyline `stl` file `--with-skyline` (default skyline year is to_year), set `--skyline-with-name` to print user name on model
+- With `--is-circular` command,	the svg will be circular and with animation
+- Support for hiding the name of the build type in the title: `--without-type-name`
 
 
 ### GPX
@@ -424,16 +425,23 @@ python3 -m github_poster multiple  --types "github, twitter, strava" --twitter_u
 <summary>Make your <code>Jike(source data) types</code> poster</summary>
 <br>
 
-need to find your Jike cookie from `Jike (XHR)` and `user_id`, `user_id` can be find in your personal page link
+need to find your Jike cookie from `Jike (XHR)` and `jike_user_id`, `jike_user_id` can be find in your personal page link
 eg. in the link `https://web.okjike.com/u/82D23B32-CF36-4C59-AD6F-D05E3552CBF3`, `82D23B32-CF36-4C59-AD6F-D05E3552CBF3` is the user_id
 
 ps. only get the data for the last year
 
 ```
-python3 -m github_poster jike --jike_cookie "your jike cookie" --user_id 'your user_id' --year 2021 --me "your name" --with-animation --animation-time 14
+python3 -m github_poster jike --jike_cookie "your jike cookie" --jike_user_id 'your jike user id' --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
 or
-github_poster jike --jike_cookie "your jike cookie" --user_id "your user_id" --year 2021 --me "your name" --with-animation --animation-time 14
+github_poster jike --jike_cookie "your jike cookie" --jike_user_id "your jike user id" --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
 ```
+
+Option argument `count_type`, you can specify statistics type:
+- `record`: post num (default)
+- `like`: post be liked num
+- `share`: post be share num
+- `comment`: post be comment num
+- `repost`: post be repost num
 
 </details>
 
