@@ -57,14 +57,15 @@ pip3 install -r requirements.txt
 ## 使用
 
 - 不同类型按下方指定的使用方式
-- 可以指定年份如 --year 2021, (default) 或年份区间 2012-2021
+- 可以指定年份如 `--year 2021`, (default) 或年份区间 2012-2021
 - 生成的 svg 在 `OUT_FOLDER` 内, 用 type 命名（暂时）
-- 默认自动生成不同颜色需要的 number（特殊颜色）, 也可以指定如： --special-number1 10 -- special_number2 20
-- 也可以指定颜色： --special-color1 pink --special-color2 '#33C6A4'
+- 默认自动生成不同颜色需要的 number（特殊颜色）, 也可以指定如： `--special-number1 10 -- special_number2 20`
+- 也可以指定颜色： `--special-color1 pink --special-color2 '#33C6A4'`
 - 其它参数可以见 `python3 -m github_poster <type> --help`
-- 可以增加动画 --with-animation (加入 GOGOGO 动画), 可以控制动画时间 --animation-time 14（默认是 10s）
-- 可以增加 Skyline --with-skyline (默认生成的为 to_year), 可以使用 --skyline-with-name 将用户名打印在 skyline 上
-- 支持 circular svg 配合动画 --is-circular
+- 可以增加动画 `--with-animation` (加入 GOGOGO 动画), 可以控制动画时间 `--animation-time 14`（默认是 10s）
+- 可以增加 Skyline `--with-skyline` (默认生成的为 to_year), 可以使用 `--skyline-with-name` 将用户名打印在 skyline 上
+- 支持 circular svg 配合动画 `--is-circular`
+- 支持隐藏标题中生成类型的名称： `--without-type-name`
 
 ### GPX
 
@@ -459,15 +460,22 @@ python3 -m github_poster multiple  --types "github, twitter, strava" --twitter_u
 <summary>Make your <code>即刻 (source data) types</code> poster</summary>
 <br>
 
-需要找到你的 `Jike (XHR)` 的 `cookie` 和 `user_id`，`user_id` 可在个人主页的链接中获取：
+需要找到你的 `Jike (XHR)` 的 `cookie` 和 `jike_user_id`，`jike_user_id` 可在个人主页的链接中获取：
 如`https://web.okjike.com/u/82D23B32-CF36-4C59-AD6F-D05E3552CBF3`中`82D23B32-CF36-4C59-AD6F-D05E3552CBF3`为`user_id`
 
 ps. 只能获取最近一年的数据
 
+可选参数`count_type`，指定统计类型:
+- `record`: 动态记录数（默认）
+- `like`: 动态被点赞数
+- `share`: 动态被分享数
+- `comment`: 动态被评论数
+- `repost`: 动态被转发数
+
 ```
-python3 -m github_poster jike --jike_cookie "your jike cookie" --user_id 'your user_id' --year 2021 --me "your name" --with-animation --animation-time 14
+python3 -m github_poster jike --jike_cookie "your jike cookie" --jike_user_id 'your jike user id' --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
 or
-github_poster jike --jike_cookie "your jike cookie" --user_id "your user_id" --year 2021 --me "your name" --with-animation --animation-time 14
+github_poster jike --jike_cookie "your jike cookie" --jike_user_id "your jike user id" --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
 ```
 
 </details>
