@@ -77,7 +77,7 @@ pip3 install -r requirements.txt
 ```
 python3 -m github_poster gpx --gpx_dir ~/blog/GPX_OUT/ --year 2013-2021
 or pip
-github_poster github_poster gpx --gpx_dir ~/blog/GPX_OUT/ --year 2013-2021
+github_poster gpx --gpx_dir ~/blog/GPX_OUT/ --year 2013-2021
 ```
 </details>
 
