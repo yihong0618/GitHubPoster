@@ -174,14 +174,10 @@ github_poster cichang --cichang_user_name ${user_name} --cichang_password ${pass
 <summary>Make your <code>多邻国（duolingo）</code> GitHub poster</summary>
 <br>
 
-需要找到你的多邻国 id, 从网页抓 xhr 就可以获得如下图
-![image](https://user-images.githubusercontent.com/15976103/116336188-baad7000-a80a-11eb-80d7-033d4bf0f260.png)
-
-
 ```
-python3 -m github_poster duolingo --duolingo_user_name ${user_id} --year 2015-2021
+python3 -m github_poster duolingo --duolingo_user_name ${user_id} --duolingo_password ${user_password} --year 2015-2021
 or
-github_poster duolingo --duolingo_user_name ${user_id} --year 2015-2021
+github_poster duolingo --duolingo_user_name ${user_id} --duolingo_password ${user_password} --year 2015-2021
 ```
 </details>
 

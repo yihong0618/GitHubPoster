@@ -2,7 +2,7 @@ import pendulum
 import requests
 
 from github_poster.loader.base_loader import BaseLoader
-from github_poster.loader.config import DUOLINGO_CALENDAR_API
+from github_poster.loader.config import DUOLINGO_CALENDAR_API, DUOLINGO_LOGIN_URL
 
 
 class DuolingoLoader(BaseLoader):
@@ -11,6 +11,10 @@ class DuolingoLoader(BaseLoader):
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
         self.user_name = kwargs.get("duolingo_user_name", "")
+        self.password = kwargs.get("duolingo_password", "")
+        self.session = requests.Session()
+        # duolingo name to get the calendar
+        self.duolingo_id = ""
 
     @classmethod
     def add_loader_arguments(cls, parser):
@@ -21,13 +25,29 @@ class DuolingoLoader(BaseLoader):
             help="",
             required=True,
         )
+        parser.add_argument(
+            "--duolingo_password",
+            dest="duolingo_password",
+            type=str,
+            help="",
+            required=True,
+        )
+
+    def login(self):
+        r = self.session.post(
+            "https://www.duolingo.com/login",
+            params={"login": self.user_name, "password": self.password},
+        )
+        if r.status_code != 200:
+            raise Exception("Login failed")
+        self.duolingo_id = r.json()["user_id"]
 
     def get_api_data(self):
         month_list = self.make_month_list()
         for m in month_list:
-            r = requests.get(
+            r = self.session.get(
                 DUOLINGO_CALENDAR_API.format(
-                    user_id=self.user_name,
+                    user_id=self.duolingo_id,
                     start_date=m.to_date_string(),
                     end_date=m.end_of("month").to_date_string(),
                 )
@@ -50,6 +70,7 @@ class DuolingoLoader(BaseLoader):
                 self.number_list.append(number)
 
     def get_all_track_data(self):
+        self.login()
         self.make_track_dict()
         self.make_special_number()
         return self.number_by_date_dict, self.year_list
