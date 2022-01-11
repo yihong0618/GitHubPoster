@@ -5,7 +5,7 @@ from datetime import datetime
 import pendulum
 import pytz
 
-from github_poster.loader.config import TIME_ZONE
+from github_poster.loader.config import ARGUMENT_DICT, TIME_ZONE
 
 
 class LoadError(Exception):
@@ -14,6 +14,7 @@ class LoadError(Exception):
 
 class BaseLoader(ABC):
 
+    parser_loader_list = []
     #: The track color of the poster
     track_color = None
     #: The unit used by the poster
@@ -67,9 +68,9 @@ class BaseLoader(ABC):
         return time + tc_offset
 
     @classmethod
-    def add_arguments(cls, parser):
+    def add_arguments(cls, parser, optional):
         loader_group = parser.add_argument_group("Loader Arguments")
-        cls.add_loader_arguments(loader_group)
+        cls.add_loader_arguments(loader_group, optional)
         group = parser.add_argument_group("Common Arguments")
         group.add_argument(
             "--year",
@@ -186,8 +187,16 @@ class BaseLoader(ABC):
             help="if poster title with type name",
         )
 
+        # is_cn here
+        group.add_argument(
+            "--cn",
+            dest="cn",
+            action="store_true",
+            help="if accout is CN",
+        )
+
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         pass
 
     @abstractmethod

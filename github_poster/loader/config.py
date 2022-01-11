@@ -1,3 +1,4 @@
+import re
 from collections import namedtuple
 
 # China timezone if you are from others please change this
@@ -103,3 +104,53 @@ FOREST_CLAENDAR_URL = (
 # jike
 JIKE_GRAPHQL_URL = "https://web-api.okjike.com/api/graphql"
 JIKE_PERSON_URL = "https://web.okjike.com/u/{user_id}"
+
+# argument dict
+ARGUMENT_DICT = {
+    "strava": [],
+    "shanbay": [],
+    "duolingo": [
+        {
+            "argument": "--duolingo_user_name",
+            "dest": "duolingo_user_name",
+            "type": str,
+            "help": "duolingo user name",
+            "required": True,
+        },
+        {
+            "argument": "--duolingo_password",
+            "dest": "duolingo_password",
+            "type": str,
+            "help": "duolingo password",
+            "required": True,
+        },
+    ],
+    "cichang": [],
+    "switch": [],
+    "gpx": [],
+    "github": [
+        {
+            "argument": "--github_user_name",
+            "dest": "github_user_name",
+            "type": str,
+            "required": True,
+            "help": "GitHub user name",
+        }
+    ],
+    "leetcode": [],
+    "bilibili": [
+        {
+            "argument": "--bilibili_cookie",
+            "dest": "bilibili_cookie",
+            "type": str,
+            "required": True,
+            "help": "The cookie for the bilibili website(XHR)",
+        }
+    ],
+    "kindle": [],
+    "wakatime": [],
+    "dota2": [],
+    "nike": [],
+    "forest": [],
+    "jike": [],
+}

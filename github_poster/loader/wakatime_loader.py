@@ -15,12 +15,12 @@ class WakaTimeLoader(BaseLoader):
         self.wakatime_key = kwargs.get("wakatime_key", "")
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--wakatime_key",
             dest="wakatime_key",
             type=str,
-            required=True,
+            required=optional,
             help="your wakatime api key here, "
             "more info: https://wakatime.com/settings/api-key",
         )

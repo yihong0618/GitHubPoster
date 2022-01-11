@@ -25,18 +25,12 @@ class KindleLoader(BaseLoader):
         self._make_years_list()
 
     @classmethod
-    def add_loader_arguments(cls, parser):
-        parser.add_argument(
-            "--cn",
-            dest="cn",
-            action="store_true",
-            help="if accout is CN",
-        )
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--kindle_cookie",
             dest="kindle_cookie",
             type=str,
-            required=True,
+            required=optional,
             help="",
         )
 

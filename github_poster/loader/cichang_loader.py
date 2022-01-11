@@ -22,19 +22,19 @@ class CiChangLoader(BaseLoader):
         self.s = requests.Session()
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--cichang_user_name",
             dest="cichang_user_name",
             type=str,
-            required=True,
+            required=optional,
             help="The username of CiChang",
         )
         parser.add_argument(
             "--cichang_password",
             dest="cichang_password",
             type=str,
-            required=True,
+            required=optional,
             help="The password of CiChang",
         )
 

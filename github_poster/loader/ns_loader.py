@@ -34,25 +34,19 @@ class NSLoader(BaseLoader):
         self.s = requests.Session()
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--ns_device_id",
             dest="ns_device_id",
             type=str,
-            required=True,
+            required=optional,
             help="",
         )
         parser.add_argument(
             "--ns_session_token",
             dest="ns_session_token",
             type=str,
-            required=True,
-            help="",
-        )
-        parser.add_argument(
-            "--kindle_cookie",
-            dest="kindle_cookie",
-            type=str,
+            required=optional,
             help="",
         )
 

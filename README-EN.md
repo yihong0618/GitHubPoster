@@ -31,6 +31,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Json](#Json)**
 - **[Multiple](#Multiple)**
 - **[Jike](#Jike)**
+- **[Summary](#Summary)**
 
 
 ## Download
@@ -418,6 +419,18 @@ python3 -m github_poster multiple  --types "github, twitter, strava" --twitter_u
 
 </details>
 
+### Summary
+
+<details>
+<summary>Make your <code>Summary types</code> poster</summary>
+<br>
+
+support summary types
+
+```
+python3 -m github_poster summary  --types "github, twitter, strava" --twitter_user_name "twitter user name" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
+```
+</details>
 
 ## Jike
 

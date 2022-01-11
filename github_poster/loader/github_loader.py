@@ -14,12 +14,12 @@ class GitHubLoader(BaseLoader):
         self.user_name = kwargs.get("github_user_name", "")
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--github_user_name",
             dest="github_user_name",
             type=str,
-            required=True,
+            required=optional,
             help="",
         )
 

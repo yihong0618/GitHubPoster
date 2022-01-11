@@ -7,6 +7,7 @@ from github_poster.loader.config import DUOLINGO_CALENDAR_API, DUOLINGO_LOGIN_UR
 
 class DuolingoLoader(BaseLoader):
     unit = "XP"
+    track_color = "#78C800"
 
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
@@ -17,25 +18,25 @@ class DuolingoLoader(BaseLoader):
         self.duolingo_id = ""
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--duolingo_user_name",
             dest="duolingo_user_name",
             type=str,
             help="",
-            required=True,
+            required=optional,
         )
         parser.add_argument(
             "--duolingo_password",
             dest="duolingo_password",
             type=str,
             help="",
-            required=True,
+            required=optional,
         )
 
     def login(self):
         r = self.session.post(
-            "https://www.duolingo.com/login",
+            DUOLINGO_LOGIN_URL,
             params={"login": self.user_name, "password": self.password},
         )
         if r.status_code != 200:

@@ -27,12 +27,12 @@ class NRCLoader(BaseLoader):
         self.nike_refresh_token = kwargs.get("nike_refresh_token", "")
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--nike_refresh_token",
             dest="nike_refresh_token",
             type=str,
-            required=True,
+            required=optional,
             help="",
         )
 
