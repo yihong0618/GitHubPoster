@@ -20,26 +20,20 @@ class GarminLoader(BaseLoader):
         self.client = None
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--garmin_user_name",
             dest="garmin_user_name",
             type=str,
-            required=True,
+            required=optional,
             help="The username of Garmin",
         )
         parser.add_argument(
             "--garmin_password",
             dest="garmin_password",
             type=str,
-            required=True,
+            required=optional,
             help="The password of Garmin",
-        )
-        parser.add_argument(
-            "--cn",
-            dest="cn",
-            action="store_true",
-            help="if accout is CN",
         )
 
     def _get_access(self):

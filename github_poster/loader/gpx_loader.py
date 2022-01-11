@@ -19,7 +19,7 @@ class GPXLoader(BaseLoader):
         self.base_dir = kwargs.get("gpx_dir", "")
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--gpx_dir",
             dest="gpx_dir",

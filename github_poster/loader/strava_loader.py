@@ -21,26 +21,26 @@ class StravaLoader(BaseLoader):
         self.strava_access = False
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--strava_client_id",
             dest="strava_client_id",
             type=str,
-            required=True,
+            required=optional,
             help="",
         )
         parser.add_argument(
             "--strava_client_secret",
             dest="strava_client_secret",
             type=str,
-            required=True,
+            required=optional,
             help="",
         )
         parser.add_argument(
             "--strava_refresh_token",
             dest="strava_refresh_token",
             type=str,
-            required=True,
+            required=optional,
             help="",
         )
 

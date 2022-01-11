@@ -13,7 +13,7 @@ class JsonLoader(BaseLoader):
         self.json_file = kwargs.get("json_file")
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--json_file",
             dest="json_file",

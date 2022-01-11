@@ -44,26 +44,24 @@ class JikeLoader(BaseLoader):
         self.stop_time = 0
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--jike_user_id",
             dest="user_id",
             type=str,
-            required=False,
             help="The user id of jike",
         )
         parser.add_argument(
             "--jike_cookie",
             dest="jike_cookie",
             type=str,
-            required=True,
+            required=optional,
             help="The cookie for the jike website(XHR)",
         )
         parser.add_argument(
             "--count_type",
             dest="count_type",
             type=str,
-            required=False,
             default="record",
             choices=["record", "like", "comment", "repost", "share"],
             help="""

@@ -18,12 +18,12 @@ class Dota2Loader(BaseLoader):
         self.dota2_id = kwargs.get("dota2_id", "")
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--dota2_id",
             dest="dota2_id",
             type=str,
-            required=True,
+            required=optional,
             help="Check your dota2-id in-game or on the website(steamid32): "
             "https://steamid.xyz/",
         )

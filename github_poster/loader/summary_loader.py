@@ -4,9 +4,11 @@
 from collections import defaultdict
 
 from github_poster.loader.base_loader import BaseLoader
+from github_poster.loader.bilibili_loader import BilibiliLoader
+from github_poster.loader.leetcode_loader import LeetcodeLoader
 
 
-class MutipleLoader(BaseLoader):
+class SummaryLoader(BaseLoader):
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
         self.types = kwargs.get("types", "")
@@ -18,6 +20,7 @@ class MutipleLoader(BaseLoader):
 
     @classmethod
     def add_loader_arguments(cls, parser, optional):
+
         parser.add_argument(
             "--types",
             dest="types",
@@ -25,6 +28,7 @@ class MutipleLoader(BaseLoader):
             required=True,
             help="All types you want to generate summary, split by comma",
         )
+
         for l in cls.parser_loader_list:
             l.add_loader_arguments(parser, optional)
 
@@ -35,13 +39,4 @@ class MutipleLoader(BaseLoader):
         pass
 
     def get_all_track_data(self):
-        """
-        date_summary_dict:
-        -> {date: {github:1, twitter:2}, date2: {github: 2}}
-        """
-        date_summary_dict = defaultdict(dict)
-        for loader in self.loader_list:
-            data, _ = loader.get_all_track_data()
-            for date, value in data.items():
-                date_summary_dict[date][loader._type] = value
-        return date_summary_dict, self.year_list
+        pass

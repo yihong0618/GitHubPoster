@@ -18,19 +18,19 @@ class ForestLoader(BaseLoader):
         self.s = requests.Session()
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--forest_email",
             dest="forest_email",
             type=str,
-            required=True,
+            required=optional,
             help="The email of forest",
         )
         parser.add_argument(
             "--forest_password",
             dest="forest_password",
             type=str,
-            required=True,
+            required=optional,
             help="The password of Forest",
         )
 

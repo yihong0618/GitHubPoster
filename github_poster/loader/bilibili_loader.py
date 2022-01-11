@@ -20,12 +20,12 @@ class BilibiliLoader(BaseLoader):
         self.bilibili_cookie = kwargs.get("bilibili_cookie", "")
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--bilibili_cookie",
             dest="bilibili_cookie",
             type=str,
-            required=True,
+            required=optional,
             help="The cookie for the bilibili website(XHR)",
         )
 

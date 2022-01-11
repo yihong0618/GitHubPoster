@@ -13,19 +13,19 @@ class GitHubIssuesLoader(BaseLoader):
         self.token = kwargs.get("github_token", "")
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--issue_number",
             dest="issue_number",
             type=str,
-            required=True,
+            required=optional,
             help="The issue number",
         )
         parser.add_argument(
             "--repo_name",
             dest="repo_name",
             type=str,
-            required=True,
+            required=optional,
             help="The repo name",
         )
         parser.add_argument(

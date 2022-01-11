@@ -20,12 +20,12 @@ class GitLabLoader(BaseLoader):
         self.left_dates = []
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--gitlab_user_name",
             dest="gitlab_user_name",
             type=str,
-            required=True,
+            required=optional,
             help="",
         )
 

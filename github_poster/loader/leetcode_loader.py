@@ -22,19 +22,13 @@ class LeetcodeLoader(BaseLoader):
         )
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
             "--leetcode_cookie",
             dest="leetcode_cookie",
             type=str,
-            required=True,
+            required=optional,
             help="",
-        )
-        parser.add_argument(
-            "--cn",
-            dest="cn",
-            action="store_true",
-            help="if accout is CN",
         )
 
     def get_api_data(self):

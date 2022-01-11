@@ -14,12 +14,12 @@ class YouTubeLoader(BaseLoader):
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
         self.number_by_date_dict = defaultdict(int)
-        self.youtube_file = kwargs.get("youtube_history_file_file")
+        self.youtube_file = kwargs.get("youtube_history_file")
 
     @classmethod
-    def add_loader_arguments(cls, parser):
+    def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
-            "--youtube_history_file_file",
+            "--youtube_history_file",
             dest="youtube_history_file",
             type=str,
             default=os.path.join("IN_FOLDER", "watch-history.json"),

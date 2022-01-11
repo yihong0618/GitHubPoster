@@ -21,21 +21,25 @@ def main():
     p = Poster()
     args_parser = argparse.ArgumentParser()
     subparser = args_parser.add_subparsers()
-    for type_, loader in LOADER_DICT.items():
+
+    # temp list to remove the summary type
+    temp_list = list(LOADER_DICT.values()).copy()
+    temp_list.remove(LOADER_DICT.get("summary"))
+    temp_list.remove(LOADER_DICT.get("multiple"))
+
+    for type_, l in LOADER_DICT.items():  # l -> loader class
+        l._type = type_
         parser = subparser.add_parser(name=type_)
-        parser.set_defaults(type=type_, loader=loader)
-        loader.add_arguments(parser)
+        parser.set_defaults(type=type_, loader=l)
+        optional = True
+        if type_ in ["summary", "multiple"]:
+            l.parser_loader_list = list(temp_list)
+            optional = False
+        l.add_arguments(parser, optional)
 
     args = args_parser.parse_args()
     # without title
     no_title_types = ("issue", "multiple", "json")
-
-    # we don't know issue content so use name
-    p.title = (
-        f"{args.me} " + TYPE_INFO_DICT.get(args.type, args.type)
-        if args.type not in no_title_types and args.without_type_name
-        else args.me
-    )
 
     p.colors = {
         "background": args.background_color,
@@ -51,34 +55,53 @@ def main():
     p.units = args.loader.unit
     from_year, to_year = parse_years(args.year)
     args_dict = dict(args._get_kwargs())
-    d = LOADER_DICT.get(args.type, "duolingo")(
+    loader = LOADER_DICT.get(args.type, "duolingo")(
         from_year, to_year, args.type, **args_dict
     )
     type_list = [args.type]
-    # for multiple types
-    if args.type == "multiple":
+    # for multiple types or year summary
+    if args.type in ["multiple", "summary"]:
         types_list = args_dict.get("types").split(",")
         # trim drop the spaces
         type_list = [t.replace(" ", "") for t in types_list]
         if args.with_skyline or args.is_circular:
             raise Exception("Skyline or Circular does not support for multiple types")
-        assert len(types_list) <= 3
+        if args.type == "multiple":
+            assert len(types_list) <= 3
         for t in type_list:
             if t not in LOADER_DICT:
                 raise Exception(f"{t} must in support loader types")
-            d.set_loader_list(LOADER_DICT.get(t)(from_year, to_year, t, **args_dict))
-    tracks, years = d.get_all_track_data()
+            loader.set_loader_list(
+                LOADER_DICT.get(t)(from_year, to_year, t, **args_dict)
+            )
+            p.loader_list = loader.loader_list
+
+    if args.type != "summary":
+        tracks, years = loader.get_all_track_data()
+        p.set_tracks(tracks, years, type_list)
+    else:
+        p.set_tracks({}, [to_year], type_list)
+
+    # set title
+    # we don't know issue content so use name
+    p.title = (
+        f"{args.me } {str(to_year) + ' ' if args.type=='summary' else ''}"
+        + TYPE_INFO_DICT.get(args.type, args.type)
+        if args.type not in no_title_types and args.without_type_name
+        else args.me
+    )
+
     p.special_number = {
-        "special_number1": d.special_number1,
-        "special_number2": d.special_number2,
+        "special_number1": loader.special_number1,
+        "special_number2": loader.special_number2,
     }
     if args.special_number1:
         p.special_number["special_number1"] = args.special_number1
     if args.special_number2:
         p.special_number["special_number2"] = args.special_number2
-
-    p.set_tracks(tracks, years, type_list)
-    p.height = 35 + len(p.years) * 43
+    # the length of this poster
+    poster_length = len(p.years) if args.type != "summary" else len(loader.loader_list)
+    p.height = 35 + poster_length * 43
     if not os.path.exists(OUT_FOLDER):
         os.mkdir(OUT_FOLDER)
     # support different issues, maybe better way
@@ -91,6 +114,9 @@ def main():
         issue_number = args_dict.get("issue_number", "1")
         repo_name = args_dict.get("repo_name", "").replace("/", "_")
         file_name = f"issue_{repo_name}_{issue_number}"
+    if args.type == "summary":
+        file_name = f"summary_{to_year}"
+        p.is_summary = True
     if is_circular:
         file_name = f"{file_name}_circular"
 
@@ -99,6 +125,8 @@ def main():
         p.width = 120
 
     file_name = f"{file_name}.svg"
+
+    # for summary we have different logic #TODO refactor
     p.draw(d(p), os.path.join(OUT_FOLDER, file_name))
 
     # generate skyline

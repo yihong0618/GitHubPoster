@@ -11,6 +11,7 @@ class Poster:
         self.title = None
         self.tracks = {}
         self.type_list = []
+        self.loader_list = []
         self.length_range_by_date = ValueRange()
         self.length_range_by_date_dict = defaultdict(ValueRange)
         self.units = "metric"
@@ -31,6 +32,9 @@ class Poster:
         self.year_tracks_date_count_dict = defaultdict(int)
         self.year_tracks_type_dict = defaultdict(dict)
 
+        # for year sumary
+        self.is_summary = False
+
     def set_tracks(self, tracks, years, type_list):
         self.type_list.extend(type_list)
         self.tracks = tracks
@@ -45,7 +49,7 @@ class Poster:
             else:
                 self.length_range_by_date.extend(num)
         for t in type_list:
-            self.__compute_track_statistics(t)
+            self.compute_track_statistics(t)
 
     @property
     def is_multiple_type(self):
@@ -87,7 +91,7 @@ class Poster:
         d.save()
 
     def __draw_tracks(self, d, offset):
-        self.tracks_drawer.draw(d, offset)
+        self.tracks_drawer.draw(d, offset, self.is_summary)
 
     def __draw_header(self, d):
         text_color = self.colors["text"]
@@ -97,7 +101,7 @@ class Poster:
     def __draw_footer(self, d):
         self.tracks_drawer.draw_footer(d)
 
-    def __compute_track_statistics(self, t):
+    def compute_track_statistics(self, t):
         total_sum_year_dict = defaultdict(int)
         for date, num in self.tracks.items():
             if type(num) is dict:
