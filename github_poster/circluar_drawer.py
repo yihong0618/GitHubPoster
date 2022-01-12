@@ -19,7 +19,8 @@ class CircularDrawer(Drawer):
     def __init__(self, p):
         super().__init__(p)
 
-    def draw(self, dr, size):
+    def draw(self, dr, size, is_summary=False):
+        # TODO: make a summary circle
         if self.poster.tracks is None:
             raise CircularDrawError("No tracks to draw.")
         if self.poster.length_range_by_date is None:
