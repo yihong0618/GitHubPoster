@@ -1,3 +1,4 @@
+from github_poster.loader.bbdc_loader import BBDCLoader
 from github_poster.loader.bilibili_loader import BilibiliLoader
 from github_poster.loader.cichang_loader import CiChangLoader
 from github_poster.loader.dota2_loader import Dota2Loader
@@ -23,6 +24,7 @@ from github_poster.loader.wakatime_loader import WakaTimeLoader
 from github_poster.loader.youtube_loader import YouTubeLoader
 
 LOADER_DICT = {
+    "bbdc": BBDCLoader,
     "duolingo": DuolingoLoader,
     "shanbay": ShanBayLoader,
     "strava": StravaLoader,

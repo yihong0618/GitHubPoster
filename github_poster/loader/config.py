@@ -104,3 +104,6 @@ FOREST_CLAENDAR_URL = (
 # jike
 JIKE_GRAPHQL_URL = "https://web-api.okjike.com/api/graphql"
 JIKE_PERSON_URL = "https://web.okjike.com/u/{user_id}"
+
+# bbdc
+BBDC_API_URL = "https://learnywhere.cn/bb/dashboard/profile/search?userId={user_id}"
