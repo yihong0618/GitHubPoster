@@ -379,7 +379,7 @@ github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 ### Nike
 
 <details>
-<summary>Make your <code> Nike </code> poster</summary>>
+<summary>Make your <code> Nike </code> poster</summary>
 
 获取 Nike 的 refresh_token
 
@@ -397,7 +397,8 @@ github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-20
 
 ### Garmin
 <details>
-<summary>Make your <code> Garmin </code> poster</summary>>
+<summary>Make your <code> Garmin </code> poster</summary>
+
 
 需要填写 Garmin 的账号和密码
 
