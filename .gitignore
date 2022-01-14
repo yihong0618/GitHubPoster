@@ -131,3 +131,8 @@ dmypy.json
 # test_files
 test.py
 .vscode/
+
+.idea/
+
+IN_FOLDER/*
+OUT_FOLDER/*
