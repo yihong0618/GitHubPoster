@@ -43,5 +43,5 @@ TYPE_INFO_DICT = {
     "shanbay": "Shanbay",
     "forest": "Forest",
     "jike": "Jike",
-    "bbdc": "BBDC"
+    "bbdc": "BBDC",
 }

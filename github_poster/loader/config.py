@@ -1,4 +1,3 @@
-import re
 from collections import namedtuple
 
 # China timezone if you are from others please change this

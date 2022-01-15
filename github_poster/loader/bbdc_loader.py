@@ -75,7 +75,7 @@ class BBDCLoader(BaseLoader):
 
         for i in duration:
             full_date = self.today_transform(i["date"])
-            if not full_date in cache["data"]:
+            if full_date not in cache["data"]:
                 cache["data"][full_date] = {}
 
             dur = i["duration"]
