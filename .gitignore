@@ -137,3 +137,7 @@ test.py
 github_poster/IN_FOLDER/*
 github_poster/OUT_FOLDER/*
 github_poster/data/*
+
+IN_FOLDER/*
+OUT_FOLDER/*
+data/*
