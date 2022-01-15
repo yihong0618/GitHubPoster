@@ -71,7 +71,7 @@ class BBDCLoader(BaseLoader):
 
         body = data["data_body"]
         duration = body["durationList"]
-        learn = body["durationList"]
+        learn = body["learnList"]
 
         for i in duration:
             full_date = self.today_transform(i["date"])
@@ -106,7 +106,7 @@ class BBDCLoader(BaseLoader):
     def make_track_dict(self):
         cache = self._update_cache()
         data = cache["data"]
-        for date, value in data:
+        for date, value in data.items():
             year = date[:4]
             if year not in self.year_list:
                 pass
