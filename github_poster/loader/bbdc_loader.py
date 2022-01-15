@@ -66,7 +66,7 @@ class BBDCLoader(BaseLoader):
         if not resp.ok:
             raise LoadError(f"Meet network error. {resp.reason}")
         data = resp.json()
-        if data["result_code"] == 200:
+        if data["result_code"] != 200:
             raise LoadError(f"Unexpected error. {data}")
 
         body = data["data_body"]
