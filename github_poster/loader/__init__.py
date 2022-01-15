@@ -75,4 +75,5 @@ __all__ = (
     "JsonLoader",
     "JikeLoader",
     "SummaryLoader",
+    "BBDCLoader",
 )
