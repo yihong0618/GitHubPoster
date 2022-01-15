@@ -14,10 +14,7 @@ class BBDCLoader(BaseLoader):
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
         self.user_id = kwargs.get("bbdc_user_id", "")
-        if "bbdc_count_time" in kwargs:
-            self.type = "time"
-        else:
-            self.type = "word"
+        self.type = kwargs.get("bbdc_type", "time")
 
     @classmethod
     def add_loader_arguments(cls, parser, optional):
