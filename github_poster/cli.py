@@ -52,7 +52,6 @@ def main():
     # set animate
     p.set_with_animation(args.with_animation)
     p.set_animation_time(args.animation_time)
-    p.units = args.loader.unit
     from_year, to_year = parse_years(args.year)
     args_dict = dict(args._get_kwargs())
     loader = LOADER_DICT.get(args.type, "duolingo")(
@@ -61,6 +60,7 @@ def main():
     type_list = [args.type]
     # for multiple types or year summary
     if args.type in ["multiple", "summary"]:
+        p.units = args.loader.unit
         types_list = args_dict.get("types").split(",")
         # trim drop the spaces
         type_list = [t.replace(" ", "") for t in types_list]
@@ -78,8 +78,10 @@ def main():
 
     if args.type != "summary":
         tracks, years = loader.get_all_track_data()
+        p.units = args.loader.unit
         p.set_tracks(tracks, years, type_list)
     else:
+        p.units = args.loader.unit
         p.set_tracks({}, [to_year], type_list)
 
     # set title

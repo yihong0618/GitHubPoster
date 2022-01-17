@@ -23,6 +23,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Strava](#strava)**
 - **[开心词场](#cichang)**
 - **[扇贝](#shanbay)**
+- **[不背单词](#bbdc)**
 - **[Nintendo Switch](#ns)**
 - **[GPX](#GPX)**
 - **[多邻国](#duolingo)**
@@ -203,6 +204,23 @@ github_poster shanbay --shanbay_user_name ${user_name} --year 2012-2021 --specia
 ```
 </details>
 
+### 不背单词
+
+<details>
+<summary>Make your <code>不背单词（bbdc）</code> GitHub poster</summary>
+<br>
+
+在设置最下方可以获得 user_id
+![Screenshot_2022-01-15-18-58-00-833_cn com langeas](https://user-images.githubusercontent.com/31370133/149619270-f3d9b61c-c497-4dde-a0d0-09254606856d.jpg)
+
+
+```
+python3 -m github_poster bbdc --bbdc_user_id ${user_id} --bbdc_type ${time/word}
+or
+github_poster bbdc --bbdc_user_id ${user_id} --bbdc_type ${time/word}
+```
+</details>
+
 ### Issue
 
 <details>
@@ -379,7 +397,7 @@ github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 ### Nike
 
 <details>
-<summary>Make your <code> Nike </code> poster</summary>>
+<summary>Make your <code> Nike </code> poster</summary>
 
 获取 Nike 的 refresh_token
 
@@ -397,7 +415,8 @@ github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-20
 
 ### Garmin
 <details>
-<summary>Make your <code> Garmin </code> poster</summary>>
+<summary>Make your <code> Garmin </code> poster</summary>
+
 
 需要填写 Garmin 的账号和密码
 

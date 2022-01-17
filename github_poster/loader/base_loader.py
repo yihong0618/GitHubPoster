@@ -5,7 +5,7 @@ from datetime import datetime
 import pendulum
 import pytz
 
-from github_poster.loader.config import ARGUMENT_DICT, TIME_ZONE
+from github_poster.loader.config import TIME_ZONE
 
 
 class LoadError(Exception):
