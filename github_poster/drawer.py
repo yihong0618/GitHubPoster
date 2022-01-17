@@ -1,7 +1,7 @@
 import calendar
 import datetime
 
-import svgwrite
+import svgwrite.animate
 
 from github_poster.config import (
     COLOR_TUPLE,
@@ -15,7 +15,6 @@ from github_poster.utils import interpolate_color, make_key_times
 
 
 class Drawer:
-
     name = "github"
 
     def __init__(self, p):
@@ -140,12 +139,13 @@ class Drawer:
                 rect = self.__add_animation(rect, key_times, animate_index)
             yield rect
 
+    # noinspection PyArgumentList
     def _draw_one_calendar(self, dr, year, offset, _type=None):
         start_date_weekday, _ = calendar.monthrange(year, 1)
         github_rect_first_day = datetime.date(year, 1, 1)
-        # Github profile the first day start from the last Monday of the last year
+        # GitHub profile the first day start from the last Monday of the last year
         # or the first Monday of this year.
-        # It depands on if the first day of this year is Monday or not.
+        # It depends on if the first day of this year is Monday or not.
         github_rect_day = github_rect_first_day + datetime.timedelta(
             -start_date_weekday
         )
@@ -231,18 +231,18 @@ class Drawer:
             raise BaseDrawError("No tracks to draw")
 
         if is_summary:
-            for l in self.poster.loader_list:
-                tracks, years = l.get_all_track_data()
+            for loader in self.poster.loader_list:
+                tracks, years = loader.get_all_track_data()
                 self.poster.set_tracks(tracks, years, [])
                 self.poster.type_list = ["summary"]
                 self.poster.special_number = {
-                    "special_number1": l.special_number1,
-                    "special_number2": l.special_number2,
+                    "special_number1": loader.special_number1,
+                    "special_number2": loader.special_number2,
                 }
-                self.poster.colors["track"] = l.track_color or "#4DD2FF"
-                self.poster.units = l.unit
-                self.poster.compute_track_statistics([l._type])
-                self._draw_one_calendar(dr, years[0], offset, _type=l._type)
+                self.poster.colors["track"] = loader.track_color or "#4DD2FF"
+                self.poster.units = loader.unit
+                self.poster.compute_track_statistics([loader._type])
+                self._draw_one_calendar(dr, years[0], offset, _type=loader._type)
         else:
             for year in range(self.poster.years[0], self.poster.years[-1] + 1)[::-1]:
                 self._draw_one_calendar(dr, year, offset)

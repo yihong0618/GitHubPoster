@@ -34,7 +34,6 @@ TYPE_INFO_DICT = {
     "twitter": "Twitter",
     "youtube": "YouTube",
     "gitlab": "GitLab",
-    "strava": "Strava",
     "bilibili": "bilibili",
     "nike": "Nike",
     "strava": "Strava",
@@ -44,4 +43,5 @@ TYPE_INFO_DICT = {
     "shanbay": "Shanbay",
     "forest": "Forest",
     "jike": "Jike",
+    "bbdc": "BBDC",
 }

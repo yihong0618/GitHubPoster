@@ -1,11 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from collections import defaultdict
-
 from github_poster.loader.base_loader import BaseLoader
-from github_poster.loader.bilibili_loader import BilibiliLoader
-from github_poster.loader.leetcode_loader import LeetcodeLoader
 
 
 class SummaryLoader(BaseLoader):
@@ -29,8 +25,8 @@ class SummaryLoader(BaseLoader):
             help="All types you want to generate summary, split by comma",
         )
 
-        for l in cls.parser_loader_list:
-            l.add_loader_arguments(parser, optional)
+        for loader in cls.parser_loader_list:
+            loader.add_loader_arguments(parser, optional)
 
     def get_api_data(self):
         pass
