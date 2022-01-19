@@ -81,7 +81,7 @@ jobs:
       - name: Run sync leetcode script
         if: contains(env.TYPE, 'leetcode')
         run: |
-          python -m github_poster leetcode --leetcode_cookie  '${{ secrets.LEETCODE_COOKIE }} --me ${{ env.ME }}
+          python -m github_poster leetcode --leetcode_cookie  "${{ secrets.LEETCODE_COOKIE }}" --me ${{ env.ME }}
 
       - name: Run sync twitter script
         if: contains(env.TYPE, 'twitter')
