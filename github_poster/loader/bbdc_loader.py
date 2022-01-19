@@ -107,7 +107,7 @@ class BBDCLoader(BaseLoader):
         cache = self._update_cache()
         data = cache["data"]
         for date, value in data.items():
-            year = date[:4]
+            year = int(date[:4])
             if year not in self.year_list:
                 pass
             else:
