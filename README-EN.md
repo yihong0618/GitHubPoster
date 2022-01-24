@@ -532,7 +532,7 @@ Before submitting PR:
 - @[JasonkayZK](https://github.com/JasonkayZK) Wakatime loader
 - @[shaonianche](https://github.com/shaonianche) Dota2 loader
 - @[umm233](https://github.com/umm233) Jike loader
-- @[ruter](https://github.com/ruter) `CI` Notion loader
+- @[ruter](https://github.com/ruter) Notion loader
 - @[frostming](https://github.com/frostming) `CI` refator and some Actions code
 
 # Support
