@@ -14,6 +14,7 @@ from github_poster.loader.json_loader import JsonLoader
 from github_poster.loader.kindle_loader import KindleLoader
 from github_poster.loader.leetcode_loader import LeetcodeLoader
 from github_poster.loader.multiple_loader import MutipleLoader
+from github_poster.loader.notion_loader import NotionLoader
 from github_poster.loader.nrc_loader import NRCLoader
 from github_poster.loader.ns_loader import NSLoader
 from github_poster.loader.shanbay_loader import ShanBayLoader
@@ -43,6 +44,7 @@ LOADER_DICT = {
     "dota2": Dota2Loader,
     "multiple": MutipleLoader,
     "nike": NRCLoader,
+    "notion": NotionLoader,
     "garmin": GarminLoader,
     "forest": ForestLoader,
     "json": JsonLoader,
@@ -68,6 +70,7 @@ __all__ = (
     "WakaTimeLoader",
     "YouTubeLoader",
     "MutipleLoader",
+    "NotionLoader",
     "NRCLoader",
     "LOADER_DICT",
     "ForestLoader",
