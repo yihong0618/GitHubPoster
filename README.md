@@ -37,6 +37,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[WakaTime](#WakaTime)**
 - **[Dota2](#Dota2)**
 - **[Nike](#Nike)**
+- **[Notion](#Notion)**
 - **[Garmin](#Garmin)**
 - **[Forest](#Forest)**
 - **[Json](#json)**
@@ -409,6 +410,33 @@ github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 python3 -m github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-2021
 or
 github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-2021
+```
+
+</details>
+
+### Notion
+
+<details>
+<summary>Make your <code> Notion </code> poster</summary>
+
+获取 Notion 的 `Internal Integration Token`(notion_token)，查看[官方文档](https://developers.notion.com/docs/authorization#authorizing-internal-integrations)获取更多信息。
+
+1. 登录 [Notion](https://www.notion.so/my-integrations) 开发者网站
+2. 点击「New integration」添加基础信息后，创建新的 Token
+3. 提交后可以看到 `Secrets` 下的 `Internal Integration Token`
+
+获取用于生成 Poster 的 Notion 数据库 ID(database_id)，查看[官方文档](https://developers.notion.com/docs/working-with-databases#adding-pages-to-a-database)获取更多信息。
+
+1. 以全屏页面打开数据库
+2. 复制页面链接，链接组成应该是 `https://www.notion.so/{workspace_name}/{database_id}?v={view_id}` 这样的
+3. 其中 `{database_id}` 部分即为数据库 ID
+
+注：数据库需要添加一个属性类型为 `Date` 的日期属性，该属性的值将作为生成 Poster 的日期数据使用。在生成时需将该日期属性的名称作为选项 `prop_name` 的值，默认值为 `Datetime`
+
+```
+python3 -m github_poster notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
+or
+github_poster notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
 ```
 
 </details>
