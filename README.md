@@ -229,6 +229,8 @@ github_poster bbdc --bbdc_user_id ${user_id} --bbdc_type ${time/word}
 <br>
 
 可以参考我的 [issue](https://github.com/yihong0618/2021/issues/5)
+> 1. 确保issue中是有内容的
+> 2. 内容的第一行必须是数字，因为是取的第一行的数字来进行计数的
 
 ```
 python3 -m github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --github_token ${github_token}
