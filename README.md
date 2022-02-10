@@ -565,9 +565,9 @@ How to:
 
 
 ```
-python3 -m github_poster weread --weread_cookie "your weread cookie" --jike_user_id 'your jike user id' --year 2020-2022 --me "your name"
+python3 -m github_poster weread --weread_cookie "your weread cookie" --year 2020-2022 --me "your name"
 or
-github_poster weread --weread_cookie "your weread cookie" --jike_user_id 'your jike user id' --year 2020-2022 --me "your name"
+github_poster weread --weread_cookie "your weread cookie" --year 2020-2022 --me "your name"
 ```
 
 </details>
