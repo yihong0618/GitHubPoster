@@ -150,7 +150,12 @@ class Drawer:
             -start_date_weekday
         )
         year_length = self.poster.total_sum_year_dict.get(year, 0)
-        year_length = str(int(year_length)) + f" {self.poster.units}"
+        year_units = self.poster.units
+        if self.poster.units == "mins":
+            year_length = int(year_length / 60)
+            # change to hours from mins
+            year_units = "hours"
+        year_length = str(int(year_length)) + f" {year_units}"
         dr.add(
             dr.text(
                 f"{year}" if _type is None else f"{_type}",

@@ -1,9 +1,11 @@
 from abc import ABC, abstractmethod
 from collections import defaultdict
 from datetime import datetime
+from http.cookies import SimpleCookie
 
 import pendulum
 import pytz
+from requests.utils import cookiejar_from_dict
 
 from github_poster.loader.config import TIME_ZONE
 
@@ -66,6 +68,19 @@ class BaseLoader(ABC):
     def adjust_time(self, time):
         tc_offset = datetime.now(pytz.timezone(self.time_zone)).utcoffset()
         return time + tc_offset
+
+    @staticmethod
+    def parese_cookie_string(cookie_string):
+        cookie = SimpleCookie()
+        cookie.load(cookie_string)
+        cookies_dict = {}
+        cookiejar = None
+        for key, morsel in cookie.items():
+            cookies_dict[key] = morsel.value
+            cookiejar = cookiejar_from_dict(
+                cookies_dict, cookiejar=None, overwrite=True
+            )
+        return cookiejar
 
     @classmethod
     def add_arguments(cls, parser, optional):
