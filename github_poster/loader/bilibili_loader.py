@@ -29,18 +29,6 @@ class BilibiliLoader(BaseLoader):
             help="The cookie for the bilibili website(XHR)",
         )
 
-    def _parse_bilibili_cookie(self):
-        cookie = SimpleCookie()
-        cookie.load(self.bilibili_cookie)
-        cookies_dict = {}
-        cookiejar = None
-        for key, morsel in cookie.items():
-            cookies_dict[key] = morsel.value
-            cookiejar = requests.utils.cookiejar_from_dict(
-                cookies_dict, cookiejar=None, overwrite=True
-            )
-        return cookiejar
-
     def get_api_data(self, max_oid="", view_at="", data_list=[]):
         r = self.session.get(
             BILIBILI_HISTORY_URL.format(max_oid=max_oid, view_at=view_at)
@@ -72,7 +60,7 @@ class BilibiliLoader(BaseLoader):
 
     def get_all_track_data(self):
         # first we need to activate the session with cookie str from `chrome`
-        self.session.cookies = self._parse_bilibili_cookie()
+        self.session.cookies = self.parse_cookie_string(self.bilibili_cookie)
 
         self.make_track_dict()
         self.make_special_number()

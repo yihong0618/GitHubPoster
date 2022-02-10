@@ -70,18 +70,6 @@ class JikeLoader(BaseLoader):
             """,
         )
 
-    def _parse_jike_cookie(self):
-        cookie = SimpleCookie()
-        cookie.load(self.jike_cookie)
-        cookies_dict = {}
-        cookiejar = None
-        for key, morsel in cookie.items():
-            cookies_dict[key] = morsel.value
-            cookiejar = requests.utils.cookiejar_from_dict(
-                cookies_dict, cookiejar=None, overwrite=True
-            )
-        return cookiejar
-
     def _get_first_last_id(self):
         """
         get first last id for first post request
@@ -222,7 +210,7 @@ class JikeLoader(BaseLoader):
             self.number_list.append(v)
 
     def get_all_track_data(self):
-        self.session.cookies = self._parse_jike_cookie()
+        self.session.cookies = self.parse_cookie_string(self.jike_cookie)
         self.make_track_dict()
         self.make_special_number()
         print("Thanks for being addicted to jike.")

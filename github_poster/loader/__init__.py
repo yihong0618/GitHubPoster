@@ -22,6 +22,7 @@ from github_poster.loader.strava_loader import StravaLoader
 from github_poster.loader.summary_loader import SummaryLoader
 from github_poster.loader.twitter_loader import TwitterLoader
 from github_poster.loader.wakatime_loader import WakaTimeLoader
+from github_poster.loader.weread_loader import WereadLoader
 from github_poster.loader.youtube_loader import YouTubeLoader
 
 LOADER_DICT = {
@@ -50,6 +51,7 @@ LOADER_DICT = {
     "json": JsonLoader,
     "jike": JikeLoader,
     "summary": SummaryLoader,
+    "weread": WereadLoader,
 }
 
 __all__ = (
@@ -79,4 +81,5 @@ __all__ = (
     "JikeLoader",
     "SummaryLoader",
     "BBDCLoader",
+    "WereadLoader",
 )

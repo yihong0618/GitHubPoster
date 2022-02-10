@@ -1,5 +1,3 @@
-from http.cookies import SimpleCookie
-
 import requests
 
 from github_poster.html_parser import parse_kindle_text_to_list
@@ -34,18 +32,6 @@ class KindleLoader(BaseLoader):
             help="",
         )
 
-    def _parse_kindle_cookie(self):
-        cookie = SimpleCookie()
-        cookie.load(self.kindle_cookie)
-        cookies_dict = {}
-        cookiejar = None
-        for key, morsel in cookie.items():
-            cookies_dict[key] = morsel.value
-            cookiejar = requests.utils.cookiejar_from_dict(
-                cookies_dict, cookiejar=None, overwrite=True
-            )
-        return cookiejar
-
     def get_api_data(self):
         r = self.session.get(self.KINDLE_URL, headers=self.header)
         if not r.ok:
@@ -59,7 +45,7 @@ class KindleLoader(BaseLoader):
             self.number_list.append(1)
 
     def get_all_track_data(self):
-        self.session.cookies = self._parse_kindle_cookie()
+        self.session.cookies = self.parese_cookie_string(self.kindle_cookie)
         self.make_track_dict()
         self.make_special_number()
         return self.number_by_date_dict, self.year_list

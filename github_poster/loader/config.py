@@ -110,3 +110,9 @@ BBDC_API_URL = "https://learnywhere.cn/bb/dashboard/profile/search?userId={user_
 # Notion
 NOTION_API_URL = "https://api.notion.com/v1/databases/{database_id}/query"
 NOTION_API_VERSION = "2021-08-16"
+
+# Weread
+WEREAD_BASE_URL = "https://weread.qq.com/"
+WEREAD_HISTORY_URL = (
+    "https://i.weread.qq.com/readdetail?baseTimestamp=0&count=32&type=1"
+)

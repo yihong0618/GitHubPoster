@@ -43,6 +43,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Json](#json)**
 - **[Multiple](#Multiple)**
 - **[即刻](#Jike)**
+- **[微信读书](#WeRead)**
 - **[总结](#Summary)**
 
 
@@ -548,6 +549,28 @@ github_poster jike --jike_cookie "your jike cookie" --jike_user_id "your jike us
 
 </details>
 
+## 微信读书
+
+<details>
+<summary>Make your <code>微信读书 (source data) types</code> poster</summary>
+<br>
+
+需要获取微信读书网页版的 Cookie
+
+How to:
+
+- 浏览器打开 https://x.weread.qq.com
+- 微信扫码登录确认，提示没有权限忽略即可
+- 按F12进入开发者模式，依次点 Network -> Doc -> Headers-> cookie。复制 Cookie 字符串;
+
+
+```
+python3 -m github_poster weread --weread_cookie "your weread cookie" --jike_user_id 'your jike user id' --year 2020-2022 --me "your name"
+or
+github_poster weread --weread_cookie "your weread cookie" --jike_user_id 'your jike user id' --year 2020-2022 --me "your name"
+```
+
+</details>
 
 # 参与项目
 
