@@ -70,7 +70,7 @@ class BaseLoader(ABC):
         return time + tc_offset
 
     @staticmethod
-    def parese_cookie_string(cookie_string):
+    def parse_cookie_string(cookie_string):
         cookie = SimpleCookie()
         cookie.load(cookie_string)
         cookies_dict = {}

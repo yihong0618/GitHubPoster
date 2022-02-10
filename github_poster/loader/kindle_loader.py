@@ -45,7 +45,7 @@ class KindleLoader(BaseLoader):
             self.number_list.append(1)
 
     def get_all_track_data(self):
-        self.session.cookies = self.parese_cookie_string(self.kindle_cookie)
+        self.session.cookies = self.parse_cookie_string(self.kindle_cookie)
         self.make_track_dict()
         self.make_special_number()
         return self.number_by_date_dict, self.year_list
