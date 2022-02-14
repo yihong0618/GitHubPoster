@@ -1,5 +1,4 @@
-import twint
-
+from github_poster.err import DepNotInstalledError
 from github_poster.loader.base_loader import BaseLoader
 
 
@@ -9,8 +8,20 @@ class TwitterLoader(BaseLoader):
 
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
+        import twint
+
         self.user_name = kwargs.get("twitter_user_name", "")
         self.c = twint.Config()
+
+    @classmethod
+    def try_import_deps(cls):
+        try:
+            import twint
+        except ImportError:
+            raise DepNotInstalledError(
+                "Twitter dependencies are not installed, "
+                "please use 'pip3 install -U github_poster[twitter]' to install."
+            ) from None
 
     @classmethod
     def add_loader_arguments(cls, parser, optional):
@@ -23,6 +34,8 @@ class TwitterLoader(BaseLoader):
         )
 
     def get_api_data(self):
+        import twint
+
         self.c.Username = self.user_name
         self.c.Custom["tweet"] = ["id"]
         self.c.Custom["user"] = ["bio"]

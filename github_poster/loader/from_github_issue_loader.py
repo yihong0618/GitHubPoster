@@ -1,6 +1,6 @@
 import pendulum
-from github import Github
 
+from github_poster.err import DepNotInstalledError
 from github_poster.loader.base_loader import BaseLoader
 
 
@@ -11,6 +11,16 @@ class GitHubIssuesLoader(BaseLoader):
         self.repo_name = kwargs.get("repo_name", "")
         # for private repo
         self.token = kwargs.get("github_token", "")
+
+    @classmethod
+    def try_import_deps(cls):
+        try:
+            import github
+        except ImportError:
+            raise DepNotInstalledError(
+                "GitHub dependencies are not installed, "
+                "please use 'pip3 install -U github_poster[github]' to install."
+            ) from None
 
     @classmethod
     def add_loader_arguments(cls, parser, optional):
@@ -45,6 +55,8 @@ class GitHubIssuesLoader(BaseLoader):
             return 0
 
     def get_api_data(self):
+        from github import Github
+
         if self.token:
             u = Github(self.token)
             me = u.get_user().login

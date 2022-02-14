@@ -42,7 +42,7 @@ git clone https://github.com/yihong0618/GitHubPoster.git
 ## pip install
 
 ```
-pip3 install -U github_poster
+pip3 install -U 'github_poster[all]'
 ```
 
 ## Install(Python3.6+)

@@ -1,7 +1,6 @@
 from collections import defaultdict
 
-from garminconnect import Garmin
-
+from github_poster.err import DepNotInstalledError
 from github_poster.loader.base_loader import BaseLoader
 
 
@@ -18,6 +17,16 @@ class GarminLoader(BaseLoader):
         self.garmin_password = kwargs.get("garmin_password", "")
         self.is_cn = kwargs.get("cn", False)
         self.client = None
+
+    @classmethod
+    def try_import_deps(cls):
+        try:
+            import garminconnect
+        except ImportError:
+            raise DepNotInstalledError(
+                "Garmin dependencies are not installed, "
+                "please use 'pip3 install -U github_poster[garmin]' to install."
+            ) from None
 
     @classmethod
     def add_loader_arguments(cls, parser, optional):
@@ -37,6 +46,8 @@ class GarminLoader(BaseLoader):
         )
 
     def _get_access(self):
+        from garminconnect import Garmin
+
         try:
             self.client = Garmin(
                 self.garmin_user_name, self.garmin_password, is_cn=self.is_cn
