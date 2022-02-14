@@ -137,7 +137,7 @@ def run():
         try:
             from github_poster.skyline import Skyline
         except ImportError:
-            raise Exception(
+            raise DepNotInstalledError(
                 "Skyline dependencies are not installed, "
                 "please use 'pip3 install -U github_poster[skyline]' to install."
             )
