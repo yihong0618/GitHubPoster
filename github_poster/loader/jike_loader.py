@@ -1,6 +1,5 @@
 import json
 import time
-from http.cookies import SimpleCookie
 from random import randint
 from re import compile
 

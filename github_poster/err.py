@@ -12,3 +12,8 @@ class CircularDrawError(BaseDrawError):
     """
 
     pass
+
+
+class DepNotInstalledError(Exception):
+    def __str__(self):
+        return self.args[0]
