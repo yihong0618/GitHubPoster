@@ -1,6 +1,5 @@
 import time
 from collections import defaultdict
-from http.cookies import SimpleCookie
 
 import pendulum
 import requests

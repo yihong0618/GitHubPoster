@@ -6,7 +6,7 @@ from collections import defaultdict
 from github_poster.loader.base_loader import BaseLoader
 
 
-class MutipleLoader(BaseLoader):
+class MultipleLoader(BaseLoader):
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
         self.types = kwargs.get("types", "")
