@@ -16,7 +16,7 @@ class TwitterLoader(BaseLoader):
     @classmethod
     def try_import_deps(cls):
         try:
-            import twint
+            import twint  # noqa: F401
         except ImportError:
             raise DepNotInstalledError(
                 "Twitter dependencies are not installed, "
