@@ -139,7 +139,7 @@ def run():
         except ImportError:
             raise DepNotInstalledError(
                 "Skyline dependencies are not installed, "
-                "please use 'pip3 install -U github_poster[skyline]' to install."
+                "please use `pip3 install -U 'github_poster[skyline]'` to install."
             )
 
         if args.skyline_year:
