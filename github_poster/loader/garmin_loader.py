@@ -21,7 +21,7 @@ class GarminLoader(BaseLoader):
     @classmethod
     def try_import_deps(cls):
         try:
-            import garminconnect
+            import garminconnect  # noqa: F401
         except ImportError:
             raise DepNotInstalledError(
                 "Garmin dependencies are not installed, "

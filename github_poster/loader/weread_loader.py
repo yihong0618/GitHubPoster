@@ -1,7 +1,7 @@
 import pendulum
 import requests
 
-from github_poster.loader.base_loader import BaseLoader, LoadError
+from github_poster.loader.base_loader import BaseLoader
 from github_poster.loader.config import WEREAD_BASE_URL, WEREAD_HISTORY_URL
 
 

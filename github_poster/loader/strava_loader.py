@@ -24,7 +24,7 @@ class StravaLoader(BaseLoader):
     @classmethod
     def try_import_deps(cls):
         try:
-            import stravalib
+            import stravalib  # noqa: F401
         except ImportError:
             raise DepNotInstalledError(
                 "Strava dependencies are not installed, "

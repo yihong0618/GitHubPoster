@@ -20,7 +20,7 @@ class GPXLoader(BaseLoader):
     @classmethod
     def try_import_deps(cls):
         try:
-            import gpxpy
+            import gpxpy  # noqa: F401
         except ImportError:
             raise DepNotInstalledError(
                 "GPX dependencies are not installed, "

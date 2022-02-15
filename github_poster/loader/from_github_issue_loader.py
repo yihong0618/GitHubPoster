@@ -15,7 +15,7 @@ class GitHubIssuesLoader(BaseLoader):
     @classmethod
     def try_import_deps(cls):
         try:
-            import github
+            import github  # noqa: F401
         except ImportError:
             raise DepNotInstalledError(
                 "GitHub dependencies are not installed, "
