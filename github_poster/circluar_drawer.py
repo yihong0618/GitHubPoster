@@ -163,7 +163,6 @@ class CircularDrawer(Drawer):
         key_animate,
     ):
         color = self.make_color(self.poster.length_range_by_date, length)
-        color = self.make_color(self.poster.length_range_by_date, length)
         r1 = rr.lower()
         r2 = (
             rr.lower()

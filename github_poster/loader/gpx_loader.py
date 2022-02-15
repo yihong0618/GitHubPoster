@@ -2,8 +2,7 @@ import datetime
 import os
 from collections import defaultdict
 
-import gpxpy
-
+from github_poster.err import DepNotInstalledError
 from github_poster.loader.base_loader import BaseLoader, LoadError
 from github_poster.loader.config import GPX_ACTIVITY_NAME_TUPLE
 
@@ -17,6 +16,16 @@ class GPXLoader(BaseLoader):
         self.before = None
         self.after = None
         self.base_dir = kwargs.get("gpx_dir", "")
+
+    @classmethod
+    def try_import_deps(cls):
+        try:
+            import gpxpy  # noqa: F401
+        except ImportError:
+            raise DepNotInstalledError(
+                "GPX dependencies are not installed, "
+                "please use 'pip3 install -U github_poster[gpx]' to install."
+            ) from None
 
     @classmethod
     def add_loader_arguments(cls, parser, optional):
@@ -45,6 +54,8 @@ class GPXLoader(BaseLoader):
                 yield path_name
 
     def __parse_gpx(self, file_name):
+        import gpxpy
+
         with open(file_name) as f:
             gpx = gpxpy.parse(f)
             try:

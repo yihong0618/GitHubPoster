@@ -1,13 +1,1 @@
-PyGithub
-gpxpy
-stravalib
-svgwrite
-pendulum
-requests
-colour
-# my fork from sdf
-sdf_fork
-# my fork twint for twitter loader
-twint_fork
-# for garmin connect
-garminconnect
+-e .[all]

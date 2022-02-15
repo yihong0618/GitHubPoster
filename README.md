@@ -54,7 +54,7 @@ git clone https://github.com/yihong0618/GitHubPoster.git
 ## pip 安装
 
 ```
-pip3 install -U github_poster
+pip3 install -U 'github_poster[all]'
 ```
 
 ## 安装(Python3.6+)

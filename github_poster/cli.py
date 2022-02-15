@@ -4,19 +4,20 @@
 
 import argparse
 import os
+import sys
 
 from github_poster.circluar_drawer import CircularDrawer
 from github_poster.config import TYPE_INFO_DICT
 from github_poster.drawer import Drawer
+from github_poster.err import DepNotInstalledError
 from github_poster.loader import LOADER_DICT
 from github_poster.poster import Poster
-from github_poster.skyline import Skyline
 from github_poster.utils import parse_years
 
 OUT_FOLDER = os.path.join(os.getcwd(), "OUT_FOLDER")
 
 
-def main():
+def run():
     """Handle command line arguments and call other modules as needed."""
     p = Poster()
     args_parser = argparse.ArgumentParser()
@@ -133,6 +134,14 @@ def main():
 
     # generate skyline
     if args.with_skyline:
+        try:
+            from github_poster.skyline import Skyline
+        except ImportError:
+            raise DepNotInstalledError(
+                "Skyline dependencies are not installed, "
+                "please use 'pip3 install -U github_poster[skyline]' to install."
+            )
+
         if args.skyline_year:
             year = args.skyline_year
         else:
@@ -151,6 +160,13 @@ def main():
         )
         s.type_info_dict = TYPE_INFO_DICT
         s.make_skyline()
+
+
+def main():
+    try:
+        run()
+    except DepNotInstalledError as e:
+        print(e, file=sys.stderr)
 
 
 if __name__ == "__main__":
