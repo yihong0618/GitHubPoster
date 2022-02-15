@@ -615,6 +615,7 @@ github_poster weread --weread_cookie "your weread cookie" --year 2020-2022 --me 
 - @[umm233](https://github.com/umm233) Jike loader
 - @[ruter](https://github.com/ruter) Notion loader
 - @[frostming](https://github.com/frostming) `CI` refator and some Actions code
+- @[j178](https://github.com/j178) refator the import logic
 
 # 赞赏
 谢谢就够了
