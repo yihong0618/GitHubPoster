@@ -28,7 +28,7 @@ class StravaLoader(BaseLoader):
         except ImportError:
             raise DepNotInstalledError(
                 "Strava dependencies are not installed, "
-                "please use 'pip3 install -U github_poster[strava]' to install."
+                "please use `pip3 install -U 'github_poster[strava]'` to install."
             ) from None
 
     @classmethod

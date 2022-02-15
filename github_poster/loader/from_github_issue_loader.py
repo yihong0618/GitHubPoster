@@ -19,7 +19,7 @@ class GitHubIssuesLoader(BaseLoader):
         except ImportError:
             raise DepNotInstalledError(
                 "GitHub dependencies are not installed, "
-                "please use 'pip3 install -U github_poster[github]' to install."
+                "please use `pip3 install -U 'github_poster[github]'` to install."
             ) from None
 
     @classmethod

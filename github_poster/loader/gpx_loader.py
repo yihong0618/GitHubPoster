@@ -24,7 +24,7 @@ class GPXLoader(BaseLoader):
         except ImportError:
             raise DepNotInstalledError(
                 "GPX dependencies are not installed, "
-                "please use 'pip3 install -U github_poster[gpx]' to install."
+                "please use `pip3 install -U 'github_poster[gpx]'` to install."
             ) from None
 
     @classmethod
