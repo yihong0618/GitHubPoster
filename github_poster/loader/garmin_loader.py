@@ -25,7 +25,7 @@ class GarminLoader(BaseLoader):
         except ImportError:
             raise DepNotInstalledError(
                 "Garmin dependencies are not installed, "
-                "please use 'pip3 install -U github_poster[garmin]' to install."
+                "please use `pip3 install -U 'github_poster[garmin]'` to install."
             ) from None
 
     @classmethod

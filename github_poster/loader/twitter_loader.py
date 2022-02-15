@@ -20,7 +20,7 @@ class TwitterLoader(BaseLoader):
         except ImportError:
             raise DepNotInstalledError(
                 "Twitter dependencies are not installed, "
-                "please use 'pip3 install -U github_poster[twitter]' to install."
+                "please use `pip3 install -U 'github_poster[twitter]'` to install."
             ) from None
 
     @classmethod
