@@ -12,7 +12,7 @@ The resulting file serves as an input file to the GitHubPoster JSON data source.
 
 More on your Twitter Archive: https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive
 
-More on GitHubPoster project: https://github.com/wzyboy/GitHubPoster
+More on GitHubPoster project: https://github.com/yihong0618/GitHubPoster
 """
 
 import json
