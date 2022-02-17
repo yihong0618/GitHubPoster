@@ -522,10 +522,11 @@ Before submitting PR:
 - [x] Change all default color
 - [x] Skyline
 - [x] Dota2
-- [ ] Loader doc
 - [x] pypi
 - [x] test
 - [x] English README
+- [ ] Loader doc
+- [ ] Refactor some code
 
 # GitHub Actions
 

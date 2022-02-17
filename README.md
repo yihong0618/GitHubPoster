@@ -604,10 +604,11 @@ github_poster weread --weread_cookie "your weread cookie" --year 2020-2022 --me 
 - [x] Change all default color
 - [x] Skyline
 - [x] Dota2
-- [ ] 如何写 loader 的 doc
 - [x] pypi
 - [x] test
 - [x] English README
+- [ ] Refactor some code
+- [ ] 如何写 loader 的 doc
 
 # GitHub Actions
 
