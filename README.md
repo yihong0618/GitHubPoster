@@ -275,6 +275,16 @@ python3 -m github_poster twitter --twitter_user_name ${user_name} --year 2018-20
 or
 github_poster twitter --user_name ${twitter_user_name} --year 2018-2021 --track-color '#1C9CEA'
 ```
+
+以上方法使用 [twint](https://github.com/twintproject/twint) 直接从 Twitter 抓取你的推文数据。
+
+你也可以选择[下载 Twitter 存档](https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive)，并使用 `contrib/convert_twitter_archive_to_json_data_source.py` 将其转换为 [Json](#Json) 数据源。这一方法尤其适用于以下情况中的一种或多种：
+
+- 你发过很多推
+- 你使用 Twitter 很多年了
+- 你的网络环境不佳
+- 你是锁推用户
+
 </details>
 
 ### Youtube
