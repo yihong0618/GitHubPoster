@@ -4,7 +4,12 @@ import pendulum
 import requests
 
 from github_poster.loader.base_loader import BaseLoader, LoadError
-from github_poster.loader.config import FOREST_CLAENDAR_URL, FOREST_LOGIN_URL
+from github_poster.loader.config import (
+    FOREST_CLAENDAR_URL,
+    FOREST_CN_CLAENDAR_URL,
+    FOREST_CN_LOGIN_URL,
+    FOREST_LOGIN_URL,
+)
 
 
 class ForestLoader(BaseLoader):
@@ -14,8 +19,13 @@ class ForestLoader(BaseLoader):
         super().__init__(from_year, to_year, _type)
         self.user_email = kwargs.get("forest_email", "")
         self.password = kwargs.get("forest_password", "")
+        self.is_cn = kwargs.get("cn", False)
         self.user_id = None
         self.s = requests.Session()
+        self.login_url = FOREST_CN_LOGIN_URL if self.is_cn else FOREST_LOGIN_URL
+        self.claendar_url = (
+            FOREST_CN_CLAENDAR_URL if self.is_cn else FOREST_CLAENDAR_URL
+        )
 
     @classmethod
     def add_loader_arguments(cls, parser, optional):
@@ -37,14 +47,14 @@ class ForestLoader(BaseLoader):
     def login(self):
         data = {"session": {"email": self.user_email, "password": self.password}}
         headers = {"Content-Type": "application/json"}
-        r = self.s.post(FOREST_LOGIN_URL, headers=headers, data=json.dumps(data))
+        r = self.s.post(self.login_url, headers=headers, data=json.dumps(data))
         if not r.ok:
             raise LoadError(f"Someting is wrong to login -- {r.text}")
         self.user_id = r.json()["user_id"]
 
     def get_api_data(self):
         date = str(self.from_year) + "-01-01"
-        r = self.s.get(FOREST_CLAENDAR_URL.format(date=date, user_id=self.user_id))
+        r = self.s.get(self.claendar_url.format(date=date, user_id=self.user_id))
         if not r.ok:
             raise LoadError(f"Someting is wrong to get data-- {r.text}")
         return r.json()["plants"]
