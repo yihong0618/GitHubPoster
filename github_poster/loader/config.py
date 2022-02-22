@@ -94,9 +94,15 @@ NIKE_BASE_URL = "https://api.nike.com/sport/v3/me"
 
 # forest(need to login)
 FOREST_URL_HEAD = "https://forest.dc.upwardsware.com"
+FOREST_CN_URL_HEAD = "https://forest-china.upwardsware.com"
 FOREST_LOGIN_URL = FOREST_URL_HEAD + "/api/v1/sessions"
 FOREST_CLAENDAR_URL = (
     FOREST_URL_HEAD
+    + "/api/v1/plants/updated_plants?update_since={date}&seekruid={user_id}"
+)
+FOREST_CN_LOGIN_URL = FOREST_CN_URL_HEAD + "/api/v1/sessions"
+FOREST_CN_CLAENDAR_URL = (
+    FOREST_CN_URL_HEAD
     + "/api/v1/plants/updated_plants?update_since={date}&seekruid={user_id}"
 )
 

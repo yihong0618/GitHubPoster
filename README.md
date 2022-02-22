@@ -474,7 +474,7 @@ github_poster garmin --garmin_user_name ${user_name} --garmin_password ${pass_wo
 <summary>Make your <code> Forest </code> GitHub poster</summary>
 <br>
 
-需要填写 Forest 的邮箱账号和密码
+需要填写 Forest 的邮箱账号和密码，如果你转到了中国区，需要添加 `--cn` 参数
 
 ```
 python3 -m github_poster forest --forest_email ${user_name} --forest_password ${pass_word} --year 2016-2021 --special-color1 blue --me yihong0618
