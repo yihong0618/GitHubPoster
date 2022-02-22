@@ -9,7 +9,7 @@ env:
   # please change to your own config.
   # this actions generate only this year
   # If you fork this please change the type to yours below
-  TYPE: "ns, issue, strava, github, pass" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
+  TYPE: "ns, issue, strava, github, forest, pass" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
   ME: Yihong0618
   GITHUB_NAME: yihong0618
   GITHUB_EMAIL: zouzou0208@gmail.com
@@ -71,7 +71,7 @@ jobs:
       - name: Run sync forest script
         if: contains(env.TYPE, 'forest')
         run: |
-          python -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --year 2015-202
+          python -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --year 2022 --cn
 
       - name: Run sync issue script
         if: contains(env.TYPE, 'issue')
