@@ -251,6 +251,7 @@ class Drawer:
         else:
             for year in range(self.poster.years[0], self.poster.years[-1] + 1)[::-1]:
                 self._draw_one_calendar(dr, year, offset)
+        print(f"{str(self.poster.type_list)} poster drawer done in `OUT_FOLDER`")
 
     def draw_footer(self, dr):
         text_color = self.poster.colors["text"]
