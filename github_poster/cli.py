@@ -50,6 +50,13 @@ def run():
         "special2": args.special_color2 or args.special_color,
         "text": args.text_color,
     }
+
+    # if special color (Stand with Ukraine) change the color
+    if args.stand_with_ukraine:
+        p.colors["track"] = "#025DB8"
+        p.colors["special"] = "#FFD100"
+        p.colors["special2"] = "#FFD100"
+
     # set animate
     p.set_with_animation(args.with_animation)
     p.set_animation_time(args.animation_time)

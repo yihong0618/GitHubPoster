@@ -213,6 +213,13 @@ class BaseLoader(ABC):
             action="store_true",
             help="if accout is CN",
         )
+        # special here
+        group.add_argument(
+            "--stand-with-ukraine",
+            dest="stand_with_ukraine",
+            action="store_true",
+            help="Stand with Ukraine Special color",
+        )
 
     @classmethod
     def add_loader_arguments(cls, parser, optional):
