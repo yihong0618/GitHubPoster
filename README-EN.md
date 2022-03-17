@@ -62,6 +62,7 @@ pip3 install -r requirements.txt
 - You can save skyline `stl` file `--with-skyline` (default skyline year is to_year), set `--skyline-with-name` to print user name on model
 - With `--is-circular` command,	the svg will be circular and with animation
 - Support for hiding the name of the build type in the title: `--without-type-name`
+- `---stand-with-ukraine` 
 
 
 ### GPX
