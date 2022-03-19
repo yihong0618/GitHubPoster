@@ -586,6 +586,7 @@ github_poster weread --weread_cookie "your weread cookie" --year 2020-2022 --me 
 
 - 任何 Issues PR 均欢迎。
 - 可以提交新的 loader
+- 如何编写新的loader by `ruter` [如何为 GithubPoster 添加 loader](https://umm.js.org/p/c88bf4c7/)
 
 提交PR前:
 - 使用 black 对 Python 代码进行格式化。(`black .`)
@@ -607,8 +608,8 @@ github_poster weread --weread_cookie "your weread cookie" --year 2020-2022 --me 
 - [x] pypi
 - [x] test
 - [x] English README
+- [x] 如何写 loader 的 doc
 - [ ] Refactor some code
-- [ ] 如何写 loader 的 doc
 
 # GitHub Actions
 
