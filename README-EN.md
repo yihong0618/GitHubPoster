@@ -505,6 +505,7 @@ Option argument `count_type`, you can specify statistics type:
 
 - Any Issues PR welcome.
 - Any new loader welcome
+- how to write new loader by `ruter`(Chinese) [如何为 GithubPoster 添加 loader](https://umm.js.org/p/c88bf4c7/)
 
 Before submitting PR:
 - Format Python code with `black` (`black .`)
@@ -526,7 +527,7 @@ Before submitting PR:
 - [x] pypi
 - [x] test
 - [x] English README
-- [ ] Loader doc
+- [x] Loader doc
 - [ ] Refactor some code
 
 # GitHub Actions
