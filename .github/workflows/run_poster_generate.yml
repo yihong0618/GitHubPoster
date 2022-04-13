@@ -134,12 +134,10 @@ jobs:
         if: github.repository_owner == 'yihong0618'
         run: mv OUT_FOLDER/*.svg examples/ && mv OUT_FOLDER/*.stl examples/
 
-      - name: Push new svg posters
-        uses: github-actions-x/commit@v2.6
-        with:
-          github-token: ${{ secrets.G_T }}
-          commit-message: "Make new poster"
-          files: examples OUT_FOLDER
-          rebase: "true"
-          name: ${{ env.GITHUB_NAME }}
-          email: ${{ env.GITHUB_EMAIL }}
+      - name: Push new postger
+        run: |
+          git config --local user.email "${{ env.GITHUB_EMAIL }}"
+          git config --local user.name "${{ env.GITHUB_EMAIL }}"
+          git commit -a -m 'update new postger' || echo "nothing to commit"
+          git push || echo "nothing to push"
+
