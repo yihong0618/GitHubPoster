@@ -45,6 +45,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[即刻](#Jike)**
 - **[微信读书](#WeRead)**
 - **[总结](#Summary)**
+- **[Covid](#Summary)**
 
 
 ## 下载
@@ -581,6 +582,21 @@ github_poster weread --weread_cookie "your weread cookie" --year 2020-2022 --me 
 ```
 
 </details>
+
+### Covid 
+
+<details>
+<summary>Make <code> COVID-19 </code> GitHub poster</summary>
+<br>
+
+
+```
+python3 -m github_poster covid --covid_area China --year 2020-2022 --me China
+or
+github_poster covid --covid_area US --year 2020-2022 --me US
+```
+</details>
+
 
 # 参与项目
 

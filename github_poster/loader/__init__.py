@@ -24,6 +24,7 @@ from github_poster.loader.twitter_loader import TwitterLoader
 from github_poster.loader.wakatime_loader import WakaTimeLoader
 from github_poster.loader.weread_loader import WereadLoader
 from github_poster.loader.youtube_loader import YouTubeLoader
+from github_poster.loader.covid_loader import CovidLoader
 
 LOADER_DICT = {
     "bbdc": BBDCLoader,
@@ -52,6 +53,7 @@ LOADER_DICT = {
     "jike": JikeLoader,
     "summary": SummaryLoader,
     "weread": WereadLoader,
+    "covid": CovidLoader,
 }
 
 __all__ = (
@@ -82,4 +84,5 @@ __all__ = (
     "SummaryLoader",
     "BBDCLoader",
     "WereadLoader",
+    "CovidLoader",
 )
