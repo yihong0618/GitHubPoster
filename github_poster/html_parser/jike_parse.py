@@ -4,6 +4,7 @@ from re import compile, findall
 
 import pendulum
 
+from github_poster.loader.base_loader import LoadError
 from github_poster.loader.config import TIME_ZONE
 
 
@@ -61,6 +62,8 @@ def find_count_dict_by_type_in_html(text, count_type):
 
 def find_date_in_response(r):
     date_list = []
+    if not r.json()["data"]["userProfile"]["feeds"]:
+        raise LoadError("Can not get date data, please check your cookie")
     for item in r.json()["data"]["userProfile"]["feeds"]["nodes"]:
         date_list.append(item["createdAt"])
     return date_list
