@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from datetime import datetime
-
 import requests
 
 from github_poster.loader.base_loader import BaseLoader

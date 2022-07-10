@@ -1,6 +1,7 @@
 from github_poster.loader.bbdc_loader import BBDCLoader
 from github_poster.loader.bilibili_loader import BilibiliLoader
 from github_poster.loader.cichang_loader import CiChangLoader
+from github_poster.loader.covid_loader import CovidLoader
 from github_poster.loader.dota2_loader import Dota2Loader
 from github_poster.loader.duolingo_loader import DuolingoLoader
 from github_poster.loader.forest_loader import ForestLoader
@@ -24,7 +25,6 @@ from github_poster.loader.twitter_loader import TwitterLoader
 from github_poster.loader.wakatime_loader import WakaTimeLoader
 from github_poster.loader.weread_loader import WereadLoader
 from github_poster.loader.youtube_loader import YouTubeLoader
-from github_poster.loader.covid_loader import CovidLoader
 
 LOADER_DICT = {
     "bbdc": BBDCLoader,
