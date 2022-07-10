@@ -48,14 +48,14 @@ class JikeLoader(BaseLoader):
             "--jike_user_id",
             dest="user_id",
             type=str,
-            required=True,
+            required=optional,
             help="The user id of jike",
         )
         parser.add_argument(
             "--jike_cookie",
             dest="jike_cookie",
             type=str,
-            required=True,
+            required=optional,
             help="The cookie for the jike website(XHR)",
         )
         parser.add_argument(
