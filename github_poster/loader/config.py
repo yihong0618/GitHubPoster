@@ -5,7 +5,7 @@ TIME_ZONE = "Asia/Shanghai"
 
 # shanbay -- no need to login
 SHANBAY_CALENDAR_API = (
-    "https://apiv3.shanbay.com/uc/checkin/calendar/dates/"
+    "https://apiv3.shanbay.com/uc/checkin/calendar/dates"
     "?user_id={user_name}&start_date={start_date}&end_date={end_date}"
 )
 
