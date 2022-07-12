@@ -56,17 +56,22 @@ pip3 install -r requirements.txt
 
 ## Use
 
-- Different types are used as specified below
-- You can specify a year such as `--year 2021`, (default) or a year range 2012-2021
-- The generated svg is in `OUT_FOLDER`, named with type (for now)
-- By default, the number of different colors is automatically generated (special colors), you can also specify the color: `--special-number1 10 -- special_number2 20`
-- You can also specify the color: `--special-color1 pink --special-color2 '#33C6A4'`
-- Other parameters can be found with `python3 -m github_poster <type> --help`
-- You can add animation, `--with-animation` (add GOGOGO animation), you can control the animation time `--animation-time 14` (default is 10s)
-- You can save skyline `stl` file `--with-skyline` (default skyline year is to_year), set `--skyline-with-name` to print user name on model
-- With `--is-circular` command,	the svg will be circular and with animation
-- Support for hiding the name of the build type in the title: `--without-type-name`
+The generated svg is in `OUT_FOLDER`, named with type (for now)
+
+Different types are used as specified below:
+
+- `--year 2021`: You can specify a year (default) or a year range `--year 2012-2021`
+- `--special-number1 10 -- special_number2 20`: By default, the number of different colors is automatically generated (special colors), you can also specify the color
+- `--special-color1 pink --special-color2 '#33C6A4'`: You can also specify the color
+- `--with-animation`: You can add animation (add GOGOGO animation)
+- `--animation-time 14`: you can control the animation time (default is 10s), use with `--with-animation`
+- `--with-skyline`: You can save skyline `stl` file (default skyline year is to_year),
+- `--skyline-with-name`: set to print user name on model, use with `--with-skyline`
+- `--is-circular`: With this command, the svg will be circular and with animation
+- `--without-type-name`: Support for hiding the name of the build type in the title
 - `---stand-with-ukraine`
+
+Other parameters can be found with `python3 -m github_poster <type> --help`
 
 
 ### GPX
