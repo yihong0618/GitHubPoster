@@ -44,8 +44,8 @@ def run():
 
     p.colors = {
         "background": args.background_color,
-        "track": args.loader.track_color  # some type has default color
-        or args.track_color,
+        "track": args.track_color
+        or args.loader.track_color,  # some type has default color
         "special": args.special_color1,
         "special2": args.special_color2 or args.special_color,
         "text": args.text_color,
