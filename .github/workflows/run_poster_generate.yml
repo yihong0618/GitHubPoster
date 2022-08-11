@@ -51,7 +51,7 @@ jobs:
       - name: Run sync strava script
         if: contains(env.TYPE, 'strava')
         run: |
-          python -m github_poster strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --me ${{ env.ME }} --year 2012-2021 --is-circular
+          python -m github_poster strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --me ${{ env.ME }} --year 2012-2022 --is-circular
 
       - name: Run sync shanbay script
         if: contains(env.TYPE, 'shanbay')
