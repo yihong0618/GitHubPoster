@@ -1,3 +1,5 @@
+import json
+import os
 import time
 from collections import defaultdict
 
@@ -17,6 +19,8 @@ class BilibiliLoader(BaseLoader):
         self.number_by_date_dict = defaultdict(int)
         self.session = requests.Session()
         self.bilibili_cookie = kwargs.get("bilibili_cookie", "")
+        self.bilibili_file = kwargs.get("bilibili_history_file")
+        self._parse_biblibili_history()
 
     @classmethod
     def add_loader_arguments(cls, parser, optional):
@@ -27,6 +31,22 @@ class BilibiliLoader(BaseLoader):
             required=optional,
             help="The cookie for the bilibili website(XHR)",
         )
+        parser.add_argument(
+            "--bilibili_history_file",
+            dest="bilibili_history_file",
+            type=str,
+            default=os.path.join("IN_FOLDER", "bilibili-history.json"),
+            help="bilibili history file path",
+        )
+
+    def _parse_biblibili_history(self):
+        if os.path.exists(self.bilibili_file):
+            with open(self.bilibili_file, "r") as f:
+                self.number_by_date_dict = json.load(f)
+
+    def _writeback_biblibili_history(self):
+        with open(self.bilibili_file, "w") as f:
+            json.dump(self.number_by_date_dict, f, sort_keys=True)
 
     def get_api_data(self, max_oid="", view_at="", data_list=[]):
         r = self.session.get(
@@ -49,11 +69,16 @@ class BilibiliLoader(BaseLoader):
 
     def make_track_dict(self):
         data_list = self.get_api_data()
+        new_watch_dict = defaultdict(int)
         for d in data_list:
             date_str = pendulum.from_timestamp(
                 d["view_at"], tz=self.time_zone
             ).to_date_string()
-            self.number_by_date_dict[date_str] += 1
+            new_watch_dict[date_str] += 1
+        for i in new_watch_dict:
+            if new_watch_dict[i] != self.number_by_date_dict[i]:
+                self.number_by_date_dict[i] = new_watch_dict[i]
+        self._writeback_biblibili_history()
         for _, v in self.number_by_date_dict.items():
             self.number_list.append(v)
 
