@@ -20,7 +20,7 @@ class BilibiliLoader(BaseLoader):
         self.session = requests.Session()
         self.bilibili_cookie = kwargs.get("bilibili_cookie", "")
         self.bilibili_file = kwargs.get("bilibili_history_file")
-        self._parse_biblibili_history()
+        self._parse_bilibili_history()
 
     @classmethod
     def add_loader_arguments(cls, parser, optional):
@@ -39,12 +39,12 @@ class BilibiliLoader(BaseLoader):
             help="bilibili history file path",
         )
 
-    def _parse_biblibili_history(self):
+    def _parse_bilibili_history(self):
         if os.path.exists(self.bilibili_file):
             with open(self.bilibili_file, "r") as f:
                 self.number_by_date_dict = json.load(f)
 
-    def _writeback_biblibili_history(self):
+    def _writeback_bilibili_history(self):
         with open(self.bilibili_file, "w") as f:
             json.dump(self.number_by_date_dict, f, sort_keys=True)
 
@@ -76,9 +76,12 @@ class BilibiliLoader(BaseLoader):
             ).to_date_string()
             new_watch_dict[date_str] += 1
         for i in new_watch_dict:
-            if not i in self.number_by_date_dict or new_watch_dict[i] != self.number_by_date_dict[i]:
+            if (
+                not i in self.number_by_date_dict
+                or new_watch_dict[i] != self.number_by_date_dict[i]
+            ):
                 self.number_by_date_dict[i] = new_watch_dict[i]
-        self._writeback_biblibili_history()
+        self._writeback_bilibili_history()
         for _, v in self.number_by_date_dict.items():
             self.number_list.append(v)
 
