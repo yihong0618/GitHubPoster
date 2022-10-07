@@ -19,6 +19,7 @@ from github_poster.loader.notion_loader import NotionLoader
 from github_poster.loader.nrc_loader import NRCLoader
 from github_poster.loader.ns_loader import NSLoader
 from github_poster.loader.shanbay_loader import ShanBayLoader
+from github_poster.loader.spotify_loader import SpotifyLoader
 from github_poster.loader.strava_loader import StravaLoader
 from github_poster.loader.summary_loader import SummaryLoader
 from github_poster.loader.twitter_loader import TwitterLoader
@@ -54,6 +55,7 @@ LOADER_DICT = {
     "summary": SummaryLoader,
     "weread": WereadLoader,
     "covid": CovidLoader,
+    "spotify": SpotifyLoader,
 }
 
 __all__ = (
@@ -85,4 +87,5 @@ __all__ = (
     "BBDCLoader",
     "WereadLoader",
     "CovidLoader",
+    "SpotifyLoader",
 )

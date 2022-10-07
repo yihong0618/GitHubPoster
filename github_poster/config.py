@@ -46,4 +46,5 @@ TYPE_INFO_DICT = {
     "bbdc": "BBDC",
     "weread": "WeRead",
     "covid": "COVID-19",
+    "spotify": "Spotify",
 }

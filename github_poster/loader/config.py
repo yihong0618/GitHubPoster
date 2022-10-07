@@ -125,3 +125,9 @@ WEREAD_HISTORY_URL = (
 
 # COVID
 COVID_API = "https://pomber.github.io/covid19/timeseries.json"
+
+# Spotify
+SPOTIFY_TOKEN = "https://accounts.spotify.com/api/token"
+SPOTIFY_HISTORY_URL = (
+    "https://api.spotify.com/v1/me/player/recently-played?limit={limit}&before={before}"
+)
