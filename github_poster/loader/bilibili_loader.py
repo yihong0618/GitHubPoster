@@ -77,7 +77,7 @@ class BilibiliLoader(BaseLoader):
             new_watch_dict[date_str] += 1
         for i in new_watch_dict:
             if (
-                not i in self.number_by_date_dict
+                i not in self.number_by_date_dict
                 or new_watch_dict[i] != self.number_by_date_dict[i]
             ):
                 self.number_by_date_dict[i] = new_watch_dict[i]
