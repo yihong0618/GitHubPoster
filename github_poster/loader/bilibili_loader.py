@@ -76,7 +76,7 @@ class BilibiliLoader(BaseLoader):
             ).to_date_string()
             new_watch_dict[date_str] += 1
         for i in new_watch_dict:
-            if new_watch_dict[i] != self.number_by_date_dict[i]:
+            if not i in self.number_by_date_dict or new_watch_dict[i] != self.number_by_date_dict[i]:
                 self.number_by_date_dict[i] = new_watch_dict[i]
         self._writeback_biblibili_history()
         for _, v in self.number_by_date_dict.items():
