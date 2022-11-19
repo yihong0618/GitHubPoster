@@ -32,14 +32,14 @@ class Poster:
         self.year_tracks_date_count_dict = defaultdict(int)
         self.year_tracks_type_dict = defaultdict(dict)
 
-        # for year sumary
+        # for year summary
         self.is_summary = False
 
     def set_tracks(self, tracks, years, type_list):
         self.type_list.extend(type_list)
         self.tracks = tracks
         self.years = years
-        # for mutiple types...
+        # for multiple types...
         # TODO maybe refactor another class later
         for date, num in tracks.items():
             self.year_tracks_date_count_dict[date[:4]] += 1
