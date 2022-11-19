@@ -49,14 +49,14 @@ class ForestLoader(BaseLoader):
         headers = {"Content-Type": "application/json"}
         r = self.s.post(self.login_url, headers=headers, data=json.dumps(data))
         if not r.ok:
-            raise LoadError(f"Someting is wrong to login -- {r.text}")
+            raise LoadError(f"Something is wrong to login -- {r.text}")
         self.user_id = r.json()["user_id"]
 
     def get_api_data(self):
         date = str(self.from_year) + "-01-01"
         r = self.s.get(self.claendar_url.format(date=date, user_id=self.user_id))
         if not r.ok:
-            raise LoadError(f"Someting is wrong to get data-- {r.text}")
+            raise LoadError(f"Something is wrong to get data-- {r.text}")
         return r.json()["plants"]
 
     def make_track_dict(self):
