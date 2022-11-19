@@ -134,9 +134,6 @@ test.py
 
 .idea/
 
-github_poster/IN_FOLDER/*
-github_poster/OUT_FOLDER/*
 github_poster/data/*
 
-OUT_FOLDER/*
 data/*
