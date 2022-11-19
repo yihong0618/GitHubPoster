@@ -36,7 +36,7 @@ jobs:
           pip install -r requirements-dev.txt
       - name: Run twitter back up 
         run: |
-           python -m github_poster twitter --twitter_user_name "${{ github.event.inputs.twitter_user_name }}" --year 2017-2022 | tee OUT_FOLDER/"${{ github.event.inputs.twitter_user_name }}".txt
+           python -m github_poster twitter --twitter_user_name "${{ github.event.inputs.twitter_user_name }}" --year 2012-2022 --me "${{ github.event.inputs.twitter_user_name }}" | tee OUT_FOLDER/"${{ github.event.inputs.twitter_user_name }}".txt
 
       - name: Push new twitter back up
         run: |
