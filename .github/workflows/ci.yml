@@ -39,4 +39,13 @@ jobs:
         run: |
            python -m github_poster github --github_user_name yihong0618
            python -m github_poster multiple --types "github, dota2, twitter" --twitter_user_name Piglei  --github_user_name piglei --dota2_id 70388657 --year 2018-2022
-           python -m github_poster twitter --twitter_user_name caolei1 --year 2011-2022
+           python -m github_poster twitter --twitter_user_name frostming90 --year 2017-2022 | tee a.txt
+
+      # for test
+      - name: Push new twitter
+        run: |
+          git config --local user.email "${{ env.GITHUB_EMAIL }}"
+          git config --local user.name "${{ env.GITHUB_NAME }}"
+          git add .
+          git commit -m 'update new twitter user' || echo "nothing to commit"
+          git push || echo "nothing to push"
