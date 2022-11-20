@@ -32,7 +32,7 @@ class CircularDrawer(Drawer):
             values = ["0"] * len(key_times)
             values[animate_index] = "1"
             values_str = ";".join(values)
-            key_animate = self._make_key_anmiate(values_str, key_times)
+            key_animate = self._make_key_animate(values_str, key_times)
             self._draw_year(dr, size, margin, year, key_animate)
             animate_index += 1
 
@@ -142,7 +142,7 @@ class CircularDrawer(Drawer):
             day += 1
             date += datetime.timedelta(1)
 
-    def _make_key_anmiate(self, values, key_times):
+    def _make_key_animate(self, values, key_times):
         dur = len(key_times)
         return animate.Animate(
             "opacity",

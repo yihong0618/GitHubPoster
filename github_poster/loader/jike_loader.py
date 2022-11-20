@@ -39,7 +39,7 @@ class JikeLoader(BaseLoader):
             "sec-fetch-dest": "empty",
             "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
         }
-        # not more then 3 times for some day in svg are last year cells
+        # not more than 3 times for some day in svg are last year cells
         self.stop_time = 0
 
     @classmethod
