@@ -36,7 +36,7 @@ class GitHubLoader(BaseLoader):
                 )
                 self.number_by_date_dict.update(p.make_contribution_dict(r.text))
             except Exception as e:
-                raise LoadError(f"Can not get GitHub contribuctions error: {str(e)}")
+                raise LoadError(f"Can not get GitHub contributions error: {str(e)}")
         for _, v in self.number_by_date_dict.items():
             self.number_list.append(v)
 

@@ -33,7 +33,7 @@ class WereadLoader(BaseLoader):
                 self.session.get(WEREAD_BASE_URL)
                 r = self.session.get(WEREAD_HISTORY_URL)
             else:
-                raise Exception("Can not get weread hisoty data")
+                raise Exception("Can not get weread history data")
         return r.json()
 
     def make_track_dict(self):

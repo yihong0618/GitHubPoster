@@ -117,7 +117,7 @@ class BBDCLoader(BaseLoader):
                     BBDCLoader.unit = "words"
                     self.number_by_date_dict[date] = value["learn"] + value["review"]
                 else:
-                    raise LoadError(f"unsupport type {self.type}")
+                    raise LoadError(f"unsupported type {self.type}")
                 self.number_by_date_dict = dict(
                     sorted(self.number_by_date_dict.items())
                 )

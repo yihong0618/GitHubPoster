@@ -41,7 +41,7 @@ NS_CLAENDAR_URL = (
 # gpx need a gpx folder
 GPX_ACTIVITY_NAME_TUPLE = namedtuple("activity", "date distance")
 
-# GitHub for furture use
+# GitHub for future use
 GITHUB_BASE_URL = "https://github.com"
 
 # LeetCode

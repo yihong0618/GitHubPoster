@@ -50,7 +50,7 @@ class CiChangLoader(BaseLoader):
             CICHANG_LOGIN_URL.format(user_name=self.user_name, password=password_md5)
         )
         if not r.ok:
-            raise LoadError(f"Someting is wrong to login -- {r.text}")
+            raise LoadError(f"Something is wrong to login -- {r.text}")
         club_auth_cookie = r.json()["Data"]["Cookie"]
         data = {"club_auth_cookie": club_auth_cookie}
         headers = {"hj_appkey": HJ_APPKEY, "Content-Type": "application/json"}
