@@ -129,7 +129,7 @@ def run():
     if args.type == "twitter":
         twitter_user_name = args_dict.get("twitter_user_name", "")
         file_name = f"twitter_{twitter_user_name}"
-    
+
     if args.type == "summary":
         file_name = f"summary_{to_year}"
         p.is_summary = True
