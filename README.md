@@ -574,7 +574,7 @@ github_poster jike --jike_cookie "your jike cookie" --jike_user_id "your jike us
 
 How to:
 
-- 浏览器打开 https://x.weread.qq.com
+- 浏览器打开 https://weread.qq.com/
 - 微信扫码登录确认，提示没有权限忽略即可
 - 按F12进入开发者模式，依次点 Network -> Doc -> Headers-> cookie。复制 Cookie 字符串;
 
