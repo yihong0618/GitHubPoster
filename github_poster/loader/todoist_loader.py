@@ -1,8 +1,7 @@
-import datetime
 import json
-
 import pandas as pd
 import requests
+import pendulum as pdl
 
 from github_poster.loader.base_loader import BaseLoader
 
@@ -32,14 +31,13 @@ class TodoistLoader(BaseLoader):
 
     # call with token
     def response(self, url, postdata):
-        # headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.11 TaoBrowser/2.0 Safari/536.11'}
         headers = {"Authorization": "Bearer {0}".format(self.todoist_token)}
         res = requests.post(url=url, data=postdata, headers=headers)
         resposn = res.json()
         return resposn
 
     # call with re-try since todoist api some time get 502
-    def response_with_retry(self, url, postdata, times):
+    def response_with_retry(self, url, postdata, times = 1):
         # time.sleep(1)
         try:
             return self.response(url, postdata)
@@ -64,7 +62,7 @@ class TodoistLoader(BaseLoader):
             "offset": offset,
         }
         url = "https://api.todoist.com/sync/v9/activity/get"
-        re = self.response_with_retry(url, data, 1)
+        re = self.response_with_retry(url, postdata = data)
         return re
 
     # json expect to be list of events format
@@ -85,26 +83,20 @@ class TodoistLoader(BaseLoader):
     # we will have to calculate the pages based on from and to year then manipulate the dict data
     def get_api_data(self):
         # init critical dates
-        today = datetime.datetime.today().strftime("%Y-%m-%d")
-        current_year = datetime.datetime.now().year
-        # 52.14 weeks a year, add 53 pages per full year
-        number_of_days = datetime.date.today().timetuple().tm_yday + 365 * (
-            current_year - self.from_year
-        )
+        today = pdl.now().to_date_string()
+        current_year = pdl.now().year
+        # how many days in the range
+        number_of_days = pdl.today().diff(pdl.datetime(self.from_year, 1, 1)).in_days()
         # current year
         page_from = (
             0
             if current_year == self.to_year
-            else datetime.date.today().timetuple().tm_yday // 7
+            else pdl.today().timetuple().tm_yday // 7
         )
         page_to = number_of_days // 7 + 1
         print("Todoist API Page range ({0},{1})".format(page_from, page_to))
-        last_day_of_to_year = datetime.datetime(self.to_year, 12, 31).strftime(
-            "%Y-%m-%d"
-        )
-        first_day_of_from_year = datetime.datetime(self.from_year, 1, 1).strftime(
-            "%Y-%m-%d"
-        )
+        last_day_of_to_year = pdl.datetime(self.to_year, 12, 31).to_date_string()
+        first_day_of_from_year = pdl.datetime(self.from_year, 1, 1).to_date_string()
 
         df = pd.DataFrame(columns=["event_date", "event_type", "id"])
         # magic number 3 is to cover the 0.14 extra week of every year when counting number of pages
