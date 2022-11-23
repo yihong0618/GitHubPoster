@@ -576,6 +576,8 @@ Before submitting PR:
 - @[ruter](https://github.com/ruter) Notion loader
 - @[frostming](https://github.com/frostming) `CI` refator and some Actions code
 - @[j178](https://github.com/j178) refator the import logic
+- @[iamshaynez](https://github.com/iamshaynez) todolist loader
+
 
 # Support
 
