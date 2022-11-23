@@ -37,7 +37,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Multiple](#Multiple)**
 - **[Jike](#Jike)**
 - **[Summary](#Summary)**
-
+- **[Todoist](#Todoist)**
 
 ## Download
 ```
@@ -509,6 +509,25 @@ Option argument `count_type`, you can specify statistics type:
 - `repost`: post be repost num
 
 </details>
+
+### Todoist
+
+<details>
+<summary>Make <code> Todoist Task Completion </code> GitHub poster</summary>
+
+Because of Todoist policies, only users with Pro Plan(or above) can retrieve full historical activity from APIs.
+
+Get your token please find on [Todoist Developer Docs](https://developer.todoist.com/guides/#developing-with-todoist)
+
+<br>
+
+```
+python3 -m github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
+or
+github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
+```
+</details>
+
 
 # Contribution
 
