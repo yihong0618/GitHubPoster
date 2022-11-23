@@ -21,11 +21,11 @@ from github_poster.loader.ns_loader import NSLoader
 from github_poster.loader.shanbay_loader import ShanBayLoader
 from github_poster.loader.strava_loader import StravaLoader
 from github_poster.loader.summary_loader import SummaryLoader
+from github_poster.loader.todoist_loader import TodoistLoader
 from github_poster.loader.twitter_loader import TwitterLoader
 from github_poster.loader.wakatime_loader import WakaTimeLoader
 from github_poster.loader.weread_loader import WereadLoader
 from github_poster.loader.youtube_loader import YouTubeLoader
-from github_poster.loader.todoist_loader import TodoistLoader
 
 LOADER_DICT = {
     "bbdc": BBDCLoader,
