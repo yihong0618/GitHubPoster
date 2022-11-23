@@ -48,6 +48,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[微信读书](#微信读书)**
 - **[总结](#Summary)**
 - **[Covid](#Covid)**
+- **[Todoist](#Todoist)**
 
 ## 下载
 
@@ -599,6 +600,23 @@ github_poster covid --covid_area US --year 2020-2022 --me US
 ```
 </details>
 
+### Todoist
+
+<details>
+<summary>Make <code> Todoist 完成任务 </code> GitHub poster</summary>
+
+Todoist因为接口限制，只有Pro Plan的付费用户可以获取所有的历史数据，并统计对应的热图。
+
+Token获取请参考：[Todoist Developer Docs](https://developer.todoist.com/guides/#developing-with-todoist)
+
+<br>
+
+```
+python3 -m github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
+or
+github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
+```
+</details>
 
 # 参与项目
 
