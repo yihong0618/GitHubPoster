@@ -1,7 +1,8 @@
 import json
+
 import pandas as pd
-import requests
 import pendulum as pdl
+import requests
 
 from github_poster.loader.base_loader import BaseLoader
 
@@ -37,7 +38,7 @@ class TodoistLoader(BaseLoader):
         return resposn
 
     # call with re-try since todoist api some time get 502
-    def response_with_retry(self, url, postdata, times = 1):
+    def response_with_retry(self, url, postdata, times=1):
         # time.sleep(1)
         try:
             return self.response(url, postdata)
@@ -62,7 +63,7 @@ class TodoistLoader(BaseLoader):
             "offset": offset,
         }
         url = "https://api.todoist.com/sync/v9/activity/get"
-        re = self.response_with_retry(url, postdata = data)
+        re = self.response_with_retry(url, postdata=data)
         return re
 
     # json expect to be list of events format
@@ -89,9 +90,7 @@ class TodoistLoader(BaseLoader):
         number_of_days = pdl.today().diff(pdl.datetime(self.from_year, 1, 1)).in_days()
         # current year
         page_from = (
-            0
-            if current_year == self.to_year
-            else pdl.today().timetuple().tm_yday // 7
+            0 if current_year == self.to_year else pdl.today().timetuple().tm_yday // 7
         )
         page_to = number_of_days // 7 + 1
         print("Todoist API Page range ({0},{1})".format(page_from, page_to))
