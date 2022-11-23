@@ -23,6 +23,7 @@ setup(
         "strava": ["stravalib"],
         "github": ["PyGithub"],
         "skyline": ["sdf_fork"],
+        "todoist": ["pandas"],
         "all": [
             "twint_fork",
             "garminconnect",
@@ -30,6 +31,7 @@ setup(
             "stravalib",
             "PyGithub",
             "sdf_fork",
+            "pandas",
         ],
     },
     entry_points={
