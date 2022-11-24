@@ -57,3 +57,26 @@ def make_key_times(year_count):
     s = list(takewhile(lambda n: n < 1, itercount(0, 1 / year_count)))
     s.append(1)
     return [str(round(i, 2)) for i in s]
+
+
+def reduce_year_list(year_list, tracks_dict):
+    """
+    format year list
+    [2012, 2013, 2014, 2015, 2016]
+    if 2012, 2013 values are 0
+    year list to [2013, 2015, 2016]
+    """
+    year_list_keys = list(tracks_dict.keys())
+    year_list_keys.sort()
+    s = set()
+    for key in year_list_keys:
+        if tracks_dict.get(key) > 0:
+            s.add(key[:4])
+    year_list.sort()
+    i = 0
+    for year in year_list:
+        if str(year) not in s:
+            i += 1
+        else:
+            break
+    return year_list[i:]

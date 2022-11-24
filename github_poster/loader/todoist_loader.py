@@ -121,13 +121,11 @@ class TodoistLoader(BaseLoader):
         df = self.get_api_data()
         df_dict = self.count_to_dict(df)
         self.number_by_date_dict = df_dict
-        # print(df_dict)
         for _, v in self.number_by_date_dict.items():
             self.number_list.append(v)
 
     def get_all_track_data(self):
         self.make_track_dict()
         self.make_special_number()
-        # print(self.year_list)
         print("不积跬步，无以至千里。Todoist欢迎你。")
         return self.number_by_date_dict, self.year_list
