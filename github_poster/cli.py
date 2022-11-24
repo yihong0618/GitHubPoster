@@ -12,7 +12,7 @@ from github_poster.drawer import Drawer
 from github_poster.err import DepNotInstalledError
 from github_poster.loader import LOADER_DICT
 from github_poster.poster import Poster
-from github_poster.utils import parse_years
+from github_poster.utils import parse_years, reduce_year_list
 
 OUT_FOLDER = os.path.join(os.getcwd(), "OUT_FOLDER")
 
@@ -86,6 +86,7 @@ def run():
 
     if args.type != "summary":
         tracks, years = loader.get_all_track_data()
+        years = reduce_year_list(years, tracks)
         p.units = args.loader.unit
         p.set_tracks(tracks, years, type_list)
     else:
