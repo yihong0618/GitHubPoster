@@ -211,7 +211,7 @@ class BaseLoader(ABC):
             "--cn",
             dest="cn",
             action="store_true",
-            help="if accout is CN",
+            help="if account is CN",
         )
         # special here
         group.add_argument(
