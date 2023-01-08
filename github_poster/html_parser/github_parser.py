@@ -17,7 +17,7 @@ class GitHubParser(html.parser.HTMLParser):
             contributions_texts = data.split("contribution")
             if contributions_texts:
                 self.rects[-1]["data-count"] = contributions_texts[0].rstrip()
-    
+
     def handle_endtag(self, tag):
         if tag == "rect":
             self.recording = False
