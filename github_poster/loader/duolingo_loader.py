@@ -15,8 +15,8 @@ class DuolingoLoader(BaseLoader):
         self.password = kwargs.get("duolingo_password", "")
         self.session = requests.Session()
         self.headers = {
-            'Accept': '*/*',
-            'User-Agent': 'request',
+            "Accept": "*/*",
+            "User-Agent": "request",
         }
         # duolingo name to get the calendar
         self.duolingo_id = ""
@@ -42,7 +42,7 @@ class DuolingoLoader(BaseLoader):
         r = self.session.post(
             DUOLINGO_LOGIN_URL,
             params={"login": self.user_name, "password": self.password},
-            headers=self.headers
+            headers=self.headers,
         )
         if r.status_code != 200:
             raise Exception("Login failed")
@@ -57,7 +57,7 @@ class DuolingoLoader(BaseLoader):
                     start_date=m.to_date_string(),
                     end_date=m.end_of("month").to_date_string(),
                 ),
-                headers=self.headers
+                headers=self.headers,
             )
             if not r.ok:
                 print(f"get duolingo calendar api failed {str(r.text)}")
