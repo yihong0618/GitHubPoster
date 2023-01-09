@@ -70,7 +70,7 @@ def reduce_year_list(year_list, tracks_dict):
     year_list_keys.sort()
     s = set()
     for key in year_list_keys:
-        if tracks_dict.get(key) > 0:
+        if tracks_dict.get(key, 0) > 0:
             s.add(key[:4])
     year_list.sort()
     i = 0
