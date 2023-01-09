@@ -84,7 +84,7 @@ def run():
             )
             p.loader_list = loader.loader_list
 
-    if args.type != "summary":
+    if args.type not in ["multiple", "summary"]:
         tracks, years = loader.get_all_track_data()
         years = reduce_year_list(years, tracks)
         p.units = args.loader.unit
