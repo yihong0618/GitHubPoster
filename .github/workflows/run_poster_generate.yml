@@ -52,7 +52,7 @@ jobs:
       - name: Run sync strava script
         if: contains(env.TYPE, 'strava')
         run: |
-          python -m github_poster strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --me ${{ env.ME }} --year 2012-2022 --is-circular
+          python -m github_poster strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --me ${{ env.ME }} --year 2012-$(date +"%Y") --is-circular
 
       - name: Run sync shanbay script
         if: contains(env.TYPE, 'shanbay')
@@ -72,7 +72,7 @@ jobs:
       - name: Run sync forest script
         if: contains(env.TYPE, 'forest')
         run: |
-          python -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --year 2022 --cn
+          python -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --year $(date +"%Y") --cn
 
       - name: Run sync issue script
         if: contains(env.TYPE, 'issue')
@@ -128,7 +128,7 @@ jobs:
       - name: Run sync multiple script
         if: contains(env.TYPE, 'multiple')
         run: |
-          python3 -m github_poster multiple --types "github, twitter" --github_user_name ${{ secrets.G_USER_NAME }} --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --year 2019-2021
+          python3 -m github_poster multiple --types "github, twitter" --github_user_name ${{ secrets.G_USER_NAME }} --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --year 2019-$(date +"%Y") 
 
       - name: Mv svg files to examples
         # only for me to show
