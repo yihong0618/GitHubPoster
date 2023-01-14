@@ -125,3 +125,32 @@ WEREAD_HISTORY_URL = (
 
 # COVID
 COVID_API = "https://pomber.github.io/covid19/timeseries.json"
+
+OPEN_LANGUAGE_LOGIN_URL = (
+    "https://api.openlanguage.com/passport/user/login/?"
+    "version_code=8.2.3&app_name=open_language"
+    "&vendor_id=5E43BCDC-D306-47C0-86D0-3248D4B77267"
+    "&device_id=884423380449783&channel=App%20Store"
+    "&mix_mode=1&multi_login=1&resolution=828%2A1792"
+    "&aid=1335&app_id=1335&install_id=180755913509454"
+    "&update_version_code=82300&ac=WIFI&os_version=16.0.2"
+    "&timezone=Asia%2FShanghai&ez_version=85&ssmix=a"
+    "&timezone_offset=28800000&device_platform=iphone"
+    "&iid=180755913509454&ab_client=a1%2Cf2%2Cf7%2Ce1"
+    "&device_type=iPhone11%2C8"
+)
+
+OPEN_LANGUAGE_X_LADON = "FMByTcspdXr0+Zu4p2x0j9698vNGIgJr2+7Y0hqdGnNW94US"
+
+OPEN_LANGUAGE_X_ARGUS = (
+    "uoviDe0vjDP7TP1eJ5GR1Iv3z0yZOjjZvO81C+Niy5FgO8ghZueIU"
+    "/yNG/ooGjfWjNZs2XBRSS/PIXsm8IZYKczptvpD2VoUajNVMGxWMv"
+    "PbygEzVtgvVCphnR+A7VNZQYNU217125E25PwuBFqx8j43qB/H29+u"
+    "P0h1FmNHePHDMB+FwHeeawWE9X2aT5zcZ2O/65deSknksNXFFCLGgp"
+    "H7u3HSfFj6hW2M+NRfda2JYOCU2N/eheYxXoZXmhnVfLE="
+)
+
+OPEN_LANGUAGE_REOCRD_URL = (
+    "https://api.openlanguage.com/ez/studentapp/v15/clockInRecord"
+    "?start_date={start_date}&end_date={end_date}"
+)

@@ -49,6 +49,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[总结](#Summary)**
 - **[Covid](#Covid)**
 - **[Todoist](#Todoist)**
+- **[开言英语](#开言英语)**
 
 ## 下载
 
@@ -615,6 +616,21 @@ Token获取请参考：[Todoist Developer Docs](https://developer.todoist.com/gu
 python3 -m github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
 or
 github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
+```
+</details>
+
+### 开言英语
+
+<details>
+<summary>Make <code> 开言英语 </code> GitHub poster</summary>
+
+因为某种原因，请保证你的密码只有字母和数字，否则会报错。
+<br>
+
+```
+python3 -m github_poster openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
+or
+github_poster openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
 ```
 </details>
 
