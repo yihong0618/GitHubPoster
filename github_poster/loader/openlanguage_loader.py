@@ -167,5 +167,3 @@ class OpenLanguageLoader(BaseLoader):
         self.make_track_dict()
         self.make_special_number()
         return self.number_by_date_dict, self.year_list
-
-
