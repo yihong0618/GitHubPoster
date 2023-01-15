@@ -3,7 +3,7 @@ import re
 from github_poster.loader.base_loader import BaseLoader, LoadError
 from github_poster.loader.config import (
     OPEN_LANGUAGE_LOGIN_URL,
-    OPEN_LANGUAGE_REOCRD_URL,
+    OPEN_LANGUAGE_RECORD_URL,
     OPEN_LANGUAGE_X_LADON,
     OPEN_LANGUAGE_X_ARGUS,
 )
@@ -137,7 +137,7 @@ class OpenLanguageLoader(BaseLoader):
         }
         for m in month_list:
             r = self.s.get(
-                OPEN_LANGUAGE_REOCRD_URL.format(
+                OPEN_LANGUAGE_RECORD_URL.format(
                     start_date=m.to_date_string(),
                     end_date=m.end_of("month").to_date_string(),
                 ),
@@ -167,13 +167,3 @@ class OpenLanguageLoader(BaseLoader):
         return self.number_by_date_dict, self.year_list
 
 
-if __name__ == "__main__":
-    loader = OpenLanguageLoader(
-        2022,
-        2022,
-        "words",
-        openlanguage_user_name="13048282493",
-        openlanguage_password="123456",
-    )
-    r = loader.get_all_track_data()
-    print(r)

@@ -150,7 +150,7 @@ OPEN_LANGUAGE_X_ARGUS = (
     "H7u3HSfFj6hW2M+NRfda2JYOCU2N/eheYxXoZXmhnVfLE="
 )
 
-OPEN_LANGUAGE_REOCRD_URL = (
+OPEN_LANGUAGE_RECORD_URL = (
     "https://api.openlanguage.com/ez/studentapp/v15/clockInRecord"
     "?start_date={start_date}&end_date={end_date}"
 )
