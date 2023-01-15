@@ -1,11 +1,13 @@
-import requests
 import re
+
+import requests
+
 from github_poster.loader.base_loader import BaseLoader, LoadError
 from github_poster.loader.config import (
     OPEN_LANGUAGE_LOGIN_URL,
     OPEN_LANGUAGE_RECORD_URL,
-    OPEN_LANGUAGE_X_LADON,
     OPEN_LANGUAGE_X_ARGUS,
+    OPEN_LANGUAGE_X_LADON,
 )
 
 
