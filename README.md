@@ -682,7 +682,7 @@ github_poster openlanguage --year 2021-2022 --openlanguage_user_name "you accoun
 - @[frostming](https://github.com/frostming) `CI` refator and some Actions code
 - @[j178](https://github.com/j178) refator the import logic
 - @[iamshaynez](https://github.com/iamshaynez) todolist loader
-
+- @[guaguaguaxia](https://github.com/guaguaguaxia) OpenLanguage loader
 # 赞赏
 
 谢谢就够了
