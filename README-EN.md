@@ -592,7 +592,7 @@ Before submitting PR:
 - @[frostming](https://github.com/frostming) `CI` refator and some Actions code
 - @[j178](https://github.com/j178) refator the import logic
 - @[iamshaynez](https://github.com/iamshaynez) todolist loader
-
+- @[guaguaguaxia](https://github.com/guaguaguaxia) OpenLanguage loader
 
 # Support
 
