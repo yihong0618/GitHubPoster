@@ -49,6 +49,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[总结](#Summary)**
 - **[Covid](#Covid)**
 - **[Todoist](#Todoist)**
+- **[开言英语](#开言英语)**
 
 ## 下载
 
@@ -618,6 +619,21 @@ github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" 
 ```
 </details>
 
+### 开言英语
+
+<details>
+<summary>Make <code> 开言英语 </code> GitHub poster</summary>
+
+因为某种原因，请保证你的密码只有字母和数字，否则会报错。
+<br>
+
+```
+python3 -m github_poster openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
+or
+github_poster openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
+```
+</details>
+
 # 参与项目
 
 - 任何 Issues PR 均欢迎。
@@ -666,7 +682,7 @@ github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" 
 - @[frostming](https://github.com/frostming) `CI` refator and some Actions code
 - @[j178](https://github.com/j178) refator the import logic
 - @[iamshaynez](https://github.com/iamshaynez) todolist loader
-
+- @[guaguaguaxia](https://github.com/guaguaguaxia) OpenLanguage loader
 # 赞赏
 
 谢谢就够了

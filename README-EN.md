@@ -38,6 +38,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Jike](#Jike)**
 - **[Summary](#Summary)**
 - **[Todoist](#Todoist)**
+- **[OpenLanguage](#OpenLanguage)**
 
 ## Download
 ```
@@ -528,6 +529,20 @@ github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" 
 ```
 </details>
 
+### OpenLanguage
+
+<details>
+<summary>Make <code> OpenLanguage </code> GitHub poster</summary>
+
+For some reason, make sure your password only has letters and numbers, otherwise you will get an error.
+<br>
+
+```
+python3 -m github_poster openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
+or
+github_poster openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
+```
+</details>
 
 # Contribution
 
@@ -577,7 +592,7 @@ Before submitting PR:
 - @[frostming](https://github.com/frostming) `CI` refator and some Actions code
 - @[j178](https://github.com/j178) refator the import logic
 - @[iamshaynez](https://github.com/iamshaynez) todolist loader
-
+- @[guaguaguaxia](https://github.com/guaguaguaxia) OpenLanguage loader
 
 # Support
 

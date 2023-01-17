@@ -124,6 +124,11 @@ jobs:
         run: |
           python3 -m github_poster notion --notion_token "${{ secrets.NOTION_TOKEN }}" --database_id "${{ secrets.NOTION_DATABASE_ID }}" --prop_name "${{ secrets.NOTION_PROP_NAME }}" --me ${{ env.ME }}
 
+      - name: Run sync openlanguage script
+        if: contains(env.TYPE, 'openlanguage')
+        run: |
+          python3 -m github_poster openlanguage --openlanguage_user_name "${{ secrets.OPENLANGUAGE_USER_NAME }}" --openlanguage_password "${{ secrets.OPENLANGUAGE_PASSWORD }}" --me ${{ env.ME }}
+
       # change the types to yours
       - name: Run sync multiple script
         if: contains(env.TYPE, 'multiple')
