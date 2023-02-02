@@ -8,7 +8,7 @@ on:
         required: true
 
 jobs:
-  lint_and_test:
+  twitter_backup:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -16,20 +16,21 @@ jobs:
         python-version: ['3.8']
     steps:
       - uses: actions/checkout@v3
-      - uses: actions-cool/check-user-permission@main
-        id: checkUser
+      - name: Check user permission
+        id: check
+        uses: scherermichael-oss/action-has-permission@master
         with:
-          require: 'write'
+          required-permission: write
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Use the output from the `check` step
+      - name: Run only if user has sufficient permissions
+        if: steps.check.outputs.has-permission
+        run: echo "Congratulations! Your permissions to access the repository are sufficient."
+      - name: Run only if user has NOT sufficient permissions
+        if: "! steps.check.outputs.has-permission"
+        run: echo "Sorry! Your permissions are insufficient."
 
-      - name: No Perssion Info 
-        if: steps.checkUser.outputs.check-result == false
-        run: |
-            echo ${{ steps.check.outputs.check-result }}
-            exit 1
-      - name: Has Perssion Info 
-        if: steps.checkUser.outputs.check-result == true
-        run: |
-            echo "have"
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
