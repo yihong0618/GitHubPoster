@@ -24,7 +24,8 @@ jobs:
       - name: No Perssion Info 
         if: steps.checkUser.outputs.check-result == false
         run: |
-            echo "dasdas"
+            echo ${{ steps.check.outputs.check-result }}
+            exit 1
       - name: Has Perssion Info 
         if: steps.checkUser.outputs.check-result == true
         run: |
