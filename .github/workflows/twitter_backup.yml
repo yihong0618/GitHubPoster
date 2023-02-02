@@ -22,11 +22,11 @@ jobs:
           require: 'write'
 
       - name: No Perssion Info 
-        if: steps.checkUser.outputs.check-result == 'false'
+        if: steps.checkUser.outputs.check-result == false
         run: |
             echo "dasdas"
       - name: Has Perssion Info 
-        if: steps.checkUser.outputs.check-result == 'true'
+        if: steps.checkUser.outputs.check-result == true
         run: |
             echo "have"
       - name: Set up Python ${{ matrix.python-version }}
