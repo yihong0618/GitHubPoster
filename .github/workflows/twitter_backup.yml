@@ -16,6 +16,19 @@ jobs:
         python-version: ['3.8']
     steps:
       - uses: actions/checkout@v3
+      - uses: actions-cool/check-user-permission@main
+        id: checkUser
+        with:
+          require: 'write'
+
+      - name: No Perssion Info 
+        if: steps.checkUser.outputs.check-result == 'false'
+        run: |
+            echo "dasdas"
+      - name: Has Perssion Info 
+        if: steps.checkUser.outputs.check-result == 'true'
+        run: |
+            echo "have"
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
