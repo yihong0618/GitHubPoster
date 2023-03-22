@@ -156,10 +156,11 @@ class Drawer:
             # change to hours from mins
             year_units = "hours"
         year_length = str(int(year_length)) + f" {year_units}"
+        new_offset = (offset.tuple()[0], offset.tuple()[1] + 9)
         dr.add(
             dr.text(
                 f"{year}" if _type is None else f"{_type}",
-                insert=offset.tuple(),
+                insert=new_offset,
                 fill=self.poster.colors["text"],
                 alignment_baseline="hanging",
                 style=self.year_style,
@@ -229,7 +230,7 @@ class Drawer:
                     dr.add(rect)
                 github_rect_day += datetime.timedelta(1)
             rect_x += 3.5
-        offset.y += 3.5 * 9 + self.year_size + 1.5
+        offset.y += 3.5 * 9 + self.year_size + 1.0
 
     def draw(self, dr, offset, is_summary=False):
         if self.poster.tracks is None:
