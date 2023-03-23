@@ -156,13 +156,12 @@ class Drawer:
             # change to hours from mins
             year_units = "hours"
         year_length = str(int(year_length)) + f" {year_units}"
-        new_offset = (offset.tuple()[0], offset.tuple()[1] + 9)
         dr.add(
             dr.text(
                 f"{year}" if _type is None else f"{_type}",
-                insert=new_offset,
+                insert=offset.tuple(),
                 fill=self.poster.colors["text"],
-                alignment_baseline="hanging",
+                dominant_baseline="hanging",
                 style=self.year_style,
             )
         )
@@ -173,7 +172,7 @@ class Drawer:
                     f"{year_length}",
                     insert=(offset.tuple()[0] + 165, offset.tuple()[1] + 5),
                     fill=self.poster.colors["text"],
-                    alignment_baseline="hanging",
+                    dominant_baseline="hanging",
                     style=self.year_length_style,
                 )
             )
