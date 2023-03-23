@@ -43,7 +43,6 @@ class NotionLoader(BaseLoader):
         )
 
     def get_api_data(self, start_cursor="", page_size=100, data_list=[]):
-
         payload = {"page_size": page_size}
         if start_cursor:
             payload.update({"start_cursor": start_cursor})

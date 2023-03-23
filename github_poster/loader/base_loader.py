@@ -14,7 +14,6 @@ class LoadError(Exception):
 
 
 class BaseLoader(ABC):
-
     parser_loader_list = []
     #: The track color of the poster
     track_color = None
