@@ -26,7 +26,6 @@ TIMESTAMP_FMT = "%a %b %d %H:%M:%S %z %Y"
 
 
 def convert(input_file, output_file):
-
     with open(input_file, "r") as f:
         content = f.read()
 
