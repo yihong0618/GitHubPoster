@@ -88,7 +88,9 @@ def run():
         tracks, years = loader.get_all_track_data()
         years = reduce_year_list(years, tracks)
         if not years:  # check to handle empty year lists
-            raise ValueError("No data available for the specified years or type. Please check your user name!")
+            raise ValueError(
+                "No data available for the specified years or type. Please check your user name!"
+            )
         p.units = args.loader.unit
         p.set_tracks(tracks, years, type_list)
     else:

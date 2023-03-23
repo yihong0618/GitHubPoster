@@ -16,7 +16,6 @@ class SummaryLoader(BaseLoader):
 
     @classmethod
     def add_loader_arguments(cls, parser, optional):
-
         parser.add_argument(
             "--types",
             dest="types",

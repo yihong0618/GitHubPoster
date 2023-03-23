@@ -12,7 +12,6 @@ from github_poster.utils import make_key_times
 
 
 class CircularDrawer(Drawer):
-
     # somecode from https://github.com/flopp/GpxTrackPoster
     name = "circular"
 
