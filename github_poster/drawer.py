@@ -161,7 +161,7 @@ class Drawer:
                 f"{year}" if _type is None else f"{_type}",
                 insert=offset.tuple(),
                 fill=self.poster.colors["text"],
-                alignment_baseline="hanging",
+                dominant_baseline="hanging",
                 style=self.year_style,
             )
         )
@@ -172,7 +172,7 @@ class Drawer:
                     f"{year_length}",
                     insert=(offset.tuple()[0] + 165, offset.tuple()[1] + 5),
                     fill=self.poster.colors["text"],
-                    alignment_baseline="hanging",
+                    dominant_baseline="hanging",
                     style=self.year_length_style,
                 )
             )
@@ -229,7 +229,7 @@ class Drawer:
                     dr.add(rect)
                 github_rect_day += datetime.timedelta(1)
             rect_x += 3.5
-        offset.y += 3.5 * 9 + self.year_size + 1.5
+        offset.y += 3.5 * 9 + self.year_size + 1.0
 
     def draw(self, dr, offset, is_summary=False):
         if self.poster.tracks is None:
