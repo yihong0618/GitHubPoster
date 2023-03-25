@@ -1,3 +1,4 @@
+from github_poster.loader.apple_health_loader import AppleHealthLoader
 from github_poster.loader.bbdc_loader import BBDCLoader
 from github_poster.loader.bilibili_loader import BilibiliLoader
 from github_poster.loader.cichang_loader import CiChangLoader
@@ -29,6 +30,7 @@ from github_poster.loader.weread_loader import WereadLoader
 from github_poster.loader.youtube_loader import YouTubeLoader
 
 LOADER_DICT = {
+    "apple_health": AppleHealthLoader,
     "bbdc": BBDCLoader,
     "duolingo": DuolingoLoader,
     "shanbay": ShanBayLoader,
@@ -61,6 +63,7 @@ LOADER_DICT = {
 }
 
 __all__ = (
+    "AppleHealthLoader",
     "BilibiliLoader",
     "CiChangLoader",
     "Dota2Loader",
