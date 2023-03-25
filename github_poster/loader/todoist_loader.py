@@ -1,10 +1,13 @@
-import json
-
-import pandas as pd
 import pendulum as pdl
 import requests
 
+from github_poster.err import DepNotInstalledError
 from github_poster.loader.base_loader import BaseLoader
+
+try:
+    import pandas as pd
+except ImportError:
+    pd = None
 
 
 class TodoistLoader(BaseLoader):
@@ -18,6 +21,14 @@ class TodoistLoader(BaseLoader):
         self.todoist_token = kwargs.get("todoist_token", "")
         # another magic number, try 3 times for calling api
         self.MAXIMAL_RETRY = 3
+
+    @classmethod
+    def try_import_deps(cls):
+        if pd is None:
+            raise DepNotInstalledError(
+                "Todoist dependencies are not installed, "
+                "please use `pip3 install -U 'github_poster[todoist]'` to install."
+            ) from None
 
     @classmethod
     def add_loader_arguments(cls, parser, optional):
@@ -84,7 +95,7 @@ class TodoistLoader(BaseLoader):
     # we will have to calculate the pages based on from and to year then manipulate the dict data
     def get_api_data(self):
         # init critical dates
-        today = pdl.now().to_date_string()
+        pdl.now().to_date_string()
         current_year = pdl.now().year
         # how many days in the range
         number_of_days = pdl.today().diff(pdl.datetime(self.from_year, 1, 1)).in_days()
