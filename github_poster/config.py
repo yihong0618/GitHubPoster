@@ -47,4 +47,5 @@ TYPE_INFO_DICT = {
     "weread": "WeRead",
     "covid": "COVID-19",
     "todoist": "Todoist",
+    "apple": "AppleHealth",
 }
