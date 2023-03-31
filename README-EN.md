@@ -621,6 +621,7 @@ Before submitting PR:
 - @[j178](https://github.com/j178) refator the import logic
 - @[iamshaynez](https://github.com/iamshaynez) todolist loader
 - @[guaguaguaxia](https://github.com/guaguaguaxia) OpenLanguage loader
+- @[rip-tyang](https://github.com/rip-tyang) AppleHealth loader
 
 # Support
 
