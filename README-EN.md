@@ -40,6 +40,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Todoist](#Todoist)**
 - **[OpenLanguage](#OpenLanguage)**
 - **[Apple Health](#AppleHealth)**
+- **[ChatGPT](#ChatGPT)**
 
 ## Download
 ```
@@ -571,6 +572,21 @@ python3 -m github_poster apple_health --apple_health_mode backfill --year 2015-2
 or
 github_poster apple_health --apple_health_mode backfill --year 2015-2021 --apple_health_record_type <move, exercise, stand> --me "your name"
 ```
+
+### ChatGPT
+
+<details>
+<summary>Make your <code>YouChatGPTTube </code> GitHub poster</summary>
+<br>
+
+From this repo to download ChatGPT [history](https://github.com/abacaj/chatgpt-backup)， copy `IN-FOLDER` then rename it to `chatgpt-history.json`
+
+```
+python3 -m github_poster chatgpt 
+or
+github_poster chatgpt --me yihong0618
+```
+</details>
 
 # Contribution
 
