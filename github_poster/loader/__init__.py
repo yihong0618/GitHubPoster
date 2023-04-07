@@ -1,6 +1,7 @@
 from github_poster.loader.apple_health_loader import AppleHealthLoader
 from github_poster.loader.bbdc_loader import BBDCLoader
 from github_poster.loader.bilibili_loader import BilibiliLoader
+from github_poster.loader.chatgpt_loader import ChatGPTLoader
 from github_poster.loader.cichang_loader import CiChangLoader
 from github_poster.loader.covid_loader import CovidLoader
 from github_poster.loader.dota2_loader import Dota2Loader
@@ -60,6 +61,7 @@ LOADER_DICT = {
     "covid": CovidLoader,
     "todoist": TodoistLoader,
     "openlanguage": OpenLanguageLoader,
+    "chatgpt": ChatGPTLoader,
 }
 
 __all__ = (
@@ -94,4 +96,5 @@ __all__ = (
     "CovidLoader",
     "TodoistLoader",
     "OpenLanguageLoader",
+    "ChatGPTLoader",
 )
