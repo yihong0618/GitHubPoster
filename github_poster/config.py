@@ -48,4 +48,5 @@ TYPE_INFO_DICT = {
     "covid": "COVID-19",
     "todoist": "Todoist",
     "apple": "AppleHealth",
+    "chatgpt": "ChatGPT",
 }
