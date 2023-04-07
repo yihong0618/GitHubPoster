@@ -51,6 +51,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Todoist](#Todoist)**
 - **[开言英语](#开言英语)**
 - **[Apple Health](#AppleHealth)**
+- **[ChatGPT](#ChatGPT)**
 
 ## 下载
 
@@ -660,6 +661,21 @@ or
 github_poster apple_health --apple_health_mode backfill --year 2015-2021 --apple_health_record_type <move, exercise, stand> --me "your name"
 ```
 
+</details>
+
+### ChatGPT
+
+<details>
+<summary>Make your <code>YouChatGPTTube </code> GitHub poster</summary>
+<br>
+
+利用这个项目下载 ChatGPT 的[历史下载](https://github.com/abacaj/chatgpt-backup)下载 `ChatGPT` 的历史数据， 拷贝到 `IN-FOLDER` 然后运行(重命名为 chatgpt-history.json)
+
+```
+python3 -m github_poster chatgpt 
+or
+github_poster chatgpt --me yihong0618
+```
 </details>
 
 # 参与项目
