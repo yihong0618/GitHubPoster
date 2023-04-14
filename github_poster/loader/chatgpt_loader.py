@@ -38,9 +38,16 @@ class ChatGPTLoader(BaseLoader):
 
     def make_track_dict(self):
         tracks = self.get_api_data()
-        for t in tracks:
-            t = t["messages"]
-            user_ask_list = [i for i in t if i.get("role", "") == "user"]
+        for data in tracks:
+            user_ask_list = []
+            for key in data["mapping"]:
+                if (
+                    "message" in data["mapping"][key]
+                    and data["mapping"][key]["message"] is not None
+                ):
+                    message = data["mapping"][key]["message"]
+                    if "author" in message and message["author"]["role"] == "user":
+                        user_ask_list.append(message)
             for ask in user_ask_list:
                 date_time = pendulum.from_timestamp(
                     int(ask["create_time"]), tz=self.time_zone
