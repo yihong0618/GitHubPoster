@@ -576,10 +576,10 @@ github_poster apple_health --apple_health_mode backfill --year 2015-2021 --apple
 ### ChatGPT
 
 <details>
-<summary>Make your <code>YouChatGPTTube </code> GitHub poster</summary>
+<summary>Make your <code> ChatGPT </code> GitHub poster</summary>
 <br>
 
-From this repo to download ChatGPT [history](https://github.com/abacaj/chatgpt-backup)， copy `IN-FOLDER` then rename it to `chatgpt-history.json`
+Copy the conversations.json from ChatGPT's official export history to `IN-FOLDER`, then run (renamed to chatgpt-history.json)
 
 ```
 python3 -m github_poster chatgpt 

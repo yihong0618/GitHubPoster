@@ -666,10 +666,10 @@ github_poster apple_health --apple_health_mode backfill --year 2015-2021 --apple
 ### ChatGPT
 
 <details>
-<summary>Make your <code>YouChatGPTTube </code> GitHub poster</summary>
+<summary>Make your <code> ChatGPT </code> GitHub poster</summary>
 <br>
 
-利用这个项目下载 ChatGPT 的[历史下载](https://github.com/abacaj/chatgpt-backup)下载 `ChatGPT` 的历史数据， 拷贝到 `IN-FOLDER` 然后运行(重命名为 chatgpt-history.json)
+将ChatGPT官方导出的历史记录中的conversations.json， 拷贝到 `IN-FOLDER` 然后运行(重命名为 chatgpt-history.json)
 
 ```
 python3 -m github_poster chatgpt 
