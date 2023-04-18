@@ -177,6 +177,10 @@ github_poster ns --ns_session_token ${session_token} --ns_device_id ${device_id}
 <summary>Make your <code>Duolingo</code> GitHub poster</summary>
 <br>
 
+1. login duolingo in broswer
+2. console `document.cookie.match(new RegExp('(^| )jwt_token=([^;]+)'))[0].slice(11)` get duolingo_jwt
+3. 点击 profile call 接口拿到你的 duolingo_id
+
 Find your `duolingo id`, F12 from `XHR`
 ![image](https://user-images.githubusercontent.com/15976103/116336188-baad7000-a80a-11eb-80d7-033d4bf0f260.png)
 

@@ -11,42 +11,34 @@ class DuolingoLoader(BaseLoader):
 
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
-        self.user_name = kwargs.get("duolingo_user_name", "")
-        self.password = kwargs.get("duolingo_password", "")
+        self.duolingo_id = kwargs.get("duolingo_user_id", "")
+        self.duolingo_jwt = kwargs.get("duolingo_jwt", "")
         self.session = requests.Session()
         self.headers = {
             "Accept": "*/*",
             "User-Agent": "request",
         }
-        # duolingo name to get the calendar
-        self.duolingo_id = ""
 
     @classmethod
     def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
-            "--duolingo_user_name",
-            dest="duolingo_user_name",
+            "--duolingo_user_id",
+            dest="duolingo_user_id",
             type=str,
             help="",
             required=optional,
         )
         parser.add_argument(
-            "--duolingo_password",
-            dest="duolingo_password",
+            "--duolingo_jwt",
+            dest="duolingo_jwt",
             type=str,
-            help="",
+            help="use `document.cookie.match(new RegExp('(^| )jwt_token=([^;]+)'))[0].slice(11)` in console",
             required=optional,
         )
 
     def login(self):
-        r = self.session.post(
-            DUOLINGO_LOGIN_URL,
-            params={"login": self.user_name, "password": self.password},
-            headers=self.headers,
-        )
-        if r.status_code != 200:
-            raise Exception("Login failed")
-        self.duolingo_id = r.json()["user_id"]
+        self.headers["Authorization"] = "Bearer " + self.duolingo_jwt
+        self.duolingo_id = self.duolingo_id
 
     def get_api_data(self):
         month_list = self.make_month_list()
@@ -62,6 +54,7 @@ class DuolingoLoader(BaseLoader):
             if not r.ok:
                 print(f"get duolingo calendar api failed {str(r.text)}")
             try:
+                print(111)
                 yield from r.json()["summaries"]
             except Exception:
                 # just pass for now
