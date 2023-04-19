@@ -54,7 +54,6 @@ class DuolingoLoader(BaseLoader):
             if not r.ok:
                 print(f"get duolingo calendar api failed {str(r.text)}")
             try:
-                print(111)
                 yield from r.json()["summaries"]
             except Exception:
                 # just pass for now
