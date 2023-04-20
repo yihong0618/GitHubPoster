@@ -2,7 +2,7 @@ import pendulum
 import requests
 
 from github_poster.loader.base_loader import BaseLoader
-from github_poster.loader.config import DUOLINGO_CALENDAR_API, DUOLINGO_LOGIN_URL
+from github_poster.loader.config import DUOLINGO_CALENDAR_API
 
 
 class DuolingoLoader(BaseLoader):
@@ -11,7 +11,7 @@ class DuolingoLoader(BaseLoader):
 
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
-        self.duolingo_id = kwargs.get("duolingo_user_id", "")
+        self.duolingo_user_name = kwargs.get("duolingo_user_name", "")
         self.duolingo_jwt = kwargs.get("duolingo_jwt", "")
         self.session = requests.Session()
         self.headers = {
@@ -22,8 +22,8 @@ class DuolingoLoader(BaseLoader):
     @classmethod
     def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
-            "--duolingo_user_id",
-            dest="duolingo_user_id",
+            "--duolingo_user_name",
+            dest="duolingo_user_name",
             type=str,
             help="",
             required=optional,
@@ -38,7 +38,10 @@ class DuolingoLoader(BaseLoader):
 
     def login(self):
         self.headers["Authorization"] = "Bearer " + self.duolingo_jwt
-        self.duolingo_id = self.duolingo_id
+        self.duolingo_id = self.session.get(
+            f"https://www.duolingo.com/users/{self.duolingo_user_name}",
+            headers=self.headers,
+        ).json()["id"]
 
     def get_api_data(self):
         month_list = self.make_month_list()

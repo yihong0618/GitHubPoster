@@ -198,13 +198,12 @@ github_poster cichang --cichang_user_name ${user_name} --cichang_password ${pass
 
 1. login duolingo in broswer
 2. console `document.cookie.match(new RegExp('(^| )jwt_token=([^;]+)'))[0].slice(11)` get duolingo_jwt
-3. 点击 profile call 接口拿到你的 duolingo_id
 
 
 ```
-python3 -m github_poster duolingo --duolingo_id ${user_id} --duolingo_jwt ${duolingo_jwt} --year 2015-2021
+python3 -m github_poster duolingo --duolingo_user_name ${duolingo_user_name} --duolingo_jwt ${duolingo_jwt} --year 2015-2021
 or
-github_poster duolingo --duolingo_id ${user_id} --duolingo_duolingo_jwtpassword ${duolingo_jwt} --year 2015-2021
+github_poster duolingo --duolingo_user_name ${duolingo_user_name} --duolingo_duolingo_jwt ${duolingo_jwt} --year 2015-2021
 ```
 </details>
 

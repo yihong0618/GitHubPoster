@@ -14,7 +14,6 @@ DUOLINGO_CALENDAR_API = (
     "https://ios-api-2.duolingo.com/2017-06-30/users/{user_id}/xp_summaries"
     "?endDate={end_date}&startDate={start_date}&timezone=Asia/Shanghai"
 )
-DUOLINGO_LOGIN_URL = "https://www.duolingo.com/login"
 
 # cichang -- need to login
 HJ_APPKEY = "45fd17e02003d89bee7f046bb494de13"
