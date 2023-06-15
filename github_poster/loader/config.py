@@ -9,6 +9,11 @@ SHANBAY_CALENDAR_API = (
     "?user_id={user_name}&start_date={start_date}&end_date={end_date}"
 )
 
+# shanbay -- no need to login
+SHANBAY_WORD_API = (
+    "https://apiv3.shanbay.com/uc/checkin/logs?user_id={user_name}&ipp=20&page={page}"
+)
+
 # duolingo -- no need to login
 DUOLINGO_CALENDAR_API = (
     "https://ios-api-2.duolingo.com/2017-06-30/users/{user_id}/xp_summaries"
