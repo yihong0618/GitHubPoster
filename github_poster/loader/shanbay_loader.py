@@ -7,8 +7,6 @@ from github_poster.loader.config import SHANBAY_WORD_API
 
 class ShanBayLoader(BaseLoader):
     track_color = "#ADD8E6"
-    # special1 = '#009688'
-    # special2 = '#007BFF'
     unit = "words"
 
     def __init__(self, from_year, to_year, _type, **kwargs):
@@ -54,7 +52,7 @@ class ShanBayLoader(BaseLoader):
                 break
 
             page += 1
-            time.sleep(0.05)
+            time.sleep(0.5)
 
         return datalist
 
