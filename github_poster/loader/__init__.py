@@ -29,7 +29,6 @@ from github_poster.loader.twitter_loader import TwitterLoader
 from github_poster.loader.wakatime_loader import WakaTimeLoader
 from github_poster.loader.weread_loader import WereadLoader
 from github_poster.loader.youtube_loader import YouTubeLoader
-from github_poster.loader.shanbay_word_loader import ShanBayWordLoader
 
 LOADER_DICT = {
     "apple_health": AppleHealthLoader,
@@ -62,8 +61,7 @@ LOADER_DICT = {
     "covid": CovidLoader,
     "todoist": TodoistLoader,
     "openlanguage": OpenLanguageLoader,
-    "chatgpt": ChatGPTLoader,
-    "shanbayword": ShanBayWordLoader,
+    "chatgpt": ChatGPTLoader
 }
 
 __all__ = (
@@ -98,6 +96,5 @@ __all__ = (
     "CovidLoader",
     "TodoistLoader",
     "OpenLanguageLoader",
-    "ChatGPTLoader",
-    "shanbayword"
+    "ChatGPTLoader"
 )

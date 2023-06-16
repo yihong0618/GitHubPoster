@@ -4,12 +4,6 @@ from collections import namedtuple
 TIME_ZONE = "Asia/Shanghai"
 
 # shanbay -- no need to login
-SHANBAY_CALENDAR_API = (
-    "https://apiv3.shanbay.com/uc/checkin/calendar/dates"
-    "?user_id={user_name}&start_date={start_date}&end_date={end_date}"
-)
-
-# shanbay -- no need to login
 SHANBAY_WORD_API = (
     "https://apiv3.shanbay.com/uc/checkin/logs?user_id={user_name}&ipp=20&page={page}"
 )

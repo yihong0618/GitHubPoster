@@ -212,23 +212,13 @@ github_poster duolingo --duolingo_user_name ${duolingo_user_name} --duolingo_duo
 <details>
 <summary>Make your <code>扇贝（shanbay）</code> GitHub poster</summary>
 <br>
-
 需要找到你的扇贝 user_id, 从网页抓 xhr 就可以获得如下图
 ![image](https://user-images.githubusercontent.com/15976103/116340351-a02ac500-a811-11eb-938f-72ff141e4942.png)
 
-
-扇贝打卡: 
 ```
-python3 -m github_poster shanbay --shanbay_user_name ${user_name} --year 2012-2021 --special-color1 '#33C6A4' --special-color2 '#33C6A4'
+python3 -m github_poster shanbay --shanbay_user_name ${user_name} --year 2012-2021 --special-color1 '#009688' --special-color2 '#007BFF' --track-color '#ADD8E6'
 or
-github_poster shanbay --shanbay_user_name ${user_name} --year 2012-2021 --special-color1 '#33C6A4' --special-color2 '#33C6A4'
-```
-
-扇贝单词:
-```
-python3 -m github_poster shanbayword --shanbay_word_user_name ${user_name} --year 2023 --special-color1 '#009688' --special-color2 '#007BFF' --track-color '#ADD8E6'
-or
-github_poster shanbayword --shanbay_word_user_name ${user_name} --year 2023 --special-color1 '#009688' --special-color2 '#007BFF' --track-color '#ADD8E6'
+github_poster shanbay --shanbay_user_name ${user_name} --year 2012-2021 --special-color1 '#009688' --special-color2 '#007BFF' --track-color '#ADD8E6'
 ```
 
 </details>
