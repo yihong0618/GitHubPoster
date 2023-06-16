@@ -61,7 +61,7 @@ LOADER_DICT = {
     "covid": CovidLoader,
     "todoist": TodoistLoader,
     "openlanguage": OpenLanguageLoader,
-    "chatgpt": ChatGPTLoader
+    "chatgpt": ChatGPTLoader,
 }
 
 __all__ = (
@@ -96,5 +96,5 @@ __all__ = (
     "CovidLoader",
     "TodoistLoader",
     "OpenLanguageLoader",
-    "ChatGPTLoader"
+    "ChatGPTLoader",
 )
