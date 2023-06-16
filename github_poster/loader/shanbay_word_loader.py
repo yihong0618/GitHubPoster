@@ -60,9 +60,19 @@ class ShanBayWordLoader(BaseLoader):
     def make_track_dict(self):
         data_list = self.get_api_data()
         for d in data_list:
-            n_words = sum(i["num"] for i in d['tasks'])
+            n_words = sum(self.convert_to_int(i["num"]) for i in d['tasks'])
             self.number_by_date_dict[d["date"]] = n_words
             self.number_list.append(n_words)
+
+    def convert_to_int(self, num):
+        """
+        处理num为字符串的情况,扇贝的API返回的数据可能会不一致,num的值可能为:
+        num: 50 或 num: "50", 这里把字符串做一次转换
+        """
+        try:
+            return int(num)
+        except:
+            return 0
 
     def get_all_track_data(self):
         self.make_track_dict()
