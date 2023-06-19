@@ -1,5 +1,6 @@
-import requests
 import time
+
+import requests
 
 from github_poster.loader.base_loader import BaseLoader
 from github_poster.loader.config import SHANBAY_WORD_API
