@@ -3,6 +3,9 @@ from collections import namedtuple
 # China timezone if you are from others please change this
 TIME_ZONE = "Asia/Shanghai"
 
+# neodb -- need to get token from https://neodb.social/developer/
+NEODB_API = "https://neodb.social/api/me/shelf/{type}?page={page}"
+
 # shanbay -- no need to login
 SHANBAY_WORD_API = (
     "https://apiv3.shanbay.com/uc/checkin/logs?user_id={user_name}&ipp=20&page={page}"
