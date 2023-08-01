@@ -49,4 +49,5 @@ TYPE_INFO_DICT = {
     "todoist": "Todoist",
     "apple": "AppleHealth",
     "chatgpt": "ChatGPT",
+    "neodb": "NeoDB",
 }
