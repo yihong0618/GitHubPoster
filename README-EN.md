@@ -591,6 +591,26 @@ github_poster chatgpt --me yihong0618
 ```
 </details>
 
+### NeoDB
+
+<details>
+<summary>Make your <code>NeoDB</code> GitHub poster</summary>
+<br>
+
+Using the API provided by NeoDB, we can easily make GitHub Poster with marks as data.
+
+An access token is needed, which can be obtained from [NeoDB's developer page](https://neodb.social/developer).
+
+There are to parameters for neodb module. `neodb_token`` is the token you get from [NeoDB's developer page](https://neodb.social/developer), `mark_type`` is the type of marks you want to import, which can be one of `complete`, `wishlist` and `progress`.
+
+```
+python3 -m github_poster neodb --neodb_token <token> --mark_type <complete, wishlist, progress, all> --me "your name"
+```
+
+Moreover, you can choose `all` as `mark_type` to import all marks.
+
+</details>
+
 # Contribution
 
 - Any Issues PR welcome.

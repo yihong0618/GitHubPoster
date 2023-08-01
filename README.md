@@ -681,6 +681,26 @@ github_poster chatgpt --me yihong0618
 ```
 </details>
 
+### NeoDB
+
+<details>
+<summary>Make your <code>NeoDB</code> GitHub poster</summary>
+<br>
+
+利用 NeoDB 提供的 API，可以方便地制作以标注作为数据的 GitHub Poster。
+
+需要在 [NeoDB 的开发者页面](https://neodb.social/developer)获取访问用户信息的 token。
+
+neodb 模块需要两个参数，`neodb_token` 为获取到的 token，`mark_type` 对应 NeoDB 上标注的三种分类：`complete`, `wishlist`, `progress`.
+
+```
+python3 -m github_poster neodb --neodb_token <token> --mark_type <complete, wishlist, progress, all> --me "your name"
+```
+
+特别地，`mark_type` 也可以选择 `all`, 此时会将三种分类的标注都导入。
+
+</details>
+
 # 参与项目
 
 - 任何 Issues PR 均欢迎。
