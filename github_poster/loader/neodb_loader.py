@@ -34,6 +34,8 @@ class NeoDBLoader(BaseLoader):
     def get_api_data(self):
         page = 1
         count = 0
+        all_count = 0
+        all_page = 0
 
         try:
             headers = {
@@ -47,13 +49,16 @@ class NeoDBLoader(BaseLoader):
                     headers=headers,
                 )
 
-                all_count = r.json().get("count")
-                all_page = r.json().get("pages")
+                data = r.json()
 
-                data_list = r.json().get("data")
+                if all_count == 0 and all_page == 0:
+                    all_count = data.get("count", 0)
+                    all_page = data.get("pages", 1)
+
+                data_list = data.get("data", [])
 
                 for marks in data_list:
-                    created_time = marks.get("created_time")
+                    created_time = marks["created_time"]
                     created_time = created_time.split("T")[0]
                     count += 1
 
