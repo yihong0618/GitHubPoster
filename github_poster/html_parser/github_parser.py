@@ -8,18 +8,19 @@ class GitHubParser(html.parser.HTMLParser):
         self.rects = []
 
     def handle_starttag(self, tag, attrs):
-        if tag == "rect":
+        if tag == "td":
             self.rects.append(dict(attrs))
             self.recording = True
 
     def handle_data(self, data):
         if self.recording:
             contributions_texts = data.split("contribution")
+            print(contributions_texts)
             if contributions_texts:
                 self.rects[-1]["data-count"] = contributions_texts[0].rstrip()
 
     def handle_endtag(self, tag):
-        if tag == "rect":
+        if tag == "td":
             self.recording = False
 
     def make_contribution_dict(self, text):
