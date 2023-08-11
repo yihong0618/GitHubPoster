@@ -9,8 +9,8 @@ env:
   # please change to your own config.
   # this actions generate only this year
   # If you fork this please change the type to yours below
-  TYPE: "bilibili, github, bbdc, twitter, weread, wakatime" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
-  ME: Barry
+  TYPE: "strava, github, forest, pass" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
+  ME: yihong0618
 
 jobs:
   sync:
@@ -46,93 +46,97 @@ jobs:
         if: contains(env.TYPE, 'ns')
         run: |
           python -m github_poster ns --ns_session_token ${{ secrets.NS_SESSION_TOKEN }} --ns_device_id ${{ secrets.NS_DEVICE_ID }} --me ${{ env.ME }}
+
       - name: Run sync strava script
         if: contains(env.TYPE, 'strava')
         run: |
           python -m github_poster strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --me ${{ env.ME }} --year 2012-$(date +"%Y") --is-circular
+
       - name: Run sync shanbay script
         if: contains(env.TYPE, 'shanbay')
         run: |
           python -m github_poster shanbay --shanbay_user_name ${{ secrets.SHANBAY_USER_NAME }}  --special-color1 '#33C6A4' --special-color2  '#33C6A4' --me ${{ env.ME }}
+
       - name: Run sync duolingo script
         if: contains(env.TYPE, 'duolingo')
         run: |
-          python -m github_poster duolingo --duolingo_user_name ${{ secrets.DUOLINGO_USER_NAME }} --duolingo_password ${{ secrets.DUOLINGO_PASSWORD }} --me ${{ env.ME }}
+          python -m github_poster duolingo --duolingo_user_name ${{ secrets.DUOLINGO_USER_NAME }} --duolingo_jwt ${{ secrets.DUOLINGO_JWT }} --me ${{ env.ME }}
+
       - name: Run sync cichang script
         if: contains(env.TYPE, 'cichang')
         run: |
           python -m github_poster cichang --cichang_user_name ${{ secrets.CICHANG_USER_NAME }} --password ${{ secrets.CICHANG_PASSWORD }} --me ${{ env.ME }}
+
       - name: Run sync forest script
         if: contains(env.TYPE, 'forest')
         run: |
           python -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --year $(date +"%Y") --cn
+
       - name: Run sync issue script
         if: contains(env.TYPE, 'issue')
         run: |
           python -m github_poster issue --issue_number ${{ secrets.ISSUE_NUMBER }} --repo_name ${{ secrets.REPO_NAME }} --github_token ${{ secrets.G_T }} --me ${{ env.ME }}
+
       - name: Run sync leetcode script
         if: contains(env.TYPE, 'leetcode')
         run: |
           python -m github_poster leetcode --leetcode_cookie  "${{ secrets.LEETCODE_COOKIE }}" --me ${{ env.ME }}
+
       - name: Run sync twitter script
         if: contains(env.TYPE, 'twitter')
         run: |
-          python -m github_poster twitter --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --me ${{ env.ME }} --with-animation --with-skyline
+          python -m github_poster twitter --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --me ${{ env.ME }} --with-animation
+
       - name: Run sync github script
         if: contains(env.TYPE, 'github')
         run: |
-          python -m github_poster github --github_user_name ${{ secrets.GIT_USER_NAME }} --me ${{ env.ME }} --with-animation --with-skyline --stand-with-ukraine
+          python -m github_poster github --github_user_name ${{ secrets.G_USER_NAME }} --me ${{ env.ME }} --with-animation --stand-with-ukraine
+
       - name: Run sync gitlab script
         if: contains(env.TYPE, 'gitlab')
         run: |
           python -m github_poster gitlab --gitlab_user_name ${{ secrets.GITLAB_USER_NAME }} --me ${{ env.ME }} --with-animation
+
       - name: Run sync kindle script
         if: contains(env.TYPE, 'kindle')
         run: |
-          python -m github_poster kindle --kindle_cookie ${{ secrets.KINDLE_COOKIE }} --me ${{ env.ME }}
+          python -m github_poster kindle --kindle_cookie  '${{ secrets.KINDLE_COOKIE }} --me ${{ env.ME }}
+
       - name: Run sync bilibili script
         if: contains(env.TYPE, 'bilibili')
         run: |
           python3 -m github_poster bilibili --bilibili_cookie "${{ secrets.BILIBILI_COOKIE }}" --me ${{ env.ME }}
+
       - name: Run sync wakatime script
         if: contains(env.TYPE, 'wakatime')
         run: |
           python3 -m github_poster wakatime --wakatime_key "${{ secrets.WAKATIME_KEY }}" --me ${{ env.ME }}
+
       - name: Run sync dota2 script
         if: contains(env.TYPE, 'dota2')
         run: |
           python3 -m github_poster dota2 --dota2_id "${{ secrets.DOTA2_ID }}" --me ${{ env.ME }}
+
       - name: Run sync notion script
         if: contains(env.TYPE, 'notion')
         run: |
           python3 -m github_poster notion --notion_token "${{ secrets.NOTION_TOKEN }}" --database_id "${{ secrets.NOTION_DATABASE_ID }}" --prop_name "${{ secrets.NOTION_PROP_NAME }}" --me ${{ env.ME }}
+
       - name: Run sync openlanguage script
         if: contains(env.TYPE, 'openlanguage')
         run: |
           python3 -m github_poster openlanguage --openlanguage_user_name "${{ secrets.OPENLANGUAGE_USER_NAME }}" --openlanguage_password "${{ secrets.OPENLANGUAGE_PASSWORD }}" --me ${{ env.ME }}
-      
-      - name: Run sync bbdc script
-        if: contains(env.TYPE, 'bbdc')
-        run: |
-          python3 -m github_poster bbdc --bbdc_user_id "${{ secrets.BBDC_USER_ID }}" --bbdc_type word --me ${{ env.ME }}
-      - name: Run sync weread script
-        if: contains(env.TYPE, 'weread')
-        run: |
-          python3 -m github_poster weread --weread_cookie "${{ secrets.WEREAD_COOKIE }}" --me ${{ env.ME }}
-      - name: Run sync todoist script
-        if: contains(env.TYPE, 'todoist')
-        run: |
-          python3 -m github_poster todoist --year 2022-2024 --todoist_token "${{ secrets.TODOIST_TOKEN }}" --me ${{ env.ME }}
-          
+
       # change the types to yours
       - name: Run sync multiple script
         if: contains(env.TYPE, 'multiple')
         run: |
           python3 -m github_poster multiple --types "github, twitter" --github_user_name ${{ secrets.G_USER_NAME }} --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --year 2019-$(date +"%Y") 
+
       - name: Mv svg files to examples
         # only for me to show
         if: github.repository_owner == 'yihong0618'
-        run: mv OUT_FOLDER/*.svg examples/ && mv OUT_FOLDER/*.stl examples/
+        run: mv OUT_FOLDER/*.svg examples/
 
       - name: Push new postger
         run: |
