@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 from github_poster.loader.base_loader import BaseLoader, LoadError
 from github_poster.loader.config import WAKATIME_SUMMARY_URL
 
+
 class WakaTimeLoader(BaseLoader):
     track_color = "#9BE9A8"
     unit = "mins"
@@ -15,7 +16,9 @@ class WakaTimeLoader(BaseLoader):
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
         self.wakatime_key = kwargs.get("wakatime_key", "")
-        self.wakatime_file = kwargs.get("wakatime_history_file", os.path.join("IN_FOLDER", "wakatime-history.json"))
+        self.wakatime_file = kwargs.get(
+            "wakatime_history_file", os.path.join("IN_FOLDER", "wakatime-history.json")
+        )
         self._parse_wakatime_history()
 
     @classmethod
@@ -49,9 +52,9 @@ class WakaTimeLoader(BaseLoader):
             start_date = f"{self.from_year}-01-01"
             end_date = f"{self.to_year}-12-31"
         else:
-            start_date = (datetime.now() - timedelta(days=14)).strftime('%Y-%m-%d')
-            end_date = datetime.now().strftime('%Y-%m-%d')
-        
+            start_date = (datetime.now() - timedelta(days=14)).strftime("%Y-%m-%d")
+            end_date = datetime.now().strftime("%Y-%m-%d")
+
         r = requests.get(
             WAKATIME_SUMMARY_URL.format(
                 wakatime_key=self.wakatime_key,
@@ -72,7 +75,9 @@ class WakaTimeLoader(BaseLoader):
             if d:
                 date = d["range"]["date"]
                 if date not in self.number_by_date_dict:
-                    self.number_by_date_dict[date] = int(d["grand_total"]["total_seconds"] / 60.0)
+                    self.number_by_date_dict[date] = int(
+                        d["grand_total"]["total_seconds"] / 60.0
+                    )
         self._writeback_wakatime_history()
         for _, v in self.number_by_date_dict.items():
             self.number_list.append(v)
