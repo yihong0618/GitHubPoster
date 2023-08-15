@@ -1,9 +1,10 @@
-import time
-import requests
 import json
 import os
+import time
 from collections import defaultdict
 from datetime import datetime, timedelta
+
+import requests
 
 from github_poster.loader.base_loader import BaseLoader, LoadError
 from github_poster.loader.config import WAKATIME_SUMMARY_URL
