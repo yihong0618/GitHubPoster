@@ -30,7 +30,6 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[GPX](#GPX)**
 - **[多邻国](#多邻国)**
 - **[Issue](#Issue)**
-- **[Twitter](#Twitter)**
 - **[YouTube](#Youtube)**
 - **[Bilibili](#Bilibili)**
 - **[GitHub](#GitHub)**
@@ -279,30 +278,6 @@ github_poster leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021 --c
 ```
 </details>
 
-### Twitter
-
-<details>
-<summary>Make your <code>Twitter </code> GitHub poster</summary>
-<br>
-
-需要找到你的 `Twitter user_id`, 网址里那个就是
-
-```
-python3 -m github_poster twitter --twitter_user_name ${user_name} --year 2018-2021 --track-color '#1C9CEA'
-or
-github_poster twitter --user_name ${twitter_user_name} --year 2018-2021 --track-color '#1C9CEA'
-```
-
-以上方法使用 [twint](https://github.com/twintproject/twint) 直接从 Twitter 抓取你的推文数据。
-
-你也可以选择[下载 Twitter 存档](https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive)，并使用 `contrib/convert_twitter_archive_to_json_data_source.py` 将其转换为 [Json](#Json) 数据源。这一方法尤其适用于以下情况中的一种或多种：
-
-- 你发过很多推
-- 你使用 Twitter 很多年了
-- 你的网络环境不佳
-- 你是锁推用户
-
-</details>
 
 ### Youtube
 
@@ -523,9 +498,9 @@ github_poster json --json_file "your json data file" --year 2019-2021 --me Pytho
 多个 types 最多支持三个，参数参考上面文档
 
 ```
-python3 -m github_poster multiple  --types "github, twitter, strava" --twitter_user_name "twitter user name" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
+python3 -m github_poster multiple  --types "github, strava"  --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
 or
-github_poster multiple  --types "github, twitter, strava" --twitter_user_name "twitter user name" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
+github_poster multiple  --types "github, strava" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
 ```
 
 </details>
@@ -539,9 +514,9 @@ github_poster multiple  --types "github, twitter, strava" --twitter_user_name "t
 多个 types，参数参考上面文档
 
 ```
-python3 -m github_poster summary --types "github, twitter, strava" --twitter_user_name "twitter user name" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
+python3 -m github_poster summary --types "github, strava" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
 or
-github_poster summary --types "github, twitter, strava" --twitter_user_name "twitter user name" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
+github_poster summary --types "github, strava"  --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
 ```
 </details>
 

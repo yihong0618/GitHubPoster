@@ -17,7 +17,6 @@ setup(
         "colour",
     ],
     extras_require={
-        "twitter": ["twint_fork"],
         "garmin": ["garminconnect"],
         "gpx": ["gpxpy"],
         "strava": ["stravalib"],

@@ -130,10 +130,6 @@ def run():
         issue_number = args_dict.get("issue_number", "1")
         repo_name = args_dict.get("repo_name", "").replace("/", "_")
         file_name = f"issue_{repo_name}_{issue_number}"
-    # for twitter back up
-    if args.type == "twitter":
-        twitter_user_name = args_dict.get("twitter_user_name", "")
-        file_name = f"twitter_{twitter_user_name}"
 
     if args.type == "summary":
         file_name = f"summary_{to_year}"

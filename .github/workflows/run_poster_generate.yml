@@ -9,7 +9,7 @@ env:
   # please change to your own config.
   # this actions generate only this year
   # If you fork this please change the type to yours below
-  TYPE: "strava, github, forest, pass" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
+  TYPE: "strava, github, forest, pass" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
   ME: yihong0618
 
 jobs:
@@ -82,11 +82,6 @@ jobs:
         run: |
           python -m github_poster leetcode --leetcode_cookie  "${{ secrets.LEETCODE_COOKIE }}" --me ${{ env.ME }}
 
-      - name: Run sync twitter script
-        if: contains(env.TYPE, 'twitter')
-        run: |
-          python -m github_poster twitter --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --me ${{ env.ME }} --with-animation
-
       - name: Run sync github script
         if: contains(env.TYPE, 'github')
         run: |
@@ -131,7 +126,7 @@ jobs:
       - name: Run sync multiple script
         if: contains(env.TYPE, 'multiple')
         run: |
-          python3 -m github_poster multiple --types "github, twitter" --github_user_name ${{ secrets.G_USER_NAME }} --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --year 2019-$(date +"%Y") 
+          python3 -m github_poster multiple --types "github" --github_user_name ${{ secrets.G_USER_NAME }}  --year 2019-$(date +"%Y") 
 
       - name: Mv svg files to examples
         # only for me to show

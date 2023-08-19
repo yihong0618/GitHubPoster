@@ -31,7 +31,6 @@ TYPE_INFO_DICT = {
     "duolingo": "Duolingo",
     "github": "GitHub",
     "leetcode": "LeetCode",
-    "twitter": "Twitter",
     "youtube": "YouTube",
     "gitlab": "GitLab",
     "bilibili": "bilibili",

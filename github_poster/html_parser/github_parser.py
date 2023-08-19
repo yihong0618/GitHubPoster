@@ -15,7 +15,6 @@ class GitHubParser(html.parser.HTMLParser):
     def handle_data(self, data):
         if self.recording:
             contributions_texts = data.split("contribution")
-            print(contributions_texts)
             if contributions_texts:
                 self.rects[-1]["data-count"] = contributions_texts[0].rstrip()
 

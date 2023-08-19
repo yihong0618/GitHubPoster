@@ -21,7 +21,6 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[GPX](#GPX)**
 - **[Duolingo](#duolingo)**
 - **[Issue](#Issue)**
-- **[Twitter](#Twitter)**
 - **[YouTube](#Youtube)**
 - **[Bilibili](#Bilibili)**
 - **[GitHub](#GitHub)**
@@ -222,29 +221,6 @@ github_poster leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
 
 </details>
 
-### Twitter
-
-<details>
-<summary>Make your <code>Twitter</code> GitHub poster</summary>
-<br>
-
-Find your `Twitter user_id` (in the url)
-
-```
-python3 -m github_poster twitter --twitter_user_name ${user_name} --year 2018-2021 --track-color '#1C9CEA'
-or
-github_poster twitter --twitter_user_name ${twitter_user_name} --year 2018-2021 --track-color '#1C9CEA'
-```
-
-The method above uses [twint](https://github.com/twintproject/twint) to scrape tweets directly from Twitter.
-
-Alternatively, [download your Twitter Archive](https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive) and use `contrib/convert_twitter_archive_to_json_data_source.py` to convert it to JSON data source and feed it to [Json](#Json) loader. This method is useful if one or more of the following applies to you:
-
-- You have lots of tweets.
-- You have been using Twitter for many years.
-- Your connection to Twitter is not reliable enough.
-- You have a protected Twitter account.
-</details>
 
 ### Youtube
 
@@ -468,9 +444,9 @@ github_poster json --json_file "your json data file" --year 2019-2021 --me Pytho
 support multiple types
 
 ```
-python3 -m github_poster multiple  --types "github, twitter, strava" --twitter_user_name "twitter user name" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
+python3 -m github_poster multiple  --types "github, strava"  --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
 or
-github_poster multiple  --types "github, twitter, strava" --twitter_user_name "twitter user name" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
+github_poster multiple  --types "github, strava" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
 ```
 
 </details>
@@ -484,9 +460,9 @@ github_poster multiple  --types "github, twitter, strava" --twitter_user_name "t
 support summary types
 
 ```
-python3 -m github_poster summary  --types "github, twitter, strava" --twitter_user_name "twitter user name" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
+python3 -m github_poster summary  --types "github, strava"  --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
 or
-github_poster summary  --types "github, twitter, strava" --twitter_user_name "twitter user name" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
+github_poster summary  --types "github, strava"  --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
 ```
 </details>
 
