@@ -348,11 +348,13 @@ github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 <details>
 <summary>Make your <code> Nike </code> poster</summary>>
 
-获取 Nike 的 refresh_token
+**ALL need to do outside GFW**
 
-1. 登录 [Nike](https://www.nike.com) 官网
-2. In Developer -> Application-> Storage -> https:unite.nike.com 中找到 refresh_token
+![example img](https://user-images.githubusercontent.com/67903793/282300381-4e7437d0-65a9-4eed-93d1-2b70e360215f.png)
 
+1. Login from this [website](https://unite.nike.com/s3/unite/mobile.html?androidSDKVersion=3.1.0&corsoverride=https%3A%2F%2Funite.nike.com&uxid=com.nike.sport.running.droid.3.8&backendEnvironment=identity&view=login&clientId=VhAeafEGJ6G8e9DxRUz8iE50CZ9MiJMG), open F12 -> XHR -> get the `refresh_token` from login api.
+
+2. copy this `refresh_token` and use it in GitHub Secrets or in command line
 
 ```
 python3 -m github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-2021

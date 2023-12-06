@@ -6,7 +6,7 @@ setup(
     author_email="zouzou0208@gmail.com",
     url="https://github.com/yihong0618/GitHubPoster",
     license="MIT",
-    version="2.6.0",
+    version="2.7.0",
     description="Make everything a GitHub svg poster and Skyline!",
     packages=find_packages(),
     include_package_data=True,
@@ -25,7 +25,7 @@ setup(
         "todoist": ["pandas"],
         "all": [
             "twint_fork",
-            "garminconnect==0.1.53",
+            "garminconnect",
             "gpxpy",
             "stravalib",
             "PyGithub",
