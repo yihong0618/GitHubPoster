@@ -6,21 +6,32 @@ class GitHubParser(html.parser.HTMLParser):
         html.parser.HTMLParser.__init__(self)
         self.recording = False
         self.rects = []
+        self.date = None
+        self.capture_data = False
 
     def handle_starttag(self, tag, attrs):
         if tag == "td":
-            self.rects.append(dict(attrs))
-            self.recording = True
+            # Extract date from the <td> tag
+            for attr in attrs:
+                if attr[0] == "data-date":
+                    self.date = attr[1]
+        elif tag == "tool-tip":
+            # Prepare to capture the text within <tool-tip>
+            self.capture_data = True
 
     def handle_data(self, data):
-        if self.recording:
+        if self.capture_data:
+            rect = {}
             contributions_texts = data.split("contribution")
             if contributions_texts:
-                self.rects[-1]["data-count"] = contributions_texts[0].rstrip()
-
-    def handle_endtag(self, tag):
-        if tag == "td":
-            self.recording = False
+                self.capture_data = False
+                rect["data-date"] = self.date
+                rect["data-count"] = (
+                    int(contributions_texts[0])
+                    if contributions_texts[0].rstrip().isdigit()
+                    else 0
+                )
+                self.rects.append(rect)
 
     def make_contribution_dict(self, text):
         self.feed(text)
