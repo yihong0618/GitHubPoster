@@ -1,7 +1,7 @@
 import time
 
 import requests
-from pendulum import parse, period
+from pendulum import parse, interval
 
 from github_poster.html_parser import GitLabParser
 from github_poster.loader.base_loader import BaseLoader, LoadError
@@ -46,7 +46,7 @@ class GitLabLoader(BaseLoader):
         )
 
     def _make_left_dates(self, last_date):
-        dates = list(period(parse(f"{self.from_year}-01-01"), parse(last_date)))
+        dates = list(interval(parse(f"{self.from_year}-01-01"), parse(last_date)))
         self.left_dates = [i.to_date_string() for i in dates]
 
     def _set_cookies(self):

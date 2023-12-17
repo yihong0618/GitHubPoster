@@ -50,10 +50,6 @@ class GitHubLoader(BaseLoader):
             self.number_list.append(v)
 
     def get_all_track_data(self):
-        import time
-
-        s = time.time()
         self.make_track_dict()
-        print(time.time() - s, " Cost")
         self.make_special_number()
         return self.number_by_date_dict, self.year_list

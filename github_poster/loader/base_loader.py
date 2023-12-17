@@ -43,8 +43,8 @@ class BaseLoader(ABC):
     def make_month_list(self):
         start = pendulum.datetime(self.from_year, 1, 1)
         end = pendulum.datetime(self.to_year, 12, 31)
-        period = pendulum.period(start, end)
-        month_list = list(period.range("months"))
+        interval = pendulum.interval(start, end)
+        month_list = list(interval.range("months"))
         # filter
         month_list = [m for m in month_list if m < pendulum.now()]
         return month_list

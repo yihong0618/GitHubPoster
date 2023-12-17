@@ -47,7 +47,7 @@ class WereadLoader(BaseLoader):
             if not sum(read_time_list):
                 continue
             m_end_date = m_start_date.end_of("month")
-            m_date_list = list(pendulum.period(m_start_date, m_end_date))
+            m_date_list = list(pendulum.interval(m_start_date, m_end_date))
             for k, v in zip(m_date_list, read_time_list):
                 self.number_by_date_dict[k.to_date_string()] = round(v / 60.0, 2)
         for _, v in self.number_by_date_dict.items():

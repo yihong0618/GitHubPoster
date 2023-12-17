@@ -2,7 +2,7 @@ import math
 import os
 
 import numpy as np
-from pendulum import parse, period
+from pendulum import parse, interval
 from sdf import X, Y, box, ease, measure_text, rectangle, text, union
 
 import github_poster.skyline
@@ -35,7 +35,7 @@ class Skyline:
         return b
 
     def __make_one_year_dates(self):
-        dates = list(period(parse(f"{self.year}-01-01"), parse(f"{self.year}-12-31")))
+        dates = list(interval(parse(f"{self.year}-01-01"), parse(f"{self.year}-12-31")))
         return [d.to_date_string() for d in dates]
 
     def _make_skyline_boxes(self):
