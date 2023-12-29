@@ -51,6 +51,8 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[开言英语](#开言英语)**
 - **[Apple Health](#AppleHealth)**
 - **[ChatGPT](#ChatGPT)**
+- **[NeoDB](#NeoDB)**
+- **[AutoSleep](#AutoSleep)**
 
 ## 下载
 
@@ -680,6 +682,22 @@ python3 -m github_poster neodb --neodb_token <token> --mark_type <complete, wish
 ```
 
 特别地，`mark_type` 也可以选择 `all`, 此时会将三种分类的标注都导入。
+
+</details>
+
+### AutoSleep
+
+<details>
+<summary>Make your <code>AutoSleep</code> Github poster</summary>
+<br>
+
+导出 AutoSleep 的数据（eg. autosleep.csv）
+
+```
+python3 -m github_poster autosleep --autosleep_file "your csv file" --me "your name"
+or
+github_poster autosleep --autosleep_file "your csv file" --me "your name"
+```
 
 </details>
 

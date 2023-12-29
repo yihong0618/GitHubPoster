@@ -40,6 +40,8 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[OpenLanguage](#OpenLanguage)**
 - **[Apple Health](#AppleHealth)**
 - **[ChatGPT](#ChatGPT)**
+- **[NeoDB](#NeoDB)**
+- **[AutoSleep](#AutoSleep)**
 
 ## Download
 ```
@@ -553,6 +555,7 @@ python3 -m github_poster apple_health --apple_health_mode backfill --year 2015-2
 or
 github_poster apple_health --apple_health_mode backfill --year 2015-2021 --apple_health_record_type <move, exercise, stand> --me "your name"
 ```
+</details>
 
 ### ChatGPT
 
@@ -587,6 +590,21 @@ python3 -m github_poster neodb --neodb_token <token> --mark_type <complete, wish
 
 Moreover, you can choose `all` as `mark_type` to import all marks.
 
+</details>
+
+### AutoSleep
+
+<details>
+<summary>Make your <code>AutoSleep</code> Github poster</summary>
+<br>
+
+Export your `AutoSleep` data from app（eg. autosleep.csv）, then run
+
+```
+python3 -m github_poster autosleep --autosleep_file "your csv file" --me "your name"
+or
+github_poster autosleep --autosleep_file "your csv file" --me "your name"
+```
 </details>
 
 # Contribution
