@@ -49,5 +49,5 @@ TYPE_INFO_DICT = {
     "apple": "AppleHealth",
     "chatgpt": "ChatGPT",
     "neodb": "NeoDB",
-    "autosleep": "AutoSleep"
+    "autosleep": "AutoSleep",
 }

@@ -1,4 +1,5 @@
 from github_poster.loader.apple_health_loader import AppleHealthLoader
+from github_poster.loader.autosleep_loader import AutoSleepLoader
 from github_poster.loader.bbdc_loader import BBDCLoader
 from github_poster.loader.bilibili_loader import BilibiliLoader
 from github_poster.loader.chatgpt_loader import ChatGPTLoader
@@ -29,7 +30,6 @@ from github_poster.loader.todoist_loader import TodoistLoader
 from github_poster.loader.wakatime_loader import WakaTimeLoader
 from github_poster.loader.weread_loader import WereadLoader
 from github_poster.loader.youtube_loader import YouTubeLoader
-from github_poster.loader.autosleep_loader import AutoSleepLoader
 
 LOADER_DICT = {
     "apple_health": AppleHealthLoader,
@@ -63,7 +63,7 @@ LOADER_DICT = {
     "openlanguage": OpenLanguageLoader,
     "chatgpt": ChatGPTLoader,
     "neodb": NeoDBLoader,
-    "autosleep": AutoSleepLoader
+    "autosleep": AutoSleepLoader,
 }
 
 __all__ = (
@@ -99,5 +99,5 @@ __all__ = (
     "OpenLanguageLoader",
     "ChatGPTLoader",
     "NeoDBLoader",
-    "AutoSleepLoader"
+    "AutoSleepLoader",
 )

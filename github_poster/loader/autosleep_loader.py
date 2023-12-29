@@ -1,7 +1,7 @@
 import csv
 from collections import defaultdict
-
 from datetime import datetime
+
 from github_poster.loader.base_loader import BaseLoader
 
 
