@@ -1,7 +1,7 @@
 import time
 
 import requests
-from pendulum import parse, interval
+from pendulum import interval, parse
 
 from github_poster.html_parser import GitLabParser
 from github_poster.loader.base_loader import BaseLoader, LoadError

@@ -2,7 +2,7 @@ import math
 import os
 
 import numpy as np
-from pendulum import parse, interval
+from pendulum import interval, parse
 from sdf import X, Y, box, ease, measure_text, rectangle, text, union
 
 import github_poster.skyline

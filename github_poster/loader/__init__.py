@@ -1,4 +1,5 @@
 from github_poster.loader.apple_health_loader import AppleHealthLoader
+from github_poster.loader.autosleep_loader import AutoSleepLoader
 from github_poster.loader.bbdc_loader import BBDCLoader
 from github_poster.loader.bilibili_loader import BilibiliLoader
 from github_poster.loader.chatgpt_loader import ChatGPTLoader
@@ -62,6 +63,7 @@ LOADER_DICT = {
     "openlanguage": OpenLanguageLoader,
     "chatgpt": ChatGPTLoader,
     "neodb": NeoDBLoader,
+    "autosleep": AutoSleepLoader,
 }
 
 __all__ = (
@@ -97,4 +99,5 @@ __all__ = (
     "OpenLanguageLoader",
     "ChatGPTLoader",
     "NeoDBLoader",
+    "AutoSleepLoader",
 )
