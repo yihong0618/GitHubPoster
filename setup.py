@@ -24,10 +24,9 @@ setup(
         "skyline": ["sdf_fork"],
         "todoist": ["pandas"],
         "all": [
-            "twint_fork",
             "garminconnect==0.2.12",
             "gpxpy",
-            "stravalib==1.5",
+            "stravalib==1.0.0",
             "PyGithub",
             "sdf_fork",
             "pandas",
