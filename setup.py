@@ -27,7 +27,7 @@ setup(
             "twint_fork",
             "garminconnect",
             "gpxpy",
-            "stravalib",
+            "stravalib==1.5",
             "PyGithub",
             "sdf_fork",
             "pandas",
