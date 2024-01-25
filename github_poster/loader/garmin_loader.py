@@ -52,12 +52,14 @@ class GarminLoader(BaseLoader):
             self.client = Garmin(
                 self.garmin_user_name, self.garmin_password, is_cn=self.is_cn
             )
+            self.client.login()
         except Exception as e:  # try twice
             print(str(e))
             print("try login again")
             self.client = Garmin(
                 self.garmin_user_name, self.garmin_password, is_cn=self.is_cn
             )
+            self.client.login()
 
     def get_api_data(self, start=0, limit=100):
         if self.client is None:
