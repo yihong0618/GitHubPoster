@@ -1,2 +1,5 @@
 [tool.isort]
 profile = "black"
+
+
+requires-python = ">=3.11"

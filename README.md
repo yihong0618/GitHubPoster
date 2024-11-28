@@ -701,6 +701,20 @@ github_poster autosleep --autosleep_file "your csv file" --me "your name"
 
 </details>
 
+### Google Keep
+
+<details>
+<summary>Make your <code>Google Keep</code> GitHub poster</summary>
+<br>
+
+导出 Google Keep 的数据，并解压（eg. Takeout/Keep）
+
+```
+python3 -m github_poster googlekeep --gkeep_dir "your export folder" --me "your name"
+or
+github_poster googlekeep --gkeep_dir "your export folder" --me "your name"
+```
+
 # 参与项目
 
 - 任何 Issues PR 均欢迎。

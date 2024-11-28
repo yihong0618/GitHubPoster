@@ -50,4 +50,5 @@ TYPE_INFO_DICT = {
     "chatgpt": "ChatGPT",
     "neodb": "NeoDB",
     "autosleep": "AutoSleep",
+    "googlekeep": "GoogleKeep",
 }

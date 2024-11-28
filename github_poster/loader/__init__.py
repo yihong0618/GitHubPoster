@@ -30,6 +30,7 @@ from github_poster.loader.todoist_loader import TodoistLoader
 from github_poster.loader.wakatime_loader import WakaTimeLoader
 from github_poster.loader.weread_loader import WereadLoader
 from github_poster.loader.youtube_loader import YouTubeLoader
+from github_poster.loader.googlekeep_loader import GoogleKeepLoader
 
 LOADER_DICT = {
     "apple_health": AppleHealthLoader,
@@ -64,6 +65,7 @@ LOADER_DICT = {
     "chatgpt": ChatGPTLoader,
     "neodb": NeoDBLoader,
     "autosleep": AutoSleepLoader,
+    "googlekeep": GoogleKeepLoader,
 }
 
 __all__ = (
@@ -100,4 +102,5 @@ __all__ = (
     "ChatGPTLoader",
     "NeoDBLoader",
     "AutoSleepLoader",
+    "GoogleKeepLoader",
 )
