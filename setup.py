@@ -24,6 +24,7 @@ setup(
         "skyline": ["sdf_fork"],
         "todoist": ["pandas"],
         "all": [
+            "withings_sync==4.1.0",
             "garminconnect==0.2.12",
             "gpxpy",
             "stravalib==1.0.0",
