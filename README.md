@@ -197,14 +197,16 @@ github_poster cichang --cichang_user_name ${user_name} --cichang_password ${pass
 <summary>Make your <code>多邻国（duolingo）</code> GitHub poster</summary>
 <br>
 
-1. login duolingo in broswer
-2. console `document.cookie.match(new RegExp('(^| )jwt_token=([^;]+)'))[0].slice(11)` get duolingo_jwt
+1. 在网页登录多邻国
 
+2. 按`F12`在控制台（console）使用 `document.cookie.match(new RegExp('(^| )jwt_token=([^;]+)'))[0].slice(11)` 获取 duolingo_jwt
+
+3. 在多邻国用户主页或 通过地址栏 `https://www.duolingo.cn/profile/{duolingo id}` 获取 duolingo id
 
 ```
 python3 -m github_poster duolingo --duolingo_user_name ${duolingo_user_name} --duolingo_jwt ${duolingo_jwt} --year 2015-2021
 or
-github_poster duolingo --duolingo_user_name ${duolingo_user_name} --duolingo_duolingo_jwt ${duolingo_jwt} --year 2015-2021
+github_poster duolingo --duolingo_user_name ${duolingo_user_name} --duolingo_jwt ${duolingo_jwt} --year 2015-2021
 ```
 </details>
 
