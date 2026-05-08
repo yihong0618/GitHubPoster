@@ -65,10 +65,10 @@ git clone https://github.com/yihong0618/GitHubPoster.git
 pip3 install -U 'github_poster[all]'
 ```
 
-## 安装(Python3.6+)
+## 安装(Python3.11+)
 
 ```
-pip3 install -r requirements.txt
+uv sync --all-extras
 ```
 
 ## 使用

@@ -12,6 +12,7 @@ from github_poster.loader.from_github_issue_loader import GitHubIssuesLoader
 from github_poster.loader.garmin_loader import GarminLoader
 from github_poster.loader.github_loader import GitHubLoader
 from github_poster.loader.gitlab_loader import GitLabLoader
+from github_poster.loader.googlekeep_loader import GoogleKeepLoader
 from github_poster.loader.gpx_loader import GPXLoader
 from github_poster.loader.jike_loader import JikeLoader
 from github_poster.loader.json_loader import JsonLoader
@@ -30,7 +31,6 @@ from github_poster.loader.todoist_loader import TodoistLoader
 from github_poster.loader.wakatime_loader import WakaTimeLoader
 from github_poster.loader.weread_loader import WereadLoader
 from github_poster.loader.youtube_loader import YouTubeLoader
-from github_poster.loader.googlekeep_loader import GoogleKeepLoader
 
 LOADER_DICT = {
     "apple_health": AppleHealthLoader,
