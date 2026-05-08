@@ -1,4 +1,5 @@
 import datetime
+import time
 from collections import defaultdict
 
 from github_poster.err import DepNotInstalledError
@@ -7,6 +8,8 @@ from github_poster.loader.base_loader import BaseLoader, LoadError
 
 class StravaLoader(BaseLoader):
     unit = "km"
+    retry_attempts = 3
+    retry_base_seconds = 5
 
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
@@ -81,8 +84,43 @@ class StravaLoader(BaseLoader):
         self._make_year_before_after()
         return self.client.get_activities(before=self.before, after=self.after)
 
+    @staticmethod
+    def _status_code_from_error(error):
+        response = getattr(error, "response", None)
+        return getattr(response, "status_code", None)
+
+    def _should_retry_api_error(self, error):
+        status_code = self._status_code_from_error(error)
+        try:
+            status_code = int(status_code)
+        except (TypeError, ValueError):
+            return False
+        return 500 <= status_code < 600
+
+    def _get_tracks_with_retry(self):
+        import stravalib
+
+        for attempt in range(1, self.retry_attempts + 1):
+            try:
+                return list(self.get_api_data())
+            except stravalib.exc.Fault as exc:
+                if attempt == self.retry_attempts or not self._should_retry_api_error(
+                    exc
+                ):
+                    raise
+
+                wait_seconds = self.retry_base_seconds * (2 ** (attempt - 1))
+                status_code = self._status_code_from_error(exc)
+                print(
+                    f"Strava API returned {status_code}; retrying in "
+                    f"{wait_seconds}s (attempt {attempt + 1}/{self.retry_attempts})"
+                )
+                time.sleep(wait_seconds)
+
+        return []
+
     def make_track_dict(self):
-        tracks = list(self.get_api_data())
+        tracks = self._get_tracks_with_retry()
         for t in tracks:
             num = round(float(t.distance) / 1000, 2)
             self.number_by_date_dict[str(t.start_date_local.date())] += num
